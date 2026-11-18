@@ -2763,6 +2763,10 @@ function compareBaseCached(build){ const k = cmpKey(build); let v = CMP_CACHE.ge
 function cmpHash(build){ const s = cmpKey(build); let h = 2166136261; for (let i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = Math.imul(h, 16777619); } return (h >>> 0).toString(36); }
 /* 짝 세팅(진언만 다른 4인 일천수도 — 40_shell entriesOf pair)은 보이는 세팅의 파일(build.id)을 씀 */
 /* 구운 비교 찾기: 묶음 파일 → 세팅 파일. 바꿔 보기 중이면 그 조합의 파일(cmpFileOf) — 사용자 2026-11-13 '계산은 전부다 미리 굽는거야. Ux를 신경쓰라고' */
+/* 구운 값을 쓰는 조건: 그 정복자(P)가 구운 표에 있고, 구울 때의 세팅 id·세팅 해시(cmpHash)가 지금과 같을 때. 하나라도 다르면 null → 화면이 실시간 계산(30_compare useCompareBase).
+   ★ 획득 방법 비교는 구운 값으로 보여 주는 것이 원칙 — 모델·정옵 경로(data/path.json)·아이템 데이터를 바꾸면 해시가 달라져 전부 실시간으로 떨어짐.
+     그때마다 반드시 다시 구울 것: node tools/bake_cmp_all.js logs/cmp_dealers.json (+ 서포터 묶음) → data/cmp/*.json.
+     사용자 2026-11-19 "획득방법 비교는 굽기가 아니라 실시간인가보네? 이것도 구워야한다고 주석에 적어놔." */
 function bakedCmp(groupId, gemMode, build){ const B = D.cmp && (D.cmp[cmpFileOf(groupId, build, gemMode)] || D.cmp[cmpFileOf(build.id, build, gemMode)]); const P = build.model && build.model.opts && build.model.opts.paragon;
   const e = B && B.at[P]; if (!e || e.v !== build.id || e.k !== cmpHash(build)) return null; return {presets: B.presets, s: e.s}; }
 /* 구운 값으로 비교 행 만들기: 가벼운 행(noEdge) + 부위별 {tiers, N, F}. N 은 primalEdge 와 같은 식. 허용치가 구운 목록에 없으면 null */
@@ -3656,6 +3660,7 @@ const tierPct = tiers => (100*(Math.pow(D.config.model.score.gr.hpStep, tiers)-1
 
 /* ── 데이터 ── */
 /* 행 = ① 구운 값(data/cmp)이 있으면 즉시 ② 아니면 작업자 계산 — 끝날 때까지 직전 행을 그대로 보여 줌. 출처: 사용자 2026-11-09 '미리 굽자'. */
+/* ★ 실시간(②)은 구운 값이 없거나 낡았을 때의 대비책일 뿐 — 모델·경로를 바꾼 뒤에는 data/cmp 를 다시 구워야 함(60_compare bakedCmp 주석, 사용자 2026-11-19 "이것도 구워야한다고 주석에 적어놔.") */
 /* → {base 행(없으면 null), src "bake"|"live"|"stale"} */
 function useCompareBase(build, groupId, gemMode, lossNum, cmpTick){
   const baked = useMemo(() => { const b = bakedCmp(groupId, gemMode, build); return b ? compareFromBake(build, b, lossNum) : null; }, [build, lossNum, cmpTick]);
