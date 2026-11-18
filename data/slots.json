@@ -1,0 +1,839 @@
+{
+ "slots": {
+  "head": {
+   "label": "머리",
+   "baseArmor": 759,
+   "socketN": 1,
+   "primaries": 4,
+   "skillN": 7,
+   "skillGroup": 1,
+   "type": "helm",
+   "pool": [
+    "skill",
+    "chc",
+    "lifep",
+    "allres",
+    "dex",
+    "vit",
+    "armor",
+    "regen",
+    "loh",
+    "socket"
+   ],
+   "ranks": {
+    "S": [
+     "skill"
+    ],
+    "A": [
+     "chc"
+    ],
+    "B": [
+     "lifep"
+    ],
+    "C": [
+     "allres",
+     "dex",
+     "vit"
+    ],
+    "D": [
+     "armor"
+    ],
+    "F": [
+     "regen",
+     "loh"
+    ]
+   }
+  },
+  "shoulders": {
+   "label": "어깨",
+   "baseArmor": 674,
+   "primaries": 4,
+   "skillN": 5,
+   "skillGroup": 2,
+   "type": "shoulders",
+   "pool": [
+    "skill",
+    "cdr",
+    "ad",
+    "rcr",
+    "lifep",
+    "allres",
+    "dex",
+    "vit",
+    "armor",
+    "regen"
+   ],
+   "ranks": {
+    "S": [
+     "skill",
+     "cdr"
+    ],
+    "A": [
+     "ad"
+    ],
+    "B": [
+     "rcr"
+    ],
+    "C": [
+     "lifep",
+     "allres",
+     "dex",
+     "vit"
+    ],
+    "D": [
+     "armor"
+    ],
+    "F": [
+     "regen"
+    ]
+   }
+  },
+  "chest": {
+   "label": "가슴",
+   "baseArmor": 759,
+   "socketN": 3,
+   "primaries": 4,
+   "skillN": 5,
+   "skillGroup": 2,
+   "type": "chestarmor",
+   "pool": [
+    "skill",
+    "lifep",
+    "allres",
+    "dex",
+    "vit",
+    "elitered",
+    "armor",
+    "regen",
+    "hatred",
+    "socket"
+   ],
+   "ranks": {
+    "S": [
+     "skill"
+    ],
+    "A": [
+     "lifep"
+    ],
+    "B": [
+     "allres"
+    ],
+    "C": [
+     "dex",
+     "vit"
+    ],
+    "D": [
+     "elitered",
+     "armor"
+    ],
+    "F": [
+     "regen",
+     "hatred"
+    ]
+   }
+  },
+  "gloves": {
+   "label": "장갑",
+   "baseArmor": 590,
+   "primaries": 4,
+   "skillN": 0,
+   "type": "gloves",
+   "pool": [
+    "chd",
+    "chc",
+    "cdr",
+    "ad",
+    "ias",
+    "rcr",
+    "allres",
+    "dex",
+    "vit",
+    "armor",
+    "regen",
+    "loh"
+   ],
+   "ranks": {
+    "S": [
+     "chd",
+     "chc"
+    ],
+    "A": [
+     "cdr",
+     "ad"
+    ],
+    "B": [
+     "ias"
+    ],
+    "C": [
+     "rcr",
+     "allres",
+     "dex",
+     "vit"
+    ],
+    "D": [
+     "armor"
+    ],
+    "F": [
+     "regen",
+     "loh"
+    ]
+   }
+  },
+  "bracers": {
+   "label": "손목",
+   "baseArmor": 421,
+   "primaries": 4,
+   "skillN": 0,
+   "type": "bracers",
+   "pool": [
+    "elem",
+    "chc",
+    "allres",
+    "dex",
+    "vit",
+    "armor",
+    "regen",
+    "loh"
+   ],
+   "ranks": {
+    "S": [
+     "elem"
+    ],
+    "A": [
+     "chc"
+    ],
+    "B": [
+     "allres",
+     "dex"
+    ],
+    "C": [
+     "vit"
+    ],
+    "D": [
+     "armor"
+    ],
+    "F": [
+     "regen",
+     "loh"
+    ]
+   }
+  },
+  "belt": {
+   "label": "허리",
+   "baseArmor": 506,
+   "primaries": 4,
+   "skillN": 5,
+   "skillGroup": 3,
+   "type": "belt",
+   "square": true,
+   "pool": [
+    "skill",
+    "lifep",
+    "allres",
+    "dex",
+    "vit",
+    "armor",
+    "regen"
+   ],
+   "ranks": {
+    "S": [
+     "skill"
+    ],
+    "A": [
+     "lifep"
+    ],
+    "B": [
+     "allres",
+     "dex"
+    ],
+    "C": [
+     "vit"
+    ],
+    "D": [
+     "armor"
+    ],
+    "F": [
+     "regen"
+    ]
+   }
+  },
+  "pants": {
+   "label": "바지",
+   "baseArmor": 759,
+   "socketN": 2,
+   "primaries": 4,
+   "skillN": 5,
+   "skillGroup": 3,
+   "type": "pants",
+   "pool": [
+    "skill",
+    "allres",
+    "dex",
+    "vit",
+    "armor",
+    "regen",
+    "socket"
+   ],
+   "ranks": {
+    "S": [
+     "skill"
+    ],
+    "A": [
+     "allres"
+    ],
+    "B": [
+     "dex"
+    ],
+    "C": [
+     "vit"
+    ],
+    "D": [
+     "armor"
+    ],
+    "F": [
+     "regen"
+    ]
+   }
+  },
+  "boots": {
+   "label": "장화",
+   "baseArmor": 590,
+   "primaries": 4,
+   "skillN": 7,
+   "skillGroup": 1,
+   "type": "boots",
+   "pool": [
+    "skill",
+    "allres",
+    "dex",
+    "vit",
+    "armor",
+    "ms",
+    "regen"
+   ],
+   "ranks": {
+    "S": [
+     "skill"
+    ],
+    "A": [
+     "allres"
+    ],
+    "B": [
+     "dex",
+     "vit"
+    ],
+    "C": [
+     "armor"
+    ],
+    "D": [
+     "ms"
+    ],
+    "F": [
+     "regen"
+    ]
+   }
+  },
+  "amulet": {
+   "label": "목걸이",
+   "socketN": 1,
+   "primaries": 4,
+   "skillN": 0,
+   "type": "amulet",
+   "square": true,
+   "pool": [
+    "elem",
+    "chc",
+    "chd",
+    "dmg",
+    "cdr",
+    "ad",
+    "ias",
+    "rcr",
+    "lifep",
+    "allres",
+    "dex",
+    "vit",
+    "armor",
+    "regen",
+    "loh",
+    "socket"
+   ],
+   "ranks": {
+    "S": [
+     "elem",
+     "chd"
+    ],
+    "A": [
+     "chc"
+    ],
+    "B": [
+     "dmg",
+     "cdr",
+     "ad"
+    ],
+    "C": [
+     "ias",
+     "rcr",
+     "lifep",
+     "allres",
+     "dex",
+     "vit"
+    ],
+    "D": [
+     "armor"
+    ],
+    "F": [
+     "regen",
+     "loh"
+    ]
+   }
+  },
+  "ring": {
+   "label": "반지",
+   "socketN": 1,
+   "primaries": 4,
+   "skillN": 0,
+   "type": "ring",
+   "square": true,
+   "pool": [
+    "chc",
+    "chd",
+    "dmg",
+    "cdr",
+    "ad",
+    "ias",
+    "rcr",
+    "lifep",
+    "allres",
+    "dex",
+    "vit",
+    "armor",
+    "regen",
+    "loh",
+    "socket"
+   ],
+   "ranks": {
+    "S": [
+     "chd",
+     "chc"
+    ],
+    "A": [
+     "dmg"
+    ],
+    "B": [
+     "cdr",
+     "ad"
+    ],
+    "C": [
+     "ias",
+     "rcr",
+     "lifep",
+     "allres",
+     "dex",
+     "vit"
+    ],
+    "D": [
+     "armor"
+    ],
+    "F": [
+     "regen",
+     "loh"
+    ]
+   }
+  },
+  "weapon": {
+   "label": "무기",
+   "primaries": 4,
+   "skillN": 0,
+   "type": "dagger",
+   "dps": true,
+   "pool": [
+    "elite",
+    "dmgp",
+    "cdr",
+    "ad",
+    "ias",
+    "rcr",
+    "dex",
+    "vit",
+    "loh"
+   ],
+   "ranks": {
+    "S": [
+     "elite",
+     "dmgp"
+    ],
+    "A": [
+     "cdr",
+     "ad"
+    ],
+    "B": [
+     "ias"
+    ],
+    "C": [
+     "rcr"
+    ],
+    "D": [
+     "dex",
+     "vit"
+    ],
+    "F": [
+     "loh"
+    ]
+   },
+   "_doc": "정예 피해는 쌍수가 아니면 B로 강등(v1 규칙). 홈은 라말라드니 선물로 추가하므로 목표에 넣지 않음"
+  },
+  "quiver": {
+   "label": "화살통",
+   "primaries": 5,
+   "skillN": 17,
+   "skillGroup": 0,
+   "type": "quiver",
+   "skillAll": true,
+   "pool": [
+    "skill",
+    "chc",
+    "cdr",
+    "ad",
+    "elite",
+    "rcr",
+    "lifep",
+    "dex",
+    "vit",
+    "regen",
+    "hatred"
+   ],
+   "ranks": {
+    "S": [
+     "skill",
+     "chc"
+    ],
+    "A": [
+     "cdr",
+     "ad"
+    ],
+    "B": [
+     "elite"
+    ],
+    "C": [
+     "rcr",
+     "lifep"
+    ],
+    "D": [
+     "dex",
+     "vit"
+    ],
+    "F": [
+     "regen",
+     "hatred"
+    ]
+   },
+   "_doc": "화살통은 주요 5칸(공속이 고유 주요 옵션). 기술 피해는 모든 기술(17종) 가능"
+  },
+  "shield": {
+   "label": "방패",
+   "baseArmor": 2255,
+   "socketN": 1,
+   "primaries": 4,
+   "skillN": 14,
+   "skillGroup": 1,
+   "type": "crusadershield",
+   "pool": [
+    "skill",
+    "chc",
+    "cdr",
+    "ad",
+    "rcr",
+    "elite",
+    "lifep",
+    "allres",
+    "dex",
+    "vit",
+    "armor",
+    "elitered",
+    "regen",
+    "socket",
+    "block",
+    "wrathRegen",
+    "wrathHeals"
+   ],
+   "ranks": {
+    "S": [
+     "skill",
+     "chc"
+    ],
+    "A": [
+     "cdr",
+     "ad"
+    ],
+    "B": [
+     "elite"
+    ],
+    "C": [
+     "rcr",
+     "lifep",
+     "allres",
+     "dex",
+     "vit"
+    ],
+    "D": [
+     "armor",
+     "elitered"
+    ],
+    "F": [
+     "regen",
+     "socket",
+     "block",
+     "wrathRegen",
+     "wrathHeals"
+    ]
+   }
+  },
+  "source": {
+   "label": "마력원",
+   "primaries": 4,
+   "skillN": 16,
+   "skillGroup": 1,
+   "type": "source",
+   "pool": [
+    "skill",
+    "apoc",
+    "chc",
+    "cdr",
+    "ad",
+    "rcr",
+    "elite",
+    "lifep",
+    "dex",
+    "vit",
+    "regen"
+   ],
+   "ranks": {
+    "S": [
+     "skill",
+     "chc"
+    ],
+    "A": [
+     "cdr",
+     "ad"
+    ],
+    "B": [
+     "elite"
+    ],
+    "C": [
+     "rcr",
+     "lifep",
+     "dex",
+     "vit"
+    ],
+    "F": [
+     "regen",
+     "apoc"
+    ]
+   }
+  }
+ },
+ "layout": [
+  {
+   "slot": "chest",
+   "key": "torso",
+   "x": 110,
+   "y": 77,
+   "w": 78,
+   "h": 111,
+   "icx": 148.3,
+   "icy": 132.3,
+   "z": 1
+  },
+  {
+   "slot": "pants",
+   "key": "legs",
+   "x": 118,
+   "y": 234,
+   "w": 62,
+   "h": 84,
+   "icx": 148.0,
+   "icy": 275.7,
+   "z": 1
+  },
+  {
+   "slot": "boots",
+   "key": "feet",
+   "x": 118,
+   "y": 326,
+   "w": 62,
+   "h": 84,
+   "icx": 148.5,
+   "icy": 366.5,
+   "z": 2
+  },
+  {
+   "slot": "shoulders",
+   "key": "shoulders",
+   "x": 36,
+   "y": 31,
+   "w": 62,
+   "h": 84,
+   "icx": 66.0,
+   "icy": 72.7,
+   "z": 2
+  },
+  {
+   "slot": "amulet",
+   "key": "neck",
+   "x": 202,
+   "y": 52,
+   "w": 50,
+   "h": 50,
+   "icx": 226.3,
+   "icy": 77.0,
+   "z": 2
+  },
+  {
+   "slot": "gloves",
+   "key": "hands",
+   "x": 10,
+   "y": 130,
+   "w": 62,
+   "h": 83,
+   "icx": 39.7,
+   "icy": 171.7,
+   "z": 2
+  },
+  {
+   "slot": "bracers",
+   "key": "wrists",
+   "x": 226,
+   "y": 130,
+   "w": 62,
+   "h": 83,
+   "icx": 256.3,
+   "icy": 171.7,
+   "z": 2
+  },
+  {
+   "slot": "ring",
+   "key": "leftfinger",
+   "x": 22,
+   "y": 230,
+   "w": 38,
+   "h": 38,
+   "icx": 40.0,
+   "icy": 249.0,
+   "z": 2
+  },
+  {
+   "slot": "ring",
+   "key": "rightfinger",
+   "x": 238,
+   "y": 230,
+   "w": 38,
+   "h": 38,
+   "icx": 255.7,
+   "icy": 248.7,
+   "z": 2
+  },
+  {
+   "slot": "weapon",
+   "key": "mainhand",
+   "x": 11,
+   "y": 285,
+   "w": 60,
+   "h": 124,
+   "icx": 39.7,
+   "icy": 347.3,
+   "z": 2
+  },
+  {
+   "slot": "quiver",
+   "key": "offhand",
+   "x": 227,
+   "y": 285,
+   "w": 60,
+   "h": 124,
+   "icx": 256.0,
+   "icy": 347.3,
+   "z": 2,
+   "classes": [
+    "dh"
+   ]
+  },
+  {
+   "slot": "weapon",
+   "key": "offhand",
+   "x": 227,
+   "y": 285,
+   "w": 60,
+   "h": 124,
+   "icx": 256.0,
+   "icy": 347.3,
+   "z": 2,
+   "classes": [
+    "monk",
+    "barbarian"
+   ]
+  },
+  {
+   "slot": "shield",
+   "key": "offhand",
+   "x": 227,
+   "y": 285,
+   "w": 60,
+   "h": 124,
+   "icx": 256.0,
+   "icy": 347.3,
+   "z": 2,
+   "classes": [
+    "crusader"
+   ]
+  },
+  {
+   "slot": "source",
+   "key": "offhand",
+   "x": 227,
+   "y": 285,
+   "w": 60,
+   "h": 124,
+   "icx": 256.0,
+   "icy": 347.3,
+   "z": 2,
+   "classes": [
+    "wizard"
+   ]
+  },
+  {
+   "slot": "head",
+   "key": "head",
+   "x": 118,
+   "y": 9,
+   "w": 62,
+   "h": 62,
+   "icx": 147.4,
+   "icy": 40.1,
+   "contentRefX": 32.5,
+   "z": 3
+  },
+  {
+   "slot": "belt",
+   "key": "waist",
+   "x": 110,
+   "y": 196,
+   "w": 78,
+   "h": 29,
+   "icx": 148.0,
+   "icy": 210.7,
+   "z": 3
+  }
+ ],
+ "dollBase": [
+  300,
+  426
+ ],
+ "dollImage": {
+  "dh": "doll.png",
+  "monk": "doll_monk.webp",
+  "crusader": "doll_crusader.webp",
+  "wizard": "doll_wizard.webp",
+  "barbarian": "doll_barbarian.webp"
+ }
+}

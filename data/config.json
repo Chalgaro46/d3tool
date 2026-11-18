@@ -1,0 +1,2111 @@
+{
+ "_doc": "확률·비용 상수. 페이지의 계산은 전부 이 값을 참조.",
+ "ancientRate": 0.1,
+ "primalRate": 0.0025,
+ "kadalaLegendaryRate": 0.1,
+ "reforgeSoulCost": 50,
+ "upgradeRare": {
+  "breathCost": 25,
+  "matCost": 50
+ },
+ "primalCraftAshCost": 100,
+ "hatred": {
+  "legendaryPerHour": 750,
+  "smartRate": 0.85,
+  "statGroup": {
+   "DemonHunter": "dex",
+   "Monk": "dex",
+   "Barbarian": "str",
+   "Crusader": "str",
+   "Wizard": "int",
+   "WitchDoctor": "int",
+   "Necromancer": "int",
+   "__n": 7
+  },
+  "classOf": {
+   "dh": "DemonHunter",
+   "monk": "Monk",
+   "crusader": "Crusader",
+   "wizard": "Wizard",
+   "barbarian": "Barbarian"
+  }
+ },
+ "kadalaItems": {
+  "helm": 25,
+  "shoulders": 25,
+  "chest": 25,
+  "gloves": 25,
+  "bracers": 25,
+  "belt": 25,
+  "pants": 25,
+  "boots": 25,
+  "shield": 25,
+  "quiver": 25,
+  "source": 25,
+  "mojo": 25,
+  "phylactery": 25,
+  "1h": 75,
+  "2h": 75,
+  "ring": 50,
+  "amulet": 100
+ },
+ "kadalaItemLabels": {
+  "helm": "수수께끼 투구",
+  "gloves": "수수께끼 장갑",
+  "boots": "수수께끼 장화",
+  "chest": "수수께끼 가슴 방어구",
+  "belt": "수수께끼 허리띠",
+  "shoulders": "수수께끼 어깨 방어구",
+  "pants": "수수께끼 바지",
+  "bracers": "수수께끼 손목 방어구",
+  "shield": "수수께끼 방패",
+  "1h": "수수께끼 한손 무기",
+  "2h": "수수께끼 양손 무기",
+  "quiver": "수수께끼 화살통",
+  "source": "수수께끼 보주",
+  "mojo": "수수께끼 모조"
+ },
+ "itemTypes": {
+  "helm": {
+   "label": "투구",
+   "en": "Helm",
+   "tipRight": "머리",
+   "tipRightEn": "Head",
+   "kadalaItem": "helm"
+  },
+  "spiritstone": {
+   "label": "공력 구슬",
+   "en": "Spirit Stone",
+   "tipRight": "머리",
+   "tipRightEn": "Head",
+   "kadalaItem": "helm"
+  },
+  "shoulders": {
+   "label": "어깨 방어구",
+   "en": "Shoulders",
+   "tipRight": "어깨",
+   "tipRightEn": "Shoulders",
+   "kadalaItem": "shoulders"
+  },
+  "chestarmor": {
+   "label": "가슴 방어구",
+   "en": "Chest Armor",
+   "tipRight": "몸통",
+   "tipRightEn": "Torso",
+   "kadalaItem": "chest"
+  },
+  "cloak": {
+   "label": "망토",
+   "en": "Cloak",
+   "tipRight": "몸통",
+   "tipRightEn": "Torso",
+   "kadalaItem": "chest"
+  },
+  "gloves": {
+   "label": "장갑",
+   "en": "Gloves",
+   "tipRight": "손",
+   "tipRightEn": "Hands",
+   "kadalaItem": "gloves"
+  },
+  "bracers": {
+   "label": "손목 방어구",
+   "en": "Bracers",
+   "tipRight": "손목",
+   "tipRightEn": "Wrists",
+   "kadalaItem": "bracers"
+  },
+  "belt": {
+   "label": "허리띠",
+   "en": "Belt",
+   "tipRight": "허리",
+   "tipRightEn": "Waist",
+   "kadalaItem": "belt"
+  },
+  "mightybelt": {
+   "label": "거대 허리띠",
+   "en": "Mighty Belt",
+   "tipRight": "허리",
+   "tipRightEn": "Waist",
+   "kadalaItem": "belt"
+  },
+  "pants": {
+   "label": "바지",
+   "en": "Pants",
+   "tipRight": "다리",
+   "tipRightEn": "Legs",
+   "kadalaItem": "pants"
+  },
+  "boots": {
+   "label": "장화",
+   "en": "Boots",
+   "tipRight": "발",
+   "tipRightEn": "Feet",
+   "kadalaItem": "boots"
+  },
+  "amulet": {
+   "label": "목걸이",
+   "en": "Amulet",
+   "tipRight": "목",
+   "tipRightEn": "Neck",
+   "kadalaItem": "amulet"
+  },
+  "ring": {
+   "label": "반지",
+   "en": "Ring",
+   "tipRight": "손가락",
+   "tipRightEn": "Finger",
+   "kadalaItem": "ring"
+  },
+  "quiver": {
+   "label": "화살통",
+   "en": "Quiver",
+   "tipRight": "보조 장비",
+   "tipRightEn": "Off-Hand",
+   "kadalaItem": "quiver"
+  },
+  "crusadershield": {
+   "label": "성전사 방패",
+   "en": "Crusader Shield",
+   "tipRight": "보조 장비",
+   "tipRightEn": "Off-Hand",
+   "kadalaItem": "shield"
+  },
+  "source": {
+   "label": "마력원",
+   "en": "Source",
+   "tipRight": "보조 장비",
+   "tipRightEn": "Off-Hand",
+   "kadalaItem": "source"
+  },
+  "dagger": {
+   "label": "단도",
+   "en": "Dagger",
+   "tipRight": "한손 무기",
+   "tipRightEn": "1-Hand",
+   "kadalaItem": "1h"
+  },
+  "sword": {
+   "label": "도검",
+   "en": "Sword",
+   "tipRight": "한손 무기",
+   "tipRightEn": "1-Hand",
+   "kadalaItem": "1h"
+  },
+  "handcrossbow": {
+   "label": "손쇠뇌",
+   "en": "Hand Crossbow",
+   "tipRight": "한손 무기",
+   "tipRightEn": "1-Hand",
+   "kadalaItem": "1h"
+  },
+  "fistweapon": {
+   "label": "주먹 무기",
+   "en": "Fist Weapon",
+   "tipRight": "한손 무기",
+   "tipRightEn": "1-Hand",
+   "kadalaItem": "1h"
+  },
+  "wand": {
+   "label": "마법봉",
+   "en": "Wand",
+   "tipRight": "한손 무기",
+   "tipRightEn": "1-Hand",
+   "kadalaItem": "1h"
+  },
+  "bow": {
+   "label": "활",
+   "en": "Bow",
+   "tipRight": "양손 무기",
+   "tipRightEn": "2-Hand",
+   "kadalaItem": "2h"
+  },
+  "flail2h": {
+   "label": "양손 도리깨",
+   "en": "Two-Handed Flail",
+   "tipRight": "양손 무기",
+   "tipRightEn": "2-Hand",
+   "kadalaItem": "2h"
+  }
+ },
+ "compare": {
+  "farmBudget": 100000000.0,
+  "enchantCrystal": 15,
+  "enchantBudgetRatio": 1.0,
+  "enchantMax": 10000,
+  "passLossPct": 1.0,
+  "lossPresets": [
+   0.5,
+   1.0,
+   2.0,
+   3.0,
+   5.0
+  ],
+  "lossStep": 0.002,
+  "lossBins": 2000
+ },
+ "primalSalvageAsh": 55,
+ "ancientStatMultiplier": 1.3,
+ "thresholdDefaults": {
+  "top": 20,
+  "dex": 50,
+  "vit": 50,
+  "allres": 100,
+  "ringdmg": 50,
+  "wdmg": 30
+ },
+ "model": {
+  "_doc": "상대 비교용 모델. 상수 배율(세트 6종, 카를레이, 전설 보석 등)은 모든 후보에 공통이라 생략. 공격력·강인함은 '기준 대비 배율'만 의미 있음.",
+  "level": 70,
+  "squirt": {
+   "max": 1.0,
+   "pylonMin": 2,
+   "clearMin": 15,
+   "travelMin": 0
+  },
+  "clearTravelMin": 1.1666666666666667,
+  "armorDrConst": 3500,
+  "resDrConst": 350,
+  "augment": {
+   "rank": 150,
+   "cap": 150,
+   "rankDoc": "150 으로 통일(사용자 2026-11-07). gemMode full 이면 cap",
+   "perRank": 5,
+   "src": "https://maxroll.gg/d3/resources/a-deep-dive-into-augments",
+   "stats": {
+    "int": {
+     "allresPer": 0.1
+    },
+    "str": {
+     "armorPer": 1
+    }
+   },
+   "statsDoc": "칼데산 보석 4종: 에메랄드 민첩 / 자수정 활력 / 토파즈 지능 / 루비 힘 (다이아는 칼데산 불가 — maxroll). 지능 1 = 모든 저항 +0.1, 힘 1 = 방어도 +1 (millenium.org/guide/148131.html?page=3). 개수는 모델이 국소 탐색으로 정함"
+  },
+  "paragon": {
+   "min": 800,
+   "max": 20000,
+   "default": 2250,
+   "msPoints": 50,
+   "dexPerPoint": 5,
+   "vitPerPoint": 5,
+   "rotateUntil": 800,
+   "armorPct": 0.25,
+   "armorPctDoc": "방어 페이지 방어도 +0.5%/포인트 × 50 = +25% (di.diablowiki.net/Defense_Tab). 기본치(정복자 2~4페이지 + 제단, 민·활 제외)의 방어도 367 에는 이미 적용 → 장비 기본·옵션·민첩·힘 방어도에만 곱함. 제단(icy-veins altar-of-rites-effects-and-mechanics)에는 방어도·저항·생명력 % 효과 없음, 생명력 +25% 는 base.lifePct 로 이미 장비 활력에 적용",
+   "barTicks": [
+    800,
+    1200,
+    2000,
+    3000,
+    5000,
+    8000,
+    12000,
+    20000
+   ],
+   "optimizeSplit": true,
+   "dexAboveVit": true,
+   "gearVitToParagon": false,
+   "presets": [
+    800,
+    1000,
+    1500,
+    2000,
+    2500,
+    3000,
+    3500,
+    4000,
+    5000,
+    6000,
+    8000,
+    10000,
+    15000,
+    20000
+   ]
+  },
+  "ad": {
+   "procChance": 0.2,
+   "targets": 10,
+   "splashEff": 0.529,
+   "speed": false
+  },
+  "rorgName": "왕실 권위의 반지",
+  "gems": {
+   "options": {
+    "head": [
+     {
+      "id": "diamond",
+      "label": "다이아(재감 12.5%)",
+      "cdr": 0.125,
+      "icon": "icons/gem_diamond.png",
+      "iconTone": "icons/tone_gem_diamond.png"
+     },
+     {
+      "id": "topaz",
+      "label": "토파즈(자감 12.5%)",
+      "rcr": 0.125,
+      "icon": "icons/gem_topaz.png",
+      "iconTone": "icons/tone_gem_topaz.png"
+     },
+     {
+      "id": "amethyst",
+      "label": "자수정(생명력 23%)",
+      "lifep": 0.23,
+      "icon": "icons/gem_amethyst.png",
+      "iconTone": "icons/tone_gem_amethyst.png"
+     }
+    ],
+    "armor": [
+     {
+      "id": "diamond",
+      "label": "다이아(모저 78)",
+      "allres": 78,
+      "icon": "icons/gem_diamond.png",
+      "iconTone": "icons/tone_gem_diamond.png"
+     },
+     {
+      "id": "amethyst",
+      "label": "자수정(활력 280)",
+      "vit": 280,
+      "icon": "icons/gem_amethyst.png",
+      "iconTone": "icons/tone_gem_amethyst.png"
+     },
+     {
+      "id": "emerald",
+      "label": "에메랄드(민첩 280)",
+      "dex": 280,
+      "icon": "icons/gem_emerald.png",
+      "iconTone": "icons/tone_gem_emerald.png"
+     }
+    ],
+    "weapon": [
+     {
+      "id": "emerald",
+      "label": "에메랄드(극피 130%)",
+      "chd": 1.3,
+      "icon": "icons/gem_emerald.png",
+      "iconTone": "icons/tone_gem_emerald.png"
+     },
+     {
+      "id": "ruby",
+      "label": "루비(공격력 270)",
+      "dmgAvg": 270,
+      "icon": "icons/gem_ruby.png",
+      "iconTone": "icons/tone_gem_ruby.png"
+     },
+     {
+      "id": "diamond",
+      "label": "다이아(정예 피해 20%)",
+      "elite": 0.2,
+      "icon": "icons/gem_diamond.png",
+      "iconTone": "icons/tone_gem_diamond.png"
+     }
+    ]
+   },
+   "legendaryGemSlots": [
+    "ring",
+    "amulet"
+   ]
+  },
+  "weapon": {
+   "baseAvg": 214,
+   "wdmgAvg": 1532.5
+  },
+  "physShare": {
+   "dealer": 0.0,
+   "support": 0.5
+  },
+  "resOne": {
+   "avg": 0.16666666666666666,
+   "harmony": 0.4,
+   "dealer": {
+    "elem": 0.2,
+    "phys": 0.0
+   },
+   "support": {
+    "elem": 0.1,
+    "phys": 0.5
+   }
+  },
+  "defAvg": 0.3333333333333333,
+  "oneShot": {
+   "meleeClassDr": 0.3,
+   "meleeClasses": [
+    "monk",
+    "crusader",
+    "barbarian"
+   ],
+   "physShare": 0.0,
+   "gems": {
+    "taeguk": {
+     "armorK": 1.2
+    },
+    "powerful": {
+     "elite": 0.15
+    },
+    "esoteric": {
+     "nonPhys": 0.6
+    },
+    "legacyofdreams": {
+     "perUnit": 0.02,
+     "units": 26
+    }
+   },
+   "skills": {
+    "monk/mantraofsalvation": {
+     "resK": 1.2
+    },
+    "monk/mantraofhealing:b": {
+     "lifePct": 0.2
+    },
+    "crusader/lawsofhope:c": {
+     "phys": 0.25,
+     "uptime": 0.16666666666666666
+    },
+    "demonhunter/evasivefire:a": {
+     "armorK": 1.25
+    }
+   },
+   "passives": {
+    "demonhunter/numbingtraps": {
+     "dr": 0.25
+    },
+    "demonhunter/perfectionist": {
+     "armorK": 1.1,
+     "resK": 1.1
+    },
+    "wizard/glasscannon": {
+     "armorK": 0.9,
+     "resK": 0.9
+    },
+    "wizard/blur": {
+     "melee": 0.17
+    },
+    "crusader/vigilant": {
+     "nonPhys": 0.2
+    },
+    "monk/sixthsense": {
+     "nonPhys": 0.25
+    },
+    "monk/resolve": {
+     "dr": 0.2
+    }
+   },
+   "endlessWalkDr": 0.5
+  },
+  "score": {
+   "kMode": "gr150",
+   "gr150": {
+    "refTier": 150,
+    "target": 150,
+    "kMin": 0.03,
+    "kMax": 3,
+    "bisect": 9,
+    "kHintWidth": 0.7,
+    "bisectWarm": 6,
+    "ref": {
+     "zdh_yang": {
+      "tough": 9951976215,
+      "P": 1000,
+      "who": "노을#32982",
+      "region": "아시아",
+      "hid": "101082705",
+      "season": 40
+     },
+     "zdh_support": {
+      "same": "zdh_yang"
+     },
+     "zdh_clarity": {
+      "same": "zdh_yang"
+     },
+     "zdh_eso": {
+      "same": "zdh_yang"
+     },
+     "impale_guardian": {
+      "dmg": 243778984,
+      "tough": 1077366139,
+      "P": 8071,
+      "who": "아수라발발타#32638",
+      "region": "한국",
+      "toughWho": "미호입니다#31553",
+      "toughP": 6115,
+      "sample": 3,
+      "gemK": 4.7232
+     },
+     "impale_crimson": {
+      "dmg": 243778984,
+      "tough": 1077366139,
+      "P": 8071,
+      "who": "아수라발발타#32638",
+      "region": "한국",
+      "toughWho": "미호입니다#31553",
+      "toughP": 6115,
+      "sample": 3,
+      "gemK": 4.7232
+     },
+     "ue_dawn": {
+      "dmg": 608160455277,
+      "tough": 1623133602,
+      "P": 8747,
+      "who": "aMonkstone#2663",
+      "region": "유럽",
+      "toughWho": "aMonkstone#2663",
+      "toughP": 8747,
+      "sample": 1,
+      "gemK": 2.88
+     },
+     "ue_odyssey": {
+      "dmg": 608160455277,
+      "tough": 1623133602,
+      "P": 8747,
+      "who": "aMonkstone#2663",
+      "region": "유럽",
+      "toughWho": "aMonkstone#2663",
+      "toughP": 8747,
+      "sample": 1,
+      "gemK": 2.88
+     },
+     "ue_odyssey_g": {
+      "dmg": 608160455277,
+      "tough": 1623133602,
+      "P": 8747,
+      "who": "aMonkstone#2663",
+      "region": "유럽",
+      "toughWho": "aMonkstone#2663",
+      "toughP": 8747,
+      "sample": 1,
+      "gemK": 2.88
+     },
+     "ue_dawn_g": {
+      "dmg": 608160455277,
+      "tough": 1623133602,
+      "P": 8747,
+      "who": "aMonkstone#2663",
+      "region": "유럽",
+      "toughWho": "aMonkstone#2663",
+      "toughP": 8747,
+      "sample": 1,
+      "gemK": 2.88
+     },
+     "wol_archew": {
+      "dmg": 25154247,
+      "tough": 1843422821,
+      "P": 1549,
+      "who": "Delusions#1413",
+      "region": "미국",
+      "toughWho": "NaClhv#1158",
+      "toughP": 2272,
+      "sample": 35,
+      "gemK": 157.6
+     },
+     "wol_soj": {
+      "dmg": 25154247,
+      "tough": 1843422821,
+      "P": 1549,
+      "who": "Delusions#1413",
+      "region": "미국",
+      "toughWho": "NaClhv#1158",
+      "toughP": 2272,
+      "sample": 35,
+      "gemK": 157.6
+     },
+     "wol_soj_archew": {
+      "dmg": 25154247,
+      "tough": 1843422821,
+      "P": 1549,
+      "who": "Delusions#1413",
+      "region": "미국",
+      "toughWho": "NaClhv#1158",
+      "toughP": 2272,
+      "sample": 35,
+      "gemK": 157.6
+     },
+     "rai_crimson": {
+      "dmg": 750763818,
+      "tough": 1228190931,
+      "P": 1490,
+      "who": "Exia#3306",
+      "region": "아시아",
+      "toughWho": "Exia#3306",
+      "toughP": 1490,
+      "sample": 0,
+      "gemK": 3.2
+     },
+     "rai_guard": {
+      "dmg": 750763818,
+      "tough": 1228190931,
+      "P": 1490,
+      "who": "Exia#3306",
+      "region": "아시아",
+      "toughWho": "Exia#3306",
+      "toughP": 1490,
+      "sample": 0,
+      "gemK": 3.2
+     },
+     "rai4_salv": {
+      "dmg": 750763818,
+      "tough": 1228190931,
+      "P": 1490,
+      "who": "Exia#3306",
+      "region": "아시아",
+      "toughWho": "Exia#3306",
+      "toughP": 1490,
+      "sample": 0,
+      "gemK": 3.2
+     },
+     "rai4_heal": {
+      "dmg": 750763818,
+      "tough": 1228190931,
+      "P": 1490,
+      "who": "Exia#3306",
+      "region": "아시아",
+      "toughWho": "Exia#3306",
+      "toughP": 1490,
+      "sample": 0,
+      "gemK": 3.2
+     },
+     "rai2_salv": {
+      "dmg": 750763818,
+      "tough": 1228190931,
+      "P": 1490,
+      "who": "Exia#3306",
+      "region": "아시아",
+      "toughWho": "Exia#3306",
+      "toughP": 1490,
+      "sample": 0,
+      "gemK": 3.2
+     },
+     "rai_crimson_gp": {
+      "dmg": 750763818,
+      "tough": 1228190931,
+      "P": 1490,
+      "who": "Exia#3306",
+      "region": "아시아",
+      "toughWho": "Exia#3306",
+      "toughP": 1490,
+      "sample": 0,
+      "gemK": 3.2
+     },
+     "rai_guard_gp": {
+      "dmg": 750763818,
+      "tough": 1228190931,
+      "P": 1490,
+      "who": "Exia#3306",
+      "region": "아시아",
+      "toughWho": "Exia#3306",
+      "toughP": 1490,
+      "sample": 0,
+      "gemK": 3.2
+     },
+     "rai2_salv_gp": {
+      "dmg": 750763818,
+      "tough": 1228190931,
+      "P": 1490,
+      "who": "Exia#3306",
+      "region": "아시아",
+      "toughWho": "Exia#3306",
+      "toughP": 1490,
+      "sample": 0,
+      "gemK": 3.2
+     },
+     "rai4_salv_gp": {
+      "dmg": 750763818,
+      "tough": 1228190931,
+      "P": 1490,
+      "who": "Exia#3306",
+      "region": "아시아",
+      "toughWho": "Exia#3306",
+      "toughP": 1490,
+      "sample": 0,
+      "gemK": 3.2
+     },
+     "rai4_heal_gp": {
+      "dmg": 750763818,
+      "tough": 1228190931,
+      "P": 1490,
+      "who": "Exia#3306",
+      "region": "아시아",
+      "toughWho": "Exia#3306",
+      "toughP": 1490,
+      "sample": 0,
+      "gemK": 3.2
+     },
+     "wol_lod": {
+      "dmg": 25154247,
+      "tough": 1843422821,
+      "P": 1549,
+      "who": "Delusions#1413",
+      "region": "미국",
+      "toughWho": "NaClhv#1158",
+      "toughP": 2272,
+      "sample": 35,
+      "gemK": 157.6
+     },
+     "foth_aov": {
+      "dmg": 289660517,
+      "tough": 691209492,
+      "P": 1834,
+      "who": "Shell#2510",
+      "region": "유럽",
+      "toughWho": "Oblivious#6574",
+      "toughP": 1453,
+      "sample": 12,
+      "gemK": 1.9647
+     },
+     "foth_g_ew_s": {
+      "dmg": 289660517,
+      "tough": 691209492,
+      "P": 1834,
+      "who": "Shell#2510",
+      "region": "유럽",
+      "toughWho": "Oblivious#6574",
+      "toughP": 1453,
+      "sample": 12,
+      "gemK": 1.9647
+     },
+     "foth_g_soj_f": {
+      "dmg": 289660517,
+      "tough": 691209492,
+      "P": 1834,
+      "who": "Shell#2510",
+      "region": "유럽",
+      "toughWho": "Oblivious#6574",
+      "toughP": 1453,
+      "sample": 12,
+      "gemK": 1.9647
+     },
+     "foth_g_soj_s": {
+      "dmg": 289660517,
+      "tough": 691209492,
+      "P": 1834,
+      "who": "Shell#2510",
+      "region": "유럽",
+      "toughWho": "Oblivious#6574",
+      "toughP": 1453,
+      "sample": 12,
+      "gemK": 1.9647
+     },
+     "foth_g_unity_f": {
+      "dmg": 289660517,
+      "tough": 691209492,
+      "P": 1834,
+      "who": "Shell#2510",
+      "region": "유럽",
+      "toughWho": "Oblivious#6574",
+      "toughP": 1453,
+      "sample": 12,
+      "gemK": 1.9647
+     },
+     "foth_g_unity_s": {
+      "dmg": 289660517,
+      "tough": 691209492,
+      "P": 1834,
+      "who": "Shell#2510",
+      "region": "유럽",
+      "toughWho": "Oblivious#6574",
+      "toughP": 1453,
+      "sample": 12,
+      "gemK": 1.9647
+     },
+     "foth_g_rechel_f": {
+      "dmg": 289660517,
+      "tough": 691209492,
+      "P": 1834,
+      "who": "Shell#2510",
+      "region": "유럽",
+      "toughWho": "Oblivious#6574",
+      "toughP": 1453,
+      "sample": 12,
+      "gemK": 1.9647
+     },
+     "foth_g_rechel_s": {
+      "dmg": 289660517,
+      "tough": 691209492,
+      "P": 1834,
+      "who": "Shell#2510",
+      "region": "유럽",
+      "toughWho": "Oblivious#6574",
+      "toughP": 1453,
+      "sample": 12,
+      "gemK": 1.9647
+     },
+     "foth_a_ew_f": {
+      "dmg": 289660517,
+      "tough": 691209492,
+      "P": 1834,
+      "who": "Shell#2510",
+      "region": "유럽",
+      "toughWho": "Oblivious#6574",
+      "toughP": 1453,
+      "sample": 12,
+      "gemK": 1.9647
+     },
+     "foth_a_ew_s": {
+      "dmg": 289660517,
+      "tough": 691209492,
+      "P": 1834,
+      "who": "Shell#2510",
+      "region": "유럽",
+      "toughWho": "Oblivious#6574",
+      "toughP": 1453,
+      "sample": 12,
+      "gemK": 1.9647
+     },
+     "foth_a_soj_f": {
+      "dmg": 289660517,
+      "tough": 691209492,
+      "P": 1834,
+      "who": "Shell#2510",
+      "region": "유럽",
+      "toughWho": "Oblivious#6574",
+      "toughP": 1453,
+      "sample": 12,
+      "gemK": 1.9647
+     },
+     "foth_a_soj_s": {
+      "dmg": 289660517,
+      "tough": 691209492,
+      "P": 1834,
+      "who": "Shell#2510",
+      "region": "유럽",
+      "toughWho": "Oblivious#6574",
+      "toughP": 1453,
+      "sample": 12,
+      "gemK": 1.9647
+     },
+     "foth_a_unity_f": {
+      "dmg": 289660517,
+      "tough": 691209492,
+      "P": 1834,
+      "who": "Shell#2510",
+      "region": "유럽",
+      "toughWho": "Oblivious#6574",
+      "toughP": 1453,
+      "sample": 12,
+      "gemK": 1.9647
+     },
+     "foth_a_unity_s": {
+      "dmg": 289660517,
+      "tough": 691209492,
+      "P": 1834,
+      "who": "Shell#2510",
+      "region": "유럽",
+      "toughWho": "Oblivious#6574",
+      "toughP": 1453,
+      "sample": 12,
+      "gemK": 1.9647
+     },
+     "foth_a_rechel_f": {
+      "dmg": 289660517,
+      "tough": 691209492,
+      "P": 1834,
+      "who": "Shell#2510",
+      "region": "유럽",
+      "toughWho": "Oblivious#6574",
+      "toughP": 1453,
+      "sample": 12,
+      "gemK": 1.9647
+     },
+     "foth_a_rechel_s": {
+      "dmg": 289660517,
+      "tough": 691209492,
+      "P": 1834,
+      "who": "Shell#2510",
+      "region": "유럽",
+      "toughWho": "Oblivious#6574",
+      "toughP": 1453,
+      "sample": 12,
+      "gemK": 1.9647
+     },
+     "foth_w_ew_f": {
+      "dmg": 289660517,
+      "tough": 691209492,
+      "P": 1834,
+      "who": "Shell#2510",
+      "region": "유럽",
+      "toughWho": "Oblivious#6574",
+      "toughP": 1453,
+      "sample": 12,
+      "gemK": 1.9647
+     },
+     "foth_w_ew_s": {
+      "dmg": 289660517,
+      "tough": 691209492,
+      "P": 1834,
+      "who": "Shell#2510",
+      "region": "유럽",
+      "toughWho": "Oblivious#6574",
+      "toughP": 1453,
+      "sample": 12,
+      "gemK": 1.9647
+     },
+     "foth_w_soj_f": {
+      "dmg": 289660517,
+      "tough": 691209492,
+      "P": 1834,
+      "who": "Shell#2510",
+      "region": "유럽",
+      "toughWho": "Oblivious#6574",
+      "toughP": 1453,
+      "sample": 12,
+      "gemK": 1.9647
+     },
+     "foth_w_soj_s": {
+      "dmg": 289660517,
+      "tough": 691209492,
+      "P": 1834,
+      "who": "Shell#2510",
+      "region": "유럽",
+      "toughWho": "Oblivious#6574",
+      "toughP": 1453,
+      "sample": 12,
+      "gemK": 1.9647
+     },
+     "foth_w_unity_f": {
+      "dmg": 289660517,
+      "tough": 691209492,
+      "P": 1834,
+      "who": "Shell#2510",
+      "region": "유럽",
+      "toughWho": "Oblivious#6574",
+      "toughP": 1453,
+      "sample": 12,
+      "gemK": 1.9647
+     },
+     "foth_w_unity_s": {
+      "dmg": 289660517,
+      "tough": 691209492,
+      "P": 1834,
+      "who": "Shell#2510",
+      "region": "유럽",
+      "toughWho": "Oblivious#6574",
+      "toughP": 1453,
+      "sample": 12,
+      "gemK": 1.9647
+     },
+     "foth_w_rechel_f": {
+      "dmg": 289660517,
+      "tough": 691209492,
+      "P": 1834,
+      "who": "Shell#2510",
+      "region": "유럽",
+      "toughWho": "Oblivious#6574",
+      "toughP": 1453,
+      "sample": 12,
+      "gemK": 1.9647
+     },
+     "foth_w_rechel_s": {
+      "dmg": 289660517,
+      "tough": 691209492,
+      "P": 1834,
+      "who": "Shell#2510",
+      "region": "유럽",
+      "toughWho": "Oblivious#6574",
+      "toughP": 1453,
+      "sample": 12,
+      "gemK": 1.9647
+     },
+     "fb_g_ew": {
+      "dmg": 200258190,
+      "tough": 5191953382,
+      "P": 1931,
+      "who": "pedrineowo#1499",
+      "region": "미국",
+      "toughWho": "Howxrd#1562",
+      "toughP": 6574,
+      "sample": 7,
+      "gemK": 1.6
+     },
+     "fb_guard": {
+      "dmg": 200258190,
+      "tough": 5191953382,
+      "P": 1931,
+      "who": "pedrineowo#1499",
+      "region": "미국",
+      "toughWho": "Howxrd#1562",
+      "toughP": 6574,
+      "sample": 7,
+      "gemK": 1.6
+     },
+     "fb_a_fr": {
+      "dmg": 200258190,
+      "tough": 5191953382,
+      "P": 1931,
+      "who": "pedrineowo#1499",
+      "region": "미국",
+      "toughWho": "Howxrd#1562",
+      "toughP": 6574,
+      "sample": 7,
+      "gemK": 1.6
+     },
+     "fb_a_ew": {
+      "dmg": 200258190,
+      "tough": 5191953382,
+      "P": 1931,
+      "who": "pedrineowo#1499",
+      "region": "미국",
+      "toughWho": "Howxrd#1562",
+      "toughP": 6574,
+      "sample": 7,
+      "gemK": 1.6
+     },
+     "zbarb_eso": {
+      "tough": 1899160547,
+      "P": 885,
+      "who": "Candy#34422",
+      "region": "아시아",
+      "hid": "101063544",
+      "season": 40
+     },
+     "zbarb_support": {
+      "same": "zbarb_eso"
+     },
+     "zbarb2_eso": {
+      "tough": 957313339,
+      "P": 885,
+      "who": "Candy#34422",
+      "region": "아시아",
+      "hid": "101063544",
+      "season": 40
+     },
+     "zbarb2_support": {
+      "same": "zbarb2_eso"
+     }
+    }
+   },
+   "gr": {
+    "hpStep": 1.17,
+    "dmgStep": 1.02337,
+    "power": 0.5,
+    "src": "https://maxroll.gg/d3/resources/greater-rift-explained"
+   },
+   "tieBreak": [
+    "dmg",
+    "material"
+   ],
+   "toughFloor": null
+  },
+  "rankBands": {
+   "S": 0.9,
+   "A": 0.7,
+   "B": 0.5,
+   "C": 0.3,
+   "D": 0.1
+  },
+  "search": {
+   "restarts": 16,
+   "_doc": "경로 데이터(data/path.json)가 없는 세팅만 실시간 계산(변형마다 약 10초, Web Worker)"
+  },
+  "zeroAffixes": [
+   "hatred",
+   "ms",
+   "spiritRegen",
+   "spiritHeals",
+   "wrathRegen",
+   "wrathHeals",
+   "block",
+   "apoc"
+  ]
+ },
+ "thresholdDoc": "하한선 N% = '상위 N% 값을 허용'. 단일 롤은 올림(ceil(N%×단계수)/단계수). 반지 피해·무기 공격력은 최소·최대 두 롤의 평균 → 삼각분포: q≤½ ? 2q² : 1−2(1−q)².",
+ "weaponBaseAps": {
+  "dagger": 1.5,
+  "handcrossbow": 1.6,
+  "sword": 1.4,
+  "bow": 1.4,
+  "fistweapon": 1.4,
+  "flail2h": 1.15,
+  "wand": 1.4
+ },
+ "ramaladniIcon": "icons/ramaladni.png",
+ "gemDraw": {
+  "size": 32.2,
+  "step": 32.1,
+  "centers": {
+   "head": [
+    148.33,
+    40.33
+   ],
+   "torso": [
+    148.25,
+    132.44
+   ],
+   "legs": [
+    148.0,
+    275.67
+   ],
+   "mainhand": [
+    40.17,
+    347.17
+   ],
+   "offhand": [
+    256.47,
+    347.17
+   ]
+  }
+ },
+ "iconDraw": {
+  "pxScale": 0.99,
+  "_doc": "인형 위 아이콘 = 원본 png 를 픽셀당 0.99 doll px 로(= 게임 1.18배 ÷ 정합 배율 1.1989). 64폭 원본 → 63.4px, 갑옷 82×164 원본 → 81×162px(정합 캡처에서 보석 띠 제외 매칭, 배율 1.00, 점수 0.64 로 확인). 중심은 layout 의 icx/icy."
+ },
+ "iconTone": {
+  "shotToDollGamma": [
+   1.436,
+   1.482,
+   1.528
+  ],
+  "iconToShotGamma": [
+   0.516,
+   0.532,
+   0.49
+  ],
+  "iconToShotGain": [
+   0.818,
+   0.809,
+   0.736
+  ]
+ },
+ "methods": [
+  {
+   "id": "kadala",
+   "label": "카달라",
+   "short": "카달라",
+   "unit": "도박 1회당",
+   "res": "파편"
+  },
+  {
+   "id": "upgrade",
+   "label": "희귀 업그레이드",
+   "short": "희귀 업그레이드",
+   "unit": "1회당 (수정 50)",
+   "res": "수정"
+  },
+  {
+   "id": "reforge",
+   "label": "전설 재연마",
+   "short": "전설 재연마",
+   "unit": "1회당 (잊영 50)",
+   "res": "잊영"
+  },
+  {
+   "id": "primal",
+   "label": "제작 원시",
+   "short": "제작 원시",
+   "unit": "1회당 (재 100)",
+   "res": "재"
+  }
+ ],
+ "classes": {
+  "dh": {
+   "label": "악마사냥꾼",
+   "elements": [
+    "cold",
+    "fire",
+    "light",
+    "phys"
+   ],
+   "model": {
+    "base": {
+     "dex": 217,
+     "vit": 147,
+     "skillDmg": 0.0,
+     "eliteDmg": 0.1,
+     "ias": 0.2194,
+     "chc": 0.1,
+     "chd": 1.0,
+     "ad": 0.5,
+     "cdr": 0.19,
+     "armor": 367,
+     "dodge": 0.05,
+     "allres": 258,
+     "rangedRed": 0.05,
+     "meleeRed": 0.05,
+     "eliteRed": 0.05,
+     "life": 18770,
+     "lifePct": 0.25,
+     "rcr": 0.1
+    },
+    "lifeBase": 316,
+    "lifePerVit": 100,
+    "armorPerDex": 1,
+    "dmgPerDex": 0.01,
+    "eliteShare": 1.0,
+    "meleeShare": 0.5,
+    "vengeance": {
+     "cooldown": 90,
+     "duration": 20,
+     "dmg": 0.4,
+     "dr": 0.5,
+     "dawnCdr": 0.65
+    },
+    "shadowPower": {
+     "loh": 26821,
+     "lpkShare": 0.25,
+     "bloodMoon": 2,
+     "gloomDr": 0.35,
+     "ms": 0.3
+    },
+    "tacticalAdvantage": {
+     "ms": 0.6,
+     "duration": 2
+    },
+    "sets": {
+     "crimson": {
+      "cdr": 0.2,
+      "rcr": 0.2,
+      "dmgEqCdr": true,
+      "drEqRcr": true
+     },
+     "guardian": {
+      "meleeDrPer1000Vit": 0.01,
+      "rangedDrPer1000Dex": 0.01,
+      "itemStatMult": 2.0
+     }
+    },
+    "impale": {
+     "fps": 60,
+     "fixedFrames": 12,
+     "baseFrames": 58.064516129032256,
+     "src": [
+      "https://maxroll.gg/d3/resources/sanctified-items-explained",
+      "https://www.inven.co.kr/board/diablo3/2740/848429"
+     ]
+    },
+    "ue": {
+     "set4DR": 0.6,
+     "perDisc": 17,
+     "discBase": 30,
+     "discPrep": 20,
+     "msBaseFrames": 56.666666666666664,
+     "yangSpeed": 1.5,
+     "odysseyDmg": 1.5,
+     "steadyAim": 0.2,
+     "wrapsDR": 0.5,
+     "mantleDmg": 0.25,
+     "mantleDR": 0.25,
+     "src": [
+      "https://maxroll.gg/d3/guides/ue-multishot-demon-hunter-guide",
+      "https://kr.diablo3.blizzard.com/ko-kr/item/accursed-visage-Unique_Helm_Set_03_p2",
+      "https://www.inven.co.kr/board/diablo3/2974/20819"
+     ]
+    }
+   },
+   "kadala": {
+    "_doc": "[조각 비용, 같은 도박 범주에 함께 들어가는 다른 종류의 가중치 합]. 악사 한손 무기 범주 = 단도 2 + 손쇠뇌 11 + 검 5 = 18종(각 100) → 단도 외 1,600 (maxroll 도박 계산기)",
+    "dagger": [
+     75,
+     1600
+    ],
+    "quiver": [
+     25,
+     0
+    ],
+    "amulet": [
+     100,
+     0
+    ],
+    "ring": [
+     50,
+     0
+    ],
+    "helm": [
+     25,
+     0
+    ],
+    "shoulders": [
+     25,
+     0
+    ],
+    "chestarmor": [
+     25,
+     700
+    ],
+    "cloak": [
+     25,
+     1000
+    ],
+    "handcrossbow": [
+     75,
+     700
+    ],
+    "bow": [
+     75,
+     800
+    ],
+    "gloves": [
+     25,
+     0
+    ],
+    "bracers": [
+     25,
+     0
+    ],
+    "belt": [
+     25,
+     0
+    ],
+    "pants": [
+     25,
+     0
+    ],
+    "boots": [
+     25,
+     0
+    ]
+   }
+  },
+  "monk": {
+   "label": "수도사",
+   "elements": [
+    "cold",
+    "fire",
+    "holy",
+    "light",
+    "phys"
+   ],
+   "model": {
+    "base": {
+     "dex": 217,
+     "vit": 147,
+     "skillDmg": 0.0,
+     "eliteDmg": 0.1,
+     "ias": 0.2194,
+     "chc": 0.1,
+     "chd": 1.0,
+     "ad": 0.5,
+     "cdr": 0.19,
+     "armor": 367,
+     "dodge": 0.05,
+     "allres": 258,
+     "rangedRed": 0.05,
+     "meleeRed": 0.05,
+     "eliteRed": 0.05,
+     "life": 18770,
+     "lifePct": 0.25,
+     "rcr": 0.1
+    },
+    "lifeBase": 316,
+    "lifePerVit": 100,
+    "armorPerDex": 1,
+    "dmgPerDex": 0.01,
+    "eliteShare": 1.0,
+    "meleeShare": 0.5,
+    "epiphany": {
+     "cdrMin": 0.55,
+     "failMult": 0.1,
+     "cooldown": 60,
+     "duration": 15,
+     "src": [
+      "https://kr.diablo3.blizzard.com/ko-kr/item/rabid-strike-P71_Unique_Fist_003",
+      "https://maxroll.gg/d3/guides/lod-wave-of-light-monk-guide",
+      "https://assets-ng.maxroll.gg/d3-leaderboards/s40-tw-rift-monk.json"
+     ]
+    },
+    "passiveCdr": [
+     0.2
+    ],
+    "tough": {
+     "stoneArmor": 2.5,
+     "archewLife": 1.5,
+     "unityDR": 0.5
+    },
+    "selfBuff": {
+     "desertShroudDr": 0.5,
+     "dashDodge": 0.4,
+     "agilityDodge": 0.35,
+     "lefebvreDr": 0.5
+    },
+    "squirt": {
+     "shieldShare": 0.6,
+     "taken": 0.5
+    },
+    "raiment": {
+     "fdChance": 0.04,
+     "fdDur": 7,
+     "fdIcd": 5,
+     "setIas": 0.25,
+     "seizeIas": 0.3,
+     "alacrity": 0.15,
+     "focusRestraint": 1.5,
+     "spiritGuardsDR": 0.6,
+     "coe": {
+      "mult": 2.0,
+      "n": 5
+     },
+     "spirit": {
+      "base": 250,
+      "paragon": 50,
+      "exalted": 50,
+      "perSpirit": 0.02
+     },
+     "guardiansPathDodge": 0.35,
+     "src": [
+      "https://maxroll.gg/d3/guides/raiment-generator-monk-guide",
+      "https://kr.diablo3.blizzard.com/ko-kr/item/mask-of-the-searing-sky-Unique_Helm_Set_08_x1"
+     ]
+    },
+    "sets": {
+     "crimson": {
+      "cdr": 0.2,
+      "rcr": 0.2
+     },
+     "guardian": {
+      "meleeDrPer1000Vit": 0.01,
+      "rangedDrPer1000Dex": 0.01,
+      "itemStatMult": 2.0
+     }
+    },
+    "endlessWalk": {
+     "dmg": 1.0
+    },
+    "passiveCdrBy": {
+     "wol": [
+      0.2
+     ]
+    },
+    "dualWieldIas": 0.15,
+    "wol": {
+     "src": "https://maxroll.gg/d3/guides/lod-wave-of-light-monk-guide"
+    }
+   },
+   "kadala": {
+    "_doc": "[조각 비용, 같은 도박 범주의 다른 종류 가중치 합]. d3planner dropData(직업 표시 없음 또는 monk) 2026-11-07",
+    "fistweapon": [
+     75,
+     3450
+    ],
+    "spiritstone": [
+     25,
+     900
+    ],
+    "helm": [
+     25,
+     1200
+    ],
+    "amulet": [
+     100,
+     0
+    ],
+    "ring": [
+     50,
+     0
+    ],
+    "shoulders": [
+     25,
+     0
+    ],
+    "chestarmor": [
+     25,
+     0
+    ],
+    "gloves": [
+     25,
+     0
+    ],
+    "bracers": [
+     25,
+     0
+    ],
+    "belt": [
+     25,
+     0
+    ],
+    "pants": [
+     25,
+     0
+    ],
+    "boots": [
+     25,
+     0
+    ]
+   }
+  },
+  "crusader": {
+   "label": "성전사",
+   "elements": [
+    "fire",
+    "holy",
+    "light",
+    "phys"
+   ],
+   "model": {
+    "base": {
+     "dex": 217,
+     "vit": 147,
+     "skillDmg": 0.0,
+     "eliteDmg": 0.1,
+     "ias": 0.2194,
+     "chc": 0.1,
+     "chd": 1.0,
+     "ad": 0.5,
+     "cdr": 0.19,
+     "armor": 367,
+     "dodge": 0.05,
+     "allres": 258,
+     "rangedRed": 0.05,
+     "meleeRed": 0.05,
+     "eliteRed": 0.05,
+     "life": 18770,
+     "lifePct": 0.25,
+     "rcr": 0.1
+    },
+    "lifeBase": 316,
+    "lifePerVit": 100,
+    "armorPerDex": 1,
+    "dmgPerDex": 0.01,
+    "eliteShare": 1.0,
+    "meleeShare": 0.5,
+    "akarat": {
+     "cooldown": 90,
+     "duration": 20,
+     "dmg": 0.35,
+     "armor": 1.5
+    },
+    "ironSkin": {
+     "cooldown": 30,
+     "duration": 4,
+     "steelDuration": 7,
+     "dr": 0.5
+    },
+    "cast": {
+     "fps": 60,
+     "sanctified": 2,
+     "buffFrames": 1
+    },
+    "ms": {
+     "steed": 1.5,
+     "paragon": 0.25,
+     "flash": 0.6,
+     "flashTail": 5,
+     "wings": 0.5,
+     "wingsDuration": 5,
+     "wingsCooldown": 30,
+     "items": {
+      "warzechian": 0.6,
+      "rechel": 0.6
+     }
+    },
+    "pylon": {
+     "uptime": 0.13333333333333333,
+     "ias": 0.3,
+     "ms": 1.0,
+     "src": "https://maxroll.gg/d3/resources/greater-rift-explained"
+    },
+    "lawsOfHope": {
+     "regen": 10728
+    },
+    "valor4DR": 0.5,
+    "steed": {
+     "cooldown": 16,
+     "lordCommander": 0.25,
+     "duration": 5,
+     "norvaldTail": 5,
+     "norvaldDmg": 2.0,
+     "src": [
+      "https://kr.diablo3.blizzard.com/ko-kr/class/crusader/active/steed-charge",
+      "https://kr.diablo3.blizzard.com/ko-kr/item/vigilante-belt-P76_Unique_Belt_002"
+     ]
+    },
+    "aughild": {
+     "dr2": 0.15,
+     "dmg2": 0.3,
+     "elite3": 0.3,
+     "eliteRed3": 0.3
+    },
+    "trapped": {
+     "base": 0.33,
+     "pct": 0.6
+    },
+    "endlessWalk": {
+     "dmg": 0.0
+    },
+    "unityDR": 0.5,
+    "sets": {
+     "guardian": {
+      "meleeDrPer1000Vit": 0.01,
+      "rangedDrPer1000Dex": 0.01,
+      "itemStatMult": 2.0
+     }
+    },
+    "noStrAug": true,
+    "foth": {
+     "src": "https://maxroll.gg/d3/guides/aov-fist-of-the-heavens-crusader-guide"
+    }
+   },
+   "kadala": {
+    "_doc": "[조각 비용, 같은 도박 범주의 다른 종류 가중치 합]. d3planner dropData(직업 표시 없음 또는 crusader) 2026-11-09",
+    "flail2h": [
+     75,
+     2700
+    ],
+    "crusadershield": [
+     25,
+     800
+    ],
+    "helm": [
+     25,
+     0
+    ],
+    "amulet": [
+     100,
+     0
+    ],
+    "ring": [
+     50,
+     0
+    ],
+    "shoulders": [
+     25,
+     0
+    ],
+    "chestarmor": [
+     25,
+     0
+    ],
+    "gloves": [
+     25,
+     0
+    ],
+    "bracers": [
+     25,
+     0
+    ],
+    "belt": [
+     25,
+     0
+    ],
+    "pants": [
+     25,
+     0
+    ],
+    "boots": [
+     25,
+     0
+    ]
+   },
+   "mainStat": {
+    "label": "힘",
+    "gemView": {
+     "armor": {
+      "emerald": {
+       "label": "루비(힘 280)",
+       "icon": "icons/gem_ruby.png",
+       "iconTone": "icons/tone_gem_ruby.png"
+      }
+     }
+    }
+   }
+  },
+  "wizard": {
+   "label": "마법사",
+   "elements": [
+    "arcane",
+    "cold",
+    "fire",
+    "light"
+   ],
+   "model": {
+    "base": {
+     "dex": 217,
+     "vit": 147,
+     "skillDmg": 0.0,
+     "eliteDmg": 0.1,
+     "ias": 0.2194,
+     "chc": 0.1,
+     "chd": 1.0,
+     "ad": 0.5,
+     "cdr": 0.19,
+     "armor": 367,
+     "dodge": 0.05,
+     "allres": 258,
+     "rangedRed": 0.05,
+     "meleeRed": 0.05,
+     "eliteRed": 0.05,
+     "life": 18770,
+     "lifePct": 0.25,
+     "rcr": 0.1
+    },
+    "lifeBase": 316,
+    "lifePerVit": 100,
+    "armorPerDex": 0,
+    "dmgPerDex": 0.01,
+    "eliteShare": 1.0,
+    "meleeShare": 0.5,
+    "allresPerDex": 0.1,
+    "noIntAug": true,
+    "mm": {
+     "frames": 57.6,
+     "fps": 60,
+     "delsere": 1.5,
+     "fod": 1.5,
+     "src": [
+      "https://maxroll.gg/d3/d3planner",
+      "https://maxroll.gg/d3/guides/firebird-magic-missile-wizard-guide"
+     ]
+    },
+    "pylon": {
+     "uptime": 0.13333333333333333,
+     "ias": 0.3,
+     "src": "https://maxroll.gg/d3/resources/greater-rift-explained"
+    },
+    "focusRestraint": 0.5,
+    "coe": {
+     "mult": 2.0,
+     "n": 4
+    },
+    "endlessWalk": {
+     "dmg": 1.0
+    },
+    "shield": {
+     "galvanizingWard": 0.6,
+     "deflectionPerCast": 0.04,
+     "deflectionDur": 3,
+     "taken": 0.5
+    },
+    "sets": {
+     "crimson": {
+      "cdr": 0.2,
+      "rcr": 0.2
+     },
+     "guardian": {
+      "meleeDrPer1000Vit": 0.01,
+      "rangedDrPer1000Dex": 0.01,
+      "itemStatMult": 2.0
+     }
+    },
+    "aughild": {
+     "dr2": 0.15,
+     "dmg2": 0.3,
+     "elite3": 0.3,
+     "eliteRed3": 0.3
+    },
+    "fb": {
+     "set4DR": 0.8,
+     "safePassageDR": 0.25,
+     "orbDR": 0.8,
+     "src": "https://maxroll.gg/d3/guides/firebird-magic-missile-wizard-guide"
+    }
+   },
+   "kadala": {
+    "_doc": "[조각 비용, 같은 도박 범주의 다른 종류 가중치 합]. d3recipes S40(마법사 풀) 2026-11-12",
+    "wand": [
+     75,
+     3300
+    ],
+    "source": [
+     25,
+     0
+    ],
+    "helm": [
+     25,
+     700
+    ],
+    "amulet": [
+     100,
+     0
+    ],
+    "ring": [
+     50,
+     0
+    ],
+    "shoulders": [
+     25,
+     0
+    ],
+    "chestarmor": [
+     25,
+     0
+    ],
+    "gloves": [
+     25,
+     0
+    ],
+    "bracers": [
+     25,
+     0
+    ],
+    "belt": [
+     25,
+     0
+    ],
+    "pants": [
+     25,
+     0
+    ],
+    "boots": [
+     25,
+     0
+    ],
+    "dagger": [
+     75,
+     3975
+    ],
+    "sword": [
+     75,
+     2775
+    ]
+   },
+   "mainStat": {
+    "label": "지능",
+    "gemView": {
+     "armor": {
+      "emerald": {
+       "label": "토파즈(지능 280)",
+       "icon": "icons/gem_topaz.png",
+       "iconTone": "icons/tone_gem_topaz.png"
+      }
+     }
+    }
+   }
+  },
+  "barbarian": {
+   "label": "야만용사",
+   "elements": [
+    "cold",
+    "fire",
+    "light",
+    "phys"
+   ],
+   "model": {
+    "base": {
+     "dex": 217,
+     "vit": 147,
+     "skillDmg": 0.0,
+     "eliteDmg": 0.1,
+     "ias": 0.2194,
+     "chc": 0.1,
+     "chd": 1.0,
+     "ad": 0.5,
+     "cdr": 0.19,
+     "armor": 367,
+     "dodge": 0.05,
+     "allres": 258,
+     "rangedRed": 0.05,
+     "meleeRed": 0.05,
+     "eliteRed": 0.05,
+     "life": 18770,
+     "lifePct": 0.25,
+     "rcr": 0.1
+    },
+    "lifeBase": 316,
+    "lifePerVit": 100,
+    "armorPerDex": 1,
+    "dmgPerDex": 0.01,
+    "eliteShare": 1.0,
+    "meleeShare": 0.5
+   },
+   "kadala": {
+    "_doc": "[조각 비용, 같은 도박 범주의 다른 종류 가중치 합]. d3recipes S40(야만용사 풀) 2026-11-13",
+    "dagger": [
+     75,
+     4050
+    ],
+    "sword": [
+     75,
+     2700
+    ],
+    "mightybelt": [
+     25,
+     1200
+    ],
+    "belt": [
+     25,
+     675
+    ],
+    "helm": [
+     25,
+     0
+    ],
+    "amulet": [
+     100,
+     0
+    ],
+    "ring": [
+     50,
+     0
+    ],
+    "shoulders": [
+     25,
+     0
+    ],
+    "chestarmor": [
+     25,
+     0
+    ],
+    "gloves": [
+     25,
+     0
+    ],
+    "bracers": [
+     25,
+     0
+    ],
+    "pants": [
+     25,
+     0
+    ],
+    "boots": [
+     25,
+     0
+    ]
+   },
+   "mainStat": {
+    "label": "힘",
+    "gemView": {
+     "armor": {
+      "emerald": {
+       "label": "루비(힘 280)",
+       "icon": "icons/gem_ruby.png",
+       "iconTone": "icons/tone_gem_ruby.png"
+      }
+     }
+    }
+   }
+  }
+ },
+ "legGems": {
+  "trapped": {
+   "name": "갇힌 자의 파멸",
+   "en": "Bane of the Trapped",
+   "rank": "150등급",
+   "fx": [
+    "제어 방해 효과의 영향을 받는 적에게 주는 피해 {60.00%} 증가",
+    "15미터 내의 적들의 이동 속도를 30% 감소시키는 오라 생성"
+   ],
+   "icon": "icons/leggem/trapped.png"
+  },
+  "toxin": {
+   "name": "잘 듣는 독의 보석",
+   "en": "Gem of Efficacious Toxin",
+   "rank": "150등급",
+   "fx": [
+    "적중시킨 모든 적을 중독시켜 10초에 걸쳐 무기 공격력의 {9500%}만큼 피해를 줌",
+    "중독시킨 적이 받는 모든 피해 10% 증가 및 공격력 10% 감소"
+   ],
+   "icon": "icons/leggem/toxin.png"
+  },
+  "esoteric": {
+   "name": "난해한 변화",
+   "en": "Esoteric Alteration",
+   "rank": "100등급 (최대)",
+   "fx": [
+    "물리 피해를 제외한 피해 {60.0%} 감소",
+    "생명력이 50% 미만일 때 냉기, 화염, 번개, 독, 비전 저항 75% 증가"
+   ],
+   "icon": "icons/leggem/esoteric.png"
+  },
+  "iceblink": {
+   "name": "결빙석",
+   "en": "Iceblink",
+   "rank": "50등급 (최대)",
+   "fx": [
+    "냉기 기술 사용 시 오한 효과가 발동하고, 오한 효과가 적의 이동 속도를 추가로 {25.0%} 감소시킴",
+    "오한 상태로 만든 적에게 극대화 효과가 발생할 확률 10% 증가"
+   ],
+   "icon": "icons/leggem/iceblink.png"
+  },
+  "simplicity": {
+   "name": "단순성의 힘",
+   "en": "Simplicity's Strength",
+   "rank": "150등급",
+   "fx": [
+    "주 기술의 공격력 {100.00%} 증가",
+    "주 기술 적중 시 최대 생명력의 4% 회복"
+   ],
+   "icon": "icons/leggem/simplicity.png"
+  },
+  "legacyofdreams": {
+   "name": "꿈의 유산",
+   "en": "Legacy of Dreams",
+   "rank": "99등급 (최대)",
+   "fx": [
+    "세트 효과를 받고 있지 않을 때, 장착한 전설 아이템 1개마다 공격력 {375.00%} 증가 및 받는 피해 2% 감소",
+    "고대 아이템에는 효과 두 배 적용"
+   ],
+   "icon": "icons/leggem/legacyofdreams.png"
+  },
+  "enforcer": {
+   "name": "강제자",
+   "en": "Enforcer",
+   "rank": "150등급",
+   "fx": [
+    "소환수의 공격력 {60.00%} 증가",
+    "소환수가 받는 피해 90% 감소"
+   ],
+   "icon": "icons/leggem/enforcer.png"
+  },
+  "gogok": {
+   "name": "신속의 곡옥",
+   "en": "Gogok of Swiftness",
+   "rank": "150등급 (최대)",
+   "fx": [
+    "적중 시마다 신속 효과를 받아, 4초 동안 공격 속도 1% 증가 및 회피 확률 {2.00%} 증가. 최대 15회 중첩",
+    "신속 중첩 1회당 재사용 대기시간 감소 1%"
+   ],
+   "icon": "icons/leggem/gogok.png"
+  },
+  "zei": {
+   "name": "제이의 복수",
+   "en": "Zei's Stone of Vengeance",
+   "rank": "150등급",
+   "fx": [
+    "적중시킨 적과의 거리 10미터당 공격력이 {16.00%}씩, 50미터 거리에서 최대 {80.00%}까지 증가",
+    "적중 시 20% 확률로 1초 동안 적을 기절시킴"
+   ],
+   "icon": "icons/leggem/zei.png"
+  },
+  "stricken": {
+   "name": "고통받는 자의 파멸",
+   "en": "Bane of the Stricken",
+   "rank": "150등급",
+   "fx": [
+    "적을 공격할 때마다, 적이 영웅의 공격으로부터 받는 피해가 {2.30%}씩 증가",
+    "우두머리와 균열 수호자에게 주는 피해 25% 증가"
+   ],
+   "icon": "icons/leggem/stricken.png"
+  },
+  "taeguk": {
+   "name": "태극",
+   "en": "Taeguk",
+   "rank": "150등급",
+   "fx": [
+    "자원을 소모해 집중 기술 시전 시 1.5초 동안 공격력 {8.00%} 증가. 최대 10회 중첩",
+    "중첩 1회당 방어도 2.0% 증가"
+   ],
+   "icon": "icons/leggem/taeguk.png"
+  },
+  "wreath": {
+   "name": "번개의 화관",
+   "en": "Wreath of Lightning",
+   "rank": "150등급",
+   "fx": [
+    "공격 적중 시 15% 확률로 번개의 화관 강화 효과를 얻어 3초 동안 매초 무기 공격력의 {5,000.0%}만큼 번개 피해를 줌",
+    "번개의 화관의 효과를 받는 동안 이동 속도 25% 증가"
+   ],
+   "icon": "icons/leggem/wreath.png"
+  },
+  "pain": {
+   "name": "증통제",
+   "en": "Pain Enhancer",
+   "rank": "150등급",
+   "fx": [
+    "극대화 피해를 주면 적이 출혈을 일으켜 3초에 걸쳐 무기 공격력의 {10,000.0%}만큼 물리 피해를 받음",
+    "피의 광란에 빠져 20미터 내의 출혈 중인 적 한 마리당 공격 속도 3% 증가"
+   ],
+   "icon": "icons/leggem/pain.png"
+  },
+  "powerful": {
+   "name": "강한 자의 파멸",
+   "en": "Bane of the Powerful",
+   "rank": "150등급",
+   "icon": "icons/leggem/powerful.png"
+  }
+ },
+ "legGemLeft": [
+  "convention",
+  "restraint",
+  "oculus",
+  "mk_compass_rose",
+  "cr_compass_rose",
+  "zodiac"
+ ]
+}

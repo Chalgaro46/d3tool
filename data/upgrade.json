@@ -1,0 +1,2057 @@
+{
+ "_doc": "희귀 업그레이드 시 종류별 후보와 가중치(직업별, maxroll d3planner dropData). 확률 = 가중치/합",
+ "byClass": {
+  "dh": {
+   "dagger": {
+    "label": "단도",
+    "items": [
+     {
+      "name": "카를레이의 주장",
+      "nameEn": "Karlei's Point",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "그린스톤 경의 부채",
+      "nameEn": "Lord Greenstone's Fan",
+      "quality": "legendary",
+      "weight": 100
+     }
+    ]
+   },
+   "quiver": {
+    "label": "화살통",
+    "items": [
+     {
+      "name": "화살장이의 자랑거리",
+      "nameEn": "Fletcher's Pride",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "끓어오르는 증오의 가시",
+      "nameEn": "Spines of Seething Hatred",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "오거스틴의 만능 화살통",
+      "nameEn": "Augustine's Panacea",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "망자의 유산",
+      "nameEn": "Dead Man's Legacy",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "죄악의 추적자",
+      "nameEn": "Sin Seekers",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "에미메이의 잡낭",
+      "nameEn": "Emimei's Duffel",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "성스러운 살상",
+      "nameEn": "Holy Point Shot",
+      "quality": "legendary",
+      "weight": 75
+     },
+     {
+      "name": "시리의 아홉 번째 가방",
+      "nameEn": "The Ninth Cirri Satchel",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "포격수의 배낭",
+      "nameEn": "Bombardier's Rucksack",
+      "quality": "legendary",
+      "weight": 100
+     }
+    ]
+   },
+   "amulet": {
+    "label": "목걸이",
+    "items": [
+     {
+      "name": "에틀리크의 눈",
+      "nameEn": "Eye of Etlich",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "론달의 정표",
+      "nameEn": "Rondal's Locket",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "아라녹의 액막이",
+      "nameEn": "Talisman of Aranoch",
+      "quality": "legendary",
+      "weight": 25
+     },
+     {
+      "name": "선조의 은총",
+      "nameEn": "Ancestors' Grace",
+      "quality": "legendary",
+      "weight": 25
+     },
+     {
+      "name": "여백작 줄리아의 돋을새김 목걸이",
+      "nameEn": "Countess Julia's Cameo",
+      "quality": "legendary",
+      "weight": 50
+     },
+     {
+      "name": "두부족 마력 덫",
+      "nameEn": "Dovu Energy Trap",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "박소의 혼령",
+      "nameEn": "Haunt of Vaxo",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "라코프의 생명의 유리",
+      "nameEn": "Rakoff's Glass of Life",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "요한의 정수",
+      "nameEn": "The Ess of Johan",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "킴보의 금화",
+      "nameEn": "Kymbo's Gold",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "마라의 만화경",
+      "nameEn": "Mara's Kaleidoscope",
+      "quality": "legendary",
+      "weight": 25
+     },
+     {
+      "name": "우로보로스",
+      "nameEn": "Ouroboros",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "아즈카란트의 별",
+      "nameEn": "The Star of Azkaranth",
+      "quality": "legendary",
+      "weight": 25
+     },
+     {
+      "name": "제피리아 목걸이",
+      "nameEn": "Xephirian Amulet",
+      "quality": "legendary",
+      "weight": 25
+     },
+     {
+      "name": "할키온의 승천",
+      "nameEn": "Halcyon's Ascent",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "블랙손의 던크레이그 십자가",
+      "nameEn": "Blackthorne's Duncraig Cross",
+      "quality": "set",
+      "weight": 100
+     },
+     {
+      "name": "모험가의 서약",
+      "nameEn": "The Traveler's Pledge",
+      "quality": "set",
+      "weight": 100
+     },
+     {
+      "name": "꼬맹이의 목걸이",
+      "nameEn": "Squirt's Necklace",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "시간의 향취",
+      "nameEn": "The Flavor of Time",
+      "quality": "legendary",
+      "weight": 100
+     }
+    ]
+   },
+   "ring": {
+    "label": "반지",
+    "items": [
+     {
+      "name": "나겔링 반지",
+      "nameEn": "Nagelring",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "레오릭의 옥새",
+      "nameEn": "Leoric's Signet",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "깨어진 약조",
+      "nameEn": "Broken Promises",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "수수께끼 반지",
+      "nameEn": "Puzzle Ring",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "리첼의 도둑질 반지",
+      "nameEn": "Rechel's Ring of Larceny",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "로드가의 거대한 돌반지",
+      "nameEn": "Rogar's Huge Stone",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "운명막이",
+      "nameEn": "Wyrdward",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "불카토스의 결혼반지",
+      "nameEn": "Bul-Kathos's Wedding Band",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "황도궁의 흑요석 반지",
+      "nameEn": "Obsidian Ring of the Zodiac",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "공허한 속삭임의 가락지",
+      "nameEn": "Band of Hollow Whispers",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "크리드의 불꽃",
+      "nameEn": "Krede's Flame",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "화합의 반지",
+      "nameEn": "Unity",
+      "quality": "legendary",
+      "weight": 75
+     },
+     {
+      "name": "의연한 자의 호칭기도",
+      "nameEn": "Litany of the Undaunted",
+      "quality": "set",
+      "weight": 100
+     },
+     {
+      "name": "으뜸가는 주인",
+      "nameEn": "The Wailing Host",
+      "quality": "set",
+      "weight": 100
+     },
+     {
+      "name": "나침도",
+      "nameEn": "The Compass Rose",
+      "quality": "set",
+      "weight": 100
+     },
+     {
+      "name": "나탈랴의 심사숙고",
+      "nameEn": "Natalya's Reflection",
+      "quality": "set",
+      "weight": 100
+     },
+     {
+      "name": "집중",
+      "nameEn": "Focus",
+      "quality": "set",
+      "weight": 100
+     },
+     {
+      "name": "자제",
+      "nameEn": "Restraint",
+      "quality": "set",
+      "weight": 100
+     },
+     {
+      "name": "전광석 반지",
+      "nameEn": "Arcstone",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "원소의 회동",
+      "nameEn": "Convention of Elements",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "종잡을 수 없는 반지",
+      "nameEn": "Elusive Ring",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "정의의 등불",
+      "nameEn": "Justice Lantern",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "눈동자 반지",
+      "nameEn": "Oculus Ring",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "요르단의 반지",
+      "nameEn": "Stone of Jordan",
+      "quality": "legendary",
+      "weight": 100
+     }
+    ]
+   },
+   "helm": {
+    "label": "투구",
+    "items": [
+     {
+      "name": "망가진 왕관",
+      "nameEn": "Broken Crown",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "레오릭의 왕관",
+      "nameEn": "Leoric's Crown",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "맹신",
+      "nameEn": "Blind Faith",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "죽음선견자의 머리쓰개",
+      "nameEn": "Deathseer's Cowl",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "안다리엘의 두개골",
+      "nameEn": "Andariel's Visage",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "나탈랴의 시야",
+      "nameEn": "Natalya's Sight",
+      "quality": "set",
+      "weight": 100
+     },
+     {
+      "name": "습격자의 얼굴",
+      "nameEn": "Marauder's Visage",
+      "quality": "set",
+      "weight": 100
+     },
+     {
+      "name": "저주받은 얼굴",
+      "nameEn": "Accursed Visage",
+      "quality": "set",
+      "weight": 100
+     },
+     {
+      "name": "구네스의 얼굴",
+      "nameEn": "Visage of Gunes",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "어둠의 가면",
+      "nameEn": "The Shadow's Mask",
+      "quality": "set",
+      "weight": 100
+     },
+     {
+      "name": "반이상향 고글",
+      "nameEn": "Dystopian Goggles",
+      "quality": "set",
+      "weight": 100
+     }
+    ]
+   },
+   "shoulders": {
+    "label": "어깨 방어구",
+    "items": [
+     {
+      "name": "귀소의 덧대",
+      "nameEn": "Homing Pads",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "임종의 어깨걸이",
+      "nameEn": "Death Watch Mantle",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "자카라의 어깨 갑옷",
+      "nameEn": "Spaulders of Zakara",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "습격자의 척추",
+      "nameEn": "Marauder's Spines",
+      "quality": "set",
+      "weight": 100
+     },
+     {
+      "name": "신성화되지 않은 견갑",
+      "nameEn": "Unsanctified Shoulders",
+      "quality": "set",
+      "weight": 100
+     },
+     {
+      "name": "집중의 어깨걸이",
+      "nameEn": "Mantle of Channeling",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "어둠의 짐",
+      "nameEn": "The Shadow's Burden",
+      "quality": "set",
+      "weight": 100
+     },
+     {
+      "name": "기계 견갑",
+      "nameEn": "Mechanical Pauldrons",
+      "quality": "set",
+      "weight": 100
+     }
+    ]
+   },
+   "chestarmor": {
+    "label": "가슴 방어구",
+    "items": [
+     {
+      "name": "향의",
+      "nameEn": "Chaingmail",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "잉걸불 외투",
+      "nameEn": "Cindercoat",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "시 미즈의 도복",
+      "nameEn": "Shi Mizu's Haori",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "황금 가죽",
+      "nameEn": "Goldskin",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "티리엘의 권능",
+      "nameEn": "Tyrael's Might",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "블랙손의 겉옷",
+      "nameEn": "Blackthorne's Surcoat",
+      "quality": "set",
+      "weight": 100
+     },
+     {
+      "name": "습격자의 돌가죽",
+      "nameEn": "Marauder's Carapace",
+      "quality": "set",
+      "weight": 100
+     },
+     {
+      "name": "어둠의 파멸",
+      "nameEn": "The Shadow's Bane",
+      "quality": "set",
+      "weight": 100
+     },
+     {
+      "name": "독수리 흉갑",
+      "nameEn": "Aquila Cuirass",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "무쇠 심장",
+      "nameEn": "Heart of Iron",
+      "quality": "legendary",
+      "weight": 100
+     }
+    ]
+   },
+   "cloak": {
+    "label": "망토",
+    "items": [
+     {
+      "name": "지하 세계의 흡혈귀",
+      "nameEn": "Beckon Sail",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "검은 날개",
+      "nameEn": "Blackfeather",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "가울프의 망토",
+      "nameEn": "The Cloak of Garwulf",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "어둠기사 망토",
+      "nameEn": "The Cape of the Dark Night",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "나탈랴의 포옹",
+      "nameEn": "Natalya's Embrace",
+      "quality": "set",
+      "weight": 100
+     },
+     {
+      "name": "지옥에서 벼려낸 철장",
+      "nameEn": "Cage of the Hellborn",
+      "quality": "set",
+      "weight": 100
+     },
+     {
+      "name": "아연도금 조끼",
+      "nameEn": "Galvanized Vest",
+      "quality": "set",
+      "weight": 100
+     }
+    ]
+   },
+   "gloves": {
+    "label": "장갑",
+    "items": [
+     {
+      "name": "성자 아츄의 전투 장갑",
+      "nameEn": "St. Archew's Gage",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "검투사 팔목장갑",
+      "nameEn": "Gladiator Gauntlets",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "태스커와 테오",
+      "nameEn": "Tasker and Theo",
+      "quality": "legendary",
+      "weight": 75
+     },
+     {
+      "name": "습격자의 장갑",
+      "nameEn": "Marauder's Gloves",
+      "quality": "set",
+      "weight": 100
+     },
+     {
+      "name": "어둠의 손아귀",
+      "nameEn": "The Shadow's Grasp",
+      "quality": "set",
+      "weight": 100
+     },
+     {
+      "name": "나탈랴의 손길",
+      "nameEn": "Natalya's Touch",
+      "quality": "set",
+      "weight": 100
+     },
+     {
+      "name": "기괴한 손 보호구",
+      "nameEn": "Fiendish Grips",
+      "quality": "set",
+      "weight": 100
+     },
+     {
+      "name": "마수",
+      "nameEn": "Magefist",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "서리불꽃",
+      "nameEn": "Frostburn",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "돌덩이 팔목 장갑",
+      "nameEn": "Stone Gauntlets",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "가스 동력 인공 팔보호구",
+      "nameEn": "Gas Powered Automail Forearm",
+      "quality": "set",
+      "weight": 100
+     }
+    ]
+   },
+   "bracers": {
+    "label": "손목 방어구",
+    "items": [
+     {
+      "name": "고대 파르산 방어자",
+      "nameEn": "Ancient Parthan Defenders",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "커스테리안 손목 보호구",
+      "nameEn": "Custerian Wristguards",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "천벌의 손목 방어구",
+      "nameEn": "Nemesis Bracers",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "왈제치언 팔 보호구",
+      "nameEn": "Warzechian Armguards",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "영광의 서약",
+      "nameEn": "Promise of Glory",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "라쿠니 좀도둑",
+      "nameEn": "Lacuni Prowlers",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "팔씨름",
+      "nameEn": "Strongarm Bracers",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "크렐름의 강화 손목 방어구",
+      "nameEn": "Krelm's Buff Bracers",
+      "quality": "set",
+      "weight": 100
+     },
+     {
+      "name": "명료의 손목싸개",
+      "nameEn": "Wraps of Clarity",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "트래그울의 똬리",
+      "nameEn": "Trag'Oul Coils",
+      "quality": "legendary",
+      "weight": 100
+     }
+    ]
+   },
+   "belt": {
+    "label": "허리띠",
+    "items": [
+     {
+      "name": "금박 허리띠",
+      "nameEn": "Goldwrap",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "셔마의 노끈",
+      "nameEn": "Cord of the Sherma",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "해링튼 허리 보호구",
+      "nameEn": "Harrington Waistguard",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "가죽숫돌",
+      "nameEn": "Razor Strop",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "칼날 장식띠",
+      "nameEn": "Sash of Knives",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "세보르의 악몽",
+      "nameEn": "Sebor's Nightmare",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "천둥신의 박력",
+      "nameEn": "Thundergod's Vigor",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "한밤의 마술사",
+      "nameEn": "The Witching Hour",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "블랙손의 홈새김 허리띠",
+      "nameEn": "Blackthorne's Notched Belt",
+      "quality": "set",
+      "weight": 100
+     },
+     {
+      "name": "크렐름의 강화 허리띠",
+      "nameEn": "Krelm's Buff Belt",
+      "quality": "set",
+      "weight": 100
+     },
+     {
+      "name": "장대비",
+      "nameEn": "Crashing Rain",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "옴린의 사슬",
+      "nameEn": "Omryn's Chain",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "어둠의 굴레",
+      "nameEn": "Chain of Shadows",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "귀 꿰미",
+      "nameEn": "String of Ears",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "조이의 비밀",
+      "nameEn": "Zoey's Secret",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "지옥표범 허리 보호구",
+      "nameEn": "Hellcat Waistguard",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "사냥꾼의 분노",
+      "nameEn": "Hunter's Wrath",
+      "quality": "legendary",
+      "weight": 100
+     }
+    ]
+   },
+   "pants": {
+    "label": "바지",
+    "items": [
+     {
+      "name": "역병 바지",
+      "nameEn": "Pox Faulds",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "얀 씨의 주술 바지",
+      "nameEn": "Hexing Pants of Mr. Yan",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "도굴꾼 바지",
+      "nameEn": "Depth Diggers",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "블랙손의 마상시합 쇠미늘바지",
+      "nameEn": "Blackthorne's Jousting Mail",
+      "quality": "set",
+      "weight": 100
+     },
+     {
+      "name": "습격자의 아랫바지",
+      "nameEn": "Marauder's Encasement",
+      "quality": "set",
+      "weight": 100
+     },
+     {
+      "name": "어둠의 똬리 바지",
+      "nameEn": "The Shadow's Coil",
+      "quality": "set",
+      "weight": 100
+     },
+     {
+      "name": "나탈랴의 각반",
+      "nameEn": "Natalya's Leggings",
+      "quality": "set",
+      "weight": 100
+     },
+     {
+      "name": "부정한 다리 판갑",
+      "nameEn": "Unholy Plates",
+      "quality": "set",
+      "weight": 100
+     },
+     {
+      "name": "냉음극 바지",
+      "nameEn": "Cold Cathode Trousers",
+      "quality": "set",
+      "weight": 100
+     }
+    ]
+   },
+   "boots": {
+    "label": "장화",
+    "items": [
+     {
+      "name": "무쇠발가락 진흙장화",
+      "nameEn": "Irontoe Mudsputters",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "불걸음 장화",
+      "nameEn": "Fire Walkers",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "빙벽의 등반자",
+      "nameEn": "Ice Climbers",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "블랙손의 박차",
+      "nameEn": "Blackthorne's Spurs",
+      "quality": "set",
+      "weight": 100
+     },
+     {
+      "name": "나탈랴의 핏빛 발자국",
+      "nameEn": "Natalya's Bloody Footprints",
+      "quality": "set",
+      "weight": 100
+     },
+     {
+      "name": "습격자의 발 보호대",
+      "nameEn": "Marauder's Treads",
+      "quality": "set",
+      "weight": 100
+     },
+     {
+      "name": "어둠의 뾰족구두",
+      "nameEn": "The Shadow's Heels",
+      "quality": "set",
+      "weight": 100
+     },
+     {
+      "name": "지옥걸이",
+      "nameEn": "Hell Walkers",
+      "quality": "set",
+      "weight": 100
+     },
+     {
+      "name": "골동품 포도 수확 장화",
+      "nameEn": "Antique Vintage Boots",
+      "quality": "set",
+      "weight": 100
+     }
+    ]
+   },
+   "bow": {
+    "label": "활",
+    "items": [
+     {
+      "name": "양의 만곡궁",
+      "nameEn": "Yang's Recurve",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "서사시의 끝",
+      "nameEn": "Odyssey's End",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "Leonine Bow of Hashir",
+      "nameEn": "Leonine Bow of Hashir",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "Etrayu",
+      "nameEn": "Etrayu",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "Uskang",
+      "nameEn": "Uskang",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "The Raven's Wing",
+      "nameEn": "The Raven's Wing",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "Windforce",
+      "nameEn": "Windforce",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "Kridershot",
+      "nameEn": "Kridershot",
+      "quality": "legendary",
+      "weight": 100
+     }
+    ]
+   },
+   "handcrossbow": {
+    "label": "손쇠뇌",
+    "_doc": "d3recipes S40 pools[DemonHunter] HandXbow 11종 1,100(2026-11-13, 서포터 세팅용 — 세팅 아이템만 이름으로)",
+    "items": [
+     {
+      "name": "발라의 유증",
+      "nameEn": "Valla's Bequest",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "그 외",
+      "nameEn": "others",
+      "quality": "legendary",
+      "weight": 1000
+     }
+    ]
+   }
+  },
+  "monk": {
+   "_doc": "수도사 희귀 업그레이드 풀: d3planner dropData(직업 표시 없음 또는 monk) 2026-11-07. 세팅에 쓰는 아이템만 이름으로 두고 나머지는 '그 외' 한 줄(가중치 합)로 묶음 — 확률 = 가중치/합 이라 결과는 같음 / 2026-11-12 일천수도 아이템 추가(같은 dropData, 각 가중치 100), 투구 범주(helm 900) 추가 / 2026-11-13 반지에 집중·자제(각 100, 악사 풀의 같은 dropData 값) 이름으로 추가 — '그 외'에 묶여 카달라·업그레이드 0으로 나오던 것(사용자 '4인 수도사 집자가 왜 카달라 불가로 나와?')",
+   "spiritstone": {
+    "label": "공력 구슬",
+    "items": [
+     {
+      "name": "조 크린의 눈빛",
+      "nameEn": "Tzo Krin's Gaze",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "그 외",
+      "nameEn": "others",
+      "quality": "legendary",
+      "weight": 1100
+     }
+    ]
+   },
+   "fistweapon": {
+    "label": "주먹 무기",
+    "items": [
+     {
+      "name": "쿄시로의 칼날",
+      "nameEn": "Kyoshiro's Blade",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "광인의 주먹날",
+      "nameEn": "Rabid Strike",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "셴룽의 전설 주먹",
+      "nameEn": "Shenlong's Fist of Legend",
+      "quality": "set",
+      "weight": 100
+     },
+     {
+      "name": "셴룽의 끈질긴 맹공",
+      "nameEn": "Shenlong's Relentless Assault",
+      "quality": "set",
+      "weight": 100
+     },
+     {
+      "name": "그 외",
+      "nameEn": "others",
+      "quality": "legendary",
+      "weight": 975
+     }
+    ]
+   },
+   "boots": {
+    "label": "장화",
+    "items": [
+     {
+      "name": "볼품 없는 장화",
+      "nameEn": "The Crudest Boots",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "여덟 악마 장화",
+      "nameEn": "Eight-Demon Boots",
+      "quality": "set",
+      "weight": 100
+     },
+     {
+      "name": "그 외",
+      "nameEn": "others",
+      "quality": "legendary",
+      "weight": 800
+     }
+    ]
+   },
+   "gloves": {
+    "label": "장갑",
+    "items": [
+     {
+      "name": "돌덩이 팔목 장갑",
+      "nameEn": "Stone Gauntlets",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "성자 아츄의 전투 장갑",
+      "nameEn": "St. Archew's Gage",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "천둥의 주먹",
+      "nameEn": "Fists of Thunder",
+      "quality": "set",
+      "weight": 100
+     },
+     {
+      "name": "그 외",
+      "nameEn": "others",
+      "quality": "legendary",
+      "weight": 775
+     }
+    ]
+   },
+   "ring": {
+    "label": "반지",
+    "items": [
+     {
+      "name": "원소의 회동",
+      "nameEn": "Convention of Elements",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "화합의 반지",
+      "nameEn": "Unity",
+      "quality": "legendary",
+      "weight": 75
+     },
+     {
+      "name": "요르단의 반지",
+      "nameEn": "Stone of Jordan",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "나침도",
+      "nameEn": "The Compass Rose",
+      "quality": "set",
+      "weight": 100
+     },
+     {
+      "name": "집중",
+      "nameEn": "Focus",
+      "quality": "set",
+      "weight": 100
+     },
+     {
+      "name": "자제",
+      "nameEn": "Restraint",
+      "quality": "set",
+      "weight": 100
+     },
+     {
+      "name": "그 외",
+      "nameEn": "others",
+      "quality": "legendary",
+      "weight": 1700
+     }
+    ]
+   },
+   "belt": {
+    "label": "허리띠",
+    "items": [
+     {
+      "name": "한밤의 마술사",
+      "nameEn": "The Witching Hour",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "그 외",
+      "nameEn": "others",
+      "quality": "legendary",
+      "weight": 1300
+     }
+    ]
+   },
+   "bracers": {
+    "label": "손목 방어구",
+    "items": [
+     {
+      "name": "핀토의 자부심",
+      "nameEn": "Pinto's Pride",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "공력 보호대",
+      "nameEn": "Spirit Guards",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "그 외",
+      "nameEn": "others",
+      "quality": "legendary",
+      "weight": 1100
+     }
+    ]
+   },
+   "chestarmor": {
+    "label": "가슴 방어구",
+    "items": [
+     {
+      "name": "잉걸불 외투",
+      "nameEn": "Cindercoat",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "몰아치는 파도의 심장",
+      "nameEn": "Heart of the Crashing Wave",
+      "quality": "set",
+      "weight": 100
+     },
+     {
+      "name": "그 외",
+      "nameEn": "others",
+      "quality": "legendary",
+      "weight": 1100
+     }
+    ]
+   },
+   "shoulders": {
+    "label": "어깨 방어구",
+    "items": [
+     {
+      "name": "레페브레의 독백",
+      "nameEn": "Lefebvre's Soliloquy",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "속죄의 어깨덧옷",
+      "nameEn": "Mantle of the Upside-Down Sinners",
+      "quality": "set",
+      "weight": 100
+     },
+     {
+      "name": "그 외",
+      "nameEn": "others",
+      "quality": "legendary",
+      "weight": 700
+     }
+    ]
+   },
+   "amulet": {
+    "label": "목걸이",
+    "items": [
+     {
+      "name": "꼬맹이의 목걸이",
+      "nameEn": "Squirt's Necklace",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "모험가의 서약",
+      "nameEn": "The Traveler's Pledge",
+      "quality": "set",
+      "weight": 100
+     },
+     {
+      "name": "그 외",
+      "nameEn": "others",
+      "quality": "legendary",
+      "weight": 1475
+     }
+    ]
+   },
+   "pants": {
+    "label": "바지",
+    "items": [
+     {
+      "name": "블랙손의 마상시합 쇠미늘바지",
+      "nameEn": "Blackthorne's Jousting Mail",
+      "quality": "set",
+      "weight": 100
+     },
+     {
+      "name": "춤추는 뱀의 비늘",
+      "nameEn": "Scales of the Dancing Serpent",
+      "quality": "set",
+      "weight": 100
+     },
+     {
+      "name": "도굴꾼 바지",
+      "nameEn": "Depth Diggers",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "그 외",
+      "nameEn": "others",
+      "quality": "legendary",
+      "weight": 600
+     }
+    ]
+   },
+   "helm": {
+    "label": "투구",
+    "items": [
+     {
+      "name": "붉은 하늘의 가면",
+      "nameEn": "Mask of the Searing Sky",
+      "quality": "set",
+      "weight": 100
+     },
+     {
+      "name": "그 외",
+      "nameEn": "others",
+      "quality": "legendary",
+      "weight": 800
+     }
+    ]
+   }
+  },
+  "crusader": {
+   "_doc": "성전사 희귀 업그레이드 풀: d3planner dropData(직업 표시 없음 또는 crusader) 2026-11-09. 종류별 합(tot) − 세팅 아이템 = '그 외'. 확률 = 가중치/합 · 변형 아이템(용기의 왕관·화합·꼬맹이) 추가 2026-11-09: d3recipes S40 data.json(scratchpad ext/d3r.json) base_weight·class_weight[성전사] 합으로 같은 방법(어깨 800·반지 2275·목걸이 1550 일치 확인) · 왈제치언·리첼 추가 2026-11-09(d3recipes base_weight 100, 손목 풀 합 1300)",
+   "shoulders": {
+    "label": "어깨 방어구",
+    "items": [
+     {
+      "name": "용기의 어깨 갑옷",
+      "nameEn": "Spaulders of Valor",
+      "quality": "set",
+      "weight": 100
+     },
+     {
+      "name": "그 외",
+      "nameEn": "others",
+      "quality": "legendary",
+      "weight": 700
+     }
+    ]
+   },
+   "chestarmor": {
+    "label": "가슴 방어구",
+    "items": [
+     {
+      "name": "용기의 미늘 갑옷",
+      "nameEn": "Brigandine of Valor",
+      "quality": "set",
+      "weight": 100
+     },
+     {
+      "name": "그 외",
+      "nameEn": "others",
+      "quality": "legendary",
+      "weight": 1200
+     }
+    ]
+   },
+   "gloves": {
+    "label": "장갑",
+    "items": [
+     {
+      "name": "용기의 팔목 장갑",
+      "nameEn": "Gauntlets of Valor",
+      "quality": "set",
+      "weight": 100
+     },
+     {
+      "name": "그 외",
+      "nameEn": "others",
+      "quality": "legendary",
+      "weight": 875
+     }
+    ]
+   },
+   "pants": {
+    "label": "바지",
+    "items": [
+     {
+      "name": "용기의 다리 갑옷",
+      "nameEn": "Chausses of Valor",
+      "quality": "set",
+      "weight": 100
+     },
+     {
+      "name": "그 외",
+      "nameEn": "others",
+      "quality": "legendary",
+      "weight": 900
+     }
+    ]
+   },
+   "boots": {
+    "label": "장화",
+    "items": [
+     {
+      "name": "용기의 경갑",
+      "nameEn": "Greaves of Valor",
+      "quality": "set",
+      "weight": 100
+     },
+     {
+      "name": "그 외",
+      "nameEn": "others",
+      "quality": "legendary",
+      "weight": 800
+     }
+    ]
+   },
+   "belt": {
+    "label": "허리띠",
+    "items": [
+     {
+      "name": "민병대 허리띠",
+      "nameEn": "Vigilante Belt",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "그 외",
+      "nameEn": "others",
+      "quality": "legendary",
+      "weight": 1700
+     }
+    ]
+   },
+   "ring": {
+    "label": "반지",
+    "items": [
+     {
+      "name": "원소의 회동",
+      "nameEn": "Convention of Elements",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "나침도",
+      "nameEn": "The Compass Rose",
+      "quality": "set",
+      "weight": 100
+     },
+     {
+      "name": "요르단의 반지",
+      "nameEn": "Stone of Jordan",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "화합의 반지",
+      "nameEn": "Unity",
+      "quality": "legendary",
+      "weight": 75
+     },
+     {
+      "name": "리첼의 도둑질 반지",
+      "nameEn": "Rechel's Ring of Larceny",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "그 외",
+      "nameEn": "others",
+      "quality": "legendary",
+      "weight": 1800
+     }
+    ]
+   },
+   "amulet": {
+    "label": "목걸이",
+    "items": [
+     {
+      "name": "모험가의 서약",
+      "nameEn": "The Traveler's Pledge",
+      "quality": "set",
+      "weight": 100
+     },
+     {
+      "name": "꼬맹이의 목걸이",
+      "nameEn": "Squirt's Necklace",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "그 외",
+      "nameEn": "others",
+      "quality": "legendary",
+      "weight": 1350
+     }
+    ]
+   },
+   "flail2h": {
+    "label": "양손 도리깨",
+    "items": [
+     {
+      "name": "질주의 도리깨",
+      "nameEn": "Flail of the Charge",
+      "quality": "set",
+      "weight": 100
+     },
+     {
+      "name": "그 외",
+      "nameEn": "others",
+      "quality": "legendary",
+      "weight": 700
+     }
+    ]
+   },
+   "crusadershield": {
+    "label": "성전사 방패",
+    "items": [
+     {
+      "name": "군마 방패",
+      "nameEn": "Shield of the Steed",
+      "quality": "set",
+      "weight": 100
+     },
+     {
+      "name": "그 외",
+      "nameEn": "others",
+      "quality": "legendary",
+      "weight": 1000
+     }
+    ]
+   },
+   "helm": {
+    "label": "투구",
+    "items": [
+     {
+      "name": "용기의 왕관",
+      "nameEn": "Crown of Valor",
+      "quality": "set",
+      "weight": 100
+     },
+     {
+      "name": "그 외",
+      "nameEn": "others",
+      "quality": "legendary",
+      "weight": 1000
+     }
+    ]
+   },
+   "bracers": {
+    "label": "손목 방어구",
+    "items": [
+     {
+      "name": "왈제치언 팔 보호구",
+      "nameEn": "Warzechian Armguards",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "그 외",
+      "nameEn": "others",
+      "quality": "legendary",
+      "weight": 1200
+     }
+    ]
+   }
+  },
+  "wizard": {
+   "_doc": "마법사 희귀 업그레이드 풀: d3recipes(FNGarvin) S40 data.json slots[].pools[Wizard](2026-11-12). 종류별 합 − 세팅 아이템 = '그 외'. 확률 = 가중치/합",
+   "helm": {
+    "label": "투구",
+    "items": [
+     {
+      "name": "불새의 깃털모",
+      "nameEn": "Firebird's Plume",
+      "quality": "set",
+      "weight": 100
+     },
+     {
+      "name": "그 외",
+      "nameEn": "others",
+      "quality": "legendary",
+      "weight": 1000
+     }
+    ]
+   },
+   "shoulders": {
+    "label": "어깨 방어구",
+    "items": [
+     {
+      "name": "불새의 날개깃",
+      "nameEn": "Firebird's Pinions",
+      "quality": "set",
+      "weight": 100
+     },
+     {
+      "name": "그 외",
+      "nameEn": "others",
+      "quality": "legendary",
+      "weight": 700
+     }
+    ]
+   },
+   "chestarmor": {
+    "label": "가슴 방어구",
+    "items": [
+     {
+      "name": "독수리 흉갑",
+      "nameEn": "Aquila Cuirass",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "불새의 가슴",
+      "nameEn": "Firebird's Breast",
+      "quality": "set",
+      "weight": 100
+     },
+     {
+      "name": "그 외",
+      "nameEn": "others",
+      "quality": "legendary",
+      "weight": 1100
+     }
+    ]
+   },
+   "gloves": {
+    "label": "장갑",
+    "items": [
+     {
+      "name": "불새의 발톱",
+      "nameEn": "Firebird's Talons",
+      "quality": "set",
+      "weight": 100
+     },
+     {
+      "name": "그 외",
+      "nameEn": "others",
+      "quality": "legendary",
+      "weight": 975
+     }
+    ]
+   },
+   "pants": {
+    "label": "바지",
+    "items": [
+     {
+      "name": "불새의 하의",
+      "nameEn": "Firebird's Down",
+      "quality": "set",
+      "weight": 100
+     },
+     {
+      "name": "그 외",
+      "nameEn": "others",
+      "quality": "legendary",
+      "weight": 800
+     }
+    ]
+   },
+   "ring": {
+    "label": "반지",
+    "items": [
+     {
+      "name": "눈동자 반지",
+      "nameEn": "Oculus Ring",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "나침도",
+      "nameEn": "The Compass Rose",
+      "quality": "set",
+      "weight": 100
+     },
+     {
+      "name": "집중",
+      "nameEn": "Focus",
+      "quality": "set",
+      "weight": 100
+     },
+     {
+      "name": "자제",
+      "nameEn": "Restraint",
+      "quality": "set",
+      "weight": 100
+     },
+     {
+      "name": "원소의 회동",
+      "nameEn": "Convention of Elements",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "그 외",
+      "nameEn": "others",
+      "quality": "legendary",
+      "weight": 1975
+     }
+    ]
+   },
+   "amulet": {
+    "label": "목걸이",
+    "items": [
+     {
+      "name": "시간의 향취",
+      "nameEn": "The Flavor of Time",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "론달의 정표",
+      "nameEn": "Rondal's Locket",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "모험가의 서약",
+      "nameEn": "The Traveler's Pledge",
+      "quality": "set",
+      "weight": 100
+     },
+     {
+      "name": "꼬맹이의 목걸이",
+      "nameEn": "Squirt's Necklace",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "그 외",
+      "nameEn": "others",
+      "quality": "legendary",
+      "weight": 1250
+     }
+    ]
+   },
+   "wand": {
+    "label": "마법봉",
+    "items": [
+     {
+      "name": "운명의 파편",
+      "nameEn": "Fragment of Destiny",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "그 외",
+      "nameEn": "others",
+      "quality": "legendary",
+      "weight": 875
+     }
+    ]
+   },
+   "source": {
+    "label": "마력원",
+    "items": [
+     {
+      "name": "불새의 눈",
+      "nameEn": "Firebird's Eye",
+      "quality": "set",
+      "weight": 100
+     },
+     {
+      "name": "그 외",
+      "nameEn": "others",
+      "quality": "legendary",
+      "weight": 1100
+     }
+    ]
+   },
+   "bracers": {
+    "label": "손목 방어구",
+    "items": [
+     {
+      "name": "천벌의 손목 방어구",
+      "nameEn": "Nemesis Bracers",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "팔씨름",
+      "nameEn": "Strongarm Bracers",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "그 외",
+      "nameEn": "others",
+      "quality": "legendary",
+      "weight": 800
+     }
+    ]
+   },
+   "dagger": {
+    "label": "단도",
+    "items": [
+     {
+      "name": "멧돼지사냥꾼의 손칼",
+      "nameEn": "Pig Sticker",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "그 외",
+      "nameEn": "others",
+      "quality": "legendary",
+      "weight": 200
+     }
+    ]
+   },
+   "sword": {
+    "label": "도검",
+    "items": [
+     {
+      "name": "인검",
+      "nameEn": "In-geom",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "실라리아의 선물",
+      "nameEn": "Gift of Silaria",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "그 외",
+      "nameEn": "others",
+      "quality": "legendary",
+      "weight": 1300
+     }
+    ]
+   }
+  },
+  "barbarian": {
+   "_doc": "야만용사 희귀 업그레이드 풀: d3recipes S40 pools[Barbarian](2026-11-13). 확률 = 가중치/합",
+   "helm": {
+    "label": "투구",
+    "items": [
+     {
+      "name": "래코르의 의지",
+      "nameEn": "Raekor's Will",
+      "quality": "set",
+      "weight": 100
+     },
+     {
+      "name": "그 외",
+      "nameEn": "others",
+      "quality": "legendary",
+      "weight": 1000
+     }
+    ]
+   },
+   "shoulders": {
+    "label": "어깨 방어구",
+    "items": [
+     {
+      "name": "래코르의 짐",
+      "nameEn": "Raekor's Burden",
+      "quality": "set",
+      "weight": 100
+     },
+     {
+      "name": "그 외",
+      "nameEn": "others",
+      "quality": "legendary",
+      "weight": 900
+     }
+    ]
+   },
+   "chestarmor": {
+    "label": "가슴 방어구",
+    "items": [
+     {
+      "name": "래코르의 심장",
+      "nameEn": "Raekor's Heart",
+      "quality": "set",
+      "weight": 100
+     },
+     {
+      "name": "그 외",
+      "nameEn": "others",
+      "quality": "legendary",
+      "weight": 1200
+     }
+    ]
+   },
+   "gloves": {
+    "label": "장갑",
+    "items": [
+     {
+      "name": "래코르의 손목 싸개",
+      "nameEn": "Raekor's Wraps",
+      "quality": "set",
+      "weight": 100
+     },
+     {
+      "name": "그 외",
+      "nameEn": "others",
+      "quality": "legendary",
+      "weight": 975
+     }
+    ]
+   },
+   "bracers": {
+    "label": "손목 방어구",
+    "items": [
+     {
+      "name": "팔씨름",
+      "nameEn": "Strongarm Bracers",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "그 외",
+      "nameEn": "others",
+      "quality": "legendary",
+      "weight": 1200
+     }
+    ]
+   },
+   "mightybelt": {
+    "label": "거대 허리띠",
+    "items": [
+     {
+      "name": "카시우스의 자긍심",
+      "nameEn": "Pride of Cassius",
+      "quality": "legendary",
+      "weight": 75
+     },
+     {
+      "name": "그 외",
+      "nameEn": "others",
+      "quality": "legendary",
+      "weight": 600
+     }
+    ]
+   },
+   "pants": {
+    "label": "바지",
+    "items": [
+     {
+      "name": "래코르의 바지",
+      "nameEn": "Raekor's Breeches",
+      "quality": "set",
+      "weight": 100
+     },
+     {
+      "name": "그 외",
+      "nameEn": "others",
+      "quality": "legendary",
+      "weight": 800
+     }
+    ]
+   },
+   "boots": {
+    "label": "장화",
+    "items": [
+     {
+      "name": "래코르의 성큼 장화",
+      "nameEn": "Raekor's Striders",
+      "quality": "set",
+      "weight": 100
+     },
+     {
+      "name": "그 외",
+      "nameEn": "others",
+      "quality": "legendary",
+      "weight": 900
+     }
+    ]
+   },
+   "ring": {
+    "label": "반지",
+    "items": [
+     {
+      "name": "황도궁의 흑요석 반지",
+      "nameEn": "Obsidian Ring of the Zodiac",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "눈동자 반지",
+      "nameEn": "Oculus Ring",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "그 외",
+      "nameEn": "others",
+      "quality": "legendary",
+      "weight": 2150
+     }
+    ]
+   },
+   "amulet": {
+    "label": "목걸이",
+    "items": [
+     {
+      "name": "시간의 향취",
+      "nameEn": "The Flavor of Time",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "론달의 정표",
+      "nameEn": "Rondal's Locket",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "그 외",
+      "nameEn": "others",
+      "quality": "legendary",
+      "weight": 1250
+     }
+    ]
+   },
+   "dagger": {
+    "label": "단도",
+    "items": [
+     {
+      "name": "멧돼지사냥꾼의 손칼",
+      "nameEn": "Pig Sticker",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "그 외",
+      "nameEn": "others",
+      "quality": "legendary",
+      "weight": 100
+     }
+    ]
+   },
+   "sword": {
+    "label": "도검",
+    "items": [
+     {
+      "name": "인검",
+      "nameEn": "In-geom",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "실라리아의 선물",
+      "nameEn": "Gift of Silaria",
+      "quality": "legendary",
+      "weight": 100
+     },
+     {
+      "name": "그 외",
+      "nameEn": "others",
+      "quality": "legendary",
+      "weight": 1350
+     }
+    ]
+   }
+  }
+ }
+}

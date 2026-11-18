@@ -1,0 +1,5682 @@
+{
+ "items": [
+  {
+   "id": "shadows_mask",
+   "name": "어둠의 가면",
+   "nameEn": "The Shadow's Mask",
+   "slot": "head",
+   "quality": "set",
+   "icon": "icons/head.png",
+   "iconRaw": "icons/raw_shadows_mask.png",
+   "iconTone": "icons/tone_shadows_mask.png",
+   "iconSize": [
+    64,
+    128
+   ],
+   "iconBox": [
+    2,
+    18,
+    63,
+    106
+   ],
+   "iconSrc": "https://assets.diablo3.blizzard.com/d3/icons/items/large/unique_helm_set_14_x1_demonhunter_male.png",
+   "fixed": [
+    {
+     "affix": "socket",
+     "n": 1
+    },
+    {
+     "affix": "dex",
+     "variable": "stat"
+    }
+   ],
+   "randomPrimary": 2,
+   "src": "https://kr.diablo3.blizzard.com/ko-kr/item/the-shadows-mask-Unique_Helm_Set_14_x1",
+   "secResistP": 0,
+   "set": "어둠의 어깨걸이",
+   "type": "helm",
+   "secPicks": 2,
+   "secP": {
+    "resone": 0.6635
+   },
+   "secDist": {
+    "resone": {
+     "": 0.33652,
+     "resone": 0.66348
+    }
+   }
+  },
+  {
+   "id": "shadows_burden",
+   "name": "어둠의 짐",
+   "nameEn": "The Shadow's Burden",
+   "slot": "shoulders",
+   "quality": "set",
+   "icon": "icons/shoulders.png",
+   "iconRaw": "icons/raw_shadows_burden.png",
+   "iconTone": "icons/tone_shadows_burden.png",
+   "iconSize": [
+    64,
+    128
+   ],
+   "iconBox": [
+    3,
+    31,
+    63,
+    100
+   ],
+   "iconSrc": "https://assets.diablo3.blizzard.com/d3/icons/items/large/unique_shoulder_set_14_x1_demonhunter_male.png",
+   "fixed": [
+    {
+     "affix": "allres"
+    },
+    {
+     "affix": "dex",
+     "variable": "stat"
+    }
+   ],
+   "randomPrimary": 2,
+   "src": "https://kr.diablo3.blizzard.com/ko-kr/item/the-shadows-burden-Unique_Shoulder_Set_14_x1",
+   "secResistP": 0,
+   "set": "어둠의 어깨걸이",
+   "type": "shoulders",
+   "secPicks": 2,
+   "secP": {
+    "resone": 0.6676
+   },
+   "secDist": {
+    "resone": {
+     "": 0.332421,
+     "resone": 0.667579
+    }
+   }
+  },
+  {
+   "id": "shadows_bane",
+   "name": "어둠의 파멸",
+   "nameEn": "The Shadow's Bane",
+   "slot": "chest",
+   "quality": "set",
+   "icon": "icons/chest.png",
+   "iconRaw": "icons/raw_shadows_bane_female.png",
+   "iconTone": "icons/tone_shadows_bane_female.png",
+   "iconSize": [
+    82,
+    164
+   ],
+   "iconBox": [
+    2,
+    27,
+    80,
+    146
+   ],
+   "iconSrc": "https://assets.diablo3.blizzard.com/d3/icons/items/large/unique_chest_set_14_x1_demonhunter_female.png",
+   "fixed": [
+    {
+     "affix": "socket",
+     "n": 3
+    },
+    {
+     "affix": "dex",
+     "variable": "stat"
+    }
+   ],
+   "randomPrimary": 2,
+   "src": "https://kr.diablo3.blizzard.com/ko-kr/item/the-shadows-bane-Unique_Chest_Set_14_x1",
+   "secResistP": 0.727,
+   "set": "어둠의 어깨걸이",
+   "type": "chestarmor",
+   "secPicks": 2,
+   "secP": {
+    "resone": 0.6054,
+    "mrdr": 0.2304,
+    "resone+mrdr": 0.067
+   },
+   "secDist": {
+    "resone+mrdr": {
+     "": 0.316972,
+     "resone": 0.538396,
+     "mrdr": 0.077583,
+     "resone+mrdr": 0.067049
+    },
+    "mrdr": {
+     "": 0.769637,
+     "mrdr": 0.230363
+    }
+   }
+  },
+  {
+   "id": "shadows_grasp",
+   "name": "어둠의 손아귀",
+   "nameEn": "The Shadow's Grasp",
+   "slot": "gloves",
+   "quality": "set",
+   "icon": "icons/gloves.png",
+   "iconRaw": "icons/raw_shadows_grasp.png",
+   "iconTone": "icons/tone_shadows_grasp.png",
+   "iconSize": [
+    64,
+    128
+   ],
+   "iconBox": [
+    6,
+    5,
+    62,
+    115
+   ],
+   "iconSrc": "https://assets.diablo3.blizzard.com/d3/icons/items/large/unique_gloves_set_14_x1_demonhunter_male.png",
+   "fixed": [
+    {
+     "affix": "chc"
+    },
+    {
+     "affix": "dex",
+     "variable": "stat"
+    }
+   ],
+   "randomPrimary": 2,
+   "src": "https://kr.diablo3.blizzard.com/ko-kr/item/the-shadows-grasp-Unique_Gloves_Set_14_x1",
+   "secResistP": 0,
+   "set": "어둠의 어깨걸이",
+   "type": "gloves",
+   "secPicks": 2,
+   "secP": {
+    "resone": 0.7075
+   },
+   "secDist": {
+    "resone": {
+     "": 0.292473,
+     "resone": 0.707527
+    }
+   }
+  },
+  {
+   "id": "shadows_coil",
+   "name": "어둠의 똬리 바지",
+   "nameEn": "The Shadow's Coil",
+   "slot": "pants",
+   "quality": "set",
+   "icon": "icons/pants.png",
+   "iconRaw": "icons/raw_shadows_coil.png",
+   "iconTone": "icons/tone_shadows_coil.png",
+   "iconSize": [
+    64,
+    128
+   ],
+   "iconBox": [
+    0,
+    15,
+    64,
+    109
+   ],
+   "iconSrc": "https://assets.diablo3.blizzard.com/d3/icons/items/large/unique_pants_set_14_x1_demonhunter_male.png",
+   "fixed": [
+    {
+     "affix": "socket",
+     "n": 2
+    },
+    {
+     "affix": "dex",
+     "variable": "stat"
+    }
+   ],
+   "randomPrimary": 2,
+   "src": "https://kr.diablo3.blizzard.com/ko-kr/item/the-shadows-coil-Unique_Pants_Set_14_x1",
+   "secResistP": 0.801,
+   "set": "어둠의 어깨걸이",
+   "type": "pants",
+   "secPicks": 2,
+   "secP": {
+    "resone": 0.6676
+   },
+   "secDist": {
+    "resone": {
+     "": 0.332421,
+     "resone": 0.667579
+    }
+   }
+  },
+  {
+   "id": "shadows_heels",
+   "name": "어둠의 뾰족구두",
+   "nameEn": "The Shadow's Heels",
+   "slot": "boots",
+   "quality": "set",
+   "icon": "icons/boots.png",
+   "iconRaw": "icons/raw_shadows_heels.png",
+   "iconTone": "icons/tone_shadows_heels.png",
+   "iconSize": [
+    64,
+    128
+   ],
+   "iconBox": [
+    4,
+    26,
+    59,
+    105
+   ],
+   "iconSrc": "https://assets.diablo3.blizzard.com/d3/icons/items/large/unique_boots_set_14_x1_demonhunter_male.png",
+   "fixed": [
+    {
+     "affix": "vit"
+    },
+    {
+     "affix": "dex",
+     "variable": "stat"
+    }
+   ],
+   "randomPrimary": 2,
+   "src": "https://kr.diablo3.blizzard.com/ko-kr/item/the-shadows-heels-Unique_Boots_Set_14_x1",
+   "secResistP": 0,
+   "set": "어둠의 어깨걸이",
+   "type": "boots",
+   "secPicks": 2,
+   "secP": {
+    "resone": 0.6676
+   },
+   "secDist": {
+    "resone": {
+     "": 0.332421,
+     "resone": 0.667579
+    }
+   }
+  },
+  {
+   "id": "focus",
+   "name": "집중",
+   "nameEn": "Focus",
+   "slot": "ring",
+   "quality": "set",
+   "icon": "icons/ring.png",
+   "iconRaw": "icons/raw_focus.png",
+   "iconTone": "icons/tone_focus.png",
+   "iconSize": [
+    64,
+    64
+   ],
+   "iconBox": [
+    13,
+    16,
+    47,
+    51
+   ],
+   "iconSrc": "https://assets.diablo3.blizzard.com/d3/icons/items/large/unique_ring_set_001_x1_demonhunter_male.png",
+   "fixed": [
+    {
+     "affix": "socket",
+     "n": 1,
+     "special": true
+    },
+    {
+     "affix": "dex",
+     "variable": "stat"
+    }
+   ],
+   "randomPrimary": 2,
+   "src": "https://kr.diablo3.blizzard.com/ko-kr/item/focus-Unique_Ring_Set_001_x1",
+   "secResistP": 0,
+   "set": "의지의 철벽",
+   "type": "ring",
+   "secPicks": 2,
+   "secP": {
+    "resone": 0.6579
+   },
+   "secDist": {
+    "resone": {
+     "": 0.342137,
+     "resone": 0.657863
+    }
+   },
+   "dropShare": {
+    "DemonHunter": 0.04210526,
+    "Barbarian": 0.04255319,
+    "Wizard": 0.04040404,
+    "WitchDoctor": 0.03883495,
+    "Monk": 0.04395604,
+    "Crusader": 0.04395604,
+    "Necromancer": 0.04081633
+   }
+  },
+  {
+   "id": "restraint",
+   "name": "자제",
+   "nameEn": "Restraint",
+   "slot": "ring",
+   "quality": "set",
+   "icon": "icons/restraint.jpg",
+   "iconRaw": "icons/raw_restraint.png",
+   "iconTone": "icons/tone_restraint.png",
+   "iconSize": [
+    64,
+    64
+   ],
+   "iconBox": [
+    16,
+    16,
+    47,
+    51
+   ],
+   "iconSrc": "https://assets.diablo3.blizzard.com/d3/icons/items/large/unique_ring_set_002_x1_demonhunter_male.png",
+   "fixed": [
+    {
+     "affix": "socket",
+     "n": 1,
+     "special": true
+    },
+    {
+     "affix": "dex",
+     "variable": "stat"
+    }
+   ],
+   "randomPrimary": 2,
+   "src": "https://kr.diablo3.blizzard.com/ko-kr/item/restraint-Unique_Ring_Set_002_x1",
+   "secResistP": 0,
+   "set": "의지의 철벽",
+   "type": "ring",
+   "secPicks": 2,
+   "secP": {
+    "resone": 0.6579
+   },
+   "secDist": {
+    "resone": {
+     "": 0.342137,
+     "resone": 0.657863
+    }
+   },
+   "dropShare": {
+    "DemonHunter": 0.04210526,
+    "Barbarian": 0.04255319,
+    "Wizard": 0.04040404,
+    "WitchDoctor": 0.03883495,
+    "Monk": 0.04395604,
+    "Crusader": 0.04395604,
+    "Necromancer": 0.04081633
+   }
+  },
+  {
+   "id": "squirts",
+   "name": "꼬맹이의 목걸이",
+   "nameEn": "Squirt's Necklace",
+   "slot": "amulet",
+   "quality": "legendary",
+   "icon": "icons/amulet.png",
+   "iconRaw": "icons/raw_squirts.png",
+   "iconTone": "icons/tone_squirts.png",
+   "iconSize": [
+    64,
+    64
+   ],
+   "iconBox": [
+    2,
+    3,
+    61,
+    62
+   ],
+   "iconSrc": "https://assets.diablo3.blizzard.com/d3/icons/items/large/p66_unique_amulet_010_demonhunter_male.png",
+   "fixed": [
+    {
+     "affix": "chd"
+    },
+    {
+     "affix": "dex",
+     "variable": "stat"
+    }
+   ],
+   "randomPrimary": 2,
+   "src": "https://kr.diablo3.blizzard.com/ko-kr/item/squirts-necklace-P66_Unique_Amulet_010",
+   "secResistP": 0,
+   "power": "피해를 받지 않는 동안, 공격력이 최대 100% 증가하고 받는 피해가 최대 50% 증가",
+   "secondaryFixed": [
+    "적에게서 얻는 금화 +80%"
+   ],
+   "type": "amulet",
+   "secPicks": 1,
+   "secP": {
+    "resone": 0.4,
+    "mrdr": 0.1231
+   },
+   "secDist": {
+    "resone": {
+     "": 0.6,
+     "resone": 0.4
+    },
+    "mrdr": {
+     "": 0.876923,
+     "mrdr": 0.123077
+    }
+   },
+   "dropShare": {
+    "DemonHunter": 0.06896552,
+    "Barbarian": 0.06896552,
+    "Wizard": 0.06060606,
+    "WitchDoctor": 0.06896552,
+    "Monk": 0.06060606,
+    "Crusader": 0.06557377,
+    "Necromancer": 0.05797101
+   }
+  },
+  {
+   "id": "karlei",
+   "name": "카를레이의 주장",
+   "nameEn": "Karlei's Point",
+   "slot": "weapon",
+   "quality": "legendary",
+   "icon": "icons/weapon.png",
+   "iconRaw": "icons/raw_karlei.png",
+   "iconTone": "icons/tone_karlei.png",
+   "iconSize": [
+    64,
+    128
+   ],
+   "iconBox": [
+    3,
+    0,
+    62,
+    128
+   ],
+   "iconSrc": "https://assets.diablo3.blizzard.com/d3/icons/items/large/p61_unique_dagger_101_x1_demonhunter_male.png",
+   "fixed": [
+    {
+     "affix": "wdmg",
+     "elem": "cold",
+     "special": true
+    },
+    {
+     "affix": "dex",
+     "variable": "stat"
+    }
+   ],
+   "randomPrimary": 2,
+   "src": "https://kr.diablo3.blizzard.com/ko-kr/item/karleis-point-P61_Unique_Dagger_101_x1",
+   "secResistP": 0,
+   "baseDamage": [
+    107,
+    321
+   ],
+   "power": "투검의 공격력이 375% 증가하고, 이미 투검이 적중한 적에게 투검이 적중하면 15의 증오가 반환됨 (악마사냥꾼 전용)",
+   "_doc": "초당 공격력 = (기본 107~321 + 냉기 공격력 롤) × (1+피해%) 의 평균 × 1.5 × (1+공속). maxroll 플래너 원시: 1619~2223, 2881.7 DPS 로 검산",
+   "type": "dagger",
+   "powerRoll": [
+    300,
+    375
+   ],
+   "powerKind": "dmg"
+  },
+  {
+   "id": "holy_point_shot",
+   "name": "성스러운 살상",
+   "nameEn": "Holy Point Shot",
+   "slot": "quiver",
+   "quality": "legendary",
+   "icon": "icons/quiver.png",
+   "iconRaw": "icons/raw_holy_point_shot.png",
+   "iconTone": "icons/tone_holy_point_shot.png",
+   "iconSize": [
+    64,
+    128
+   ],
+   "iconBox": [
+    7,
+    19,
+    55,
+    111
+   ],
+   "iconSrc": "https://assets.diablo3.blizzard.com/d3/icons/items/large/p69_unique_quiver_004_demonhunter_male.png",
+   "fixed": [
+    {
+     "affix": "dex"
+    },
+    {
+     "affix": "ias"
+    },
+    {
+     "affix": "elem",
+     "variable": "elem"
+    }
+   ],
+   "randomPrimary": 2,
+   "src": "https://kr.diablo3.blizzard.com/ko-kr/item/holy-point-shot-P69_Unique_Quiver_004",
+   "secResistP": 0,
+   "power": "투검이 검 2개 추가 투척 및 공격력 100% 증가 (악마사냥꾼 전용)",
+   "_doc": "주요 5칸: 민첩·공속 고정 + 속성 피해(가변: 직업 속성 중 1개) + 무작위 2. 가이드는 '무작위 +4' = 주요 2 + 보조 2",
+   "type": "quiver",
+   "powerRoll": [
+    75,
+    100
+   ],
+   "powerKind": "dmg"
+  },
+  {
+   "id": "guardians_case",
+   "name": "수호자의 칼집 허리띠",
+   "nameEn": "Guardian's Case",
+   "slot": "belt",
+   "quality": "set",
+   "icon": "icons/belt.png",
+   "iconRaw": "icons/raw_guardians_case.png",
+   "iconTone": "icons/tone_guardians_case.png",
+   "iconSize": [
+    64,
+    64
+   ],
+   "iconBox": [
+    2,
+    22,
+    63,
+    43
+   ],
+   "iconSrc": "https://assets.diablo3.blizzard.com/d3/icons/items/large/p74_unique_belt_013_demonhunter_male.png",
+   "fixed": [],
+   "randomPrimary": 4,
+   "src": "https://kr.diablo3.blizzard.com/ko-kr/artisan/blacksmith/recipe/guardians-case",
+   "secResistP": 0,
+   "set": "수호자의 위기",
+   "crafted": {
+    "crystal": 30,
+    "_doc": "수정 30 + 부품 20 + 가루 20 + 현상금 재료 2 + 72,000골드"
+   },
+   "type": "belt",
+   "secPicks": 2,
+   "secP": {
+    "resone": 0.6676
+   },
+   "secDist": {
+    "resone": {
+     "": 0.332421,
+     "resone": 0.667579
+    }
+   }
+  },
+  {
+   "id": "guardians_aversion",
+   "name": "수호자의 반감",
+   "nameEn": "Guardian's Aversion",
+   "slot": "bracers",
+   "quality": "set",
+   "icon": "icons/bracers.png",
+   "iconRaw": "icons/raw_guardians_aversion.png",
+   "iconTone": "icons/tone_guardians_aversion.png",
+   "iconSize": [
+    64,
+    128
+   ],
+   "iconBox": [
+    9,
+    24,
+    54,
+    103
+   ],
+   "iconSrc": "https://assets.diablo3.blizzard.com/d3/icons/items/large/p74_unique_bracer_010_demonhunter_male.png",
+   "fixed": [],
+   "randomPrimary": 4,
+   "src": "https://kr.diablo3.blizzard.com/ko-kr/artisan/blacksmith/recipe/guardians-aversion",
+   "secResistP": 0,
+   "set": "수호자의 위기",
+   "crafted": {
+    "crystal": 30
+   },
+   "type": "bracers",
+   "secPicks": 2,
+   "secP": {
+    "resone": 0.6734,
+    "mrdr": 0.3186,
+    "resone+mrdr": 0.1018
+   },
+   "secDist": {
+    "resone+mrdr": {
+     "": 0.243476,
+     "resone": 0.571653,
+     "mrdr": 0.083121,
+     "resone+mrdr": 0.10175
+    },
+    "mrdr": {
+     "": 0.681407,
+     "mrdr": 0.318593
+    }
+   }
+  },
+  {
+   "id": "crimson_girdle",
+   "name": "크림슨 선장의 비단 요대",
+   "nameEn": "Captain Crimson's Silk Girdle",
+   "slot": "belt",
+   "quality": "set",
+   "icon": "icons/belt_crimson.jpg",
+   "iconRaw": "icons/raw_crimson_girdle.png",
+   "iconTone": "icons/tone_crimson_girdle.png",
+   "iconSize": [
+    64,
+    64
+   ],
+   "iconBox": [
+    0,
+    20,
+    64,
+    59
+   ],
+   "iconSrc": "https://assets.diablo3.blizzard.com/d3/icons/items/large/p66_unique_belt_012_demonhunter_male.png",
+   "fixed": [],
+   "randomPrimary": 4,
+   "src": "https://kr.diablo3.blizzard.com/ko-kr/artisan/blacksmith/recipe/captain-crimsons-silk-girdle",
+   "secResistP": 0.801,
+   "set": "크림슨 선장의 장식",
+   "crafted": {
+    "crystal": 50,
+    "_doc": "수정 50 + 부품 30 + 가루 30 + 숨결 1 + 현상금 재료 1 + 72,000골드"
+   },
+   "type": "belt",
+   "secPicks": 2,
+   "secP": {
+    "resone": 0.6676
+   },
+   "secDist": {
+    "resone": {
+     "": 0.332421,
+     "resone": 0.667579
+    }
+   }
+  },
+  {
+   "id": "crimson_whalers",
+   "name": "크림슨 선장의 고무 장화",
+   "nameEn": "Captain Crimson's Whalers",
+   "slot": "boots",
+   "quality": "set",
+   "icon": "icons/boots_crimson.jpg",
+   "iconRaw": "icons/raw_crimson_whalers.png",
+   "iconTone": "icons/tone_crimson_whalers.png",
+   "iconSize": [
+    64,
+    128
+   ],
+   "iconBox": [
+    6,
+    35,
+    63,
+    101
+   ],
+   "iconSrc": "https://assets.diablo3.blizzard.com/d3/icons/items/large/unique_boots_017_1xx_demonhunter_male.png",
+   "fixed": [],
+   "randomPrimary": 4,
+   "src": "https://kr.diablo3.blizzard.com/ko-kr/artisan/blacksmith/recipe/captain-crimsons-whalers",
+   "secResistP": 0.801,
+   "set": "크림슨 선장의 장식",
+   "crafted": {
+    "crystal": 50,
+    "_doc": "바지와 같은 제작 비용으로 가정"
+   },
+   "type": "boots",
+   "secP": {
+    "pickup": 0.5176,
+    "globe": 0.3742,
+    "resphys": 0.1335,
+    "resone": 0.6676
+   },
+   "secPicks": 2,
+   "secDist": {
+    "resone": {
+     "": 0.332421,
+     "resone": 0.667579
+    }
+   }
+  },
+  {
+   "id": "crimson_thrust",
+   "name": "크림슨 선장의 추진력",
+   "nameEn": "Captain Crimson's Thrust",
+   "slot": "pants",
+   "quality": "set",
+   "icon": "icons/pants_crimson.jpg",
+   "iconRaw": "icons/raw_crimson_thrust.png",
+   "iconTone": "icons/tone_crimson_thrust.png",
+   "iconSize": [
+    64,
+    128
+   ],
+   "iconBox": [
+    2,
+    22,
+    62,
+    101
+   ],
+   "iconSrc": "https://assets.diablo3.blizzard.com/d3/icons/items/large/p66_unique_pants_012_demonhunter_male.png",
+   "fixed": [],
+   "randomPrimary": 4,
+   "src": "https://kr.diablo3.blizzard.com/ko-kr/artisan/blacksmith/recipe/captain-crimsons-thrust",
+   "secResistP": 0.801,
+   "set": "크림슨 선장의 장식",
+   "crafted": {
+    "crystal": 50
+   },
+   "type": "pants",
+   "secP": {
+    "pickup": 0.5176,
+    "resphys": 0.1335
+   }
+  },
+  {
+   "id": "wraps_of_clarity",
+   "name": "명료의 손목싸개",
+   "nameEn": "Wraps of Clarity",
+   "slot": "bracers",
+   "quality": "legendary",
+   "icon": "icons/bracers_clarity.jpg",
+   "iconRaw": "icons/raw_wraps_of_clarity.png",
+   "iconTone": "icons/tone_wraps_of_clarity.png",
+   "iconSize": [
+    64,
+    128
+   ],
+   "iconBox": [
+    3,
+    21,
+    57,
+    110
+   ],
+   "iconSrc": "https://assets.diablo3.blizzard.com/d3/icons/items/large/p61_unique_bracer_103_demonhunter_male.png",
+   "fixed": [
+    {
+     "affix": "chc"
+    },
+    {
+     "affix": "dex",
+     "variable": "stat"
+    }
+   ],
+   "randomPrimary": 2,
+   "src": "https://kr.diablo3.blizzard.com/ko-kr/item/wraps-of-clarity-P61_Unique_Bracer_103",
+   "secResistP": 0,
+   "power": "증오 생성 기술 사용 후 5초 동안 받는 피해 50% 감소 (악마사냥꾼 전용)",
+   "type": "bracers",
+   "powerRoll": [
+    40,
+    50
+   ],
+   "powerKind": "dr",
+   "secPicks": 1,
+   "secP": {
+    "resone": 0.4464,
+    "mrdr": 0.1538
+   },
+   "secDist": {
+    "resone": {
+     "": 0.553572,
+     "resone": 0.446428
+    },
+    "mrdr": {
+     "": 0.846154,
+     "mrdr": 0.153846
+    }
+   }
+  },
+  {
+   "id": "mantle_of_channeling",
+   "name": "집중의 어깨걸이",
+   "nameEn": "Mantle of Channeling",
+   "slot": "shoulders",
+   "quality": "legendary",
+   "icon": "icons/shoulders_channeling.jpg",
+   "iconRaw": "icons/raw_mantle_of_channeling.png",
+   "iconTone": "icons/tone_mantle_of_channeling.png",
+   "iconSize": [
+    64,
+    128
+   ],
+   "iconBox": [
+    1,
+    20,
+    61,
+    97
+   ],
+   "iconSrc": "https://assets.diablo3.blizzard.com/d3/icons/items/large/p4_unique_shoulder_103_demonhunter_male.png",
+   "fixed": [
+    {
+     "affix": "vit"
+    },
+    {
+     "affix": "dex",
+     "variable": "stat"
+    }
+   ],
+   "randomPrimary": 2,
+   "src": "https://kr.diablo3.blizzard.com/ko-kr/item/mantle-of-channeling-P4_Unique_Shoulder_103",
+   "secResistP": 0,
+   "power": "피 흡수, 소용돌이, 연발 사격, 난사, 폭풍 질주, 불박쥐, 비전 격류, 파열, 서리 광선을 시전하는 동안 공격력 25% 증가 및 받는 피해 25% 감소",
+   "type": "shoulders",
+   "powerRoll": [
+    20,
+    25
+   ],
+   "powerKind": "dmg",
+   "secPicks": 1,
+   "secP": {
+    "resone": 0.4386
+   },
+   "secDist": {
+    "resone": {
+     "": 0.561403,
+     "resone": 0.438597
+    }
+   },
+   "dropShare": {
+    "DemonHunter": 0.125,
+    "Barbarian": 0.1,
+    "Wizard": 0.125,
+    "WitchDoctor": 0.125,
+    "Monk": 0.11111111,
+    "Crusader": 0.0,
+    "Necromancer": 0.09302326
+   }
+  },
+  {
+   "id": "accursed_visage",
+   "name": "저주받은 얼굴",
+   "nameEn": "Accursed Visage",
+   "slot": "head",
+   "quality": "set",
+   "icon": "icons/raw_accursed_visage.png",
+   "iconRaw": "icons/raw_accursed_visage.png",
+   "iconTone": "icons/tone_accursed_visage.png",
+   "iconSize": [
+    64,
+    128
+   ],
+   "iconBox": [
+    3,
+    1,
+    62,
+    127
+   ],
+   "iconSrc": "https://assets.diablo3.blizzard.com/d3/icons/items/large/unique_helm_set_03_p2_demonhunter_male.png",
+   "fixed": [
+    {
+     "affix": "socket",
+     "n": 1
+    },
+    {
+     "affix": "dex",
+     "variable": "stat"
+    }
+   ],
+   "randomPrimary": 2,
+   "src": "https://kr.diablo3.blizzard.com/ko-kr/item/accursed-visage-Unique_Helm_Set_03_p2",
+   "secResistP": 0,
+   "set": "부정한 정수",
+   "type": "helm",
+   "secPicks": 2,
+   "secP": {
+    "resone": 0.6635
+   },
+   "secDist": {
+    "resone": {
+     "": 0.33652,
+     "resone": 0.66348
+    }
+   }
+  },
+  {
+   "id": "unsanctified_shoulders",
+   "name": "신성화되지 않은 견갑",
+   "nameEn": "Unsanctified Shoulders",
+   "slot": "shoulders",
+   "quality": "set",
+   "icon": "icons/raw_unsanctified_shoulders.png",
+   "iconRaw": "icons/raw_unsanctified_shoulders.png",
+   "iconTone": "icons/tone_unsanctified_shoulders.png",
+   "iconSize": [
+    64,
+    128
+   ],
+   "iconBox": [
+    0,
+    19,
+    62,
+    118
+   ],
+   "iconSrc": "https://assets.diablo3.blizzard.com/d3/icons/items/large/unique_shoulder_set_03_p2_demonhunter_male.png",
+   "fixed": [
+    {
+     "affix": "allres"
+    },
+    {
+     "affix": "dex",
+     "variable": "stat"
+    }
+   ],
+   "randomPrimary": 2,
+   "src": "https://kr.diablo3.blizzard.com/ko-kr/item/unsanctified-shoulders-Unique_Shoulder_Set_03_p2",
+   "secResistP": 0,
+   "set": "부정한 정수",
+   "type": "shoulders",
+   "secPicks": 2,
+   "secP": {
+    "resone": 0.6676
+   },
+   "secDist": {
+    "resone": {
+     "": 0.332421,
+     "resone": 0.667579
+    }
+   }
+  },
+  {
+   "id": "cage_hellborn",
+   "name": "지옥에서 벼려낸 철장",
+   "nameEn": "Cage of the Hellborn",
+   "slot": "chest",
+   "quality": "set",
+   "icon": "icons/raw_cage_hellborn.png",
+   "iconRaw": "icons/raw_cage_hellborn.png",
+   "iconTone": "icons/tone_cage_hellborn.png",
+   "iconSize": [
+    64,
+    128
+   ],
+   "iconBox": [
+    0,
+    7,
+    64,
+    122
+   ],
+   "iconSrc": "https://assets.diablo3.blizzard.com/d3/icons/items/large/unique_chest_set_03_p2_demonhunter_male.png",
+   "fixed": [
+    {
+     "affix": "socket",
+     "n": 3
+    },
+    {
+     "affix": "dex",
+     "variable": "stat"
+    }
+   ],
+   "randomPrimary": 2,
+   "src": "https://kr.diablo3.blizzard.com/ko-kr/item/cage-of-the-hellborn-Unique_Chest_Set_03_p2",
+   "secResistP": 0,
+   "set": "부정한 정수",
+   "type": "cloak",
+   "secP": {
+    "maxdisc": 0.6,
+    "resone": 0.5105,
+    "maxdisc+resone": 0.1947,
+    "mrdr": 0.1579,
+    "maxdisc+mrdr": 0.0675
+   },
+   "secPicks": 2,
+   "secDist": {
+    "maxdisc+resone": {
+     "": 0.220698,
+     "maxdisc": 0.268782,
+     "resone": 0.315869,
+     "maxdisc+resone": 0.19465
+    },
+    "maxdisc+mrdr": {
+     "": 0.296167,
+     "maxdisc": 0.545924,
+     "mrdr": 0.090363,
+     "maxdisc+mrdr": 0.067547
+    }
+   }
+  },
+  {
+   "id": "fiendish_grips",
+   "name": "기괴한 손 보호구",
+   "nameEn": "Fiendish Grips",
+   "slot": "gloves",
+   "quality": "set",
+   "icon": "icons/raw_fiendish_grips.png",
+   "iconRaw": "icons/raw_fiendish_grips.png",
+   "iconTone": "icons/tone_fiendish_grips.png",
+   "iconSize": [
+    64,
+    128
+   ],
+   "iconBox": [
+    5,
+    3,
+    58,
+    124
+   ],
+   "iconSrc": "https://assets.diablo3.blizzard.com/d3/icons/items/large/unique_gloves_set_03_p2_demonhunter_male.png",
+   "fixed": [
+    {
+     "affix": "chc"
+    },
+    {
+     "affix": "dex",
+     "variable": "stat"
+    }
+   ],
+   "randomPrimary": 2,
+   "src": "https://kr.diablo3.blizzard.com/ko-kr/item/fiendish-grips-Unique_Gloves_Set_03_p2",
+   "secResistP": 0,
+   "set": "부정한 정수",
+   "type": "gloves",
+   "secPicks": 2,
+   "secP": {
+    "resone": 0.7075
+   },
+   "secDist": {
+    "resone": {
+     "": 0.292473,
+     "resone": 0.707527
+    }
+   }
+  },
+  {
+   "id": "hell_walkers",
+   "name": "지옥걸이",
+   "nameEn": "Hell Walkers",
+   "slot": "boots",
+   "quality": "set",
+   "icon": "icons/raw_hell_walkers.png",
+   "iconRaw": "icons/raw_hell_walkers.png",
+   "iconTone": "icons/tone_hell_walkers.png",
+   "iconSize": [
+    64,
+    128
+   ],
+   "iconBox": [
+    1,
+    23,
+    63,
+    111
+   ],
+   "iconSrc": "https://assets.diablo3.blizzard.com/d3/icons/items/large/unique_boots_set_03_p2_demonhunter_male.png",
+   "fixed": [
+    {
+     "affix": "vit"
+    },
+    {
+     "affix": "dex",
+     "variable": "stat"
+    }
+   ],
+   "randomPrimary": 2,
+   "src": "https://kr.diablo3.blizzard.com/ko-kr/item/hell-walkers-Unique_Boots_Set_03_p2",
+   "secResistP": 0.801,
+   "set": "부정한 정수",
+   "type": "boots",
+   "secPicks": 2,
+   "secP": {
+    "resone": 0.6676
+   },
+   "secDist": {
+    "resone": {
+     "": 0.332421,
+     "resone": 0.667579
+    }
+   }
+  },
+  {
+   "id": "unholy_plates",
+   "name": "부정한 다리 판갑",
+   "nameEn": "Unholy Plates",
+   "slot": "pants",
+   "quality": "set",
+   "icon": "icons/raw_unholy_plates.png",
+   "iconRaw": "icons/raw_unholy_plates.png",
+   "iconTone": "icons/tone_unholy_plates.png",
+   "iconSize": [
+    64,
+    128
+   ],
+   "iconBox": [
+    0,
+    30,
+    64,
+    109
+   ],
+   "iconSrc": "https://assets.diablo3.blizzard.com/d3/icons/items/large/unique_pants_set_03_p2_demonhunter_male.png",
+   "fixed": [
+    {
+     "affix": "socket",
+     "n": 2
+    },
+    {
+     "affix": "dex",
+     "variable": "stat"
+    }
+   ],
+   "randomPrimary": 2,
+   "src": "https://kr.diablo3.blizzard.com/ko-kr/item/unholy-plates-Unique_Pants_Set_03_p2",
+   "secResistP": 0,
+   "set": "부정한 정수",
+   "type": "pants",
+   "secPicks": 2,
+   "secP": {
+    "resone": 0.6676
+   },
+   "secDist": {
+    "resone": {
+     "": 0.332421,
+     "resone": 0.667579
+    }
+   }
+  },
+  {
+   "id": "yangs_recurve",
+   "name": "양의 만곡궁",
+   "nameEn": "Yang's Recurve",
+   "slot": "weapon",
+   "quality": "legendary",
+   "icon": "icons/raw_yangs_recurve.png",
+   "iconRaw": "icons/raw_yangs_recurve.png",
+   "iconTone": "icons/tone_yangs_recurve.png",
+   "iconSize": [
+    64,
+    128
+   ],
+   "iconBox": [
+    14,
+    1,
+    52,
+    127
+   ],
+   "iconSrc": "https://assets.diablo3.blizzard.com/d3/icons/items/large/p61_unique_bow_104_x1_demonhunter_male.png",
+   "fixed": [
+    {
+     "affix": "wdmgBow",
+     "special": true
+    },
+    {
+     "affix": "dmgp"
+    },
+    {
+     "affix": "rcrYang"
+    },
+    {
+     "affix": "dex",
+     "variable": "stat"
+    }
+   ],
+   "randomPrimary": 1,
+   "src": "https://kr.diablo3.blizzard.com/ko-kr/item/yangs-recurve-P61_Unique_Bow_104_x1",
+   "secResistP": 0,
+   "baseDamage": [
+    143,
+    815
+   ],
+   "primaries": 5,
+   "type": "bow",
+   "secP": {
+    "maxdisc": 0.67
+   },
+   "power": "다발 사격의 공격 속도 50% 증가 및 공격력 200% 증가 (악마사냥꾼 전용)",
+   "powerRoll": [
+    150,
+    200
+   ],
+   "powerKind": "dmg",
+   "secPicks": 1,
+   "secDist": {
+    "maxdisc": {
+     "": 0.428571,
+     "maxdisc": 0.571429
+    }
+   }
+  },
+  {
+   "id": "dead_mans_legacy",
+   "name": "망자의 유산",
+   "nameEn": "Dead Man's Legacy",
+   "slot": "quiver",
+   "quality": "legendary",
+   "icon": "icons/raw_dead_mans_legacy.png",
+   "iconRaw": "icons/raw_dead_mans_legacy.png",
+   "iconTone": "icons/tone_dead_mans_legacy.png",
+   "iconSize": [
+    64,
+    128
+   ],
+   "iconBox": [
+    4,
+    5,
+    59,
+    122
+   ],
+   "iconSrc": "https://assets.diablo3.blizzard.com/d3/icons/items/large/p61_unique_quiver_007_demonhunter_male.png",
+   "fixed": [
+    {
+     "affix": "dex"
+    },
+    {
+     "affix": "ias"
+    },
+    {
+     "affix": "chc"
+    }
+   ],
+   "randomPrimary": 2,
+   "src": "https://kr.diablo3.blizzard.com/ko-kr/item/dead-mans-legacy-P61_Unique_Quiver_007",
+   "secResistP": 0,
+   "secP": {
+    "maxdisc": 0.68
+   },
+   "power": "생명력이 60% 미만인 적에게 다발 사격이 두 번 적중, 다발 사격의 공격력 200% 증가 (악마사냥꾼 전용)",
+   "type": "quiver",
+   "powerRoll": [
+    150,
+    200
+   ],
+   "powerKind": "dmg",
+   "secPicks": 1,
+   "secDist": {
+    "maxdisc": {
+     "": 0.5,
+     "maxdisc": 0.5
+    }
+   }
+  },
+  {
+   "id": "dystopian",
+   "name": "반이상향 고글",
+   "nameEn": "Dystopian Goggles",
+   "slot": "head",
+   "quality": "set",
+   "icon": "icons/raw_dystopian.png",
+   "iconRaw": "icons/raw_dystopian.png",
+   "iconTone": "icons/tone_dystopian.png",
+   "iconSize": [
+    64,
+    128
+   ],
+   "iconBox": [
+    4,
+    22,
+    61,
+    110
+   ],
+   "iconSrc": "https://assets.diablo3.blizzard.com/d3/icons/items/large/p69_unique_helm_set_06_demonhunter_male.png",
+   "fixed": [
+    {
+     "affix": "socket",
+     "n": 1
+    },
+    {
+     "affix": "dex",
+     "variable": "stat"
+    }
+   ],
+   "randomPrimary": 2,
+   "src": "https://kr.diablo3.blizzard.com/ko-kr/item/dystopian-goggles-P69_Unique_Helm_Set_06",
+   "secResistP": 0.796,
+   "set": "공포의 땅의 장비",
+   "secP": {
+    "pickup": 0.5083,
+    "ccred": 0.3667,
+    "resphys": 0.1327
+   },
+   "type": "helm"
+  },
+  {
+   "id": "mech_pauldrons",
+   "name": "기계 견갑",
+   "nameEn": "Mechanical Pauldrons",
+   "slot": "shoulders",
+   "quality": "set",
+   "icon": "icons/raw_mech_pauldrons.png",
+   "iconRaw": "icons/raw_mech_pauldrons.png",
+   "iconTone": "icons/tone_mech_pauldrons.png",
+   "iconSize": [
+    64,
+    128
+   ],
+   "iconBox": [
+    0,
+    34,
+    64,
+    96
+   ],
+   "iconSrc": "https://assets.diablo3.blizzard.com/d3/icons/items/large/p69_unique_shoulder_set_06_demonhunter_male.png",
+   "fixed": [
+    {
+     "affix": "allres"
+    },
+    {
+     "affix": "dex",
+     "variable": "stat"
+    }
+   ],
+   "randomPrimary": 2,
+   "src": "https://kr.diablo3.blizzard.com/ko-kr/item/mechanical-pauldrons-P69_Unique_Shoulder_Set_06",
+   "secResistP": 0.801,
+   "set": "공포의 땅의 장비",
+   "secP": {
+    "pickup": 0.5176,
+    "globe": 0.3742,
+    "resphys": 0.1335
+   },
+   "type": "shoulders"
+  },
+  {
+   "id": "gas_forearm",
+   "name": "가스 동력 인공 팔보호구",
+   "nameEn": "Gas Powered Automail Forearm",
+   "slot": "gloves",
+   "quality": "set",
+   "icon": "icons/raw_gas_forearm.png",
+   "iconRaw": "icons/raw_gas_forearm.png",
+   "iconTone": "icons/tone_gas_forearm.png",
+   "iconSize": [
+    64,
+    128
+   ],
+   "iconBox": [
+    10,
+    4,
+    54,
+    126
+   ],
+   "iconSrc": "https://assets.diablo3.blizzard.com/d3/icons/items/large/p69_unique_gloves_set_06_demonhunter_male.png",
+   "fixed": [
+    {
+     "affix": "chc"
+    },
+    {
+     "affix": "dex",
+     "variable": "stat"
+    }
+   ],
+   "randomPrimary": 2,
+   "src": "https://kr.diablo3.blizzard.com/ko-kr/item/gas-powered-automail-forearm-P69_Unique_Gloves_Set_06",
+   "secResistP": 0,
+   "set": "공포의 땅의 장비",
+   "secP": {
+    "pickup": 0.3846,
+    "resphys": 0.1415
+   },
+   "type": "gloves"
+  },
+  {
+   "id": "aquila",
+   "name": "독수리 흉갑",
+   "nameEn": "Aquila Cuirass",
+   "slot": "chest",
+   "quality": "legendary",
+   "icon": "icons/raw_aquila.png",
+   "iconRaw": "icons/raw_aquila.png",
+   "iconTone": "icons/tone_aquila.png",
+   "iconSize": [
+    82,
+    164
+   ],
+   "iconBox": [
+    1,
+    22,
+    80,
+    143
+   ],
+   "iconSrc": "https://assets.diablo3.blizzard.com/d3/icons/items/large/p4_unique_chest_012_demonhunter_male.png",
+   "fixed": [
+    {
+     "affix": "socket",
+     "n": 3
+    },
+    {
+     "affix": "dex",
+     "variable": "stat"
+    }
+   ],
+   "randomPrimary": 2,
+   "src": "https://kr.diablo3.blizzard.com/ko-kr/item/aquila-cuirass-P4_Unique_Chest_012",
+   "secResistP": 0.458,
+   "poolDrop": [
+    "hatred"
+   ],
+   "secP": {
+    "pickup": 0.2113,
+    "globe": 0.1408,
+    "resphys": 0.0763
+   },
+   "power": "주요 자원이 90%를 넘는 동안 받는 모든 피해 50% 감소",
+   "powerRoll": [
+    90,
+    95
+   ],
+   "type": "chestarmor",
+   "dropShare": {
+    "DemonHunter": 0.05882353,
+    "Barbarian": 0.07692308,
+    "Wizard": 0.07692308,
+    "WitchDoctor": 0.07692308,
+    "Monk": 0.07692308,
+    "Crusader": 0.07692308,
+    "Necromancer": 0.07407407
+   }
+  },
+  {
+   "id": "bombardier",
+   "name": "포격수의 배낭",
+   "nameEn": "Bombardier's Rucksack",
+   "slot": "quiver",
+   "quality": "legendary",
+   "icon": "icons/raw_bombardier.png",
+   "iconRaw": "icons/raw_bombardier.png",
+   "iconTone": "icons/tone_bombardier.png",
+   "iconSize": [
+    64,
+    115
+   ],
+   "iconBox": [
+    8,
+    4,
+    60,
+    110
+   ],
+   "iconSrc": "https://assets.diablo3.blizzard.com/d3/icons/items/large/p72_unique_quiver_102_demonhunter_male.png",
+   "fixed": [
+    {
+     "affix": "dex"
+    },
+    {
+     "affix": "ias"
+    },
+    {
+     "affix": "chc"
+    },
+    {
+     "affix": "skillSentry"
+    }
+   ],
+   "randomPrimary": 2,
+   "src": "https://kr.diablo3.blizzard.com/ko-kr/item/bombardiers-rucksack-P72_Unique_Quiver_102",
+   "secResistP": 0,
+   "primaries": 6,
+   "secP": {
+    "maxdisc": 0.5,
+    "globe": 0.125
+   },
+   "power": "자동 쇠뇌를 두 개 더 설치할 수 있음. 확산탄의 공격력 200% 증가 (악마사냥꾼 전용)",
+   "powerRoll": [
+    150,
+    200
+   ],
+   "type": "quiver"
+  },
+  {
+   "id": "nemesis",
+   "name": "천벌의 손목 방어구",
+   "nameEn": "Nemesis Bracers",
+   "slot": "bracers",
+   "quality": "legendary",
+   "icon": "icons/raw_nemesis.png",
+   "iconRaw": "icons/raw_nemesis.png",
+   "iconTone": "icons/tone_nemesis.png",
+   "iconSize": [
+    64,
+    128
+   ],
+   "iconBox": [
+    10,
+    20,
+    56,
+    105
+   ],
+   "iconSrc": "https://assets.diablo3.blizzard.com/d3/icons/items/large/unique_bracer_106_x1_demonhunter_male.png",
+   "fixed": [
+    {
+     "affix": "dex",
+     "variable": "stat"
+    }
+   ],
+   "randomPrimary": 3,
+   "src": "https://kr.diablo3.blizzard.com/ko-kr/item/nemesis-bracers-Unique_Bracer_106_x1",
+   "secResistP": 0.536,
+   "secP": {
+    "pickup": 0.2885,
+    "resphys": 0.0893
+   },
+   "power": "신단과 수정탑에 가면 적 용사 하나 소환",
+   "type": "bracers",
+   "dropShare": {
+    "DemonHunter": 0.1,
+    "Barbarian": 0.07692308,
+    "Wizard": 0.1,
+    "WitchDoctor": 0.09090909,
+    "Monk": 0.07692308,
+    "Crusader": 0.07692308,
+    "Necromancer": 0.1
+   }
+  },
+  {
+   "id": "hunters_wrath",
+   "name": "사냥꾼의 분노",
+   "nameEn": "Hunter's Wrath",
+   "slot": "belt",
+   "quality": "legendary",
+   "icon": "icons/raw_hunters_wrath.png",
+   "iconRaw": "icons/raw_hunters_wrath.png",
+   "iconTone": "icons/tone_hunters_wrath.png",
+   "iconSize": [
+    64,
+    64
+   ],
+   "iconBox": [
+    1,
+    17,
+    63,
+    49
+   ],
+   "iconSrc": "https://assets.diablo3.blizzard.com/d3/icons/items/large/p69_unique_belt_005_demonhunter_male.png",
+   "fixed": [
+    {
+     "affix": "vit"
+    },
+    {
+     "affix": "dex",
+     "variable": "stat"
+    }
+   ],
+   "randomPrimary": 2,
+   "src": "https://kr.diablo3.blizzard.com/ko-kr/item/hunters-wrath-P69_Unique_Belt_005",
+   "secResistP": 0.526,
+   "secP": {
+    "pickup": 0.2778,
+    "resphys": 0.0877
+   },
+   "power": "주 기술의 공격 속도가 30% 증가하고 피해가 200% 증가함 (악마사냥꾼 전용)",
+   "powerRoll": [
+    150,
+    200
+   ],
+   "type": "belt"
+  },
+  {
+   "id": "vallas",
+   "name": "발라의 유증",
+   "nameEn": "Valla's Bequest",
+   "slot": "weapon",
+   "quality": "legendary",
+   "icon": "icons/raw_vallas.png",
+   "iconRaw": "icons/raw_vallas.png",
+   "iconTone": "icons/tone_vallas.png",
+   "iconSize": [
+    64,
+    128
+   ],
+   "iconBox": [
+    6,
+    22,
+    59,
+    103
+   ],
+   "iconSrc": "https://assets.diablo3.blizzard.com/d3/icons/items/large/p43_unique_handxbow_005_demonhunter_male.png",
+   "fixed": [
+    {
+     "affix": "wdmg",
+     "special": true
+    },
+    {
+     "affix": "dex"
+    },
+    {
+     "affix": "skillStrafe"
+    }
+   ],
+   "randomPrimary": 2,
+   "src": "https://kr.diablo3.blizzard.com/ko-kr/item/vallas-bequest-P43_Unique_HandXBow_005",
+   "secResistP": 0,
+   "primaries": 5,
+   "baseDamage": [
+    126,
+    714
+   ],
+   "type": "handcrossbow",
+   "poolAdd": [
+    "hatred"
+   ],
+   "secP": {
+    "maxdisc": 0.5714
+   },
+   "power": "난사 투사체가 적을 관통 (악마사냥꾼 전용)"
+  },
+  {
+   "id": "crimson_whalers@int",
+   "name": "크림슨 선장의 고무 장화",
+   "nameEn": "Captain Crimson's Whalers",
+   "slot": "boots",
+   "quality": "set",
+   "icon": "icons/boots_crimson.jpg",
+   "iconRaw": "icons/raw_crimson_whalers.png",
+   "iconTone": "icons/tone_crimson_whalers.png",
+   "iconSize": [
+    64,
+    128
+   ],
+   "iconBox": [
+    6,
+    35,
+    63,
+    101
+   ],
+   "iconSrc": "https://assets.diablo3.blizzard.com/d3/icons/items/large/unique_boots_017_1xx_demonhunter_male.png",
+   "fixed": [],
+   "randomPrimary": 4,
+   "src": "https://kr.diablo3.blizzard.com/ko-kr/artisan/blacksmith/recipe/captain-crimsons-whalers",
+   "secResistP": 0.801,
+   "set": "크림슨 선장의 장식",
+   "crafted": {
+    "crystal": 50,
+    "_doc": "바지와 같은 제작 비용으로 가정"
+   },
+   "type": "boots",
+   "secP": {
+    "pickup": 0.5176,
+    "globe": 0.3742,
+    "resphys": 0.1335
+   },
+   "variantOf": "crimson_whalers",
+   "originClass": "wizard",
+   "originLabel": "마법사",
+   "poolDrop": [
+    "dex"
+   ],
+   "poolAdd": [
+    "intm"
+   ]
+  },
+  {
+   "id": "crimson_thrust@int",
+   "name": "크림슨 선장의 추진력",
+   "nameEn": "Captain Crimson's Thrust",
+   "slot": "pants",
+   "quality": "set",
+   "icon": "icons/pants_crimson.jpg",
+   "iconRaw": "icons/raw_crimson_thrust.png",
+   "iconTone": "icons/tone_crimson_thrust.png",
+   "iconSize": [
+    64,
+    128
+   ],
+   "iconBox": [
+    2,
+    22,
+    62,
+    101
+   ],
+   "iconSrc": "https://assets.diablo3.blizzard.com/d3/icons/items/large/p66_unique_pants_012_demonhunter_male.png",
+   "fixed": [],
+   "randomPrimary": 4,
+   "src": "https://kr.diablo3.blizzard.com/ko-kr/artisan/blacksmith/recipe/captain-crimsons-thrust",
+   "secResistP": 0.801,
+   "set": "크림슨 선장의 장식",
+   "crafted": {
+    "crystal": 50
+   },
+   "type": "pants",
+   "secP": {
+    "pickup": 0.5176,
+    "resphys": 0.1335
+   },
+   "variantOf": "crimson_thrust",
+   "originClass": "wizard",
+   "originLabel": "마법사",
+   "poolDrop": [
+    "dex"
+   ],
+   "poolAdd": [
+    "intm"
+   ]
+  },
+  {
+   "id": "aquila@int",
+   "name": "독수리 흉갑",
+   "nameEn": "Aquila Cuirass",
+   "slot": "chest",
+   "quality": "legendary",
+   "icon": "icons/raw_aquila.png",
+   "iconRaw": "icons/raw_aquila.png",
+   "iconTone": "icons/tone_aquila.png",
+   "iconSize": [
+    82,
+    164
+   ],
+   "iconBox": [
+    1,
+    22,
+    80,
+    143
+   ],
+   "iconSrc": "https://assets.diablo3.blizzard.com/d3/icons/items/large/p4_unique_chest_012_demonhunter_male.png",
+   "fixed": [
+    {
+     "affix": "socket",
+     "n": 3
+    },
+    {
+     "affix": "intm",
+     "variable": "stat"
+    }
+   ],
+   "randomPrimary": 2,
+   "src": "https://kr.diablo3.blizzard.com/ko-kr/item/aquila-cuirass-P4_Unique_Chest_012",
+   "secResistP": 0.458,
+   "poolDrop": [
+    "hatred",
+    "dex"
+   ],
+   "secP": {
+    "pickup": 0.2113,
+    "globe": 0.1408,
+    "resphys": 0.0763
+   },
+   "power": "주요 자원이 90%를 넘는 동안 받는 모든 피해 50% 감소",
+   "powerRoll": [
+    90,
+    95
+   ],
+   "type": "chestarmor",
+   "variantOf": "aquila",
+   "originClass": "wizard",
+   "originLabel": "마법사",
+   "poolAdd": [
+    "intm"
+   ],
+   "dropShare": {
+    "DemonHunter": 0.05882353,
+    "Barbarian": 0.07692308,
+    "Wizard": 0.07692308,
+    "WitchDoctor": 0.07692308,
+    "Monk": 0.07692308,
+    "Crusader": 0.07692308,
+    "Necromancer": 0.07407407
+   }
+  },
+  {
+   "id": "nemesis@int",
+   "name": "천벌의 손목 방어구",
+   "nameEn": "Nemesis Bracers",
+   "slot": "bracers",
+   "quality": "legendary",
+   "icon": "icons/raw_nemesis.png",
+   "iconRaw": "icons/raw_nemesis.png",
+   "iconTone": "icons/tone_nemesis.png",
+   "iconSize": [
+    64,
+    128
+   ],
+   "iconBox": [
+    10,
+    20,
+    56,
+    105
+   ],
+   "iconSrc": "https://assets.diablo3.blizzard.com/d3/icons/items/large/unique_bracer_106_x1_demonhunter_male.png",
+   "fixed": [
+    {
+     "affix": "intm",
+     "variable": "stat"
+    }
+   ],
+   "randomPrimary": 3,
+   "src": "https://kr.diablo3.blizzard.com/ko-kr/item/nemesis-bracers-Unique_Bracer_106_x1",
+   "secResistP": 0.536,
+   "secP": {
+    "pickup": 0.2885,
+    "resphys": 0.0893
+   },
+   "power": "신단과 수정탑에 가면 적 용사 하나 소환",
+   "type": "bracers",
+   "variantOf": "nemesis",
+   "originClass": "wizard",
+   "originLabel": "마법사",
+   "poolDrop": [
+    "dex"
+   ],
+   "poolAdd": [
+    "intm"
+   ],
+   "dropShare": {
+    "DemonHunter": 0.1,
+    "Barbarian": 0.07692308,
+    "Wizard": 0.1,
+    "WitchDoctor": 0.09090909,
+    "Monk": 0.07692308,
+    "Crusader": 0.07692308,
+    "Necromancer": 0.1
+   }
+  },
+  {
+   "id": "tzo_krin",
+   "name": "조 크린의 눈빛",
+   "nameEn": "Tzo Krin's Gaze",
+   "slot": "head",
+   "quality": "legendary",
+   "icon": "icons/raw_tzo_krin.png",
+   "iconRaw": "icons/raw_tzo_krin.png",
+   "iconTone": "icons/tone_tzo_krin.png",
+   "iconSize": [
+    64,
+    128
+   ],
+   "iconBox": [
+    10,
+    55,
+    56,
+    79
+   ],
+   "iconSrc": "https://assets.diablo3.blizzard.com/d3/icons/items/large/unique_spiritstone_007_x1_monk_male.png",
+   "fixed": [
+    {
+     "affix": "skillTzo"
+    },
+    {
+     "affix": "dex",
+     "variable": "stat"
+    }
+   ],
+   "randomPrimary": 3,
+   "src": "https://kr.diablo3.blizzard.com/ko-kr/item/tzo-krins-gaze-Unique_SpiritStone_007_x1",
+   "secResistP": 0,
+   "primaries": 5,
+   "type": "spiritstone",
+   "power": "빛의 파동을 적의 위치에 사용할 수 있음 (수도사 전용)",
+   "secPicks": 1,
+   "secP": {
+    "resone": 0.3226
+   },
+   "secDist": {
+    "resone": {
+     "": 0.677419,
+     "resone": 0.322581
+    }
+   }
+  },
+  {
+   "id": "lefebvre",
+   "name": "레페브레의 독백",
+   "nameEn": "Lefebvre's Soliloquy",
+   "slot": "shoulders",
+   "quality": "legendary",
+   "icon": "icons/raw_lefebvre.png",
+   "iconRaw": "icons/raw_lefebvre.png",
+   "iconTone": "icons/tone_lefebvre.png",
+   "iconSize": [
+    64,
+    128
+   ],
+   "iconBox": [
+    6,
+    26,
+    59,
+    104
+   ],
+   "iconSrc": "https://assets.diablo3.blizzard.com/d3/icons/items/large/p4_unique_shoulder_101_monk_male.png",
+   "fixed": [
+    {
+     "affix": "dex",
+     "variable": "stat"
+    }
+   ],
+   "randomPrimary": 3,
+   "src": "https://kr.diablo3.blizzard.com/ko-kr/item/lefebvres-soliloquy-P4_Unique_Shoulder_101",
+   "secResistP": 0,
+   "power": "용오름 시전 시 5초 동안 받는 피해 50% 감소 (수도사 전용)",
+   "type": "shoulders",
+   "powerRoll": [
+    40,
+    50
+   ],
+   "powerKind": "dr",
+   "secPicks": 1,
+   "secP": {
+    "resone": 0.4386
+   },
+   "secDist": {
+    "resone": {
+     "": 0.561403,
+     "resone": 0.438597
+    }
+   }
+  },
+  {
+   "id": "cindercoat",
+   "name": "잉걸불 외투",
+   "nameEn": "Cindercoat",
+   "slot": "chest",
+   "quality": "legendary",
+   "icon": "icons/raw_cindercoat.png",
+   "iconRaw": "icons/raw_cindercoat.png",
+   "iconTone": "icons/tone_cindercoat.png",
+   "iconSize": [
+    82,
+    164
+   ],
+   "iconBox": [
+    0,
+    20,
+    82,
+    134
+   ],
+   "iconSrc": "https://assets.diablo3.blizzard.com/d3/icons/items/large/unique_chest_006_x1_monk_male.png",
+   "fixed": [
+    {
+     "affix": "elem",
+     "elem": "fire"
+    },
+    {
+     "affix": "dex",
+     "variable": "stat"
+    }
+   ],
+   "randomPrimary": 2,
+   "src": "https://kr.diablo3.blizzard.com/ko-kr/item/cindercoat-Unique_Chest_006_x1",
+   "secResistP": 0,
+   "poolDrop": [
+    "hatred"
+   ],
+   "power": "화염 주문들의 자원 소모량 30% 감소",
+   "type": "chestarmor",
+   "powerRoll": [
+    23,
+    30
+   ],
+   "powerKind": "dmg",
+   "secPicks": 1,
+   "secP": {
+    "resone": 0.3817,
+    "mrdr": 0.1127
+   },
+   "secDist": {
+    "resone": {
+     "": 0.618321,
+     "resone": 0.381679
+    },
+    "mrdr": {
+     "": 0.887324,
+     "mrdr": 0.112676
+    }
+   },
+   "dropShare": {
+    "DemonHunter": 0.05882353,
+    "Barbarian": 0.07692308,
+    "Wizard": 0.07692308,
+    "WitchDoctor": 0.07692308,
+    "Monk": 0.07692308,
+    "Crusader": 0.07692308,
+    "Necromancer": 0.0
+   }
+  },
+  {
+   "id": "witching_hour",
+   "name": "한밤의 마술사",
+   "nameEn": "The Witching Hour",
+   "slot": "belt",
+   "quality": "legendary",
+   "icon": "icons/raw_witching_hour.png",
+   "iconRaw": "icons/raw_witching_hour.png",
+   "iconTone": "icons/tone_witching_hour.png",
+   "iconSize": [
+    64,
+    64
+   ],
+   "iconBox": [
+    3,
+    19,
+    59,
+    50
+   ],
+   "iconSrc": "https://assets.diablo3.blizzard.com/d3/icons/items/large/unique_belt_009_x1_monk_male.png",
+   "fixed": [
+    {
+     "affix": "chd"
+    },
+    {
+     "affix": "ias"
+    }
+   ],
+   "randomPrimary": 2,
+   "src": "https://kr.diablo3.blizzard.com/ko-kr/item/the-witching-hour-Unique_Belt_009_x1",
+   "secResistP": 0,
+   "skillN": 4,
+   "type": "belt",
+   "secPicks": 2,
+   "secP": {
+    "resone": 0.6676
+   },
+   "secDist": {
+    "resone": {
+     "": 0.332421,
+     "resone": 0.667579
+    }
+   },
+   "dropShare": {
+    "DemonHunter": 0.05882353,
+    "Barbarian": 0.05333333,
+    "Wizard": 0.0625,
+    "WitchDoctor": 0.06349206,
+    "Monk": 0.07142857,
+    "Crusader": 0.05555556,
+    "Necromancer": 0.08333333
+   }
+  },
+  {
+   "id": "stone_gauntlets",
+   "name": "돌덩이 팔목 장갑",
+   "nameEn": "Stone Gauntlets",
+   "slot": "gloves",
+   "quality": "legendary",
+   "icon": "icons/raw_stone_gauntlets.png",
+   "iconRaw": "icons/raw_stone_gauntlets.png",
+   "iconTone": "icons/tone_stone_gauntlets.png",
+   "iconSize": [
+    64,
+    128
+   ],
+   "iconBox": [
+    6,
+    12,
+    62,
+    115
+   ],
+   "iconSrc": "https://assets.diablo3.blizzard.com/d3/icons/items/large/p66_unique_gloves_007_monk_male.png",
+   "fixed": [
+    {
+     "affix": "dex",
+     "variable": "stat"
+    }
+   ],
+   "randomPrimary": 3,
+   "src": "https://kr.diablo3.blizzard.com/ko-kr/item/stone-gauntlets-P66_Unique_Gloves_007",
+   "secResistP": 0,
+   "power": "적중당하면 방어도 50% 증가·이동 속도 15%·공격 속도 20% 감소, 최대 5회 중첩",
+   "type": "gloves",
+   "secPicks": 1,
+   "secP": {
+    "resone": 0.4808
+   },
+   "secDist": {
+    "resone": {
+     "": 0.519231,
+     "resone": 0.480769
+    }
+   },
+   "dropShare": {
+    "DemonHunter": 0.09302326,
+    "Barbarian": 0.09302326,
+    "Wizard": 0.09302326,
+    "WitchDoctor": 0.09302326,
+    "Monk": 0.09302326,
+    "Crusader": 0.1025641,
+    "Necromancer": 0.08510638
+   }
+  },
+  {
+   "id": "pintos_pride",
+   "name": "핀토의 자부심",
+   "nameEn": "Pinto's Pride",
+   "slot": "bracers",
+   "quality": "legendary",
+   "icon": "icons/raw_pintos_pride.png",
+   "iconRaw": "icons/raw_pintos_pride.png",
+   "iconTone": "icons/tone_pintos_pride.png",
+   "iconSize": [
+    64,
+    128
+   ],
+   "iconBox": [
+    6,
+    19,
+    58,
+    108
+   ],
+   "iconSrc": "https://assets.diablo3.blizzard.com/d3/icons/items/large/p4_unique_bracer_105_monk_male.png",
+   "fixed": [
+    {
+     "affix": "chc"
+    },
+    {
+     "affix": "dex",
+     "variable": "stat"
+    }
+   ],
+   "randomPrimary": 2,
+   "src": "https://kr.diablo3.blizzard.com/ko-kr/item/pintos-pride-P4_Unique_Bracer_105",
+   "secResistP": 0,
+   "power": "빛의 파동이 적의 이동 속도를 3초 동안 80% 감소, 빛의 파동 공격력 150% 증가 (수도사 전용)",
+   "type": "bracers",
+   "powerRoll": [
+    125,
+    150
+   ],
+   "powerKind": "dmg",
+   "secPicks": 1,
+   "secP": {
+    "resone": 0.4464,
+    "mrdr": 0.1538
+   },
+   "secDist": {
+    "resone": {
+     "": 0.553572,
+     "resone": 0.446428
+    },
+    "mrdr": {
+     "": 0.846154,
+     "mrdr": 0.153846
+    }
+   }
+  },
+  {
+   "id": "blackthorne_pants",
+   "name": "블랙손의 마상시합 쇠미늘바지",
+   "nameEn": "Blackthorne's Jousting Mail",
+   "slot": "pants",
+   "quality": "set",
+   "icon": "icons/raw_blackthorne_pants.png",
+   "iconRaw": "icons/raw_blackthorne_pants.png",
+   "iconTone": "icons/tone_blackthorne_pants.png",
+   "iconSize": [
+    64,
+    128
+   ],
+   "iconBox": [
+    5,
+    24,
+    59,
+    109
+   ],
+   "iconSrc": "https://assets.diablo3.blizzard.com/d3/icons/items/large/unique_pants_013_x1_monk_male.png",
+   "fixed": [
+    {
+     "affix": "socket",
+     "n": 2
+    },
+    {
+     "affix": "dex",
+     "variable": "stat"
+    },
+    {
+     "affix": "elem",
+     "variable": "elem"
+    }
+   ],
+   "randomPrimary": 2,
+   "src": "https://kr.diablo3.blizzard.com/ko-kr/item/blackthornes-jousting-mail-Unique_Pants_013_x1",
+   "secResistP": 0,
+   "primaries": 5,
+   "set": "블랙손의 전투 장비",
+   "skillN": 4,
+   "type": "pants",
+   "secPicks": 1,
+   "secP": {
+    "resone": 0.4386
+   },
+   "secDist": {
+    "resone": {
+     "": 0.561403,
+     "resone": 0.438597
+    }
+   },
+   "dropShare": {
+    "DemonHunter": 0.11111111,
+    "Barbarian": 0.11111111,
+    "Wizard": 0.11111111,
+    "WitchDoctor": 0.1,
+    "Monk": 0.11111111,
+    "Crusader": 0.1,
+    "Necromancer": 0.09090909
+   }
+  },
+  {
+   "id": "crudest_boots",
+   "name": "볼품 없는 장화",
+   "nameEn": "The Crudest Boots",
+   "slot": "boots",
+   "quality": "legendary",
+   "icon": "icons/raw_crudest_boots.png",
+   "iconRaw": "icons/raw_crudest_boots.png",
+   "iconTone": "icons/tone_crudest_boots.png",
+   "iconSize": [
+    64,
+    128
+   ],
+   "iconBox": [
+    0,
+    21,
+    59,
+    109
+   ],
+   "iconSrc": "https://assets.diablo3.blizzard.com/d3/icons/items/large/p71_unique_boots_010_monk_male.png",
+   "fixed": [
+    {
+     "affix": "vit"
+    },
+    {
+     "affix": "dex",
+     "variable": "stat"
+    }
+   ],
+   "randomPrimary": 2,
+   "src": "https://kr.diablo3.blizzard.com/ko-kr/item/the-crudest-boots-P71_Unique_Boots_010",
+   "secResistP": 0,
+   "skillN": 4,
+   "power": "신비한 벗 두 명 소환, 벗 공격력 200% 증가 (수도사 전용)",
+   "type": "boots",
+   "powerRoll": [
+    150,
+    200
+   ],
+   "powerKind": "dmg",
+   "secPicks": 1,
+   "secP": {
+    "resone": 0.4386
+   },
+   "secDist": {
+    "resone": {
+     "": 0.561403,
+     "resone": 0.438597
+    }
+   }
+  },
+  {
+   "id": "convention",
+   "name": "원소의 회동",
+   "nameEn": "Convention of Elements",
+   "slot": "ring",
+   "quality": "legendary",
+   "icon": "icons/raw_convention.png",
+   "iconRaw": "icons/raw_convention.png",
+   "iconTone": "icons/tone_convention.png",
+   "iconSize": [
+    64,
+    64
+   ],
+   "iconBox": [
+    12,
+    14,
+    52,
+    51
+   ],
+   "iconSrc": "https://assets.diablo3.blizzard.com/d3/icons/items/large/p2_unique_ring_04_monk_male.png",
+   "fixed": [
+    {
+     "affix": "chc"
+    },
+    {
+     "affix": "socket",
+     "n": 1,
+     "special": true
+    },
+    {
+     "affix": "dex",
+     "variable": "stat"
+    }
+   ],
+   "randomPrimary": 1,
+   "src": "https://kr.diablo3.blizzard.com/ko-kr/item/convention-of-elements-P2_Unique_Ring_04",
+   "secResistP": 0,
+   "power": "4초 동안 단일 원소로 주는 피해 200% 증가(직업 원소 순환)",
+   "type": "ring",
+   "powerRoll": [
+    150,
+    200
+   ],
+   "powerKind": "dmg",
+   "secPicks": 1,
+   "secP": {
+    "resone": 0.431
+   },
+   "secDist": {
+    "resone": {
+     "": 0.568966,
+     "resone": 0.431034
+    }
+   },
+   "dropShare": {
+    "DemonHunter": 0.04210526,
+    "Barbarian": 0.04255319,
+    "Wizard": 0.04040404,
+    "WitchDoctor": 0.03883495,
+    "Monk": 0.04395604,
+    "Crusader": 0.04395604,
+    "Necromancer": 0.04081633
+   }
+  },
+  {
+   "id": "unity",
+   "name": "화합의 반지",
+   "nameEn": "Unity",
+   "slot": "ring",
+   "quality": "legendary",
+   "icon": "icons/raw_unity.png",
+   "iconRaw": "icons/raw_unity.png",
+   "iconTone": "icons/tone_unity.png",
+   "iconSize": [
+    64,
+    64
+   ],
+   "iconBox": [
+    19,
+    19,
+    48,
+    52
+   ],
+   "iconSrc": "https://assets.diablo3.blizzard.com/d3/icons/items/large/unique_ring_010_x1_monk_male.png",
+   "fixed": [
+    {
+     "affix": "chc"
+    },
+    {
+     "affix": "eliteUnity"
+    },
+    {
+     "affix": "dex",
+     "variable": "stat"
+    }
+   ],
+   "randomPrimary": 1,
+   "src": "https://kr.diablo3.blizzard.com/ko-kr/item/unity-Unique_Ring_010_x1",
+   "secResistP": 0,
+   "power": "이 아이템을 착용한 자들은 모든 피해를 나눠 받음",
+   "type": "ring",
+   "secPicks": 1,
+   "secP": {
+    "resone": 0.431
+   },
+   "secDist": {
+    "resone": {
+     "": 0.568966,
+     "resone": 0.431034
+    }
+   },
+   "dropShare": {
+    "DemonHunter": 0.03157895,
+    "Barbarian": 0.03191489,
+    "Wizard": 0.03030303,
+    "WitchDoctor": 0.02912621,
+    "Monk": 0.03296703,
+    "Crusader": 0.03296703,
+    "Necromancer": 0.03061224
+   }
+  },
+  {
+   "id": "soj",
+   "name": "요르단의 반지",
+   "nameEn": "Stone of Jordan",
+   "slot": "ring",
+   "quality": "legendary",
+   "icon": "icons/raw_soj.png",
+   "iconRaw": "icons/raw_soj.png",
+   "iconTone": "icons/tone_soj.png",
+   "iconSize": [
+    64,
+    64
+   ],
+   "iconBox": [
+    20,
+    13,
+    48,
+    50
+   ],
+   "iconSrc": "https://assets.diablo3.blizzard.com/d3/icons/items/large/p69_unique_ring_019_monk_male.png",
+   "fixed": [
+    {
+     "affix": "eliteSoj"
+    },
+    {
+     "affix": "dex",
+     "variable": "stat"
+    },
+    {
+     "affix": "elem",
+     "variable": "elem"
+    }
+   ],
+   "randomPrimary": 1,
+   "src": "https://kr.diablo3.blizzard.com/ko-kr/item/stone-of-jordan-P69_Unique_Ring_019",
+   "secResistP": 0,
+   "power": "기술에 적용되는 가장 높은 추가 원소 고정 피해가 각각의 추가 원소 피해에 동일하게 적용",
+   "type": "ring",
+   "secPicks": 1,
+   "secP": {
+    "resone": 0.431
+   },
+   "secDist": {
+    "resone": {
+     "": 0.568966,
+     "resone": 0.431034
+    }
+   },
+   "dropShare": {
+    "DemonHunter": 0.04210526,
+    "Barbarian": 0.04255319,
+    "Wizard": 0.04040404,
+    "WitchDoctor": 0.03883495,
+    "Monk": 0.04395604,
+    "Crusader": 0.04395604,
+    "Necromancer": 0.04081633
+   }
+  },
+  {
+   "id": "st_archew",
+   "name": "성자 아츄의 전투 장갑",
+   "nameEn": "St. Archew's Gage",
+   "slot": "gloves",
+   "quality": "legendary",
+   "icon": "icons/raw_st_archew.png",
+   "iconRaw": "icons/raw_st_archew.png",
+   "iconTone": "icons/tone_st_archew.png",
+   "iconSize": [
+    64,
+    128
+   ],
+   "iconBox": [
+    6,
+    14,
+    58,
+    121
+   ],
+   "iconSrc": "https://assets.diablo3.blizzard.com/d3/icons/items/large/unique_gloves_101_p2_monk_male.png",
+   "fixed": [
+    {
+     "affix": "dex",
+     "variable": "stat"
+    }
+   ],
+   "randomPrimary": 3,
+   "src": "https://kr.diablo3.blizzard.com/ko-kr/item/st-archews-gage-Unique_Gloves_101_p2",
+   "secResistP": 0,
+   "power": "정예 괴물 무리에게 처음으로 피해를 받으면, 10초 동안 최대 생명력의 150%만큼 피해를 흡수하는 보호막 생성",
+   "type": "gloves",
+   "powerRoll": [
+    120,
+    150
+   ],
+   "powerKind": "life",
+   "secPicks": 1,
+   "secP": {
+    "resone": 0.4808
+   },
+   "secDist": {
+    "resone": {
+     "": 0.519231,
+     "resone": 0.480769
+    }
+   },
+   "dropShare": {
+    "DemonHunter": 0.09302326,
+    "Barbarian": 0.09302326,
+    "Wizard": 0.09302326,
+    "WitchDoctor": 0.09302326,
+    "Monk": 0.09302326,
+    "Crusader": 0.1025641,
+    "Necromancer": 0.08510638
+   }
+  },
+  {
+   "id": "kyoshiro",
+   "name": "쿄시로의 칼날",
+   "nameEn": "Kyoshiro's Blade",
+   "slot": "weapon",
+   "quality": "legendary",
+   "icon": "icons/raw_kyoshiro.png",
+   "iconRaw": "icons/raw_kyoshiro.png",
+   "iconTone": "icons/tone_kyoshiro.png",
+   "iconSize": [
+    64,
+    128
+   ],
+   "iconBox": [
+    6,
+    7,
+    57,
+    121
+   ],
+   "iconSrc": "https://assets.diablo3.blizzard.com/d3/icons/items/large/p4_unique_fist_102_monk_male.png",
+   "fixed": [
+    {
+     "affix": "wdmgFist",
+     "special": true
+    },
+    {
+     "affix": "dex",
+     "variable": "stat"
+    }
+   ],
+   "randomPrimary": 2,
+   "src": "https://kr.diablo3.blizzard.com/ko-kr/item/kyoshiros-blade-P4_Unique_Fist_102",
+   "secResistP": 0,
+   "baseDamage": [
+    168,
+    392
+   ],
+   "type": "fistweapon",
+   "poolAdd": [
+    "spiritRegen",
+    "spiritHeals"
+   ],
+   "power": "빛의 파동 공격력 150% 증가, 첫 타격이 3마리 이하에 적중하면 250% 증가 (수도사 전용)",
+   "powerRoll": [
+    200,
+    250
+   ],
+   "powerKind": "dmg"
+  },
+  {
+   "id": "rabid_strike",
+   "name": "광인의 주먹날",
+   "nameEn": "Rabid Strike",
+   "slot": "weapon",
+   "quality": "legendary",
+   "icon": "icons/raw_rabid_strike.png",
+   "iconRaw": "icons/raw_rabid_strike.png",
+   "iconTone": "icons/tone_rabid_strike.png",
+   "iconSize": [
+    64,
+    128
+   ],
+   "iconBox": [
+    0,
+    8,
+    62,
+    113
+   ],
+   "iconSrc": "https://assets.diablo3.blizzard.com/d3/icons/items/large/p71_unique_fist_003_monk_male.png",
+   "fixed": [
+    {
+     "affix": "wdmgFist",
+     "special": true
+    },
+    {
+     "affix": "dex",
+     "variable": "stat"
+    },
+    {
+     "affix": "chdRabid"
+    }
+   ],
+   "randomPrimary": 1,
+   "src": "https://kr.diablo3.blizzard.com/ko-kr/item/rabid-strike-P71_Unique_Fist_003",
+   "secResistP": 0,
+   "baseDamage": [
+    104,
+    242
+   ],
+   "type": "fistweapon",
+   "poolAdd": [
+    "spiritRegen",
+    "spiritHeals"
+   ],
+   "power": "해탈 사용 중 순간이동하는 공력 소모 기술을 근처 대상에게 비용 없이 복제, 공격력 450% 증가 (수도사 전용) · 축성",
+   "powerRoll": [
+    350,
+    450
+   ],
+   "powerKind": "dmg"
+  },
+  {
+   "id": "mk_raiment_head",
+   "name": "붉은 하늘의 가면",
+   "nameEn": "Mask of the Searing Sky",
+   "slot": "head",
+   "quality": "set",
+   "icon": "icons/raw_mk_raiment_head.png",
+   "iconRaw": "icons/raw_mk_raiment_head.png",
+   "iconTone": "icons/tone_mk_raiment_head.png",
+   "iconSize": [
+    64,
+    128
+   ],
+   "iconBox": [
+    1,
+    21,
+    63,
+    97
+   ],
+   "iconSrc": "https://assets.diablo3.blizzard.com/d3/icons/items/large/unique_helm_set_08_x1_monk_male.png",
+   "fixed": [
+    {
+     "affix": "dex",
+     "variable": "stat"
+    }
+   ],
+   "randomPrimary": 3,
+   "src": "https://kr.diablo3.blizzard.com/ko-kr/item/mask-of-the-searing-sky-Unique_Helm_Set_08_x1",
+   "secResistP": 0,
+   "set": "일천폭풍 의복",
+   "type": "helm",
+   "secPicks": 2,
+   "secP": {
+    "resone": 0.6635
+   },
+   "secDist": {
+    "resone": {
+     "": 0.33652,
+     "resone": 0.66348
+    }
+   }
+  },
+  {
+   "id": "mk_raiment_chest",
+   "name": "몰아치는 파도의 심장",
+   "nameEn": "Heart of the Crashing Wave",
+   "slot": "chest",
+   "quality": "set",
+   "icon": "icons/raw_mk_raiment_chest.png",
+   "iconRaw": "icons/raw_mk_raiment_chest.png",
+   "iconTone": "icons/tone_mk_raiment_chest.png",
+   "iconSize": [
+    82,
+    164
+   ],
+   "iconBox": [
+    2,
+    20,
+    79,
+    148
+   ],
+   "iconSrc": "https://assets.diablo3.blizzard.com/d3/icons/items/large/unique_chest_set_08_x1_monk_male.png",
+   "fixed": [
+    {
+     "affix": "dex",
+     "variable": "stat"
+    }
+   ],
+   "randomPrimary": 3,
+   "src": "https://kr.diablo3.blizzard.com/ko-kr/item/heart-of-the-crashing-wave-Unique_Chest_Set_08_x1",
+   "secResistP": 0,
+   "set": "일천폭풍 의복",
+   "type": "chestarmor",
+   "secPicks": 2,
+   "secP": {
+    "resone": 0.6054,
+    "mrdr": 0.2304,
+    "resone+mrdr": 0.067
+   },
+   "secDist": {
+    "resone+mrdr": {
+     "": 0.316972,
+     "resone": 0.538396,
+     "mrdr": 0.077583,
+     "resone+mrdr": 0.067049
+    },
+    "mrdr": {
+     "": 0.769637,
+     "mrdr": 0.230363
+    }
+   }
+  },
+  {
+   "id": "mk_raiment_shoulders",
+   "name": "속죄의 어깨덧옷",
+   "nameEn": "Mantle of the Upside-Down Sinners",
+   "slot": "shoulders",
+   "quality": "set",
+   "icon": "icons/raw_mk_raiment_shoulders.png",
+   "iconRaw": "icons/raw_mk_raiment_shoulders.png",
+   "iconTone": "icons/tone_mk_raiment_shoulders.png",
+   "iconSize": [
+    64,
+    128
+   ],
+   "iconBox": [
+    5,
+    12,
+    60,
+    125
+   ],
+   "iconSrc": "https://assets.diablo3.blizzard.com/d3/icons/items/large/unique_shoulder_set_08_x1_monk_male.png",
+   "fixed": [
+    {
+     "affix": "allres"
+    },
+    {
+     "affix": "dex",
+     "variable": "stat"
+    }
+   ],
+   "randomPrimary": 2,
+   "src": "https://kr.diablo3.blizzard.com/ko-kr/item/mantle-of-the-upsidedown-sinners-Unique_Shoulder_Set_08_x1",
+   "secResistP": 0,
+   "set": "일천폭풍 의복",
+   "type": "shoulders",
+   "secPicks": 2,
+   "secP": {
+    "resone": 0.6676
+   },
+   "secDist": {
+    "resone": {
+     "": 0.332421,
+     "resone": 0.667579
+    }
+   }
+  },
+  {
+   "id": "mk_raiment_gloves",
+   "name": "천둥의 주먹",
+   "nameEn": "Fists of Thunder",
+   "slot": "gloves",
+   "quality": "set",
+   "icon": "icons/raw_mk_raiment_gloves.png",
+   "iconRaw": "icons/raw_mk_raiment_gloves.png",
+   "iconTone": "icons/tone_mk_raiment_gloves.png",
+   "iconSize": [
+    64,
+    128
+   ],
+   "iconBox": [
+    2,
+    11,
+    57,
+    116
+   ],
+   "iconSrc": "https://assets.diablo3.blizzard.com/d3/icons/items/large/unique_gloves_set_08_x1_monk_male.png",
+   "fixed": [
+    {
+     "affix": "chc"
+    },
+    {
+     "affix": "dex",
+     "variable": "stat"
+    }
+   ],
+   "randomPrimary": 2,
+   "src": "https://kr.diablo3.blizzard.com/ko-kr/item/fists-of-thunder-Unique_Gloves_Set_08_x1",
+   "secResistP": 0,
+   "set": "일천폭풍 의복",
+   "type": "gloves",
+   "secPicks": 2,
+   "secP": {
+    "resone": 0.7075
+   },
+   "secDist": {
+    "resone": {
+     "": 0.292473,
+     "resone": 0.707527
+    }
+   }
+  },
+  {
+   "id": "mk_raiment_pants",
+   "name": "춤추는 뱀의 비늘",
+   "nameEn": "Scales of the Dancing Serpent",
+   "slot": "pants",
+   "quality": "set",
+   "icon": "icons/raw_mk_raiment_pants.png",
+   "iconRaw": "icons/raw_mk_raiment_pants.png",
+   "iconTone": "icons/tone_mk_raiment_pants.png",
+   "iconSize": [
+    64,
+    128
+   ],
+   "iconBox": [
+    1,
+    25,
+    63,
+    101
+   ],
+   "iconSrc": "https://assets.diablo3.blizzard.com/d3/icons/items/large/unique_pants_set_08_x1_monk_male.png",
+   "fixed": [
+    {
+     "affix": "dex",
+     "variable": "stat"
+    }
+   ],
+   "randomPrimary": 3,
+   "src": "https://kr.diablo3.blizzard.com/ko-kr/item/scales-of-the-dancing-serpent-Unique_Pants_Set_08_x1",
+   "secResistP": 0,
+   "set": "일천폭풍 의복",
+   "skillN": 4,
+   "type": "pants",
+   "secPicks": 2,
+   "secP": {
+    "resone": 0.6676
+   },
+   "secDist": {
+    "resone": {
+     "": 0.332421,
+     "resone": 0.667579
+    }
+   }
+  },
+  {
+   "id": "mk_raiment_boots",
+   "name": "여덟 악마 장화",
+   "nameEn": "Eight-Demon Boots",
+   "slot": "boots",
+   "quality": "set",
+   "icon": "icons/raw_mk_raiment_boots.png",
+   "iconRaw": "icons/raw_mk_raiment_boots.png",
+   "iconTone": "icons/tone_mk_raiment_boots.png",
+   "iconSize": [
+    64,
+    128
+   ],
+   "iconBox": [
+    5,
+    17,
+    58,
+    103
+   ],
+   "iconSrc": "https://assets.diablo3.blizzard.com/d3/icons/items/large/unique_boots_set_08_x1_monk_male.png",
+   "fixed": [
+    {
+     "affix": "vit"
+    },
+    {
+     "affix": "dex",
+     "variable": "stat"
+    }
+   ],
+   "randomPrimary": 2,
+   "src": "https://kr.diablo3.blizzard.com/ko-kr/item/eightdemon-boots-Unique_Boots_Set_08_x1",
+   "secResistP": 0,
+   "set": "일천폭풍 의복",
+   "skillN": 4,
+   "type": "boots",
+   "secPicks": 2,
+   "secP": {
+    "resone": 0.6676
+   },
+   "secDist": {
+    "resone": {
+     "": 0.332421,
+     "resone": 0.667579
+    }
+   }
+  },
+  {
+   "id": "shenlong_fist",
+   "name": "셴룽의 전설 주먹",
+   "nameEn": "Shenlong's Fist of Legend",
+   "slot": "weapon",
+   "quality": "set",
+   "icon": "icons/raw_shenlong_fist.png",
+   "iconRaw": "icons/raw_shenlong_fist.png",
+   "iconTone": "icons/tone_shenlong_fist.png",
+   "iconSize": [
+    64,
+    128
+   ],
+   "iconBox": [
+    2,
+    9,
+    63,
+    119
+   ],
+   "iconSrc": "https://assets.diablo3.blizzard.com/d3/icons/items/large/unique_fist_011_x1_monk_male.png",
+   "fixed": [
+    {
+     "affix": "wdmgFist",
+     "elem": "light",
+     "special": true
+    },
+    {
+     "affix": "dex",
+     "variable": "stat"
+    }
+   ],
+   "randomPrimary": 2,
+   "src": "https://kr.diablo3.blizzard.com/ko-kr/item/shenlongs-fist-of-legend-Unique_Fist_011_x1",
+   "secResistP": 0,
+   "baseDamage": [
+    104,
+    242
+   ],
+   "type": "fistweapon",
+   "poolAdd": [
+    "spiritRegen",
+    "spiritHeals"
+   ],
+   "set": "셴룽의 영혼",
+   "secPicks": 2,
+   "secP": {
+    "maxspirit": 0.8447
+   },
+   "secDist": {
+    "maxspirit": {
+     "": 0.15528,
+     "maxspirit": 0.84472
+    }
+   }
+  },
+  {
+   "id": "shenlong_assault",
+   "name": "셴룽의 끈질긴 맹공",
+   "nameEn": "Shenlong's Relentless Assault",
+   "slot": "weapon",
+   "quality": "set",
+   "icon": "icons/raw_shenlong_assault.png",
+   "iconRaw": "icons/raw_shenlong_assault.png",
+   "iconTone": "icons/tone_shenlong_assault.png",
+   "iconSize": [
+    64,
+    128
+   ],
+   "iconBox": [
+    2,
+    12,
+    62,
+    120
+   ],
+   "iconSrc": "https://assets.diablo3.blizzard.com/d3/icons/items/large/unique_fist_010_x1_monk_male.png",
+   "fixed": [
+    {
+     "affix": "wdmgFist",
+     "elem": "light",
+     "special": true
+    },
+    {
+     "affix": "dex",
+     "variable": "stat"
+    }
+   ],
+   "randomPrimary": 2,
+   "src": "https://kr.diablo3.blizzard.com/ko-kr/item/shenlongs-relentless-assault-Unique_Fist_010_x1",
+   "secResistP": 0,
+   "baseDamage": [
+    104,
+    242
+   ],
+   "type": "fistweapon",
+   "poolAdd": [
+    "spiritRegen",
+    "spiritHeals"
+   ],
+   "set": "셴룽의 영혼",
+   "secPicks": 2,
+   "secP": {
+    "maxspirit": 0.8447
+   },
+   "secDist": {
+    "maxspirit": {
+     "": 0.15528,
+     "maxspirit": 0.84472
+    }
+   }
+  },
+  {
+   "id": "spirit_guards",
+   "name": "공력 보호대",
+   "nameEn": "Spirit Guards",
+   "slot": "bracers",
+   "quality": "legendary",
+   "icon": "icons/raw_spirit_guards.png",
+   "iconRaw": "icons/raw_spirit_guards.png",
+   "iconTone": "icons/tone_spirit_guards.png",
+   "iconSize": [
+    64,
+    128
+   ],
+   "iconBox": [
+    4,
+    15,
+    56,
+    108
+   ],
+   "iconSrc": "https://assets.diablo3.blizzard.com/d3/icons/items/large/p61_unique_bracer_109_monk_male.png",
+   "fixed": [
+    {
+     "affix": "chc"
+    },
+    {
+     "affix": "dex",
+     "variable": "stat"
+    }
+   ],
+   "randomPrimary": 2,
+   "src": "https://kr.diablo3.blizzard.com/ko-kr/item/spirit-guards-P61_Unique_Bracer_109",
+   "secResistP": 0,
+   "power": "공력 생성 기술 사용 시 3초 동안 받는 피해 60% 감소 (수도사 전용)",
+   "type": "bracers",
+   "powerRoll": [
+    45,
+    60
+   ],
+   "powerKind": "dr",
+   "secPicks": 1,
+   "secP": {
+    "resone": 0.4464,
+    "mrdr": 0.1538
+   },
+   "secDist": {
+    "resone": {
+     "": 0.553572,
+     "resone": 0.446428
+    },
+    "mrdr": {
+     "": 0.846154,
+     "mrdr": 0.153846
+    }
+   }
+  },
+  {
+   "id": "mk_compass_rose",
+   "name": "나침도",
+   "nameEn": "The Compass Rose",
+   "slot": "ring",
+   "quality": "set",
+   "icon": "icons/raw_mk_compass_rose.png",
+   "iconRaw": "icons/raw_mk_compass_rose.png",
+   "iconTone": "icons/tone_mk_compass_rose.png",
+   "iconSize": [
+    64,
+    64
+   ],
+   "iconBox": [
+    16,
+    18,
+    46,
+    50
+   ],
+   "iconSrc": "https://assets.diablo3.blizzard.com/d3/icons/items/large/unique_ring_013_x1_monk_male.png",
+   "fixed": [
+    {
+     "affix": "ms"
+    },
+    {
+     "affix": "dex",
+     "variable": "stat"
+    }
+   ],
+   "randomPrimary": 3,
+   "src": "https://kr.diablo3.blizzard.com/ko-kr/item/the-compass-rose-Unique_Ring_013_x1",
+   "secResistP": 0,
+   "set": "끝없는 걸음",
+   "primaries": 5,
+   "type": "ring",
+   "secPicks": 1,
+   "secP": {
+    "resone": 0.431
+   },
+   "secDist": {
+    "resone": {
+     "": 0.568966,
+     "resone": 0.431034
+    }
+   },
+   "dropShare": {
+    "DemonHunter": 0.04210526,
+    "Barbarian": 0.04255319,
+    "Wizard": 0.04040404,
+    "WitchDoctor": 0.03883495,
+    "Monk": 0.04395604,
+    "Crusader": 0.04395604,
+    "Necromancer": 0.04081633
+   }
+  },
+  {
+   "id": "mk_travelers_pledge",
+   "name": "모험가의 서약",
+   "nameEn": "The Traveler's Pledge",
+   "slot": "amulet",
+   "quality": "set",
+   "icon": "icons/raw_mk_travelers_pledge.png",
+   "iconRaw": "icons/raw_mk_travelers_pledge.png",
+   "iconTone": "icons/tone_mk_travelers_pledge.png",
+   "iconSize": [
+    64,
+    64
+   ],
+   "iconBox": [
+    1,
+    2,
+    61,
+    62
+   ],
+   "iconSrc": "https://assets.diablo3.blizzard.com/d3/icons/items/large/unique_amulet_008_x1_monk_male.png",
+   "fixed": [
+    {
+     "affix": "chd"
+    },
+    {
+     "affix": "dex",
+     "variable": "stat"
+    }
+   ],
+   "randomPrimary": 2,
+   "src": "https://kr.diablo3.blizzard.com/ko-kr/item/the-travelers-pledge-Unique_Amulet_008_x1",
+   "secResistP": 0,
+   "set": "끝없는 걸음",
+   "type": "amulet",
+   "secPicks": 2,
+   "secP": {
+    "resone": 0.6238,
+    "mrdr": 0.2494,
+    "resone+mrdr": 0.0757
+   },
+   "secDist": {
+    "resone+mrdr": {
+     "": 0.297278,
+     "resone": 0.548076,
+     "mrdr": 0.078969,
+     "resone+mrdr": 0.075677
+    },
+    "mrdr": {
+     "": 0.750596,
+     "mrdr": 0.249404
+    }
+   },
+   "dropShare": {
+    "DemonHunter": 0.06896552,
+    "Barbarian": 0.06896552,
+    "Wizard": 0.06060606,
+    "WitchDoctor": 0.06896552,
+    "Monk": 0.06060606,
+    "Crusader": 0.06557377,
+    "Necromancer": 0.05797101
+   }
+  },
+  {
+   "id": "mk_guardians_gaze",
+   "name": "수호자의 눈길",
+   "nameEn": "Guardian's Gaze",
+   "slot": "head",
+   "quality": "set",
+   "icon": "icons/raw_mk_guardians_gaze.png",
+   "iconRaw": "icons/raw_mk_guardians_gaze.png",
+   "iconTone": "icons/tone_mk_guardians_gaze.png",
+   "iconSize": [
+    64,
+    128
+   ],
+   "iconBox": [
+    10,
+    22,
+    52,
+    103
+   ],
+   "iconSrc": "https://assets.diablo3.blizzard.com/d3/icons/items/large/p74_unique_helm_015_monk_male.png",
+   "fixed": [
+    {
+     "affix": "ms"
+    }
+   ],
+   "randomPrimary": 3,
+   "src": "https://kr.diablo3.blizzard.com/ko-kr/artisan/blacksmith/recipe/guardians-gaze",
+   "secResistP": 0,
+   "set": "수호자의 위기",
+   "crafted": {
+    "crystal": 30,
+    "_doc": "수호자의 위기 제작법(악사 items.py 와 같음)"
+   },
+   "type": "helm"
+  },
+  {
+   "id": "mk_crimson_waders",
+   "name": "크림슨 선장의 고무 장화",
+   "nameEn": "Captain Crimson's Waders",
+   "slot": "boots",
+   "quality": "set",
+   "icon": "icons/raw_mk_crimson_waders.png",
+   "iconRaw": "icons/raw_mk_crimson_waders.png",
+   "iconTone": "icons/tone_mk_crimson_waders.png",
+   "iconSize": [
+    64,
+    128
+   ],
+   "iconBox": [
+    6,
+    35,
+    63,
+    101
+   ],
+   "iconSrc": "https://assets.diablo3.blizzard.com/d3/icons/items/large/p66_unique_boots_017_monk_male.png",
+   "fixed": [],
+   "randomPrimary": 4,
+   "src": "https://kr.diablo3.blizzard.com/ko-kr/artisan/blacksmith/recipe/captain-crimsons-waders",
+   "secResistP": 0,
+   "set": "크림슨 선장의 장식",
+   "crafted": {
+    "crystal": 50,
+    "_doc": "크림슨 제작법(악사 items.py 와 같음)"
+   },
+   "type": "boots",
+   "secPicks": 2,
+   "secP": {
+    "resone": 0.6676
+   },
+   "secDist": {
+    "resone": {
+     "": 0.332421,
+     "resone": 0.667579
+    }
+   }
+  },
+  {
+   "id": "mk_depth_diggers",
+   "name": "도굴꾼 바지",
+   "nameEn": "Depth Diggers",
+   "slot": "pants",
+   "quality": "legendary",
+   "icon": "icons/raw_mk_depth_diggers.png",
+   "iconRaw": "icons/raw_mk_depth_diggers.png",
+   "iconTone": "icons/tone_mk_depth_diggers.png",
+   "iconSize": [
+    64,
+    128
+   ],
+   "iconBox": [
+    9,
+    24,
+    56,
+    112
+   ],
+   "iconSrc": "https://assets.diablo3.blizzard.com/d3/icons/items/large/unique_pants_006_p1_monk_male.png",
+   "fixed": [
+    {
+     "affix": "allres"
+    },
+    {
+     "affix": "dex",
+     "variable": "stat"
+    }
+   ],
+   "randomPrimary": 2,
+   "src": "https://kr.diablo3.blizzard.com/ko-kr/item/depth-diggers-Unique_Pants_006_p1",
+   "secResistP": 0,
+   "skillN": 4,
+   "power": "주 기술의 공격력 100% 증가",
+   "type": "pants",
+   "powerRoll": [
+    80,
+    100
+   ],
+   "powerKind": "dmg",
+   "secPicks": 1,
+   "secP": {
+    "resone": 0.4386
+   },
+   "secDist": {
+    "resone": {
+     "": 0.561403,
+     "resone": 0.438597
+    }
+   },
+   "dropShare": {
+    "DemonHunter": 0.11111111,
+    "Barbarian": 0.11111111,
+    "Wizard": 0.11111111,
+    "WitchDoctor": 0.1,
+    "Monk": 0.11111111,
+    "Crusader": 0.1,
+    "Necromancer": 0.09090909
+   }
+  },
+  {
+   "id": "cr_guardians_gaze",
+   "name": "수호자의 눈길",
+   "nameEn": "Guardian's Gaze",
+   "slot": "head",
+   "quality": "set",
+   "icon": "icons/raw_cr_guardians_gaze.png",
+   "iconRaw": "icons/raw_cr_guardians_gaze.png",
+   "iconTone": "icons/tone_cr_guardians_gaze.png",
+   "iconSize": [
+    64,
+    128
+   ],
+   "iconBox": [
+    10,
+    22,
+    52,
+    103
+   ],
+   "iconSrc": "https://assets.diablo3.blizzard.com/d3/icons/items/large/p74_unique_helm_015_crusader_male.png",
+   "fixed": [
+    {
+     "affix": "ms"
+    }
+   ],
+   "randomPrimary": 3,
+   "src": "https://kr.diablo3.blizzard.com/ko-kr/artisan/blacksmith/recipe/guardians-gaze",
+   "secResistP": 0,
+   "set": "수호자의 위기",
+   "crafted": {
+    "crystal": 30,
+    "_doc": "수호자의 위기 제작법(악사 items.py 와 같음)"
+   },
+   "skillN": 6,
+   "type": "helm",
+   "secPicks": 2,
+   "secP": {
+    "resone": 0.6635
+   },
+   "secDist": {
+    "resone": {
+     "": 0.33652,
+     "resone": 0.66348
+    }
+   }
+  },
+  {
+   "id": "cr_valor_shoulders",
+   "name": "용기의 어깨 갑옷",
+   "nameEn": "Spaulders of Valor",
+   "slot": "shoulders",
+   "quality": "set",
+   "icon": "icons/raw_cr_valor_shoulders.png",
+   "iconRaw": "icons/raw_cr_valor_shoulders.png",
+   "iconTone": "icons/tone_cr_valor_shoulders.png",
+   "iconSize": [
+    64,
+    128
+   ],
+   "iconBox": [
+    0,
+    34,
+    64,
+    97
+   ],
+   "iconSrc": "https://assets.diablo3.blizzard.com/d3/icons/items/large/p67_unique_shoulder_set_01_crusader_male.png",
+   "fixed": [
+    {
+     "affix": "allres"
+    },
+    {
+     "affix": "dex",
+     "variable": "stat"
+    }
+   ],
+   "randomPrimary": 2,
+   "src": "https://kr.diablo3.blizzard.com/ko-kr/item/spaulders-of-valor-P67_Unique_Shoulder_Set_01",
+   "secResistP": 0,
+   "set": "용기의 방패",
+   "skillN": 4,
+   "type": "shoulders",
+   "secPicks": 2,
+   "secP": {
+    "hitchill": 0.0413,
+    "resone": 0.6676,
+    "hitchill+resone": 0.012
+   },
+   "secDist": {
+    "hitchill+resone": {
+     "": 0.321403,
+     "hitchill": 0.011017,
+     "resone": 0.655576,
+     "hitchill+resone": 0.012003
+    },
+    "hitchill": {
+     "": 0.958719,
+     "hitchill": 0.041281
+    }
+   }
+  },
+  {
+   "id": "cr_valor_chest",
+   "name": "용기의 미늘 갑옷",
+   "nameEn": "Brigandine of Valor",
+   "slot": "chest",
+   "quality": "set",
+   "icon": "icons/raw_cr_valor_chest.png",
+   "iconRaw": "icons/raw_cr_valor_chest.png",
+   "iconTone": "icons/tone_cr_valor_chest.png",
+   "iconSize": [
+    64,
+    128
+   ],
+   "iconBox": [
+    0,
+    6,
+    64,
+    120
+   ],
+   "iconSrc": "https://assets.diablo3.blizzard.com/d3/icons/items/large/p67_unique_chest_set_01_crusader_male.png",
+   "fixed": [
+    {
+     "affix": "socket",
+     "n": 3
+    },
+    {
+     "affix": "dex",
+     "variable": "stat"
+    }
+   ],
+   "randomPrimary": 2,
+   "src": "https://kr.diablo3.blizzard.com/ko-kr/item/brigandine-of-valor-P67_Unique_Chest_Set_01",
+   "secResistP": 0,
+   "set": "용기의 방패",
+   "skillN": 4,
+   "poolDrop": [
+    "hatred"
+   ],
+   "type": "chestarmor",
+   "secPicks": 2,
+   "secP": {
+    "resone": 0.6054,
+    "mrdr": 0.2304,
+    "resone+mrdr": 0.067
+   },
+   "secDist": {
+    "resone+mrdr": {
+     "": 0.316972,
+     "resone": 0.538396,
+     "mrdr": 0.077583,
+     "resone+mrdr": 0.067049
+    },
+    "mrdr": {
+     "": 0.769637,
+     "mrdr": 0.230363
+    }
+   }
+  },
+  {
+   "id": "cr_valor_gloves",
+   "name": "용기의 팔목 장갑",
+   "nameEn": "Gauntlets of Valor",
+   "slot": "gloves",
+   "quality": "set",
+   "icon": "icons/raw_cr_valor_gloves.png",
+   "iconRaw": "icons/raw_cr_valor_gloves.png",
+   "iconTone": "icons/tone_cr_valor_gloves.png",
+   "iconSize": [
+    64,
+    128
+   ],
+   "iconBox": [
+    0,
+    16,
+    62,
+    113
+   ],
+   "iconSrc": "https://assets.diablo3.blizzard.com/d3/icons/items/large/p67_unique_gloves_set_01_crusader_male.png",
+   "fixed": [
+    {
+     "affix": "chc"
+    },
+    {
+     "affix": "dex",
+     "variable": "stat"
+    }
+   ],
+   "randomPrimary": 2,
+   "src": "https://kr.diablo3.blizzard.com/ko-kr/item/gauntlets-of-valor-P67_Unique_Gloves_Set_01",
+   "secResistP": 0,
+   "set": "용기의 방패",
+   "type": "gloves",
+   "secPicks": 2,
+   "secP": {
+    "resone": 0.7075
+   },
+   "secDist": {
+    "resone": {
+     "": 0.292473,
+     "resone": 0.707527
+    }
+   }
+  },
+  {
+   "id": "cr_guardians_aversion",
+   "name": "수호자의 반감",
+   "nameEn": "Guardian's Aversion",
+   "slot": "bracers",
+   "quality": "set",
+   "icon": "icons/raw_cr_guardians_aversion.png",
+   "iconRaw": "icons/raw_cr_guardians_aversion.png",
+   "iconTone": "icons/tone_cr_guardians_aversion.png",
+   "iconSize": [
+    64,
+    128
+   ],
+   "iconBox": [
+    9,
+    24,
+    54,
+    103
+   ],
+   "iconSrc": "https://assets.diablo3.blizzard.com/d3/icons/items/large/p74_unique_bracer_010_demonhunter_male.png",
+   "fixed": [],
+   "randomPrimary": 4,
+   "src": "https://kr.diablo3.blizzard.com/ko-kr/artisan/blacksmith/recipe/guardians-aversion",
+   "secResistP": 0,
+   "set": "수호자의 위기",
+   "crafted": {
+    "crystal": 30,
+    "_doc": "수호자의 위기 제작법(악사 items.py 와 같음)"
+   },
+   "type": "bracers",
+   "secPicks": 2,
+   "secP": {
+    "resone": 0.6734,
+    "mrdr": 0.3186,
+    "resone+mrdr": 0.1018
+   },
+   "secDist": {
+    "resone+mrdr": {
+     "": 0.243476,
+     "resone": 0.571653,
+     "mrdr": 0.083121,
+     "resone+mrdr": 0.10175
+    },
+    "mrdr": {
+     "": 0.681407,
+     "mrdr": 0.318593
+    }
+   }
+  },
+  {
+   "id": "cr_vigilante",
+   "name": "민병대 허리띠",
+   "nameEn": "Vigilante Belt",
+   "slot": "belt",
+   "quality": "legendary",
+   "icon": "icons/raw_cr_vigilante.png",
+   "iconRaw": "icons/raw_cr_vigilante.png",
+   "iconTone": "icons/tone_cr_vigilante.png",
+   "iconSize": [
+    64,
+    64
+   ],
+   "iconBox": [
+    2,
+    19,
+    61,
+    51
+   ],
+   "iconSrc": "https://assets.diablo3.blizzard.com/d3/icons/items/large/p76_unique_belt_002_demonhunter_male.png",
+   "fixed": [
+    {
+     "affix": "cdr"
+    },
+    {
+     "affix": "dex",
+     "variable": "stat"
+    }
+   ],
+   "randomPrimary": 2,
+   "src": "https://kr.diablo3.blizzard.com/ko-kr/item/vigilante-belt-P76_Unique_Belt_002",
+   "secResistP": 0,
+   "skillN": 4,
+   "power": "군마 질주가 활성화된 동안 천상의 주먹이 이동 속도만큼 추가 피해를 주고, 공격 속도에 따라 근처의 무작위 적에게 자동으로 내리꽂힘 (성전사 전용)",
+   "type": "belt",
+   "secPicks": 2,
+   "secP": {
+    "resone": 0.6676
+   },
+   "secDist": {
+    "resone": {
+     "": 0.332421,
+     "resone": 0.667579
+    }
+   }
+  },
+  {
+   "id": "cr_valor_pants",
+   "name": "용기의 다리 갑옷",
+   "nameEn": "Chausses of Valor",
+   "slot": "pants",
+   "quality": "set",
+   "icon": "icons/raw_cr_valor_pants.png",
+   "iconRaw": "icons/raw_cr_valor_pants.png",
+   "iconTone": "icons/tone_cr_valor_pants.png",
+   "iconSize": [
+    64,
+    128
+   ],
+   "iconBox": [
+    2,
+    26,
+    59,
+    103
+   ],
+   "iconSrc": "https://assets.diablo3.blizzard.com/d3/icons/items/large/p67_unique_pants_set_01_crusader_male.png",
+   "fixed": [
+    {
+     "affix": "socket",
+     "n": 2
+    },
+    {
+     "affix": "dex",
+     "variable": "stat"
+    }
+   ],
+   "randomPrimary": 2,
+   "src": "https://kr.diablo3.blizzard.com/ko-kr/item/chausses-of-valor-P67_Unique_Pants_Set_01",
+   "secResistP": 0,
+   "set": "용기의 방패",
+   "skillN": 4,
+   "type": "pants",
+   "secPicks": 2,
+   "secP": {
+    "hitslow": 0.0413,
+    "resone": 0.6676,
+    "hitslow+resone": 0.012
+   },
+   "secDist": {
+    "hitslow+resone": {
+     "": 0.321403,
+     "hitslow": 0.011017,
+     "resone": 0.655576,
+     "hitslow+resone": 0.012003
+    },
+    "hitslow": {
+     "": 0.958719,
+     "hitslow": 0.041281
+    }
+   }
+  },
+  {
+   "id": "cr_valor_boots",
+   "name": "용기의 경갑",
+   "nameEn": "Greaves of Valor",
+   "slot": "boots",
+   "quality": "set",
+   "icon": "icons/raw_cr_valor_boots.png",
+   "iconRaw": "icons/raw_cr_valor_boots.png",
+   "iconTone": "icons/tone_cr_valor_boots.png",
+   "iconSize": [
+    64,
+    128
+   ],
+   "iconBox": [
+    0,
+    13,
+    63,
+    120
+   ],
+   "iconSrc": "https://assets.diablo3.blizzard.com/d3/icons/items/large/p67_unique_boots_set_01_crusader_male.png",
+   "fixed": [
+    {
+     "affix": "vit"
+    },
+    {
+     "affix": "dex",
+     "variable": "stat"
+    }
+   ],
+   "randomPrimary": 2,
+   "src": "https://kr.diablo3.blizzard.com/ko-kr/item/greaves-of-valor-P67_Unique_Boots_Set_01",
+   "secResistP": 0,
+   "set": "용기의 방패",
+   "skillN": 6,
+   "type": "boots",
+   "secPicks": 2,
+   "secP": {
+    "resone": 0.6676
+   },
+   "secDist": {
+    "resone": {
+     "": 0.332421,
+     "resone": 0.667579
+    }
+   }
+  },
+  {
+   "id": "cr_compass_rose",
+   "name": "나침도",
+   "nameEn": "The Compass Rose",
+   "slot": "ring",
+   "quality": "set",
+   "icon": "icons/raw_cr_compass_rose.png",
+   "iconRaw": "icons/raw_cr_compass_rose.png",
+   "iconTone": "icons/tone_cr_compass_rose.png",
+   "iconSize": [
+    64,
+    64
+   ],
+   "iconBox": [
+    16,
+    18,
+    46,
+    50
+   ],
+   "iconSrc": "https://assets.diablo3.blizzard.com/d3/icons/items/large/unique_ring_013_x1_demonhunter_male.png",
+   "fixed": [
+    {
+     "affix": "ms"
+    },
+    {
+     "affix": "dex",
+     "variable": "stat"
+    }
+   ],
+   "randomPrimary": 3,
+   "src": "https://kr.diablo3.blizzard.com/ko-kr/item/the-compass-rose-Unique_Ring_013_x1",
+   "secResistP": 0,
+   "set": "끝없는 걸음",
+   "primaries": 5,
+   "type": "ring",
+   "secPicks": 1,
+   "secP": {
+    "resone": 0.431
+   },
+   "secDist": {
+    "resone": {
+     "": 0.568966,
+     "resone": 0.431034
+    }
+   },
+   "dropShare": {
+    "DemonHunter": 0.04210526,
+    "Barbarian": 0.04255319,
+    "Wizard": 0.04040404,
+    "WitchDoctor": 0.03883495,
+    "Monk": 0.04395604,
+    "Crusader": 0.04395604,
+    "Necromancer": 0.04081633
+   }
+  },
+  {
+   "id": "cr_travelers_pledge",
+   "name": "모험가의 서약",
+   "nameEn": "The Traveler's Pledge",
+   "slot": "amulet",
+   "quality": "set",
+   "icon": "icons/raw_cr_travelers_pledge.png",
+   "iconRaw": "icons/raw_cr_travelers_pledge.png",
+   "iconTone": "icons/tone_cr_travelers_pledge.png",
+   "iconSize": [
+    64,
+    64
+   ],
+   "iconBox": [
+    1,
+    2,
+    61,
+    62
+   ],
+   "iconSrc": "https://assets.diablo3.blizzard.com/d3/icons/items/large/unique_amulet_008_x1_demonhunter_male.png",
+   "fixed": [
+    {
+     "affix": "chd"
+    },
+    {
+     "affix": "dex",
+     "variable": "stat"
+    }
+   ],
+   "randomPrimary": 2,
+   "src": "https://kr.diablo3.blizzard.com/ko-kr/item/the-travelers-pledge-Unique_Amulet_008_x1",
+   "secResistP": 0,
+   "set": "끝없는 걸음",
+   "type": "amulet",
+   "secPicks": 2,
+   "secP": {
+    "resone": 0.6238,
+    "mrdr": 0.2494,
+    "resone+mrdr": 0.0757
+   },
+   "secDist": {
+    "resone+mrdr": {
+     "": 0.297278,
+     "resone": 0.548076,
+     "mrdr": 0.078969,
+     "resone+mrdr": 0.075677
+    },
+    "mrdr": {
+     "": 0.750596,
+     "mrdr": 0.249404
+    }
+   },
+   "dropShare": {
+    "DemonHunter": 0.06896552,
+    "Barbarian": 0.06896552,
+    "Wizard": 0.06060606,
+    "WitchDoctor": 0.06896552,
+    "Monk": 0.06060606,
+    "Crusader": 0.06557377,
+    "Necromancer": 0.05797101
+   }
+  },
+  {
+   "id": "cr_crown_valor",
+   "name": "용기의 왕관",
+   "nameEn": "Crown of Valor",
+   "slot": "head",
+   "quality": "set",
+   "icon": "icons/raw_cr_crown_valor.png",
+   "iconRaw": "icons/raw_cr_crown_valor.png",
+   "iconTone": "icons/tone_cr_crown_valor.png",
+   "iconSize": [
+    64,
+    128
+   ],
+   "iconBox": [
+    0,
+    13,
+    64,
+    108
+   ],
+   "iconSrc": "https://assets.diablo3.blizzard.com/d3/icons/items/large/p67_unique_helm_set_01_crusader_male.png",
+   "fixed": [
+    {
+     "affix": "socket",
+     "n": 1
+    },
+    {
+     "affix": "dex",
+     "variable": "stat"
+    }
+   ],
+   "randomPrimary": 2,
+   "src": "https://kr.diablo3.blizzard.com/ko-kr/item/crown-of-valor-P67_Unique_Helm_Set_01",
+   "secResistP": 0,
+   "set": "용기의 방패",
+   "skillN": 6,
+   "type": "helm",
+   "secPicks": 2,
+   "secP": {
+    "resone": 0.6635
+   },
+   "secDist": {
+    "resone": {
+     "": 0.33652,
+     "resone": 0.66348
+    }
+   }
+  },
+  {
+   "id": "cr_aughild_power",
+   "name": "오길드의 권력",
+   "nameEn": "Aughild's Power",
+   "slot": "shoulders",
+   "quality": "set",
+   "icon": "icons/raw_cr_aughild_power.png",
+   "iconRaw": "icons/raw_cr_aughild_power.png",
+   "iconTone": "icons/tone_cr_aughild_power.png",
+   "iconSize": [
+    64,
+    128
+   ],
+   "iconBox": [
+    0,
+    23,
+    58,
+    92
+   ],
+   "iconSrc": "https://assets.diablo3.blizzard.com/d3/icons/items/large/p66_unique_shoulder_008_crusader_male.png",
+   "fixed": [],
+   "randomPrimary": 4,
+   "src": "https://kr.diablo3.blizzard.com/ko-kr/artisan/blacksmith/recipe/aughilds-power",
+   "secResistP": 0,
+   "set": "오길드의 권위",
+   "crafted": {
+    "crystal": 30,
+    "_doc": "수호자의 위기 제작법(악사 items.py 와 같음)"
+   },
+   "skillN": 4,
+   "type": "shoulders",
+   "secPicks": 2,
+   "secP": {
+    "hitchill": 0.0413,
+    "resone": 0.6676,
+    "hitchill+resone": 0.012
+   },
+   "secDist": {
+    "hitchill+resone": {
+     "": 0.321403,
+     "hitchill": 0.011017,
+     "resone": 0.655576,
+     "hitchill+resone": 0.012003
+    },
+    "hitchill": {
+     "": 0.958719,
+     "hitchill": 0.041281
+    }
+   }
+  },
+  {
+   "id": "cr_aughild_search",
+   "name": "오길드의 탐색",
+   "nameEn": "Aughild's Search",
+   "slot": "bracers",
+   "quality": "set",
+   "icon": "icons/raw_cr_aughild_search.png",
+   "iconRaw": "icons/raw_cr_aughild_search.png",
+   "iconTone": "icons/tone_cr_aughild_search.png",
+   "iconSize": [
+    64,
+    128
+   ],
+   "iconBox": [
+    8,
+    22,
+    52,
+    96
+   ],
+   "iconSrc": "https://assets.diablo3.blizzard.com/d3/icons/items/large/p66_unique_bracer_009_demonhunter_male.png",
+   "fixed": [],
+   "randomPrimary": 4,
+   "src": "https://kr.diablo3.blizzard.com/ko-kr/artisan/blacksmith/recipe/aughilds-search",
+   "secResistP": 0,
+   "set": "오길드의 권위",
+   "crafted": {
+    "crystal": 30,
+    "_doc": "수호자의 위기 제작법(악사 items.py 와 같음)"
+   },
+   "type": "bracers",
+   "secPicks": 2,
+   "secP": {
+    "resone": 0.6734,
+    "mrdr": 0.3186,
+    "resone+mrdr": 0.1018
+   },
+   "secDist": {
+    "resone+mrdr": {
+     "": 0.243476,
+     "resone": 0.571653,
+     "mrdr": 0.083121,
+     "resone+mrdr": 0.10175
+    },
+    "mrdr": {
+     "": 0.681407,
+     "mrdr": 0.318593
+    }
+   }
+  },
+  {
+   "id": "warzechian",
+   "name": "왈제치언 팔 보호구",
+   "nameEn": "Warzechian Armguards",
+   "slot": "bracers",
+   "quality": "legendary",
+   "icon": "icons/raw_warzechian.png",
+   "iconRaw": "icons/raw_warzechian.png",
+   "iconTone": "icons/tone_warzechian.png",
+   "iconSize": [
+    64,
+    128
+   ],
+   "iconBox": [
+    2,
+    32,
+    59,
+    93
+   ],
+   "iconSrc": "https://assets.diablo3.blizzard.com/d3/icons/items/large/unique_bracer_101_x1_demonhunter_male.png",
+   "fixed": [
+    {
+     "affix": "chc"
+    },
+    {
+     "affix": "dex",
+     "variable": "stat"
+    }
+   ],
+   "randomPrimary": 2,
+   "src": "https://kr.diablo3.blizzard.com/ko-kr/item/warzechian-armguards-Unique_Bracer_101_x1",
+   "secResistP": 0,
+   "power": "파괴 가능한 개체를 파괴할 때마다, 잠시 이동 속도 폭발적으로 증가",
+   "type": "bracers",
+   "dropShare": {
+    "DemonHunter": 0.1,
+    "Barbarian": 0.07692308,
+    "Wizard": 0.1,
+    "WitchDoctor": 0.09090909,
+    "Monk": 0.07692308,
+    "Crusader": 0.07692308,
+    "Necromancer": 0.1
+   }
+  },
+  {
+   "id": "rechel",
+   "name": "리첼의 도둑질 반지",
+   "nameEn": "Rechel's Ring of Larceny",
+   "slot": "ring",
+   "quality": "legendary",
+   "icon": "icons/raw_rechel.png",
+   "iconRaw": "icons/raw_rechel.png",
+   "iconTone": "icons/tone_rechel.png",
+   "iconSize": [
+    64,
+    64
+   ],
+   "iconBox": [
+    12,
+    16,
+    50,
+    50
+   ],
+   "iconSrc": "https://assets.diablo3.blizzard.com/d3/icons/items/large/unique_ring_104_x1_demonhunter_male.png",
+   "fixed": [
+    {
+     "affix": "dex",
+     "variable": "stat"
+    }
+   ],
+   "randomPrimary": 3,
+   "src": "https://kr.diablo3.blizzard.com/ko-kr/item/rechels-ring-of-larceny-Unique_Ring_104_x1",
+   "secResistP": 0,
+   "power": "적을 공포에 빠뜨리면 4초 동안 이동 속도 60% 증가",
+   "type": "ring",
+   "dropShare": {
+    "DemonHunter": 0.04210526,
+    "Barbarian": 0.04255319,
+    "Wizard": 0.04040404,
+    "WitchDoctor": 0.03883495,
+    "Monk": 0.04395604,
+    "Crusader": 0.04395604,
+    "Necromancer": 0.04081633
+   }
+  },
+  {
+   "id": "cr_flail_charge",
+   "name": "질주의 도리깨",
+   "nameEn": "Flail of the Charge",
+   "slot": "weapon",
+   "quality": "set",
+   "icon": "icons/raw_cr_flail_charge.png",
+   "iconRaw": "icons/raw_cr_flail_charge.png",
+   "iconTone": "icons/tone_cr_flail_charge.png",
+   "iconSize": [
+    64,
+    128
+   ],
+   "iconBox": [
+    0,
+    4,
+    63,
+    125
+   ],
+   "iconSrc": "https://assets.diablo3.blizzard.com/d3/icons/items/large/p4_unique_flail_2h_set_01_x1_crusader_male.png",
+   "fixed": [
+    {
+     "affix": "wdmgFlail2h",
+     "special": true
+    },
+    {
+     "affix": "dex2h",
+     "variable": "stat"
+    }
+   ],
+   "randomPrimary": 2,
+   "src": "https://kr.diablo3.blizzard.com/ko-kr/item/flail-of-the-charge-P4_Unique_Flail_2H_Set_01_x1",
+   "secResistP": 0,
+   "baseDamage": [
+    1351,
+    1486
+   ],
+   "type": "flail2h",
+   "poolAdd": [
+    "wrathRegen",
+    "wrathHeals"
+   ],
+   "set": "노르발드의 열정",
+   "secPicks": 2,
+   "secP": {
+    "hitchill": 0.0347
+   },
+   "secDist": {
+    "hitchill": {
+     "": 0.965312,
+     "hitchill": 0.034688
+    }
+   }
+  },
+  {
+   "id": "cr_shield_steed",
+   "name": "군마 방패",
+   "nameEn": "Shield of the Steed",
+   "slot": "shield",
+   "quality": "set",
+   "icon": "icons/raw_cr_shield_steed.png",
+   "iconRaw": "icons/raw_cr_shield_steed.png",
+   "iconTone": "icons/tone_cr_shield_steed.png",
+   "iconSize": [
+    64,
+    128
+   ],
+   "iconBox": [
+    0,
+    16,
+    63,
+    104
+   ],
+   "iconSrc": "https://assets.diablo3.blizzard.com/d3/icons/items/large/p4_unique_shield_set_01_x1_crusader_male.png",
+   "fixed": [
+    {
+     "affix": "chc"
+    },
+    {
+     "affix": "dex",
+     "variable": "stat"
+    }
+   ],
+   "randomPrimary": 2,
+   "src": "https://kr.diablo3.blizzard.com/ko-kr/item/shield-of-the-steed-P4_Unique_Shield_Set_01_x1",
+   "secResistP": 0,
+   "type": "crusadershield",
+   "set": "노르발드의 열정",
+   "secPicks": 2,
+   "secP": {
+    "hitchill": 0.0176,
+    "resone": 0.4587,
+    "hitchill+resone": 0.002,
+    "mrdr": 0.1388,
+    "hitchill+mrdr": 0.0005
+   },
+   "secDist": {
+    "hitchill+resone": {
+     "": 0.532779,
+     "hitchill": 0.008536,
+     "resone": 0.456727,
+     "hitchill+resone": 0.001957
+    },
+    "hitchill+mrdr": {
+     "": 0.844076,
+     "hitchill": 0.017087,
+     "mrdr": 0.138357,
+     "hitchill+mrdr": 0.000479
+    }
+   }
+  },
+  {
+   "id": "wz_fb_head",
+   "name": "불새의 깃털모",
+   "nameEn": "Firebird's Plume",
+   "slot": "head",
+   "quality": "set",
+   "icon": "icons/raw_wz_fb_head.png",
+   "iconRaw": "icons/raw_wz_fb_head.png",
+   "iconTone": "icons/tone_wz_fb_head.png",
+   "iconSize": [
+    64,
+    128
+   ],
+   "iconBox": [
+    0,
+    16,
+    64,
+    89
+   ],
+   "iconSrc": "https://assets.diablo3.blizzard.com/d3/icons/items/large/unique_helm_set_06_x1_wizard_male.png",
+   "fixed": [
+    {
+     "affix": "socket",
+     "n": 1
+    },
+    {
+     "affix": "dex",
+     "variable": "stat"
+    }
+   ],
+   "randomPrimary": 2,
+   "src": "https://kr.diablo3.blizzard.com/ko-kr/item/firebirds-plume-Unique_Helm_Set_06_x1",
+   "secResistP": 0,
+   "set": "불새의 화려한 옷",
+   "type": "helm",
+   "secPicks": 2,
+   "secP": {
+    "resone": 0.6635
+   },
+   "secDist": {
+    "resone": {
+     "": 0.33652,
+     "resone": 0.66348
+    }
+   }
+  },
+  {
+   "id": "wz_fb_shoulders",
+   "name": "불새의 날개깃",
+   "nameEn": "Firebird's Pinions",
+   "slot": "shoulders",
+   "quality": "set",
+   "icon": "icons/raw_wz_fb_shoulders.png",
+   "iconRaw": "icons/raw_wz_fb_shoulders.png",
+   "iconTone": "icons/tone_wz_fb_shoulders.png",
+   "iconSize": [
+    64,
+    128
+   ],
+   "iconBox": [
+    5,
+    36,
+    60,
+    90
+   ],
+   "iconSrc": "https://assets.diablo3.blizzard.com/d3/icons/items/large/unique_shoulder_set_06_x1_wizard_male.png",
+   "fixed": [
+    {
+     "affix": "rcr"
+    },
+    {
+     "affix": "dex",
+     "variable": "stat"
+    }
+   ],
+   "randomPrimary": 2,
+   "src": "https://kr.diablo3.blizzard.com/ko-kr/item/firebirds-pinions-Unique_Shoulder_Set_06_x1",
+   "secResistP": 0,
+   "set": "불새의 화려한 옷",
+   "type": "shoulders",
+   "secPicks": 2,
+   "secP": {
+    "resone": 0.6676
+   },
+   "secDist": {
+    "resone": {
+     "": 0.332421,
+     "resone": 0.667579
+    }
+   }
+  },
+  {
+   "id": "wz_fb_chest",
+   "name": "불새의 가슴",
+   "nameEn": "Firebird's Breast",
+   "slot": "chest",
+   "quality": "set",
+   "icon": "icons/raw_wz_fb_chest.png",
+   "iconRaw": "icons/raw_wz_fb_chest.png",
+   "iconTone": "icons/tone_wz_fb_chest.png",
+   "iconSize": [
+    82,
+    164
+   ],
+   "iconBox": [
+    3,
+    22,
+    79,
+    148
+   ],
+   "iconSrc": "https://assets.diablo3.blizzard.com/d3/icons/items/large/unique_chest_set_06_x1_wizard_male.png",
+   "fixed": [
+    {
+     "affix": "socket",
+     "n": 3
+    },
+    {
+     "affix": "dex",
+     "variable": "stat"
+    }
+   ],
+   "randomPrimary": 2,
+   "src": "https://kr.diablo3.blizzard.com/ko-kr/item/firebirds-breast-Unique_Chest_Set_06_x1",
+   "secResistP": 0,
+   "set": "불새의 화려한 옷",
+   "type": "chestarmor",
+   "secPicks": 2,
+   "secP": {
+    "resone": 0.6054,
+    "mrdr": 0.2304,
+    "resone+mrdr": 0.067
+   },
+   "secDist": {
+    "resone+mrdr": {
+     "": 0.316972,
+     "resone": 0.538396,
+     "mrdr": 0.077583,
+     "resone+mrdr": 0.067049
+    },
+    "mrdr": {
+     "": 0.769637,
+     "mrdr": 0.230363
+    }
+   }
+  },
+  {
+   "id": "wz_fb_gloves",
+   "name": "불새의 발톱",
+   "nameEn": "Firebird's Talons",
+   "slot": "gloves",
+   "quality": "set",
+   "icon": "icons/raw_wz_fb_gloves.png",
+   "iconRaw": "icons/raw_wz_fb_gloves.png",
+   "iconTone": "icons/tone_wz_fb_gloves.png",
+   "iconSize": [
+    64,
+    128
+   ],
+   "iconBox": [
+    3,
+    4,
+    61,
+    116
+   ],
+   "iconSrc": "https://assets.diablo3.blizzard.com/d3/icons/items/large/unique_gloves_set_06_x1_wizard_male.png",
+   "fixed": [
+    {
+     "affix": "chc"
+    },
+    {
+     "affix": "dex",
+     "variable": "stat"
+    }
+   ],
+   "randomPrimary": 2,
+   "src": "https://kr.diablo3.blizzard.com/ko-kr/item/firebirds-talons-Unique_Gloves_Set_06_x1",
+   "secResistP": 0,
+   "set": "불새의 화려한 옷",
+   "type": "gloves",
+   "secPicks": 2,
+   "secP": {
+    "resone": 0.7075
+   },
+   "secDist": {
+    "resone": {
+     "": 0.292473,
+     "resone": 0.707527
+    }
+   }
+  },
+  {
+   "id": "wz_fb_pants",
+   "name": "불새의 하의",
+   "nameEn": "Firebird's Down",
+   "slot": "pants",
+   "quality": "set",
+   "icon": "icons/raw_wz_fb_pants.png",
+   "iconRaw": "icons/raw_wz_fb_pants.png",
+   "iconTone": "icons/tone_wz_fb_pants.png",
+   "iconSize": [
+    64,
+    128
+   ],
+   "iconBox": [
+    4,
+    22,
+    61,
+    101
+   ],
+   "iconSrc": "https://assets.diablo3.blizzard.com/d3/icons/items/large/unique_pants_set_06_x1_wizard_male.png",
+   "fixed": [
+    {
+     "affix": "socket",
+     "n": 2
+    },
+    {
+     "affix": "dex",
+     "variable": "stat"
+    }
+   ],
+   "randomPrimary": 2,
+   "src": "https://kr.diablo3.blizzard.com/ko-kr/item/firebirds-down-Unique_Pants_Set_06_x1",
+   "secResistP": 0,
+   "set": "불새의 화려한 옷",
+   "type": "pants",
+   "secPicks": 2,
+   "secP": {
+    "resone": 0.6676
+   },
+   "secDist": {
+    "resone": {
+     "": 0.332421,
+     "resone": 0.667579
+    }
+   }
+  },
+  {
+   "id": "wz_fb_eye",
+   "name": "불새의 눈",
+   "nameEn": "Firebird's Eye",
+   "slot": "source",
+   "quality": "set",
+   "icon": "icons/raw_wz_fb_eye.png",
+   "iconRaw": "icons/raw_wz_fb_eye.png",
+   "iconTone": "icons/tone_wz_fb_eye.png",
+   "iconSize": [
+    64,
+    128
+   ],
+   "iconBox": [
+    2,
+    31,
+    62,
+    91
+   ],
+   "iconSrc": "https://assets.diablo3.blizzard.com/d3/icons/items/large/unique_orb_set_06_x1_demonhunter_male.png",
+   "fixed": [
+    {
+     "affix": "dmgOrb",
+     "special": true
+    },
+    {
+     "affix": "elem",
+     "elem": "fire"
+    },
+    {
+     "affix": "dex",
+     "variable": "stat"
+    }
+   ],
+   "randomPrimary": 2,
+   "src": "https://kr.diablo3.blizzard.com/ko-kr/item/firebirds-eye-Unique_Orb_Set_06_x1",
+   "secResistP": 0,
+   "set": "불새의 화려한 옷",
+   "primaries": 5,
+   "type": "source"
+  },
+  {
+   "id": "wz_fod",
+   "name": "운명의 파편",
+   "nameEn": "Fragment of Destiny",
+   "slot": "weapon",
+   "quality": "legendary",
+   "icon": "icons/raw_wz_fod.png",
+   "iconRaw": "icons/raw_wz_fod.png",
+   "iconTone": "icons/tone_wz_fod.png",
+   "iconSize": [
+    64,
+    128
+   ],
+   "iconBox": [
+    6,
+    0,
+    60,
+    124
+   ],
+   "iconSrc": "https://assets.diablo3.blizzard.com/d3/icons/items/large/p610_unique_wand_010_demonhunter_male.png",
+   "fixed": [
+    {
+     "affix": "wdmgWand",
+     "special": true
+    },
+    {
+     "affix": "dex",
+     "variable": "stat"
+    }
+   ],
+   "randomPrimary": 2,
+   "src": "https://kr.diablo3.blizzard.com/ko-kr/item/fragment-of-destiny-P610_Unique_Wand_010",
+   "secResistP": 0,
+   "baseDamage": [
+    193,
+    357
+   ],
+   "type": "wand",
+   "power": "고유 주문의 공격 속도 50% 증가 및 공격력 세 배로 증가. 고유 주문 적중 시 저승의 파편 중첩(중첩당 히드라 공격력 30%, 최대 10회) (마법사 전용)"
+  },
+  {
+   "id": "wz_crimson_thrust",
+   "name": "크림슨 선장의 추진력",
+   "nameEn": "Captain Crimson's Thrust",
+   "slot": "pants",
+   "quality": "set",
+   "icon": "icons/raw_wz_crimson_thrust.png",
+   "iconRaw": "icons/raw_wz_crimson_thrust.png",
+   "iconTone": "icons/tone_wz_crimson_thrust.png",
+   "iconSize": [
+    64,
+    128
+   ],
+   "iconBox": [
+    2,
+    22,
+    62,
+    101
+   ],
+   "iconSrc": "https://assets.diablo3.blizzard.com/d3/icons/items/large/p66_unique_pants_012_wizard_male.png",
+   "fixed": [],
+   "randomPrimary": 4,
+   "src": "https://kr.diablo3.blizzard.com/ko-kr/artisan/blacksmith/recipe/captain-crimsons-thrust",
+   "secResistP": 0,
+   "set": "크림슨 선장의 장식",
+   "crafted": {
+    "crystal": 50,
+    "_doc": "크림슨 제작법(악사 items.py 와 같음)"
+   },
+   "type": "pants",
+   "secPicks": 2,
+   "secP": {
+    "resone": 0.6676
+   },
+   "secDist": {
+    "resone": {
+     "": 0.332421,
+     "resone": 0.667579
+    }
+   }
+  },
+  {
+   "id": "wz_crimson_waders",
+   "name": "크림슨 선장의 고무 장화",
+   "nameEn": "Captain Crimson's Waders",
+   "slot": "boots",
+   "quality": "set",
+   "icon": "icons/raw_wz_crimson_waders.png",
+   "iconRaw": "icons/raw_wz_crimson_waders.png",
+   "iconTone": "icons/tone_wz_crimson_waders.png",
+   "iconSize": [
+    64,
+    128
+   ],
+   "iconBox": [
+    6,
+    35,
+    63,
+    101
+   ],
+   "iconSrc": "https://assets.diablo3.blizzard.com/d3/icons/items/large/p66_unique_boots_017_wizard_male.png",
+   "fixed": [],
+   "randomPrimary": 4,
+   "src": "https://kr.diablo3.blizzard.com/ko-kr/artisan/blacksmith/recipe/captain-crimsons-waders",
+   "secResistP": 0,
+   "set": "크림슨 선장의 장식",
+   "crafted": {
+    "crystal": 50,
+    "_doc": "크림슨 제작법(악사 items.py 와 같음)"
+   },
+   "type": "boots",
+   "secPicks": 2,
+   "secP": {
+    "resone": 0.6676
+   },
+   "secDist": {
+    "resone": {
+     "": 0.332421,
+     "resone": 0.667579
+    }
+   }
+  },
+  {
+   "id": "wz_aughild_power",
+   "name": "오길드의 권력",
+   "nameEn": "Aughild's Power",
+   "slot": "shoulders",
+   "quality": "set",
+   "icon": "icons/raw_wz_aughild_power.png",
+   "iconRaw": "icons/raw_wz_aughild_power.png",
+   "iconTone": "icons/tone_wz_aughild_power.png",
+   "iconSize": [
+    64,
+    128
+   ],
+   "iconBox": [
+    0,
+    23,
+    58,
+    92
+   ],
+   "iconSrc": "https://assets.diablo3.blizzard.com/d3/icons/items/large/p66_unique_shoulder_008_wizard_male.png",
+   "fixed": [],
+   "randomPrimary": 4,
+   "src": "https://kr.diablo3.blizzard.com/ko-kr/artisan/blacksmith/recipe/aughilds-power",
+   "secResistP": 0,
+   "set": "오길드의 권위",
+   "crafted": {
+    "crystal": 30,
+    "_doc": "오길드 제작법(성전사 items.py 와 같음)"
+   },
+   "type": "shoulders",
+   "secPicks": 2,
+   "secP": {
+    "resone": 0.6676
+   },
+   "secDist": {
+    "resone": {
+     "": 0.332421,
+     "resone": 0.667579
+    }
+   }
+  },
+  {
+   "id": "bb_raekor_head",
+   "name": "래코르의 의지",
+   "nameEn": "Raekor's Will",
+   "slot": "head",
+   "quality": "set",
+   "icon": "icons/raw_bb_raekor_head.png",
+   "iconRaw": "icons/raw_bb_raekor_head.png",
+   "iconTone": "icons/tone_bb_raekor_head.png",
+   "iconSize": [
+    64,
+    128
+   ],
+   "iconBox": [
+    2,
+    19,
+    63,
+    97
+   ],
+   "iconSrc": "https://assets.diablo3.blizzard.com/d3/icons/items/large/unique_helm_set_05_x1_barbarian_male.png",
+   "fixed": [
+    {
+     "affix": "socket",
+     "n": 1
+    },
+    {
+     "affix": "dex",
+     "variable": "stat"
+    }
+   ],
+   "randomPrimary": 2,
+   "src": "https://kr.diablo3.blizzard.com/ko-kr/item/raekors-will-Unique_Helm_Set_05_x1",
+   "secResistP": 0.796,
+   "secP": {
+    "pickup": 0.5083,
+    "ccred": 0.3667,
+    "resphys": 0.1327
+   },
+   "set": "래코르의 유산",
+   "skillN": 4,
+   "type": "helm"
+  },
+  {
+   "id": "bb_raekor_shoulders",
+   "name": "래코르의 짐",
+   "nameEn": "Raekor's Burden",
+   "slot": "shoulders",
+   "quality": "set",
+   "icon": "icons/raw_bb_raekor_shoulders.png",
+   "iconRaw": "icons/raw_bb_raekor_shoulders.png",
+   "iconTone": "icons/tone_bb_raekor_shoulders.png",
+   "iconSize": [
+    64,
+    128
+   ],
+   "iconBox": [
+    4,
+    17,
+    61,
+    113
+   ],
+   "iconSrc": "https://assets.diablo3.blizzard.com/d3/icons/items/large/unique_shoulder_set_05_x1_barbarian_male.png",
+   "fixed": [
+    {
+     "affix": "allres"
+    },
+    {
+     "affix": "dex",
+     "variable": "stat"
+    }
+   ],
+   "randomPrimary": 2,
+   "src": "https://kr.diablo3.blizzard.com/ko-kr/item/raekors-burden-Unique_Shoulder_Set_05_x1",
+   "secResistP": 0.801,
+   "secP": {
+    "pickup": 0.5176,
+    "globe": 0.3742,
+    "resphys": 0.1335
+   },
+   "set": "래코르의 유산",
+   "skillN": 7,
+   "type": "shoulders"
+  },
+  {
+   "id": "bb_raekor_chest",
+   "name": "래코르의 심장",
+   "nameEn": "Raekor's Heart",
+   "slot": "chest",
+   "quality": "set",
+   "icon": "icons/raw_bb_raekor_chest.png",
+   "iconRaw": "icons/raw_bb_raekor_chest.png",
+   "iconTone": "icons/tone_bb_raekor_chest.png",
+   "iconSize": [
+    82,
+    164
+   ],
+   "iconBox": [
+    2,
+    32,
+    81,
+    138
+   ],
+   "iconSrc": "https://assets.diablo3.blizzard.com/d3/icons/items/large/unique_chest_set_05_x1_barbarian_male.png",
+   "fixed": [
+    {
+     "affix": "socket",
+     "n": 3
+    },
+    {
+     "affix": "dex",
+     "variable": "stat"
+    }
+   ],
+   "randomPrimary": 2,
+   "src": "https://kr.diablo3.blizzard.com/ko-kr/item/raekors-heart-Unique_Chest_Set_05_x1",
+   "secResistP": 0.727,
+   "secP": {
+    "pickup": 0.4006,
+    "globe": 0.2817,
+    "resphys": 0.1211
+   },
+   "set": "래코르의 유산",
+   "skillN": 7,
+   "poolDrop": [
+    "hatred"
+   ],
+   "type": "chestarmor"
+  },
+  {
+   "id": "bb_raekor_gloves",
+   "name": "래코르의 손목 싸개",
+   "nameEn": "Raekor's Wraps",
+   "slot": "gloves",
+   "quality": "set",
+   "icon": "icons/raw_bb_raekor_gloves.png",
+   "iconRaw": "icons/raw_bb_raekor_gloves.png",
+   "iconTone": "icons/tone_bb_raekor_gloves.png",
+   "iconSize": [
+    64,
+    128
+   ],
+   "iconBox": [
+    8,
+    7,
+    56,
+    110
+   ],
+   "iconSrc": "https://assets.diablo3.blizzard.com/d3/icons/items/large/unique_gloves_set_05_x1_barbarian_male.png",
+   "fixed": [
+    {
+     "affix": "chc"
+    },
+    {
+     "affix": "dex",
+     "variable": "stat"
+    }
+   ],
+   "randomPrimary": 2,
+   "src": "https://kr.diablo3.blizzard.com/ko-kr/item/raekors-wraps-Unique_Gloves_Set_05_x1",
+   "secResistP": 0,
+   "secP": {
+    "pickup": 0.3846,
+    "resphys": 0.1415
+   },
+   "set": "래코르의 유산",
+   "type": "gloves"
+  },
+  {
+   "id": "bb_raekor_pants",
+   "name": "래코르의 바지",
+   "nameEn": "Raekor's Breeches",
+   "slot": "pants",
+   "quality": "set",
+   "icon": "icons/raw_bb_raekor_pants.png",
+   "iconRaw": "icons/raw_bb_raekor_pants.png",
+   "iconTone": "icons/tone_bb_raekor_pants.png",
+   "iconSize": [
+    64,
+    128
+   ],
+   "iconBox": [
+    1,
+    28,
+    63,
+    105
+   ],
+   "iconSrc": "https://assets.diablo3.blizzard.com/d3/icons/items/large/unique_pants_set_05_x1_barbarian_male.png",
+   "fixed": [
+    {
+     "affix": "socket",
+     "n": 2
+    },
+    {
+     "affix": "dex",
+     "variable": "stat"
+    }
+   ],
+   "randomPrimary": 2,
+   "src": "https://kr.diablo3.blizzard.com/ko-kr/item/raekors-breeches-Unique_Pants_Set_05_x1",
+   "secResistP": 0.801,
+   "secP": {
+    "pickup": 0.5176,
+    "resphys": 0.1335
+   },
+   "set": "래코르의 유산",
+   "skillN": 4,
+   "type": "pants"
+  },
+  {
+   "id": "bb_raekor_boots",
+   "name": "래코르의 성큼 장화",
+   "nameEn": "Raekor's Striders",
+   "slot": "boots",
+   "quality": "set",
+   "icon": "icons/raw_bb_raekor_boots.png",
+   "iconRaw": "icons/raw_bb_raekor_boots.png",
+   "iconTone": "icons/tone_bb_raekor_boots.png",
+   "iconSize": [
+    64,
+    128
+   ],
+   "iconBox": [
+    3,
+    25,
+    62,
+    105
+   ],
+   "iconSrc": "https://assets.diablo3.blizzard.com/d3/icons/items/large/unique_boots_set_05_x1_barbarian_male.png",
+   "fixed": [
+    {
+     "affix": "vit"
+    },
+    {
+     "affix": "dex",
+     "variable": "stat"
+    }
+   ],
+   "randomPrimary": 2,
+   "src": "https://kr.diablo3.blizzard.com/ko-kr/item/raekors-striders-Unique_Boots_Set_05_x1",
+   "secResistP": 0.801,
+   "secP": {
+    "pickup": 0.5176,
+    "globe": 0.3742,
+    "resphys": 0.1335
+   },
+   "set": "래코르의 유산",
+   "skillN": 4,
+   "type": "boots"
+  },
+  {
+   "id": "bb_cassius",
+   "name": "카시우스의 자긍심",
+   "nameEn": "Pride of Cassius",
+   "slot": "belt",
+   "quality": "legendary",
+   "icon": "icons/raw_bb_cassius.png",
+   "iconRaw": "icons/raw_bb_cassius.png",
+   "iconTone": "icons/tone_bb_cassius.png",
+   "iconSize": [
+    64,
+    64
+   ],
+   "iconBox": [
+    0,
+    16,
+    63,
+    56
+   ],
+   "iconSrc": "https://assets.diablo3.blizzard.com/d3/icons/items/large/unique_barbbelt_002_x1_barbarian_male.png",
+   "fixed": [
+    {
+     "affix": "allres"
+    },
+    {
+     "affix": "dex"
+    }
+   ],
+   "randomPrimary": 2,
+   "src": "https://kr.diablo3.blizzard.com/ko-kr/item/pride-of-cassius-Unique_BarbBelt_002_x1",
+   "secResistP": 0.417,
+   "secP": {
+    "pickup": 0.1786,
+    "maxfury": 0.4762,
+    "resphys": 0.0694
+   },
+   "type": "mightybelt",
+   "skillN": 4,
+   "poolDrop": [
+    "regen"
+   ],
+   "poolAdd": [
+    "furyHeals"
+   ],
+   "power": "고통 감내의 지속시간 6초 증가 (야만용사 전용)",
+   "powerRoll": [
+    4,
+    6
+   ],
+   "powerMust": true
+  },
+  {
+   "id": "bb_strongarm",
+   "name": "팔씨름",
+   "nameEn": "Strongarm Bracers",
+   "slot": "bracers",
+   "quality": "legendary",
+   "icon": "icons/raw_bb_strongarm.png",
+   "iconRaw": "icons/raw_bb_strongarm.png",
+   "iconTone": "icons/tone_bb_strongarm.png",
+   "iconSize": [
+    64,
+    128
+   ],
+   "iconBox": [
+    6,
+    30,
+    56,
+    99
+   ],
+   "iconSrc": "https://assets.diablo3.blizzard.com/d3/icons/items/large/unique_bracer_007_x1_barbarian_male.png",
+   "fixed": [
+    {
+     "affix": "chc"
+    },
+    {
+     "affix": "vit"
+    },
+    {
+     "affix": "dex",
+     "variable": "stat"
+    }
+   ],
+   "randomPrimary": 1,
+   "src": "https://kr.diablo3.blizzard.com/ko-kr/item/strongarm-bracers-Unique_Bracer_007_x1",
+   "secResistP": 0.536,
+   "secP": {
+    "pickup": 0.2885,
+    "resphys": 0.0893
+   },
+   "power": "밀쳐내기에 밀려난 적들이 6초 동안 받는 피해 30% 증가",
+   "powerRoll": [
+    20,
+    30
+   ],
+   "type": "bracers",
+   "dropShare": {
+    "DemonHunter": 0.1,
+    "Barbarian": 0.07692308,
+    "Wizard": 0.1,
+    "WitchDoctor": 0.09090909,
+    "Monk": 0.07692308,
+    "Crusader": 0.07692308,
+    "Necromancer": 0.1
+   }
+  },
+  {
+   "id": "oculus",
+   "name": "눈동자 반지",
+   "nameEn": "Oculus Ring",
+   "slot": "ring",
+   "quality": "legendary",
+   "icon": "icons/raw_oculus.png",
+   "iconRaw": "icons/raw_oculus.png",
+   "iconTone": "icons/tone_oculus.png",
+   "iconSize": [
+    64,
+    64
+   ],
+   "iconBox": [
+    16,
+    13,
+    53,
+    52
+   ],
+   "iconSrc": "https://assets.diablo3.blizzard.com/d3/icons/items/large/unique_ring_017_p4_demonhunter_male.png",
+   "fixed": [
+    {
+     "affix": "socket",
+     "n": 1,
+     "special": true
+    }
+   ],
+   "randomPrimary": 3,
+   "src": "https://kr.diablo3.blizzard.com/ko-kr/item/oculus-ring-Unique_Ring_017_p4",
+   "secResistP": 0,
+   "secP": {
+    "globe": 0.0862,
+    "ccred": 0.0862,
+    "resphys": 0.0862
+   },
+   "power": "괴물 처치 시 일정 확률로 힘 집중 지역을 생성. 해당 지역 내에 서 있는 동안은 공격력이 85% 증가",
+   "powerRoll": [
+    70,
+    85
+   ],
+   "powerMust": true,
+   "type": "ring",
+   "dropShare": {
+    "DemonHunter": 0.04210526,
+    "Barbarian": 0.04255319,
+    "Wizard": 0.04040404,
+    "WitchDoctor": 0.03883495,
+    "Monk": 0.04395604,
+    "Crusader": 0.04395604,
+    "Necromancer": 0.04081633
+   }
+  },
+  {
+   "id": "zodiac",
+   "name": "황도궁의 흑요석 반지",
+   "nameEn": "Obsidian Ring of the Zodiac",
+   "slot": "ring",
+   "quality": "legendary",
+   "icon": "icons/raw_zodiac.png",
+   "iconRaw": "icons/raw_zodiac.png",
+   "iconTone": "icons/tone_zodiac.png",
+   "iconSize": [
+    64,
+    64
+   ],
+   "iconBox": [
+    14,
+    12,
+    53,
+    53
+   ],
+   "iconSrc": "https://assets.diablo3.blizzard.com/d3/icons/items/large/unique_ring_023_p2_demonhunter_male.png",
+   "fixed": [
+    {
+     "affix": "cdr"
+    },
+    {
+     "affix": "ias"
+    },
+    {
+     "affix": "chc"
+    },
+    {
+     "affix": "rcr"
+    }
+   ],
+   "randomPrimary": 0,
+   "src": "https://kr.diablo3.blizzard.com/ko-kr/item/obsidian-ring-of-the-zodiac-Unique_Ring_023_p2",
+   "secResistP": 0,
+   "secP": {
+    "globe": 0.0862,
+    "ccred": 0.0862,
+    "resphys": 0.0862
+   },
+   "power": "자원을 소모하는 공격이 적중할 때마다 기술 하나의 남은 재사용 대기시간이 1초 감소",
+   "type": "ring",
+   "dropShare": {
+    "DemonHunter": 0.04210526,
+    "Barbarian": 0.04255319,
+    "Wizard": 0.04040404,
+    "WitchDoctor": 0.03883495,
+    "Monk": 0.04395604,
+    "Crusader": 0.04395604,
+    "Necromancer": 0.04081633
+   }
+  },
+  {
+   "id": "flavor_of_time",
+   "name": "시간의 향취",
+   "nameEn": "The Flavor of Time",
+   "slot": "amulet",
+   "quality": "legendary",
+   "icon": "icons/raw_flavor_of_time.png",
+   "iconRaw": "icons/raw_flavor_of_time.png",
+   "iconTone": "icons/tone_flavor_of_time.png",
+   "iconSize": [
+    64,
+    64
+   ],
+   "iconBox": [
+    2,
+    2,
+    61,
+    61
+   ],
+   "iconSrc": "https://assets.diablo3.blizzard.com/d3/icons/items/large/p66_unique_amulet_001_demonhunter_male.png",
+   "fixed": [
+    {
+     "affix": "cdr"
+    },
+    {
+     "affix": "ms"
+    }
+   ],
+   "randomPrimary": 3,
+   "src": "https://kr.diablo3.blizzard.com/ko-kr/item/the-flavor-of-time-P66_Unique_Amulet_001",
+   "secResistP": 0,
+   "secP": {
+    "globe": 0.08,
+    "ccred": 0.08,
+    "resphys": 0.08
+   },
+   "primaries": 5,
+   "power": "수정탑 효과 지속시간 두 배로 증가",
+   "type": "amulet",
+   "dropShare": {
+    "DemonHunter": 0.06896552,
+    "Barbarian": 0.06896552,
+    "Wizard": 0.06060606,
+    "WitchDoctor": 0.06896552,
+    "Monk": 0.06060606,
+    "Crusader": 0.06557377,
+    "Necromancer": 0.05797101
+   }
+  },
+  {
+   "id": "rondal",
+   "name": "론달의 정표",
+   "nameEn": "Rondal's Locket",
+   "slot": "amulet",
+   "quality": "legendary",
+   "icon": "icons/raw_rondal.png",
+   "iconRaw": "icons/raw_rondal.png",
+   "iconTone": "icons/tone_rondal.png",
+   "iconSize": [
+    64,
+    64
+   ],
+   "iconBox": [
+    2,
+    2,
+    61,
+    61
+   ],
+   "iconSrc": "https://assets.diablo3.blizzard.com/d3/icons/items/large/unique_amulet_009_x1_demonhunter_male.png",
+   "fixed": [
+    {
+     "affix": "dex",
+     "variable": "stat"
+    }
+   ],
+   "randomPrimary": 3,
+   "src": "https://kr.diablo3.blizzard.com/ko-kr/item/rondals-locket-Unique_Amulet_009_x1",
+   "secResistP": 0,
+   "secP": {
+    "pickup": 1
+   },
+   "primaries": 4,
+   "type": "amulet",
+   "dropShare": {
+    "DemonHunter": 0.06896552,
+    "Barbarian": 0.06896552,
+    "Wizard": 0.06060606,
+    "WitchDoctor": 0.06896552,
+    "Monk": 0.06060606,
+    "Crusader": 0.06557377,
+    "Necromancer": 0.05797101
+   }
+  },
+  {
+   "id": "pig_sticker",
+   "name": "멧돼지사냥꾼의 손칼",
+   "nameEn": "Pig Sticker",
+   "slot": "weapon",
+   "quality": "legendary",
+   "icon": "icons/raw_pig_sticker.png",
+   "iconRaw": "icons/raw_pig_sticker.png",
+   "iconTone": "icons/tone_pig_sticker.png",
+   "iconSize": [
+    64,
+    128
+   ],
+   "iconBox": [
+    2,
+    3,
+    60,
+    121
+   ],
+   "iconSrc": "https://assets.diablo3.blizzard.com/d3/icons/items/large/unique_dagger_007_x1_demonhunter_male.png",
+   "fixed": [
+    {
+     "affix": "wdmg",
+     "special": true
+    },
+    {
+     "affix": "dex",
+     "variable": "stat"
+    }
+   ],
+   "randomPrimary": 3,
+   "src": "https://kr.diablo3.blizzard.com/ko-kr/item/pig-sticker-Unique_Dagger_007_x1",
+   "secResistP": 0,
+   "secP": {},
+   "primaries": 5,
+   "baseDamage": [
+    107,
+    321
+   ],
+   "type": "dagger"
+  },
+  {
+   "id": "ingeom",
+   "name": "인검",
+   "nameEn": "In-geom",
+   "slot": "weapon",
+   "quality": "legendary",
+   "icon": "icons/raw_ingeom.png",
+   "iconRaw": "icons/raw_ingeom.png",
+   "iconTone": "icons/tone_ingeom.png",
+   "iconSize": [
+    64,
+    128
+   ],
+   "iconBox": [
+    4,
+    1,
+    60,
+    127
+   ],
+   "iconSrc": "https://assets.diablo3.blizzard.com/d3/icons/items/large/unique_sword_1h_113_x1_demonhunter_male.png",
+   "fixed": [
+    {
+     "affix": "wdmgSword",
+     "elem": "holy",
+     "special": true
+    },
+    {
+     "affix": "dmgp"
+    },
+    {
+     "affix": "dex",
+     "variable": "stat"
+    }
+   ],
+   "randomPrimary": 1,
+   "src": "https://kr.diablo3.blizzard.com/ko-kr/item/in-geom-Unique_Sword_1H_113_x1",
+   "secResistP": 0,
+   "secP": {},
+   "baseDamage": [
+    168,
+    392
+   ],
+   "type": "sword",
+   "power": "정예 괴물 무리 처치 후 15초 동안 기술 재사용 대기시간 10초 감소",
+   "powerRoll": [
+    8,
+    10
+   ],
+   "powerMust": true
+  },
+  {
+   "id": "gift_of_silaria",
+   "name": "실라리아의 선물",
+   "nameEn": "Gift of Silaria",
+   "slot": "weapon",
+   "quality": "legendary",
+   "icon": "icons/raw_gift_of_silaria.png",
+   "iconRaw": "icons/raw_gift_of_silaria.png",
+   "iconTone": "icons/tone_gift_of_silaria.png",
+   "iconSize": [
+    64,
+    128
+   ],
+   "iconBox": [
+    2,
+    2,
+    63,
+    126
+   ],
+   "iconSrc": "https://assets.diablo3.blizzard.com/d3/icons/items/large/unique_sword_1h_103_x1_demonhunter_male.png",
+   "fixed": [
+    {
+     "affix": "ms"
+    },
+    {
+     "affix": "wdmgSword",
+     "special": true
+    },
+    {
+     "affix": "dex",
+     "variable": "stat"
+    }
+   ],
+   "randomPrimary": 2,
+   "src": "https://kr.diablo3.blizzard.com/ko-kr/item/gift-of-silaria-Unique_Sword_1H_103_x1",
+   "secResistP": 0,
+   "secP": {},
+   "primaries": 5,
+   "baseDamage": [
+    168,
+    392
+   ],
+   "type": "sword"
+  },
+  {
+   "id": "bb_strongarm@int",
+   "name": "팔씨름",
+   "nameEn": "Strongarm Bracers",
+   "slot": "bracers",
+   "quality": "legendary",
+   "icon": "icons/raw_bb_strongarm.png",
+   "iconRaw": "icons/raw_bb_strongarm.png",
+   "iconTone": "icons/tone_bb_strongarm.png",
+   "iconSize": [
+    64,
+    128
+   ],
+   "iconBox": [
+    6,
+    30,
+    56,
+    99
+   ],
+   "iconSrc": "https://assets.diablo3.blizzard.com/d3/icons/items/large/unique_bracer_007_x1_barbarian_male.png",
+   "fixed": [
+    {
+     "affix": "chc"
+    },
+    {
+     "affix": "vit"
+    },
+    {
+     "affix": "intm",
+     "variable": "stat"
+    }
+   ],
+   "randomPrimary": 1,
+   "src": "https://kr.diablo3.blizzard.com/ko-kr/item/strongarm-bracers-Unique_Bracer_007_x1",
+   "secResistP": 0.536,
+   "secP": {
+    "pickup": 0.2885,
+    "resphys": 0.0893
+   },
+   "power": "밀쳐내기에 밀려난 적들이 6초 동안 받는 피해 30% 증가",
+   "powerRoll": [
+    20,
+    30
+   ],
+   "type": "bracers",
+   "variantOf": "bb_strongarm",
+   "originClass": "wizard",
+   "originLabel": "마법사",
+   "poolDrop": [
+    "dex"
+   ],
+   "poolAdd": [
+    "intm"
+   ],
+   "dropShare": {
+    "DemonHunter": 0.1,
+    "Barbarian": 0.07692308,
+    "Wizard": 0.1,
+    "WitchDoctor": 0.09090909,
+    "Monk": 0.07692308,
+    "Crusader": 0.07692308,
+    "Necromancer": 0.1
+   }
+  },
+  {
+   "id": "oculus@int",
+   "name": "눈동자 반지",
+   "nameEn": "Oculus Ring",
+   "slot": "ring",
+   "quality": "legendary",
+   "icon": "icons/raw_oculus.png",
+   "iconRaw": "icons/raw_oculus.png",
+   "iconTone": "icons/tone_oculus.png",
+   "iconSize": [
+    64,
+    64
+   ],
+   "iconBox": [
+    16,
+    13,
+    53,
+    52
+   ],
+   "iconSrc": "https://assets.diablo3.blizzard.com/d3/icons/items/large/unique_ring_017_p4_demonhunter_male.png",
+   "fixed": [
+    {
+     "affix": "socket",
+     "n": 1,
+     "special": true
+    }
+   ],
+   "randomPrimary": 3,
+   "src": "https://kr.diablo3.blizzard.com/ko-kr/item/oculus-ring-Unique_Ring_017_p4",
+   "secResistP": 0,
+   "secP": {
+    "globe": 0.0862,
+    "ccred": 0.0862,
+    "resphys": 0.0862
+   },
+   "power": "괴물 처치 시 일정 확률로 힘 집중 지역을 생성. 해당 지역 내에 서 있는 동안은 공격력이 85% 증가",
+   "powerRoll": [
+    70,
+    85
+   ],
+   "powerMust": true,
+   "type": "ring",
+   "variantOf": "oculus",
+   "originClass": "wizard",
+   "originLabel": "마법사",
+   "poolDrop": [
+    "dex"
+   ],
+   "poolAdd": [
+    "intm"
+   ],
+   "dropShare": {
+    "DemonHunter": 0.04210526,
+    "Barbarian": 0.04255319,
+    "Wizard": 0.04040404,
+    "WitchDoctor": 0.03883495,
+    "Monk": 0.04395604,
+    "Crusader": 0.04395604,
+    "Necromancer": 0.04081633
+   }
+  },
+  {
+   "id": "flavor_of_time@int",
+   "name": "시간의 향취",
+   "nameEn": "The Flavor of Time",
+   "slot": "amulet",
+   "quality": "legendary",
+   "icon": "icons/raw_flavor_of_time.png",
+   "iconRaw": "icons/raw_flavor_of_time.png",
+   "iconTone": "icons/tone_flavor_of_time.png",
+   "iconSize": [
+    64,
+    64
+   ],
+   "iconBox": [
+    2,
+    2,
+    61,
+    61
+   ],
+   "iconSrc": "https://assets.diablo3.blizzard.com/d3/icons/items/large/p66_unique_amulet_001_demonhunter_male.png",
+   "fixed": [
+    {
+     "affix": "cdr"
+    },
+    {
+     "affix": "ms"
+    }
+   ],
+   "randomPrimary": 3,
+   "src": "https://kr.diablo3.blizzard.com/ko-kr/item/the-flavor-of-time-P66_Unique_Amulet_001",
+   "secResistP": 0,
+   "secP": {
+    "globe": 0.08,
+    "ccred": 0.08,
+    "resphys": 0.08
+   },
+   "primaries": 5,
+   "power": "수정탑 효과 지속시간 두 배로 증가",
+   "type": "amulet",
+   "variantOf": "flavor_of_time",
+   "originClass": "wizard",
+   "originLabel": "마법사",
+   "poolDrop": [
+    "dex"
+   ],
+   "poolAdd": [
+    "intm"
+   ],
+   "dropShare": {
+    "DemonHunter": 0.06896552,
+    "Barbarian": 0.06896552,
+    "Wizard": 0.06060606,
+    "WitchDoctor": 0.06896552,
+    "Monk": 0.06060606,
+    "Crusader": 0.06557377,
+    "Necromancer": 0.05797101
+   }
+  },
+  {
+   "id": "rondal@int",
+   "name": "론달의 정표",
+   "nameEn": "Rondal's Locket",
+   "slot": "amulet",
+   "quality": "legendary",
+   "icon": "icons/raw_rondal.png",
+   "iconRaw": "icons/raw_rondal.png",
+   "iconTone": "icons/tone_rondal.png",
+   "iconSize": [
+    64,
+    64
+   ],
+   "iconBox": [
+    2,
+    2,
+    61,
+    61
+   ],
+   "iconSrc": "https://assets.diablo3.blizzard.com/d3/icons/items/large/unique_amulet_009_x1_demonhunter_male.png",
+   "fixed": [
+    {
+     "affix": "intm",
+     "variable": "stat"
+    }
+   ],
+   "randomPrimary": 3,
+   "src": "https://kr.diablo3.blizzard.com/ko-kr/item/rondals-locket-Unique_Amulet_009_x1",
+   "secResistP": 0,
+   "secP": {
+    "pickup": 1
+   },
+   "primaries": 4,
+   "type": "amulet",
+   "variantOf": "rondal",
+   "originClass": "wizard",
+   "originLabel": "마법사",
+   "poolDrop": [
+    "dex"
+   ],
+   "poolAdd": [
+    "intm"
+   ],
+   "dropShare": {
+    "DemonHunter": 0.06896552,
+    "Barbarian": 0.06896552,
+    "Wizard": 0.06060606,
+    "WitchDoctor": 0.06896552,
+    "Monk": 0.06060606,
+    "Crusader": 0.06557377,
+    "Necromancer": 0.05797101
+   }
+  },
+  {
+   "id": "pig_sticker@int",
+   "name": "멧돼지사냥꾼의 손칼",
+   "nameEn": "Pig Sticker",
+   "slot": "weapon",
+   "quality": "legendary",
+   "icon": "icons/raw_pig_sticker.png",
+   "iconRaw": "icons/raw_pig_sticker.png",
+   "iconTone": "icons/tone_pig_sticker.png",
+   "iconSize": [
+    64,
+    128
+   ],
+   "iconBox": [
+    2,
+    3,
+    60,
+    121
+   ],
+   "iconSrc": "https://assets.diablo3.blizzard.com/d3/icons/items/large/unique_dagger_007_x1_demonhunter_male.png",
+   "fixed": [
+    {
+     "affix": "wdmg",
+     "special": true
+    },
+    {
+     "affix": "intm",
+     "variable": "stat"
+    }
+   ],
+   "randomPrimary": 3,
+   "src": "https://kr.diablo3.blizzard.com/ko-kr/item/pig-sticker-Unique_Dagger_007_x1",
+   "secResistP": 0,
+   "secP": {},
+   "primaries": 5,
+   "baseDamage": [
+    107,
+    321
+   ],
+   "type": "dagger",
+   "variantOf": "pig_sticker",
+   "originClass": "wizard",
+   "originLabel": "마법사",
+   "poolDrop": [
+    "dex"
+   ],
+   "poolAdd": [
+    "intm"
+   ]
+  },
+  {
+   "id": "ingeom@int",
+   "name": "인검",
+   "nameEn": "In-geom",
+   "slot": "weapon",
+   "quality": "legendary",
+   "icon": "icons/raw_ingeom.png",
+   "iconRaw": "icons/raw_ingeom.png",
+   "iconTone": "icons/tone_ingeom.png",
+   "iconSize": [
+    64,
+    128
+   ],
+   "iconBox": [
+    4,
+    1,
+    60,
+    127
+   ],
+   "iconSrc": "https://assets.diablo3.blizzard.com/d3/icons/items/large/unique_sword_1h_113_x1_demonhunter_male.png",
+   "fixed": [
+    {
+     "affix": "wdmgSword",
+     "elem": "holy",
+     "special": true
+    },
+    {
+     "affix": "dmgp"
+    },
+    {
+     "affix": "intm",
+     "variable": "stat"
+    }
+   ],
+   "randomPrimary": 1,
+   "src": "https://kr.diablo3.blizzard.com/ko-kr/item/in-geom-Unique_Sword_1H_113_x1",
+   "secResistP": 0,
+   "secP": {},
+   "baseDamage": [
+    168,
+    392
+   ],
+   "type": "sword",
+   "power": "정예 괴물 무리 처치 후 15초 동안 기술 재사용 대기시간 10초 감소",
+   "powerRoll": [
+    8,
+    10
+   ],
+   "powerMust": true,
+   "variantOf": "ingeom",
+   "originClass": "wizard",
+   "originLabel": "마법사",
+   "poolDrop": [
+    "dex"
+   ],
+   "poolAdd": [
+    "intm"
+   ]
+  },
+  {
+   "id": "gift_of_silaria@int",
+   "name": "실라리아의 선물",
+   "nameEn": "Gift of Silaria",
+   "slot": "weapon",
+   "quality": "legendary",
+   "icon": "icons/raw_gift_of_silaria.png",
+   "iconRaw": "icons/raw_gift_of_silaria.png",
+   "iconTone": "icons/tone_gift_of_silaria.png",
+   "iconSize": [
+    64,
+    128
+   ],
+   "iconBox": [
+    2,
+    2,
+    63,
+    126
+   ],
+   "iconSrc": "https://assets.diablo3.blizzard.com/d3/icons/items/large/unique_sword_1h_103_x1_demonhunter_male.png",
+   "fixed": [
+    {
+     "affix": "ms"
+    },
+    {
+     "affix": "wdmgSword",
+     "special": true
+    },
+    {
+     "affix": "intm",
+     "variable": "stat"
+    }
+   ],
+   "randomPrimary": 2,
+   "src": "https://kr.diablo3.blizzard.com/ko-kr/item/gift-of-silaria-Unique_Sword_1H_103_x1",
+   "secResistP": 0,
+   "secP": {},
+   "primaries": 5,
+   "baseDamage": [
+    168,
+    392
+   ],
+   "type": "sword",
+   "variantOf": "gift_of_silaria",
+   "originClass": "wizard",
+   "originLabel": "마법사",
+   "poolDrop": [
+    "dex"
+   ],
+   "poolAdd": [
+    "intm"
+   ]
+  }
+ ]
+}
