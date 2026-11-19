@@ -788,8 +788,10 @@ h1{font-size:18px;font-weight:700;color:var(--title);margin:0 auto 12px;width:90
 
 /* 계정 탭: 왼쪽 캐릭터 · 오른쪽 조회 기록(35_account AccountPage) */
 .acct-split{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:10px 0 14px;align-items:start}
-.acct-split .acct-heroes{display:flex;flex-direction:column;gap:6px;max-height:300px;overflow-y:auto;margin:0}
-.acct-split .acct-hero{width:100%;justify-content:flex-start}
+/* 세로 목록 + 세로 스크롤: 위 .acct-heroes 의 flex-wrap:wrap 이 남아 있으면 높이 상한(300px)을 넘는 캐릭터가 옆 열로 넘어가 가로 스크롤이 됐음 → nowrap·가로 넘침 없음.
+   사용자 2026-11-19 "여전히 캐릭터 스크롤은 가로로 되네? 세로로 하자고." */
+.acct-split .acct-heroes{display:flex;flex-direction:column;flex-wrap:nowrap;gap:6px;max-height:300px;overflow-y:auto;overflow-x:hidden;margin:0}
+.acct-split .acct-hero{width:100%;flex:none;justify-content:flex-start}
 .acct-recs{display:flex;flex-direction:column;gap:6px;max-height:300px;overflow-y:auto;min-width:0}
 .acct-rec{display:flex;align-items:stretch;gap:0;border:1px solid var(--slot-hl);border-radius:2px;background:var(--slot)}
 .acct-rec.on{background:#5a4420;border-color:#a8853f}
@@ -803,6 +805,14 @@ h1{font-size:18px;font-weight:700;color:var(--title);margin:0 auto 12px;width:90
 .acct-port{overflow:visible} .acct-port img{width:100%;height:100%;object-fit:cover;object-position:50% 15%;border-radius:1px;display:block}
 .acct-split .acct-port{width:40px;height:40px}
 .ae-num.bad,input.bad{outline:1px solid #ff8a7a;outline-offset:0}
+/* 오른쪽 끝 보석 표기: 글자가 칸보다 넓으면 왼쪽으로 늘어나게(모바일에서 오른쪽이 잘림 — 사용자 2026-11-19 "모바일에서 오른쪽 보석의 등락이 잘리는거같다?") */
+.gaptag.rt{justify-content:flex-end}
+/* 축성 아이템 칸 바탕 = maxroll d3planner 의 축성 그림(main.css .d3p-quality-sanctified .d3p-ItemGradient: 큰 칸 gradient_large_sanctified.png, 반지·목걸이·허리 칸은 작은 그림).
+   사용자 2026-11-19 "축성템은 보여줄때 아이템 배경을 밝은회색배경. 아마 maxroll가면 볼수 있을거야. 그걸로 해주자." */
+.slotitem.sanct{background:url(icons/sanct/gradient_large_sanctified.png) center/100% 100% no-repeat,#2b3236}
+.slotitem.sanct.s-ring,.slotitem.sanct.s-amulet,.slotitem.sanct.s-belt{background:url(icons/sanct/gradient_small_sanctified.png) center/100% 100% no-repeat,#2b3236}
+/* 시즌 잎(블리자드 그림, 35_account) */
+.acct-port .leaf{width:15px;height:21px;background:url(icons/seasonal-leaf.png) -24px -2px no-repeat;right:-7px;bottom:-7px}
 
 </style>
 <style>
@@ -1287,7 +1297,8 @@ function oneShotMods(build, CM, sets, rcrTotal, opts){ const S = D.config.model.
   for (const p of sb.passives || []) use(p, S.passives[p]);
   for (const g of new Set(Object.values(build.legGems || {}))) { const e = S.gems[g]; if (!e) continue;
     if (e.perUnit) o.dr.push([g, e.perUnit * (opts.lodUnits != null ? opts.lodUnits : e.units)]); else use(g, e); }
-  if (build.classId === "crusader") { if ((sets["끝없는 걸음"] || 0) >= 2) o.dr.push(["endlessWalk", S.endlessWalkDr]);
+  /* 성전사 끝없는 걸음 받는 피해 50%(endlessWalkDr)는 2026-11-19 뺌 → 공격력 +100% 로(27_class_crusader, 사용자 "끝없는걸음은 항상 딜 100%가 맞는거같아") */
+  if (build.classId === "crusader") {
     if ((sets["크림슨 선장의 장식"] || 0) >= 3) { if (rcrTotal == null) o.rcrDr = true; else o.dr.push(["crimson", rcrTotal]); } }   // 성전사 직업 규칙에는 크림슨 3세트 감소가 없음(다른 직업은 규칙이 X.dr 에 넣음)
   return o; }
 function statsFromAcc(a, build, opts, rr, light){ rr = rr || {};
@@ -2972,7 +2983,9 @@ function calc(r, paraVit, opt){ opt = opt || {};
   if (r.cls === 'wizard' && have('집중의 어깨걸이')) { extra *= 0.75; notes.push('어깨걸이'); }
   if (have('화합의 반지')) { if ((r.cls !== 'crusader' || !c.CM.unityDR) && !(r.cls === 'monk' && M.wears(build, 'unity'))) extra *= 0.5; notes.push('화합'); }   // 수도사는 착용이면 직업 규칙이 넣음(카나이일 때만 여기서)
   build.lodUnits = lodUnits; M.rebuildOne(build);   // 2026-11-19: 한 방 전용 효과는 세팅 캐시(20_stats buildCache ★)가 영웅의 기술·보석·꿈의 유산 단위로 정함 → 다 채운 뒤 캐시를 다시 만들게 함
-  const st = M.statsFromAcc(a, build, {paragon: r.P, paraVit, gemMode: 'solo', augRank: 1e-9, oneShot: true, lodUnits, squirtBase: true, valOverride: Object.fromEntries(Object.entries(wov).map(([k, v]) => { const f = D.itemsById[build.slots[k].item].fixed.find(f => D.affixes[f.affix].group === 'wdmg'); return [k, f ? {[f.affix]: v} : {}]; }))}, {}, false);
+  /* 무기 보석: 계정 조회 탭이 r.weaponGem(무기에 낀 보석 id)을 주면 그것으로, 없으면 모델 기본(목록 첫째 = 에메랄드). 표본 기준점(rank_calc)은 주지 않으므로 그대로.
+     사용자 2026-11-19 "축성 무기에 보석도 못끼네?" */
+  const st = M.statsFromAcc(a, build, {paragon: r.P, paraVit, gemMode: 'solo', augRank: 1e-9, oneShot: true, lodUnits, squirtBase: true, ...(r.weaponGem ? {gems: {weapon: r.weaponGem}} : {}), valOverride: Object.fromEntries(Object.entries(wov).map(([k, v]) => { const f = D.itemsById[build.slots[k].item].fixed.find(f => D.affixes[f.affix].group === 'wdmg'); return [k, f ? {[f.affix]: v} : {}]; }))}, {}, false);
   /* 용기의 갇힌 자 유지율 — 장비의 적중 시 오한·감속이 있을 때. 유지율 = 1 − (1 − 0.33) × Π(1 − 확률)^(초당 시전 횟수 × 지속 시간)   (기절 33% 와 따로 걸린다고 보고 합침)
      · 발동 기회 = 초당 주 공격기 시전 횟수(= 공속), 계수 1. 사용자 2026-11-19: "발동계수는 적중계수랑 범위공격이랑 서로 상쇄된다고 쳐서, 초당 주공격기 발동횟수랑 같다치면돼", "그냥 가정대로 가자."
        (천상의 주먹 균열의 적중 계수는 maxroll·위키·인벤·DiabloFans 어디에도 없었음 — 2026-11-19 조사 실패)
@@ -3189,7 +3202,8 @@ function usePersist(k, d, valid){
   const set = f => setV(p => { const n = typeof f === "function" ? f(p) : f; uiSet(k, n); return n; });
   return [v, set]; }
 
-/* 숫자 칸: 사용자가 친 글자를 그대로 보여 줌. 지우면 빈칸 그대로(다른 숫자를 강제로 채우지 않음), 범위 밖이면 그대로 두고 빨간 테두리만.
+/* ★ 숫자 입력 칸 규칙(README 같은 제목) — 모든 숫자 칸은 이것을 씀.
+   숫자 칸: 사용자가 친 글자를 그대로 보여 줌. 지우면 빈칸 그대로(다른 숫자를 강제로 채우지 않음), 범위 밖이면 그대로 두고 빨간 테두리만.
    값(onValue)은 범위 안의 숫자일 때만 넘기고, 빈칸이면 undefined(쓰는 쪽의 기본값). 밖에서 값이 바뀌면(다른 칸·불러오기) 입력 중이 아닐 때만 따라감.
    사용자 2026-11-19 "아이씨 무슨 숫자든 다 지울수있고, 그 지운뒤에 적기전까지 다른 숫자를 강제로 넣지마." */
 function NumInput({value, min, max, step, onValue, className, ...rest}){
@@ -3367,7 +3381,9 @@ function Tooltip(props){ return <Scaled W={props.W}><TooltipInner {...props}/></
    단수 = 딜·탱 중 낮은 쪽(150 상한). 출처: 사용자 2026-11-07. */
 /* 정복자 분배: 핵심(이속·주능력치·활력) = 모델 최적 분배, 공격·방어·기타 = 800 까지 순환분(각 200 포인트, base 에 반영) */
 /* 4인 서포터(prio): 정복자 핵심 포인트를 활력과 주능력치 둘 다 표기(서포터는 남는 포인트가 주능력치 = 방어도로 감). 출처: 사용자 2026-11-13 '서폿은 주능력치에 활력만 표기하지말고 힘도 표기해주자'. */
-function ParagonLine({st, style, g, mainLabel, prio, toughRef}){ if (!st || !st.para) return null; const pg = D.config.model.paragon;
+/* split(계정 조회 탭): 단수를 공격력·강인함 따로 '공격력 : 대균열 N단 · 강인함 : 대균열 M단 / 정복자 활력 …' (각각 150 상한, 시간 없음).
+   사용자 2026-11-19 "계정조회는 공격력 : 대균열 143단  강인함 : 대균열 n단 / 이렇게 표기하자. 사이에 점 하나 넣어서" */
+function ParagonLine({st, style, g, mainLabel, prio, toughRef, split}){ if (!st || !st.para) return null; const pg = D.config.model.paragon;
   const A = D.config.model.augment, p = st.para; const nDex = p.nAug - p.nAugVit - p.nAugInt - p.nAugStr;
   const aug = A ? [[mainLabel || "민첩", nDex], ["활력", p.nAugVit], ["지능", p.nAugInt], ["힘", p.nAugStr]].filter(x => x[1] > 0).map(x => x[0] + " × " + x[1]).join(" · ") : null;
   /* 서포터(prio)는 몸만: 150 + log(강인함 ÷ 기준점 강인함) ÷ log 1.17, 150 상한, 시간 없음. 출처: 사용자 2026-11-14 '각 세팅이 몸이 몇단인지, 최대 150단 두고 표기해봐', '대균열 : 150단으로 하고' */
@@ -3380,7 +3396,8 @@ function ParagonLine({st, style, g, mainLabel, prio, toughRef}){ if (!st || !st.
   const SQ = D.config.model.squirt, TR = D.config.model.clearTravelMin || 0, clr = g && tier === D.config.model.score.gr150.target ? Math.round(TR*60 + (SQ.clearMin - TR)*60 / Math.pow(D.config.model.score.gr.hpStep, g.d - tier)) : null;
   const clrS = clr != null ? " (" + Math.floor(clr/60) + ":" + String(clr % 60).padStart(2, "0") + ")" : "";
   return <div className="paraline" style={style}><span className="pitem augline">
-    {tier != null && <>대균열 : <b>{tier}단{clrS}</b> / </>}정복자 활력 : <b>{p.paraVit.toLocaleString()}</b> (+{(p.paraVit*(pg.vitPerPoint||5)).toLocaleString()})
+    {split && g ? (() => { const cap = D.config.model.score.gr150.target, f = x => Math.min(cap, Math.floor(x + 0.02)); return <>공격력 : 대균열 <b>{f(g.d)}단</b> · 강인함 : 대균열 <b>{f(g.t)}단</b> / </>; })()
+      : tier != null && <>대균열 : <b>{tier}단{clrS}</b> / </>}정복자 활력 : <b>{p.paraVit.toLocaleString()}</b> (+{(p.paraVit*(pg.vitPerPoint||5)).toLocaleString()})
     {prio && <> · {mainLabel || "민첩"} : <b>{p.paraDex.toLocaleString()}</b> (+{(p.paraDex*(pg.dexPerPoint||5)).toLocaleString()})</>}{aug && <> / 칼데산 : {aug}</>}</span></div>; }
 /* 우선순위 방식(4인 서포터)의 인형 아래 줄: '재감 64.3% (고통 감내 상시 63.5% 이상) / 공속 +42%'. 그 아래에 정복자 줄(강인함 최대 분배의 활력·칼데산)이 이어짐(20_rank).
    재감 = 정옵이 전부 최대치일 때의 합(35_priority prioSummary), 문턱을 못 넘으면 붉게. 출처: 사용자 2026-11-13 '바바 재감 문턱은 63.5%가 맞는거같고'. */
@@ -3833,6 +3850,7 @@ function ComparePage({build: build0, groupId, gemMode, cmpTick}){
   const sw = useSwap(build0.id), build = useMemo(() => swapView(build0, sw), [build0, sw.v]), itemIcon = itemIconOf(build, sw);   // 바꿔 보기(00_base): 보이는 쪽 아이템으로 계산
   const isMobile = useIsMobile(), fmtP = p => isMobile ? fmtOddsK(p) : fmtPct(p);   // 모바일은 폭이 좁아 1/n 표기
   /* 정옵 = '원시 대비 딜 손실 ≤ 허용치(%)' 하나를 모든 부위 공통으로(계산은 60_compare.js). 딜 −L% ↔ 손실 x = −ln(1−L)/ln(hpStep) 단. */
+  /* 정옵 허용치 칸: 글자 그대로 저장(지우면 빈칸 유지, 계산만 기본값) — README "숫자 입력 칸 규칙"(사용자 2026-11-19 "무슨 숫자든 다 지울수있고, 그 지운뒤에 적기전까지 다른 숫자를 강제로 넣지마.") */
   const [lossPct, setLossPct] = usePersist("cmp.lossPct", String(C.compare.passLossPct), x => typeof x === "string");
   const [pool, setPool] = usePersist("cmp.pool", true, x => typeof x === "boolean");
   const lossNum = Math.min(50, Math.max(0.01, parseFloat(lossPct) || C.compare.passLossPct));
@@ -3986,7 +4004,7 @@ function heroGemGaps(r, S, P, recBuild, v){ const LG = D.config.legGems || {}, o
   const recNames = Object.values(recBuild.legGems || {}).map(id => LG[id] && LG[id].name).filter(Boolean), mine = [];
   for (const api of ["neck", "leftFinger", "rightFinger"]) for (const g of ((r.items[api] || {}).gems || [])) if (Object.values(LG).some(x => x.name === g)) mine.push([api, g]);
   const spare = recNames.filter(n => !mine.some(m => m[1] === n));
-  for (const [api, g] of mine) { const to = recNames.includes(g) ? g : spare.shift(); if (!to) continue; const e0 = Object.values(LG).find(x => x.name === to);
+  for (const [api, g] of mine) { const to = recNames.includes(g) ? g : (spare.shift() || g);   // 바꿀 추천 보석이 남지 않으면 같은 보석(최대 등급)과 비교 — 표기가 빠지지 않게(사용자 2026-11-19 "잘리는게 아니라 안띄워주네.") const e0 = Object.values(LG).find(x => x.name === to);
     const items = {...r.items, [api]: {...r.items[api], gems: r.items[api].gems.map(x => x === g ? to : x)}}, gemsFull = (r.gemsFull || []).filter(x => x.name !== g && x.name !== to).concat([{name: to, rank: parseInt(e0.rank) || 150, text: (e0.fx || []).join(" ").replace(/[{}]/g, "")}]);
     try { const e = heroEval({...r, items, gemsFull}, S, P, v); out[api] = {dl: 1 - base.dmg / e.dmg, tl: 1 - base.tough / e.tough, to}; } catch (err) { out[api] = {err: err.message}; } }
   return out; }
@@ -4037,6 +4055,23 @@ function heroGemAt(id, rank){ const e = (D.config.legGems || {})[id]; if (!e) re
   const r = rank != null ? rank : r0; if (!f) return {rank: r, text: text.replace(/[{}]/g, "")};
   const v = x => f[0] + f[1] * Math.min(x, f[2] || Infinity), k = v(r) / v(r0);
   return {rank: r, text: text.replace(/\{([\d,.]+)%?\}/g, (m, n) => { const x = +n.replace(/,/g, "") * k; return (Math.round(x * 100) / 100).toLocaleString("en-US", {maximumFractionDigits: 2}) + (m.includes("%") ? "%" : ""); })}; }
+/* 홈은 있는데 보석이 없는 칸(API 는 빈 홈을 알려 주지 않음 → 보석이 없으면 홈이 있다고 봄) = 추천 보석이 끼워져 있다고 가정해 계산.
+   장신구 = 추천 구성의 전설 보석 중 아직 안 낀 것(최대 등급), 머리·가슴·다리 = 추천 구성의 보석(홈 수 = 우리 아이템 자료의 고정 홈 수, 없으면 그 부위 기본).
+   무기 보석은 r.weaponGem(보석 id)으로 계산기에 넘김(tough_calc) — 보석이 없으면 넘기지 않아 모델 기본(에메랄드). 직접 넣은 축성 칸(manual)은 설정 그대로.
+   사용자 2026-11-19 "악세나 장비에 홈이있는데 보석이 없는경우, 추천보석일거라고 가정하고 공격력 강인함 등락을 띄워줘." · "장신구 보석은 거기에, 무기나방어구는 무기나 방어구랑 합산해서."
+   (장신구는 전설 보석 칸의 표기(heroGemGaps)로, 무기·방어구는 그 칸 표기(heroSlotGaps)에 합쳐져 나옴) */
+const heroGemIdOf = n => !n ? null : /다이아몬드/.test(n) ? "diamond" : /자수정/.test(n) ? "amethyst" : /에메랄드/.test(n) ? "emerald" : /토파즈/.test(n) ? "topaz" : /루비/.test(n) ? "ruby" : null;
+function heroFillGems(r, recBuild, itemOf){ const LG = D.config.legGems || {}, items = {...r.items}, gemsFull = (r.gemsFull || []).slice(), assumed = {};
+  const has = it => (it.gems || []).filter(Boolean).length > 0;
+  if (recBuild) { const worn = new Set(Object.values(items).flatMap(it => it.gems || [])), recLG = Object.values(recBuild.legGems || {}).map(id => LG[id] && LG[id].name).filter(Boolean);
+    for (const api of ["neck", "leftFinger", "rightFinger"]) { const it = items[api]; if (!it || it.manual || has(it)) continue; const g = recLG.find(n => !worn.has(n)); if (!g) continue;
+      worn.add(g); const id = Object.keys(LG).find(k => LG[k].name === g); items[api] = {...it, gems: [g]}; gemsFull.push({name: g, ...heroGemAt(id, null)}); assumed[api] = g; }
+    const gm = recBuild.model && recBuild.model.gems;
+    for (const [api, kind] of [["head", "head"], ["torso", "armor"], ["legs", "armor"]]) { const it = items[api]; if (!it || it.manual || has(it) || !gm || !gm[kind]) continue;
+      const ours = itemOf && itemOf(it.name), fs = ours && ours.fixed.find(f => f.affix === "socket"), n = (fs && fs.n) || (ours && D.slotDefs[ours.slot] && D.slotDefs[ours.slot].socketN) || 1;
+      items[api] = {...it, gems: Array.from({length: n}, () => HERO_GEMNAME[gm[kind]])}; assumed[api] = HERO_GEMNAME[gm[kind]]; } }
+  const wg = ((items.mainHand && items.mainHand.gems) || []).map(heroGemIdOf).find(Boolean);
+  return {...r, items, gemsFull, assumedGems: assumed, ...(wg ? {weaponGem: wg} : {})}; }
 function heroWithSpecs(r, ov, tplLike, itemOf){ if (!ov || !Object.keys(ov).length) return r; const items = {...r.items}, sets = {...r.sets}, missing = (r.missing || []).slice(), LG = D.config.legGems || {}; let gemsFull = (r.gemsFull || []).slice();
   for (const api in ov) { const syn = heroSpecItem(ov[api], tplLike); if (!syn) continue; const cur = r.items[api], o = cur && itemOf(cur.name), n = D.itemsById[ov[api].item];
     if (o && o.set && sets[heroSetName(o.set)]) sets[heroSetName(o.set)]--; if (n.set) sets[heroSetName(n.set)] = (sets[heroSetName(n.set)] || 0) + 1;
@@ -4058,8 +4093,8 @@ function heroSlotItems(cls, key, recBuild){ const ids = []; const add = id => { 
 function heroDefaultSpec(itemId, key, cls, recBuild){ const item = D.itemsById[itemId]; let cfg = recBuild && recBuild.slots[key] && recBuild.slots[key].item === itemId ? recBuild.slots[key] : null;
   if (!cfg) for (const s of D.builds.seasons) for (const c of s.classes) for (const b of c.builds) if (!cfg && b.classId === cls && b.slots[key] && b.slots[key].item === itemId) cfg = b.slots[key];
   const fixed = item.fixed.map(f => f.affix), aids = cfg ? (cfg.goal || []).concat(cfg.secGoal || []).filter(a => !fixed.includes(a) && a !== "socket") : [];
-  const sock = cfg && (cfg.goal || []).includes("socket") || fixed.includes("socket"), slotId = item.slot, lg = recBuild && recBuild.legGems && recBuild.legGems[key], kind = slotId === "head" ? "head" : (slotId === "chest" || slotId === "pants") ? "armor" : null, gm = recBuild && recBuild.model && recBuild.model.gems;
-  const gems = lg && D.config.legGems[lg] ? [D.config.legGems[lg].name] : kind && sock ? Array.from({length: D.slotDefs[slotId].socketN || 1}, () => HERO_GEMNAME[(gm && gm[kind]) || "diamond"]) : [];
+  const sock = cfg && (cfg.goal || []).includes("socket") || fixed.includes("socket"), slotId = item.slot, lg = recBuild && recBuild.legGems && recBuild.legGems[key], kind = slotId === "head" ? "head" : (slotId === "chest" || slotId === "pants") ? "armor" : slotId === "weapon" ? "weapon" : null, gm = recBuild && recBuild.model && recBuild.model.gems;
+  const gems = lg && D.config.legGems[lg] ? [D.config.legGems[lg].name] : kind && (sock || kind === "weapon") ? Array.from({length: D.slotDefs[slotId].socketN || 1}, () => HERO_GEMNAME[(gm && gm[kind]) || (kind === "weapon" ? "emerald" : "diamond")]) : [];
   return {item: itemId, aids: [...new Set(aids)], off: cfg && cfg.reroll && cfg.reroll !== "socket" && fixed.includes(cfg.reroll) ? [cfg.reroll] : [], vals: {}, gems, cal: ["ring", "amulet"].includes(slotId) || kind || ["shoulders", "gloves", "bracers", "belt", "boots", "weapon", "quiver", "shield", "source"].includes(slotId) ? "main" : null}; }
 
 /* ---------- 비교 기준 = '이 장비 구성에서의 최고'(실시간 탐색) ----------
@@ -4266,9 +4301,11 @@ function AccountPage(){
         <div className="acct-heroes" role="tablist" aria-label="캐릭터">
           {heroes.map(h => <button key={h.id} type="button" role="tab" aria-selected={hero && h.id === hero.id} className={"acct-hero" + (hero && h.id === hero.id ? " on" : "")} onClick={() => { setSelHero(h.id); setSelRec(null); }}>
             {/* 초상화 + 시즌 표시만(사용자 2026-11-19 "캐릭터 조회는 초상화랑 시즌표시 정도만 하고"). 초상화 그림은 아직 없어 직업 이름 칸이 그 자리 */}
+            {/* 시즌 잎 = 블리자드 공식 프로필의 그림(kr.diablo3.blizzard.com/static/images/profile/seasonal-leaf.png, .small-seasonal-leaf 와 같은 자리 -24px -2px 15×21) → icons/seasonal-leaf.png.
+                사용자 2026-11-19 "시즌 나뭇잎 아이콘을 그대로 사용해. 만든거 쓰지말고." */}
             {/* 초상화 = 직업 × 성별(사용자 2026-11-19 "캐릭터별 직업과성별이 매칭된 초상화도 이름앞에"). 그림 = 블리자드 공식 프로필의 초상화(assets.diablo3.blizzard.com/d3/icons/portraits/100/<직업>_<성별>.png,
                 성전사 x1_crusader·강령술사 p6_necro) 14장을 icons/portraits/<우리 직업 id>_<성별>.png 로 저장. 성별 = API gender(0 남, 1 여). 성별이 없는 예전 기록은 남성 */}
-            <span className={"acct-port c-" + h.cls} aria-hidden="true">{ACCT_CLS[h.cls] ? <img src={"icons/portraits/" + h.cls + "_" + (h.gender === 1 ? "female" : "male") + ".png"} alt=""/> : (h.clsName || "?").slice(0, 2)}{h.seasonal && <i className="leaf" title="시즌">🍃</i>}</span><b>{h.name}</b></button>)}
+            <span className={"acct-port c-" + h.cls} aria-hidden="true">{ACCT_CLS[h.cls] ? <img src={"icons/portraits/" + h.cls + "_" + (h.gender === 1 ? "female" : "male") + ".png"} alt=""/> : (h.clsName || "?").slice(0, 2)}{h.seasonal && <i className="leaf" title="시즌"/>}</span><b>{h.name}</b></button>)}
         </div>
         <div className="acct-recs" role="tablist" aria-label="조회 기록">
           {!recs.length && <p className="acct-note">{hero && hero.ok === false || (hero && !A.local && !hero.r) ? "이 캐릭터는 불러오지 못했습니다. 다시 조회해 보세요." : "조회 기록이 없습니다."}</p>}
@@ -4333,7 +4370,7 @@ const HERO_SEC_AIDS = ["resone", "resphys", "mrdr", "lpk", "maxdisc", "maxspirit
 function HeroSlotEdit({W, apiSlot, skey, cls, recBuild, tplLike, spec0, onSave}){
   const items = heroSlotItems(cls, skey, recBuild), first = spec0 || (items[0] ? heroDefaultSpec(items[0].id, skey, cls, recBuild) : null);
   const [sp, setSp] = useState(first); if (!sp) return <div className="acct-edit" style={{width: W}}><p className="acct-note">이 칸에 넣을 수 있는 아이템 자료가 없습니다.</p></div>;
-  const item = D.itemsById[sp.item], slotId = item.slot, slot = D.slotDefs[slotId], fixed = item.fixed.map(f => f.affix), isJ = D.config.model.gems.legendaryGemSlots.includes(slotId), kind = slotId === "head" ? "head" : (slotId === "chest" || slotId === "pants") ? "armor" : null;
+  const item = D.itemsById[sp.item], slotId = item.slot, slot = D.slotDefs[slotId], fixed = item.fixed.map(f => f.affix), isJ = D.config.model.gems.legendaryGemSlots.includes(slotId), kind = slotId === "head" ? "head" : (slotId === "chest" || slotId === "pants") ? "armor" : slotId === "weapon" ? "weapon" : null;   // weapon = 축성 무기 보석(사용자 2026-11-19 "축성 무기에 보석도 못끼네?")
   const pool = (slot.pool || []).filter(a => a !== "socket" && !fixed.includes(a) && D.affixes[a] && D.affixes[a].kind !== "secondary"), secs = HERO_SEC_AIDS.filter(a => D.affixes[a]);
   const lbl = a => affixText(a, slotId, {elemLabel: tplLike.elementLabel, skillLabel: tplLike.mainSkill, mainLabel: mainLabelOf(tplLike)}).short.replace(/ [\d.,~+]+%?$/, ""), rng = a => { const x = D.affixes[a].ranges; return x ? (x[slotId] || x["*"]) : null; };
   const tog = a => setSp(s => ({...s, aids: s.aids.includes(a) ? s.aids.filter(x => x !== a) : s.aids.concat(a)})), setVal = (a, v) => setSp(s => ({...s, vals: {...s.vals, [a]: v}}));   // v = NumInput 값(빈칸이면 undefined → 계산은 최대치)
@@ -4440,7 +4477,7 @@ function HeroView({acc, hero, rid}){
     heroLiveRun(liveB, P).then(e => { if (stop) return; HERO_LIVE.set(liveK, heroLiveApply(liveB, P, e)); setLiveTick(x => x + 1); if (e) acctSaveLive(acc, okey, hero.id, {k: liveK, e: JSON.parse(JSON.stringify(e))}); });
     return () => { stop = true; }; }, [liveK]);
   const classId = D.dollImage[r0.cls] ? r0.cls : "dh", tplLike = recBuild || (ok ? S.tpl : {classId});
-  const r = useMemo(() => { try { return heroWithSpecs(r0, ov, tplLike, itemOf); } catch (e) { return r0; } }, [hero.id, acc.fetchedAt, ovSig, recBuild]);
+  const r = useMemo(() => { let x = r0; try { x = heroWithSpecs(r0, ov, tplLike, itemOf); } catch (e) {} try { return heroFillGems(x, recBuild, itemOf); } catch (e) { return x; } }, [hero.id, acc.fetchedAt, ovSig, recBuild]);   // 빈 홈 = 추천 보석 가정(34_herocalc heroFillGems)
   const rec = useMemo(() => { if (!ok) return null; try { return heroRecommend(r, S, P); } catch (e) { return {err: e.message}; } }, [r]);
   const [sel, setSel] = useState(null), [hover, setHover] = useState(null), curSlot = sel && !r.items[sel] ? sel : (hover || sel);
   const sameAt = key => { const c = recBuild && recBuild.slots[key], it = c && r.items[HERO_API[key]]; return !!(it && heroSameItem(itemOf(it.name), D.itemsById[c.item])); };
@@ -4468,7 +4505,7 @@ function HeroView({acc, hero, rid}){
               const gm = it ? (it.gems || []).filter(Boolean).map(n => heroGemOf(n, entry.slot, classId)).filter(Boolean) : [], nrm = gm.filter(x => x.gem), lg = gm.find(x => x.leg), gc = nrm.length > 0 ? GD.centers[key] : null;
               return <button type="button" key={key} className={"slot" + (active ? " active" : "") + (it ? " has" : " noitem")} style={{left: entry.x, top: entry.y, width: entry.w, height: entry.h, zIndex: (entry.z || 1) + (active ? 10 : 0)}} aria-label={it ? it.name : slot.label + " (빈칸 — 축성 아이템 넣기)"}
                 onMouseEnter={() => api && setHover(api)} onMouseLeave={() => setHover(null)} onFocus={() => api && setHover(api)} onBlur={() => setHover(null)} onClick={() => api && setSel(s => s === api && it ? null : api)}>
-                {it && <span className={"slotitem " + (ours ? ours.quality : "legendary") + " s-" + entry.slot}>{!ours || ours.iconMissing ? <span className="noicon">{it.name}</span> : <img src={ours.iconTone || ours.iconRaw} alt="" style={{left: ic.x, top: ic.y, width: ic.w, height: ic.h}}/>}</span>}
+                {it && <span className={"slotitem " + (ours ? ours.quality : "legendary") + " s-" + entry.slot + (it.manual ? " sanct" : "")}>{!ours || ours.iconMissing ? <span className="noicon">{it.name}</span> : <img src={ours.iconTone || ours.iconRaw} alt="" style={{left: ic.x, top: ic.y, width: ic.w, height: ic.h}}/>}</span>}
                 {gc && nrm.map((x, i) => <img key={"g" + i} className="dollgem" aria-hidden="true" src={x.gem.iconTone || x.gem.icon} alt="" style={{left: gc[0] - entry.x - GD.size/2, top: gc[1] + (i - (nrm.length-1)/2)*GD.step - entry.y - GD.size/2, width: GD.size, height: GD.size}}/>)}
                 {lg && <span className="dollgem leg big" aria-hidden="true" style={entry.slot === "amulet" ? {left: (entry.w - 32)/2, top: (entry.h - 32)/2} : {right: -16, bottom: -16}}><img src={lg.leg.icon} alt=""/></span>}
                 {!it && <span className="slotlabel">{slot.label}<br/>＋</span>}</button>; })}
@@ -4478,10 +4515,10 @@ function HeroView({acc, hero, rid}){
               const full = recBuild && sameAt(key) && heroMissing(it, entry.slot, recBuild.slots[key], D.itemsById[recBuild.slots[key].item]).length === 0;
               const two = (x, one, force) => <><em className="d">{pc(x.dl)}</em>{(narrow || force) && !one ? <br/> : " / "}<em className="t">{pc(x.tl)}</em></>;
               if (g && !g.err) out.push(<div key={key} className={"gaptag" + (narrow ? " narrow" : "")} style={{left: entry.x, width: entry.w, top: entry.y - (narrow ? 11 : 7)}}><span>{full && Math.abs(g.dl) < 0.0005 && Math.abs(g.tl) < 0.0005 ? <em className="ok">정옵</em> : two(g)}</span></div>);
-              if (gg && !gg.err) out.push(<div key={key + "g"} className="gaptag ofgem narrow" title={"추천 구성: " + gg.to} style={{left: Math.min(BW - 31, entry.x + entry.w + 1), width: 30, top: entry.slot === "amulet" ? entry.y + (entry.h - 21) / 2 : entry.y + entry.h - 16 - 21}}><span>{two(gg, false, true)}</span></div>);   // 전설 보석 표기 = 장신구 오른쪽에 두 줄(반지: 보석 위·반지 오른쪽, 목걸이: 목걸이 오른쪽 가운데). 사용자 2026-11-19 "보석은 보석 위, 반지 오른쪽에 띄우자. 반지위껏처럼 두줄로." / "목걸이보석도 목걸이 오른쪽에 띄워줘". 클래스 이름은 ofgem — gem 은 보석 그림의 높이 규칙(.gem)에 걸려 아랫줄이 상자 밖으로 나갔음
+              if (gg && !gg.err) out.push(<div key={key + "g"} className={"gaptag ofgem narrow" + (entry.x + entry.w + 1 > BW - 31 ? " rt" : "")} title={"추천 구성: " + gg.to} style={{left: Math.min(BW - 31, entry.x + entry.w + 1), width: 30, top: entry.slot === "amulet" ? entry.y + (entry.h - 21) / 2 : entry.y + entry.h - 16 - 21}}><span>{two(gg, false, true)}</span></div>);   // 전설 보석 표기 = 장신구 오른쪽에 두 줄(반지: 보석 위·반지 오른쪽, 목걸이: 목걸이 오른쪽 가운데). 사용자 2026-11-19 "보석은 보석 위, 반지 오른쪽에 띄우자. 반지위껏처럼 두줄로." / "목걸이보석도 목걸이 오른쪽에 띄워줘". 클래스 이름은 ofgem — gem 은 보석 그림의 높이 규칙(.gem)에 걸려 아랫줄이 상자 밖으로 나갔음
               return out; })}</div>
           </div></div>
-{ok && rec && !rec.err ? <ParagonLine mainLabel={mainLabelOf(S.tpl)} st={{para: {paraVit: rec.v, paraDex: rec.main, nAug: 0, nAugVit: 0, nAugInt: 0, nAugStr: 0}}} g={{d: rec.d, t: rec.t}} prio={true /* 주능력치 포인트도 같이 적음(서포터 줄과 같은 꼴) — 사용자 2026-11-19 "뒤에 민첩 : N(+N)도" */} style={{width: Math.round(BW * k), marginLeft: Math.round((Math.max(W, BW * k) - BW * k) / 2)}}/>
+{ok && rec && !rec.err ? <ParagonLine mainLabel={mainLabelOf(S.tpl)} st={{para: {paraVit: rec.v, paraDex: rec.main, nAug: 0, nAugVit: 0, nAugInt: 0, nAugStr: 0}}} g={{d: rec.d, t: rec.t}} split={true} prio={true /* 주능력치 포인트도 같이 적음(서포터 줄과 같은 꼴) — 사용자 2026-11-19 "뒤에 민첩 : N(+N)도" */} style={{width: Math.round(BW * k), marginLeft: Math.round((Math.max(W, BW * k) - BW * k) / 2)}}/>
           : <div className="paraline" style={{width: Math.round(BW * k), marginLeft: Math.round((Math.max(W, BW * k) - BW * k) / 2)}}><span className="pitem augline">{!ok ? S.why : rec && rec.err ? "계산 실패: " + rec.err : ""}</span></div>}
         {liveBusy && <div className="pending" style={{maxWidth: Math.round(BW * k)}}>이 장비 구성의 최고 정옵을 계산하는 중(약 10초)… 끝나면 장비별 증감이 뜹니다.</div>}
         {sb && <div style={{width: Math.round(BW * k), height: Math.round(SKILLBAR_H * k), marginLeft: Math.round((Math.max(W, BW * k) - BW * k) / 2), overflow: "visible"}}>
