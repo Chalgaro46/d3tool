@@ -372,8 +372,12 @@ h1{font-size:18px;font-weight:700;color:var(--title);margin:0 auto 12px;width:90
 /* 칸 = doll.png 액자 안쪽. 칸 안에 품질색 바탕(세트 초록/전설 주황), 아이콘은 app 의 iconRect 가 px 로 배치(칸 중심, 고정 배율, 넘침 허용) */
 .slot{overflow:visible}
 .slotitem{position:absolute;inset:0;display:block;overflow:visible;border-radius:0}
-.slotitem.set{background:radial-gradient(ellipse at 50% 45%,#2f6a1f 0%,#17401a 55%,#0a2410 100%)}
-.slotitem.legendary{background:radial-gradient(ellipse at 50% 45%,#9a6224 0%,#5c3814 55%,#2e1b0a 100%)}
+/* 칸 바탕 = maxroll d3planner 인형 칸 그림(main.css .d3p-DollSlot.d3p-quality-<등급> .d3p-ItemGradient, background-size 100% 100%) — 큰 칸 *_large, 반지·목걸이·허리 *_small.
+   그림이 반투명이라 어두운 바탕색 위에 깖. 사용자 2026-11-19 "Maxroll에서 축성배경 다 구했네? 전설이랑 세트 배경도 다 구해오자." (이전: 직접 만든 radial-gradient — git 기록) */
+.slotitem.set{background:url(icons/grad/set_large.png) center/100% 100% no-repeat,#07120a}
+.slotitem.legendary{background:url(icons/grad/legendary_large.png) center/100% 100% no-repeat,#140c05}
+.slotitem.set.s-ring,.slotitem.set.s-amulet,.slotitem.set.s-belt{background:url(icons/grad/set_small.png) center/100% 100% no-repeat,#07120a}
+.slotitem.legendary.s-ring,.slotitem.legendary.s-amulet,.slotitem.legendary.s-belt{background:url(icons/grad/legendary_small.png) center/100% 100% no-repeat,#140c05}
 /* max-width/max-height 를 명시적으로 해제: 호스트(모바일 웹뷰 등)가 img{max-width:100%} 를 주입하면 칸보다 넓은 아이콘(목걸이 1.23배, 반지 1.62배 …)의 가로만 칸 폭으로 눌려 비율이 깨짐 */
 .slotitem img{position:absolute;display:block;max-width:none!important;max-height:none!important;min-width:0;min-height:0;box-sizing:content-box;padding:0;border:0;filter:drop-shadow(0 2px 3px rgba(0,0,0,.8));pointer-events:none}
 .slot.has{color:transparent}
@@ -809,8 +813,8 @@ h1{font-size:18px;font-weight:700;color:var(--title);margin:0 auto 12px;width:90
 .gaptag.rt{justify-content:flex-end}
 /* 축성 아이템 칸 바탕 = maxroll d3planner 의 축성 그림(main.css .d3p-quality-sanctified .d3p-ItemGradient: 큰 칸 gradient_large_sanctified.png, 반지·목걸이·허리 칸은 작은 그림).
    사용자 2026-11-19 "축성템은 보여줄때 아이템 배경을 밝은회색배경. 아마 maxroll가면 볼수 있을거야. 그걸로 해주자." */
-.slotitem.sanct{background:url(icons/sanct/gradient_large_sanctified.png) center/100% 100% no-repeat,#2b3236}
-.slotitem.sanct.s-ring,.slotitem.sanct.s-amulet,.slotitem.sanct.s-belt{background:url(icons/sanct/gradient_small_sanctified.png) center/100% 100% no-repeat,#2b3236}
+.slotitem.sanct,.slotitem.sanct.set,.slotitem.sanct.legendary{background:url(icons/grad/sanctified_large.png) center/100% 100% no-repeat,#15191b}
+.slotitem.sanct.s-ring,.slotitem.sanct.s-amulet,.slotitem.sanct.s-belt{background:url(icons/grad/sanctified_small.png) center/100% 100% no-repeat,#15191b}
 /* 시즌 잎(블리자드 그림, 35_account) */
 .acct-port .leaf{width:15px;height:21px;background:url(icons/seasonal-leaf.png) -24px -2px no-repeat;right:-7px;bottom:-7px}
 
