@@ -561,6 +561,7 @@
   "weight": 100,
   "group": "softcc",
   "kind": "secondary",
+  "dmgSec": true,
   "dur": 2.5,
   "ranges": {
    "*": [
@@ -581,6 +582,7 @@
   "weight": 100,
   "group": "softcc",
   "kind": "secondary",
+  "dmgSec": true,
   "dur": 2.0,
   "ranges": {
    "*": [
