@@ -802,6 +802,7 @@ h1{font-size:18px;font-weight:700;color:var(--title);margin:0 auto 12px;width:90
 @media (max-width:560px){.acct-split{grid-template-columns:1fr 1fr;gap:8px}.acct-recbtn{font-size:13px;padding:7px 8px}}
 .acct-port{overflow:visible} .acct-port img{width:100%;height:100%;object-fit:cover;object-position:50% 15%;border-radius:1px;display:block}
 .acct-split .acct-port{width:40px;height:40px}
+.ae-num.bad,input.bad{outline:1px solid #ff8a7a;outline-offset:0}
 
 </style>
 <style>
@@ -3188,6 +3189,19 @@ function usePersist(k, d, valid){
   const set = f => setV(p => { const n = typeof f === "function" ? f(p) : f; uiSet(k, n); return n; });
   return [v, set]; }
 
+/* 숫자 칸: 사용자가 친 글자를 그대로 보여 줌. 지우면 빈칸 그대로(다른 숫자를 강제로 채우지 않음), 범위 밖이면 그대로 두고 빨간 테두리만.
+   값(onValue)은 범위 안의 숫자일 때만 넘기고, 빈칸이면 undefined(쓰는 쪽의 기본값). 밖에서 값이 바뀌면(다른 칸·불러오기) 입력 중이 아닐 때만 따라감.
+   사용자 2026-11-19 "아이씨 무슨 숫자든 다 지울수있고, 그 지운뒤에 적기전까지 다른 숫자를 강제로 넣지마." */
+function NumInput({value, min, max, step, onValue, className, ...rest}){
+  const show = v => v == null || Number.isNaN(v) ? "" : String(v);
+  const [txt, setTxt] = useState(() => show(value)), focus = useRef(false);
+  useEffect(() => { if (!focus.current) setTxt(t => (t === "" && value == null) || +t === value ? t : show(value)); }, [value]);
+  const n = txt.trim() === "" ? null : Number(txt), bad = n != null && (Number.isNaN(n) || (min != null && n < +min) || (max != null && n > +max));
+  return <input type="text" inputMode="decimal" {...rest} className={(className || "") + (bad ? " bad" : "")} value={txt}
+    onFocus={() => { focus.current = true; }} onBlur={() => { focus.current = false; }}
+    onChange={e => { const t = e.target.value; setTxt(t); const v = t.trim() === "" ? undefined : Number(t);
+      if (v === undefined) onValue(undefined); else if (!Number.isNaN(v) && (min == null || v >= +min) && (max == null || v <= +max)) onValue(v); }}/>; }
+
 /* ============================================================================================
    10_tooltip.jsx — 장비 툴팁(인게임 툴팁 모양) + 인형 아래 정복자 줄
    역할  buildLines: 칸 설정(cfg: 아이템·정옵·마부·모델 한계가치) → 옵션 줄 목록 / TooltipInner: 그리기 / Scaled: 380px 기준 툴팁을 칸 폭에 맞춰 확대·축소.
@@ -4012,11 +4026,22 @@ function heroSpecItem(spec, tplLike){ const item = D.itemsById[spec.item]; if (!
   if (spec.cal) { const rk = spec.calRank != null ? spec.calRank : 150; prim.push((spec.cal === "vit" ? "활력" : (mainLabelOf(tplLike) || "민첩")) + " +" + 5 * rk + " (칼데산의 절망 " + rk + "등급)"); }   // 등급 × 5
   return {name: item.name, armor: slot.baseArmor || 0, type: "원시 고대 " + (item.quality === "set" ? "세트" : "전설"), primary: prim, secondary: sec, gems: (spec.gems || []).filter(Boolean), manual: true}; }
 /* 조회한 캐릭터 r 에 직접 넣은 칸(ov = {API 칸: spec})을 덮어씀. 세트 부위 수·안 보이는 칸·전설 보석 목록을 같이 고침 */
+/* 전설 보석 등급 → 효과 수치. 우리 자료(config.legGems)의 fx 는 표시 등급(150 또는 최대 등급)의 글이라, 등급을 바꾸면 { } 안 숫자를 f(등급)/f(표시 등급) 배로 바꿈.
+   f = 기본값 + 등급당 증가(등급 상한 cap). 출처(2026-11-19 확인, 모두 우리 fx 의 150등급 값과 맞음):
+     갇힌 자 15%+0.3%/등급(150→60%), 제이 10미터당 4%+0.08%/등급(150→16%, 최대 = 5배), 단순성 25%+0.5%/등급(150→100%), 고통받는 자 0.8%+0.01%/등급(150→2.3%),
+     강제자 15%+0.3%/등급, 난해한 변화 10%+0.5%/등급·최대 100등급(→60%), 결빙석 5%+0.4%/등급·최대 50등급(→25%) — di.diablowiki.net/Legendary_Gem, maxroll.gg/d3/resources/legendary-gem-mechanics
+     태극 2%+0.04%/등급(150→8%) — wikiwiki.jp/diablo3blizz/Taeguk, 꿈의 유산 등급마다 3.75%·최대 99등급(→375%) — maxroll 같은 글
+   표에 없는 보석(독·화관·증통제·곡옥)은 계산식에 등급이 들어가지 않으므로 글을 그대로 둠. 사용자 2026-11-19 "전설보석도 레벨 적을수 있게." */
+const HERO_GEMRANK = {trapped: [15, 0.3], zei: [4, 0.08], simplicity: [25, 0.5], stricken: [0.8, 0.01], enforcer: [15, 0.3], esoteric: [10, 0.5, 100], iceblink: [5, 0.4, 50], taeguk: [2, 0.04], legacyofdreams: [3.75, 3.75, 99]};
+function heroGemAt(id, rank){ const e = (D.config.legGems || {})[id]; if (!e) return null; const r0 = parseInt(e.rank) || 150, f = HERO_GEMRANK[id], text = (e.fx || []).join(" ");
+  const r = rank != null ? rank : r0; if (!f) return {rank: r, text: text.replace(/[{}]/g, "")};
+  const v = x => f[0] + f[1] * Math.min(x, f[2] || Infinity), k = v(r) / v(r0);
+  return {rank: r, text: text.replace(/\{([\d,.]+)%?\}/g, (m, n) => { const x = +n.replace(/,/g, "") * k; return (Math.round(x * 100) / 100).toLocaleString("en-US", {maximumFractionDigits: 2}) + (m.includes("%") ? "%" : ""); })}; }
 function heroWithSpecs(r, ov, tplLike, itemOf){ if (!ov || !Object.keys(ov).length) return r; const items = {...r.items}, sets = {...r.sets}, missing = (r.missing || []).slice(), LG = D.config.legGems || {}; let gemsFull = (r.gemsFull || []).slice();
   for (const api in ov) { const syn = heroSpecItem(ov[api], tplLike); if (!syn) continue; const cur = r.items[api], o = cur && itemOf(cur.name), n = D.itemsById[ov[api].item];
     if (o && o.set && sets[heroSetName(o.set)]) sets[heroSetName(o.set)]--; if (n.set) sets[heroSetName(n.set)] = (sets[heroSetName(n.set)] || 0) + 1;
     if (cur) for (const g of cur.gems || []) gemsFull = gemsFull.filter(x => x.name !== g);
-    for (const g of syn.gems) { const e = Object.values(LG).find(x => x.name === g); if (e && !gemsFull.some(x => x.name === g)) gemsFull.push({name: g, rank: parseInt(e.rank) || 150, text: (e.fx || []).join(" ").replace(/[{}]/g, "")}); }
+    for (const g of syn.gems) { const id = Object.keys(LG).find(k => LG[k].name === g), at = id && heroGemAt(id, ov[api].gemRank); if (at && !gemsFull.some(x => x.name === g)) gemsFull.push({name: g, ...at}); }   // gemRank = 설정 창의 전설 보석 등급(빈칸이면 표시 등급)
     items[api] = syn; const mi = missing.indexOf(api); if (mi >= 0) missing.splice(mi, 1); }
   for (const k in sets) if (!sets[k]) delete sets[k]; return {...r, items, sets, missing, gemsFull}; }
 /* 직접 만든 캐릭터의 바탕(장비 없음): 기술·지속 효과·카나이는 그 세팅 틀의 것 */
@@ -4311,9 +4336,9 @@ function HeroSlotEdit({W, apiSlot, skey, cls, recBuild, tplLike, spec0, onSave})
   const item = D.itemsById[sp.item], slotId = item.slot, slot = D.slotDefs[slotId], fixed = item.fixed.map(f => f.affix), isJ = D.config.model.gems.legendaryGemSlots.includes(slotId), kind = slotId === "head" ? "head" : (slotId === "chest" || slotId === "pants") ? "armor" : null;
   const pool = (slot.pool || []).filter(a => a !== "socket" && !fixed.includes(a) && D.affixes[a] && D.affixes[a].kind !== "secondary"), secs = HERO_SEC_AIDS.filter(a => D.affixes[a]);
   const lbl = a => affixText(a, slotId, {elemLabel: tplLike.elementLabel, skillLabel: tplLike.mainSkill, mainLabel: mainLabelOf(tplLike)}).short.replace(/ [\d.,~+]+%?$/, ""), rng = a => { const x = D.affixes[a].ranges; return x ? (x[slotId] || x["*"]) : null; };
-  const tog = a => setSp(s => ({...s, aids: s.aids.includes(a) ? s.aids.filter(x => x !== a) : s.aids.concat(a)})), setVal = (a, v) => setSp(s => ({...s, vals: {...s.vals, [a]: v === "" ? undefined : +v}}));
+  const tog = a => setSp(s => ({...s, aids: s.aids.includes(a) ? s.aids.filter(x => x !== a) : s.aids.concat(a)})), setVal = (a, v) => setSp(s => ({...s, vals: {...s.vals, [a]: v}}));   // v = NumInput 값(빈칸이면 undefined → 계산은 최대치)
   const row = a => { const on = sp.aids.includes(a), r = rng(a); return <label key={a} className={"ae-opt" + (on ? " on" : "")}><input type="checkbox" checked={on} onChange={() => tog(a)}/><span>{lbl(a)}</span>
-    {on && r && <input type="number" className="ae-num" min={r[0]} max={r[1]} step={D.affixes[a].step || 1} value={sp.vals[a] != null ? sp.vals[a] : r[1]} aria-label={lbl(a) + " 수치"} onChange={e => setVal(a, e.target.value)}/>}{on && r && <em>{r[0]}~{r[1]}</em>}</label>; };
+    {on && r && <NumInput className="ae-num" min={r[0]} max={r[1]} value={sp.vals[a]} aria-label={lbl(a) + " 수치"} onValue={v => setVal(a, v)}/>}{on && r && <em>{r[0]}~{r[1]}</em>}</label>; };
   const nP = sp.aids.filter(a => D.affixes[a].kind !== "secondary").length, LG = Object.values(D.config.legGems || {});
   return <div className="acct-edit" style={{width: W}}>
     <h3>{(ACCT_SLOTS.find(x => x[0] === apiSlot) || [0, apiSlot])[1]} — 축성 아이템 설정</h3>
@@ -4323,11 +4348,13 @@ function HeroSlotEdit({W, apiSlot, skey, cls, recBuild, tplLike, spec0, onSave})
     <div className="ae-sec"><h4>주요 옵션 <em>{nP}개 선택</em></h4>{pool.map(row)}</div>
     <div className="ae-sec"><h4>보조 옵션</h4>{secs.map(row)}</div>
     {(isJ || kind) && <div className="ae-sec"><h4>홈</h4>
-      {isJ && <label className="ae-row"><span>전설 보석</span><select value={(sp.gems || [])[0] || ""} onChange={e => setSp(s => ({...s, gems: e.target.value ? [e.target.value] : []}))}><option value="">없음</option>{LG.map(g => <option key={g.name} value={g.name}>{g.name}</option>)}</select></label>}
+      {isJ && <label className="ae-row"><span>전설 보석</span><select value={(sp.gems || [])[0] || ""} onChange={e => setSp(s => ({...s, gems: e.target.value ? [e.target.value] : []}))}><option value="">없음</option>{LG.map(g => <option key={g.name} value={g.name}>{g.name}</option>)}</select>
+        {(sp.gems || [])[0] && (() => { const g = LG.find(x => x.name === sp.gems[0]), mx = g ? parseInt(g.rank) || 150 : 150;   /* 등급(빈칸 = 최대/150등급). 34_herocalc heroGemAt 이 효과 수치를 등급에 맞춰 바꿈 */
+          return <><NumInput className="ae-num" min={0} max={g && /최대/.test(g.rank) ? mx : 9999} value={sp.gemRank} aria-label="전설 보석 등급" onValue={v => setSp(s => ({...s, gemRank: v}))}/><em className="ae-unit">등급</em></>; })()}</label>}
       {kind && <label className="ae-row"><span>보석</span><select value={(sp.gems || [])[0] || ""} onChange={e => setSp(s => ({...s, gems: e.target.value ? Array.from({length: slot.socketN || 1}, () => e.target.value) : []}))}><option value="">홈 없음</option>{(D.config.model.gems.options[kind] || []).map(g => <option key={g.id} value={HERO_GEMNAME[g.id]}>{gemView(cls, kind, g).label || g.label}</option>)}</select></label>}</div>}
     {/* 칼데산의 절망: 종류 + 등급(등급 × 5 = 능력치). 사용자 2026-11-19 "칼데산의 절망이 축성템에 몇레벨인지 적을수 있게 해줘야지." */}
     <label className="ae-row"><span>칼데산의 절망</span><select value={sp.cal || ""} onChange={e => setSp(s => ({...s, cal: e.target.value || null}))}><option value="">없음</option><option value="main">{mainLabelOf(tplLike) || "주능력치"}</option><option value="vit">활력</option></select>
-      {sp.cal && <><input type="number" className="ae-num" min="1" max="200" step="1" value={sp.calRank != null ? sp.calRank : 150} aria-label="칼데산의 절망 등급" onChange={e => setSp(s => ({...s, calRank: e.target.value === "" ? undefined : Math.max(1, Math.min(200, +e.target.value))}))}/><em className="ae-unit">등급 (+{5 * (sp.calRank != null ? sp.calRank : 150)})</em></>}</label>
+      {sp.cal && <><NumInput className="ae-num" min={1} max={200} value={sp.calRank} aria-label="칼데산의 절망 등급" onValue={v => setSp(s => ({...s, calRank: v}))}/><em className="ae-unit">등급 (+{5 * (sp.calRank != null ? sp.calRank : 150)})</em></>}</label>
     <div className="ae-btns"><button type="button" className="acct-chip on" onClick={() => onSave(sp)}>저장</button>{spec0 && <button type="button" className="acct-chip" onClick={() => onSave(null)}>비우기</button>}
       {recBuild && recBuild.slots[skey] && <button type="button" className="acct-chip" onClick={() => setSp(heroDefaultSpec(recBuild.slots[skey].item, skey, cls, recBuild))}>추천 구성으로</button>}</div>
   </div>; }
