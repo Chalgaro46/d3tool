@@ -1210,20 +1210,50 @@ function accumulateRef(sel, build, opts, rr){
      기억 키 = 정옵 배열 자체(문자열을 안 만듦) → 돌린 고정·뺀 보조 문자열. 그래서 정옵 배열은 내용이 바뀌면 새 배열이어야 함(코드 전체 규칙).
    · accumulateFast: 부위마다 직전 호출과 입력이 같으면(대부분 — 최적화는 한 부위만 바꿈) 조회 없이 직전 목록 */
 /* 꼬맹이 유지율·광역 효율은 아래 speedSolve(2026-11-14). 이전 squirtUptime(꼬맹이만, 15분 ÷ 1.17^(단수 − 150))은 git 기록. */
-/* speedSolve(build, d0 = 꼬맹이·광역 빼고 딜, k = 광역 배율 − 1, sq = 꼬맹이 착용, opts, full = 꼬맹이 상시) → {u 꼬맹이 유지율, e 광역 효율}
-   x = 지금 딜 ÷ 기준점 딜 = d0(1 + k·e)(1 + max·u) ÷ 기준점 딜. 클리어 T = 이동 a + 딜 시간 b ÷ x. u = 신단 ÷ T(150단 미만이면 2/15, 1 상한), e = min(1, 1/x).
-   x = h(x) 를 이분 탐색(h 는 위아래로 묶여 있어 근이 있음). 기준점 산출(opts.squirtBase)·기준점 없는 세팅은 u = 2/15, e = 1. */
-function speedSolve(build, d0, k, sq, opts, full){
-  const Q = D.config.model.squirt, base = Q.pylonMin / Q.clearMin, adOn = !!D.config.model.ad.speed && k > 0 && !build.adPull;   // ad.speed = 광역 효율 켜기(지금 꺼 둠)
-  if (opts.squirtBase || (!sq && !adOn)) return {u: sq ? (full ? 1 : base) : 0, e: 1};
-  let ref; try { ref = gr150RefFor(build); } catch (e) { return {u: sq ? (full ? 1 : base) : 0, e: 1}; }
+/* speedSolve(build, d0 = 꼬맹이·광역·끝없는 걸음 빼고 딜, k = 광역 배율 − 1, sq = 꼬맹이 착용, opts, full = 꼬맹이 상시, w = 끝없는 걸음 최대 공격력(없으면 0))
+     → {u 꼬맹이 유지율, e 광역 효율, f 끝없는 걸음 몫(딜링 시간 ÷ 클리어 시간)}
+   x = 지금 딜 ÷ 기준점 딜 = d0(1 + k·e)(1 + max·u)(1 + w·f) ÷ 기준점 딜. 클리어 T = 이동 A + 딜링 B ÷ x (A = 세팅별 이동 시간 travelOf, B = 15분 − A).
+   u = 신단 ÷ T(바닥 2/15, 1 상한), e = min(1, 1/x), f = (B ÷ x) ÷ T. x = h(x) 를 이분 탐색(h 는 위아래로 묶여 있어 근이 있음).
+   기준점 산출(opts.squirtBase)·기준점 없는 세팅은 x = 1(u = 2/15, e = 1, f = B ÷ 15).
+   2026-11-19: 이동·딜링 시간을 나눔(tools/sample_ref.js — 표본 클리어 시간에서 역산) + 끝없는 걸음을 여기로(직업 규칙은 최대치 ew 만 돌려줌).
+     사용자 "끝없는걸음, 우리 내부적으로 이동시간이랑 딜링시간 있잖아. 거기에 비례하게 변화하도록 해야할거같아. 딜링시간이 짧아지면 꼬맹이처럼, 딜량이 올라가고 수렴할때까지 하는 그거.",
+     "멈추는 횟수는 중요하지 않아. … 이동하거나 딜링하는 시간 비례로 하는게 맞아.", "꼬맹이는 … 클리어타임과만 관련있지."(꼬맹이 = 신단 ÷ 클리어 시간 그대로, 클리어 시간에 이동이 들어감)
+     이전(2026-11-14~): 이동 0분(squirt.travelMin — 사용자 '꼬맹이 유지율도 일단 둬봐'), 끝없는 걸음은 직업 규칙에서 상시 +100% */
+/* 끝없는 걸음 최대 공격력(세트 2부위) — 직업 규칙의 ew 와 같은 판정. 풀이기(tools/milp/point.js)가 단수 변환에 씀 */
+function ewMaxOf(build){ const CM = classModel(build); return CM.endlessWalk && (setCounts(build)["끝없는 걸음"] || 0) >= 2 ? CM.endlessWalk.dmg : 0; }
+function travelOf(build){ const C = D.config.model.score.gr150; let f = C.ref && C.ref[build.id]; if (f && f.same) f = C.ref[f.same];
+  return f && f.travel != null ? f.travel : (D.config.model.squirt.travelMin || 0); }
+/* 이동 시간(분, 15분 클리어 기준) = 공통 이동 거리 ÷ 평균 이속. 사용자 2026-11-19 "이동거리는 전 대균열 모든난이도 공통.", "아동기는 무시."(순간 이동기 무시),
+   "군마질주등 이동속도버프의 유지율도 계산에 넣어야하는거 알지?", "군마세팅에서의 이동속도 버프는 군마질주 발동마다 그 텀에만 쓰는거고."(성전사 규칙의 유지율 그대로).
+   평균 이속 = 1 + (직업 규칙 msAvg — 성전사 / 없으면 정복자 25% + 규칙의 상시 이속 ms). 거리(squirt.travelDist = 이속 1 일 때 분)는 tools/sample_ref.js 가 표본 클리어 시간에서 역산. */
+function msAvgOf(X){ return X.msAvg != null ? X.msAvg : (D.config.model.msParagon || 0.25) + (X.ms || 0); }
+/* 속도 신단(2026-11-19): 신단 시간 = squirt.pylonMin(1분 × 추종자 시간의 향취 2배 = 2분 — 꼬맹이의 신단과 같은 값), 그동안 이속 +speedPylonMs(100%).
+   신단 시간은 판 안에서 이동·딜링 구분 없이 흐름 → 이동의 평균 이속 = V + 신단 이속 × min(1, 신단 ÷ 클리어 시간). 사용자 "이 이동거리에 이동속도 신단에 대한 가정이 빠져있는거 아닐까",
+   "얘도 추종자 향취때문에 지속시간이 두배인건 고려해야해." 클리어 시간과 순환 → clearAt 이 고정점 반복(8회 — 이동 시간의 T 에 대한 기울기가 작아 충분, 2026-11-19 확인) */
+let CLR_A = 0;   // clearAt 의 마지막 이동 시간
+function clearAt(x, V, Afix, Bt, Q){ if (V == null) { CLR_A = Afix; return Afix + Bt / x; }
+  let T = Q.clearMin, A = 0; for (let i = 0; i < 8; i++) { A = Q.travelDist / (V + (Q.speedPylonMs || 0) * Math.min(1, Q.pylonMin / T)); T = A + Bt / x; } CLR_A = A; return T; }
+/* 15분 판(150단 기준점)의 이동 시간 — 풀이기의 150단 미만 몫(form_rule cellRule)·화면 표시 */
+function travelAt(build, X){ const Q = D.config.model.squirt; return Q.travelDist != null ? Q.travelDist / (1 + msAvgOf(X) + (Q.speedPylonMs || 0) * Math.min(1, Q.pylonMin / Q.clearMin)) : travelOf(build); }
+/* 클리어 시간 T(분)를 정해 둔 이동 시간(평균 이속 ms 는 msAvgOf 값). T = 15 이면 travelAt 과 같음(0.95 × T 상한은 speedSolve 의 A15 상한과 같은 꼴).
+   풀이기(tools/milp point.js)의 고정점: 클리어 시간을 직전 해의 실제 값으로 묶고 칸마다 딜링·이동 몫을 이 값으로 — 2026-11-19 사용자 "딜과 강인함을 둘다 동시에 수렴시키는게 더 정확하고 빠르지 않아?" */
+function travelAtMs(build, ms, T){ const Q = D.config.model.squirt; if (Q.travelDist == null) return Math.min(travelOf(build), T * 0.95);
+  return Math.min(Q.travelDist / (1 + ms + (Q.speedPylonMs || 0) * Math.min(1, Q.pylonMin / T)), T * 0.95); }
+/* V = 1 + 평균 이속(신단 뺌, 20_stats 호출부) — 없으면(도구의 직접 호출) 세팅 고정 이동 시간(travelOf) */
+function speedSolve(build, d0, k, sq, opts, full, w, V){
+  const Q = D.config.model.squirt, base = Q.pylonMin / Q.clearMin, adOn = !!D.config.model.ad.speed && k > 0 && !build.adPull; w = w || 0; if (Q.travelDist == null) V = null;
+  const A15 = Math.min(V != null ? Q.travelDist / (V + (Q.speedPylonMs || 0) * Math.min(1, Q.pylonMin / Q.clearMin)) : travelOf(build), Q.clearMin * 0.95), Bt = Q.clearMin - A15, f1 = Bt / Q.clearMin;
+  if (opts.squirtBase || (!sq && !adOn && !w)) return {u: sq ? (full ? 1 : base) : 0, e: 1, f: w ? f1 : 0, T: Q.clearMin, A: A15};
+  let ref; try { ref = gr150RefFor(build); } catch (e) { return {u: sq ? (full ? 1 : base) : 0, e: 1, f: w ? f1 : 0, T: Q.clearMin, A: A15}; }
   const R = ref.D / Math.pow(D.config.model.score.gr.hpStep, D.config.model.score.gr150.refTier - D.config.model.score.gr150.target);
-  const A = Q.travelMin || 0, Bt = Q.clearMin - A, m = sq ? Q.max : 0;
-  const uOf = x => !sq ? 0 : full ? 1 : Math.min(1, Math.max(base, Q.pylonMin / (A + Bt / x))), eOf = x => adOn ? Math.min(1, 1 / x) : 1;
-  const h = x => d0 * (1 + k * eOf(x)) * (1 + m * uOf(x)) / R;
-  let lo = 0, hi = d0 * (1 + k) * (1 + m) / R + 1;
+  const m = sq ? Q.max : 0;
+  /* 150단 미만(x ≤ 1)은 15분 판 값(꼬맹이 바닥과 같은 처리 — 풀이기의 '150단 미만 = 상수 배율' 가정 유지, tools/milp/point.js) */
+  const Tof = x => x <= 1 ? Q.clearMin : clearAt(x, V, A15, Bt, Q);
+  const uOf = T => !sq ? 0 : full ? 1 : Math.min(1, Math.max(base, Q.pylonMin / T)), eOf = x => adOn ? Math.min(1, 1 / x) : 1, fOf = (x, T) => !w ? 0 : x <= 1 ? f1 : (Bt / x) / T;
+  const h = x => { const T = Tof(x); return d0 * (1 + k * eOf(x)) * (1 + m * uOf(T)) * (1 + w * fOf(x, T)) / R; };
+  let lo = 0, hi = d0 * (1 + k) * (1 + m) * (1 + w) / R + 1;
   for (let i = 0; i < 60; i++) { const mid = (lo + hi) / 2; if (h(mid) > mid) lo = mid; else hi = mid; }
-  const x = (lo + hi) / 2; return {u: uOf(x), e: eOf(x)}; }
+  const x = (lo + hi) / 2, T = Tof(x), A = x <= 1 ? A15 : CLR_A; return {u: uOf(T), e: eOf(x), f: fOf(x, T), T, A}; }   // T = 클리어 시간(분, 150단 미만은 15), A = 그때 이동 시간
 const BUILD_CACHE = new WeakMap();
 /* 딜러의 한 방 설정(buildCache ★ 주석): {one, CM(기본치를 덮어쓴 직업 모델)}. 서포터는 {one: null, CM 그대로} */
 function dealerOne(build, CM, sets){
@@ -1371,7 +1401,7 @@ function statsFromAcc(a, build, opts, rr, light){ rr = rr || {};
   const dodgeTaken = c.one ? 1 : (X.dodge || []).reduce((p, x) => p*(1-x), 1-B.dodge);   // 딜러는 회피 없음(buildCache ★). 파티 회피(PB.dodge)는 딜러만 받는 자리라 쓰지 않음(자료에는 남김)
   const oneDr = c.one ? c.one.drProd * (c.one.rcrDr ? 1 - rcrTotal : 1) : 1;
   const toughPer = X.toughMult * (opts.toughScale || 1) / (takenA*(1-DRr)*(1-CM.eliteShare*DRe)*X.dr.reduce((p, x) => p*(1-x), 1)*pbDr*oneDr*dodgeTaken*(1-B.rangedRed)*(1-(a.mrdr||0)*M.defAvg));
-  const tough = toughPer * lifeH, toughNoHeal = toughPer * life;
+  let tough = toughPer * lifeH, toughNoHeal = toughPer * life;
   /* 한 방 강인함(opts.oneShot — gen/common.py model.oneShot): 회복·회피 없이, 보호막 포함, 조건부 재사용 버프는 호출자가 build.toughWorst 로 '무한 유지일 때만' 켬.
      toughOne = 생명력 × 보호막 배율 ÷ 받는 피해 통과율,  shieldOne = 그중 보호막 몫(꼬맹이 무한 유지 판정용 — 꼬맹이 받는 피해 +50% 는 호출자가 나눔). */
   let toughOne = null, oneParts = null;
@@ -1384,11 +1414,15 @@ function statsFromAcc(a, build, opts, rr, light){ rr = rr || {};
      광역 피해 효율 e = 기준점 딜 ÷ 지금 딜(= 딜 시간 비율, 1 상한). 빨리 깰수록 몹이 모이기 전에 죽어 광역이 거의 안 퍼짐. 몹 모으는 기술이 있는 세팅(build.adPull — 종수도)은 1.
      출처: 사용자 2026-11-14 '15분에 가까울때 광피는 이정도 효율이 맞지만, 클리어가 빨라질수록 광피 효율은 거의 없는것에 가까워지지. 애들이 모이기전에 한방에 죽으니까',
            '광피효율식은 그게 최선인거같긴하다', '종수도는 아예 깎을필요 없어보여' */
-  fastSpeed(build, dmg / AD, AD - 1, c.squirt, opts, !!(P2 && P2.extra && P2.extra.squirtFull), fastConst(build, c)); const SP = {u: FSP_U, e: FSP_E};   // speedSolve 와 같은 계산(29_fast.js, 닫힘 함수 없이)
-  dmg = dmg / AD * (1 + (AD - 1) * SP.e) * (c.squirt ? 1 + M.squirt.max * SP.u : 1);
+  fastSpeed(build, dmg / AD, AD - 1, c.squirt, opts, !!(P2 && P2.extra && P2.extra.squirtFull), fastConst(build, c), X.ew || 0, 1 + msAvgOf(X)); const SP = {u: FSP_U, e: FSP_E, f: FSP_F, T: FSP_T}, Atr = FSP_A;   // speedSolve 와 같은 계산(29_fast.js, 닫힘 함수 없이)
+  dmg = dmg / AD * (1 + (AD - 1) * SP.e) * (c.squirt ? 1 + M.squirt.max * SP.u : 1) * (1 + (X.ew || 0) * SP.f);   // 끝없는 걸음 = 최대치 × 딜링 몫(speedSolve)
+  /* 끝없는 걸음 받는 피해 감소 = 최대치 × 이동 몫(이동 시간 ÷ 클리어 시간). 사용자 2026-11-19 "받피감도, 이동시간에 비례해서 올라." (그 전 같은 날 '받피감 빼기' 결정을 대체)
+     강인함이 정해진 뒤(post — 꼬맹이 보호막 판정)에 곱함 → 그 판정은 이 감소 없이(보수적) */
+  const ewDr = X.ew ? (CM.endlessWalk && CM.endlessWalk.dr || 0) * Atr / SP.T : 0;
+  if (ewDr) { const kT = 1 / (1 - ewDr); tough *= kT; toughNoHeal *= kT; if (toughOne != null) toughOne *= kT; }
   const SQ = c.squirt ? {u: SP.u} : null, ADe = 1 + (AD - 1) * SP.e;
   if (light) return {dmg, tough};
-  return {dmg, tough, toughNoHeal, toughOne, oneParts, parts: {aps, softUptime: X.extra && X.extra.trappedUptime != null ? X.extra.trappedUptime : null, healSec: healPart/HEAL_SEC, xRate: X.rate, xDmgMult: X.dmgMult, xExtra: X.extra, life, armor, res, takenA, DRr, DRe, dr: X.dr, toughMult: X.toughMult, armorMult: X.armorMult, armorBuff: X.armorBuff} /* 강인함 항목별 값 — tools/tough_calc.js --explain 용(2026-11-18) */, dodgeTaken /* 맞을 확률(회피 뺀 몫) — tools/tough_calc.js 가 한 방 강인함에서 회피를 걷어낼 때 씀(2026-11-18) */, ...(P2 ? P2.extra : {}), ...X.extra, squirtUptime: SQ ? SQ.u : null, adEff: SP.e, para: PS, dex, vit, cdrTotal, rcrTotal, chc: chcT, chd: chdT, elem: a.elem, skill: a.skill, ad: B.ad + a.ad, aps, iasG, life: lifeH, armor, res, sets, AD: ADe, gems: {head: gH.id, armor: gA.id, weapon: gW.id}};
+  return {dmg, tough, toughNoHeal, toughOne, oneParts, parts: {aps, softUptime: X.extra && X.extra.trappedUptime != null ? X.extra.trappedUptime : null, healSec: healPart/HEAL_SEC, xRate: X.rate, xDmgMult: X.dmgMult, xExtra: X.extra, life, armor, res, takenA, DRr, DRe, dr: X.dr, toughMult: X.toughMult, armorMult: X.armorMult, armorBuff: X.armorBuff} /* 강인함 항목별 값 — tools/tough_calc.js --explain 용(2026-11-18) */, dodgeTaken /* 맞을 확률(회피 뺀 몫) — tools/tough_calc.js 가 한 방 강인함에서 회피를 걷어낼 때 씀(2026-11-18) */, ...(P2 ? P2.extra : {}), ...X.extra, squirtUptime: SQ ? SQ.u : null, ewMax: X.ew || 0, ewFrac: X.ew ? SP.f : null, ewDr, ewDrFloor: X.ew ? (CM.endlessWalk && CM.endlessWalk.dr || 0) * travelAt(build, X) / M.squirt.clearMin : 0, travelMin: Atr, travel15: travelAt(build, X), clearMin: SP.T, msAvg: msAvgOf(X), adEff: SP.e, para: PS, dex, vit, cdrTotal, rcrTotal, chc: chcT, chd: chdT, elem: a.elem, skill: a.skill, ad: B.ad + a.ad, aps, iasG, life: lifeH, armor, res, sets, AD: ADe, gems: {head: gH.id, armor: gA.id, weapon: gW.id}};
 }
 
 /* ============================================================================================
@@ -1432,7 +1466,10 @@ CLASS_RULES.dh = {
        ms = 자버프 이속 합(상시분). 계산만 하고 화면엔 안 냄(extra 에 넣지 않음 — 사용자 2026-11-16) */
     const SP = build.dmgModel === "ue" ? null : CM.shadowPower;
     if (SP) dr.push(SP.gloomDr);
-    return {rate, dmgMult, dr, toughMult, lohAdd: SP ? SP.loh*SP.bloodMoon : 0, lpkLoh: SP ? SP.lpkShare*SP.bloodMoon : 0, ms: SP ? SP.ms : 0, extra: {throws: rate, disc, uptime}}; },
+    /* 전술적 우위(패시브) + 연막: 이동할 때 연막을 재사용마다 쓴다고 봄(사용자 2026-11-19 "부정이속은, 이동할때는 쿨마다 쓴다고 봐야지.") → 이속 +60% × min(1, 2초 ÷ (연막 1초 + 1.5초 × (1 − 재감))) */
+    const sbP = (build.skillbar || {}).passives || [], sbS = (build.skillbar || {}).skills || [], TA = CM.tacticalAdvantage;
+    const taMs = TA && sbP.includes("demonhunter/tacticaladvantage") && sbS.some(s => s[0] === "demonhunter/smokescreen") ? TA.ms * Math.min(1, TA.duration / (TA.smokeDur + TA.smokeCd * (1 - cdrTotal))) : 0;
+    return {rate, dmgMult, dr, toughMult, lohAdd: SP ? SP.loh*SP.bloodMoon : 0, lpkLoh: SP ? SP.lpkShare*SP.bloodMoon : 0, ms: (SP ? SP.ms : 0) + taMs, extra: {throws: rate, disc, uptime}}; },
 };
 
 /* ============================================================================================
@@ -1472,7 +1509,8 @@ function MONK_RAIMENT({build, CM, a, sets, apsBase, iasG, cdrTotal, rcrTotal}){
   let dmgMult = 1;
   if ((sets[MK_SET.bastion] || 0) >= 2) dmgMult *= R.focusRestraint * R.focusRestraint;
   if ((sets[MK_SET.crimson] || 0) >= 3) dmgMult *= 1 + cdrTotal;
-  if (has("mk_compass_rose") && has("mk_travelers_pledge")) dmgMult *= 1 + CM.endlessWalk.dmg;
+  /* 끝없는 걸음 = 공격력 +최대치 × 딜링 시간 몫 — 여기서는 최대치(ew)만 돌려주고 20_stats speedSolve 가 클리어 시간과 함께 풂(사용자 2026-11-19 "이동하거나 딜링하는 시간 비례로 하는게 맞아.", "모든직업에 적용.") */
+  const ew = has("mk_compass_rose") && has("mk_travelers_pledge") ? CM.endlessWalk.dmg : 0;
   if (has("convention")) dmgMult *= 1 + R.coe.mult / R.coe.n;
   /* 셴룽 2세트: 공력 1당 2% (model.py raiment.spirit). a.maxdisc = 장비의 최대 공력 합(최대 자원 합 칸 — gen/affixes.py maxspirit). 패시브는 세팅의 skillbar 로 판정(기준점은 랭커의 실제 패시브 — tools/ref_calc.js) */
   const pas = (build.skillbar || {}).passives || [], SPR = R.spirit;
@@ -1483,7 +1521,7 @@ function MONK_RAIMENT({build, CM, a, sets, apsBase, iasG, cdrTotal, rcrTotal}){
   if ((sets[MK_SET.crimson] || 0) >= 3) dr.push(rcrTotal);
   // 구원의 진언 날쌘 몸놀림(회피 +35% 상시, model.py selfBuff). 진언이 다른 판(4인 치유의 진언)은 없음 — 세팅의 skillbar 로 판정
   const agility = ((build.skillbar || {}).skills || []).some(s => s[0] === "monk/mantraofsalvation" && s[1] === "a");
-  return {rate: apsGen * (1 + u), dmgMult, dr, dodge: (agility ? [CM.selfBuff.agilityDodge] : []).concat([CM.selfBuff.dashDodge], pas.includes("monk/theguardianspath") ? [R.guardiansPathDodge] : []), ms: 0,   // 진격타 날랜 몸놀림 회피 40% 상시(일천 4세트 — model.py selfBuff)
+  return {rate: apsGen * (1 + u), dmgMult, ew, dr, dodge: (agility ? [CM.selfBuff.agilityDodge] : []).concat([CM.selfBuff.dashDodge], pas.includes("monk/theguardianspath") ? [R.guardiansPathDodge] : []), ms: 0,   // 진격타 날랜 몸놀림 회피 40% 상시(일천 4세트 — model.py selfBuff)
     armorMult: 1, toughMult: 1, extra: {apsGen, fdUptime: u}}; }
 function MONK_WOL({build, CM, aps, cdrTotal}){
   const has = id => wears(build, id), T = CM.tough, E = CM.epiphany;
@@ -1553,13 +1591,15 @@ CLASS_RULES.crusader = {
     const dr = [nG >= 2 ? CM.meleeShare * a.itemVit/1000*S.guardian.meleeDrPer1000Vit + (1-CM.meleeShare) * a.itemDex/1000*S.guardian.rangedDrPer1000Dex : 0, I.dr*(build.toughWorst ? (uI >= 1 - 1e-9 ? 1 : 0) : uI)];   // toughWorst(한 방 조건 — 사용자 2026-11-18 "철갑 피부·아카라트·복수는 무한유지시 적용, 불가능할시 꺼진걸로"): 지금은 tools/tough_calc.js 만 켬
     if (nA >= 2) { dmgMult *= 1 + AU.dmg2; dr.push(AU.dr2); }
     if (nA >= 3) { a.elite += AU.elite3; a.elitered += AU.eliteRed3; }   // 정예 칸에 합산(새 누적 객체 — 매 계산마다 만들어짐)
-    if (has("cr_compass_rose") && has("cr_travelers_pledge")) dmgMult *= 1 + CM.endlessWalk.dmg;
+    /* 끝없는 걸음 = 공격력 +최대치 × 딜링 시간 몫 — 여기서는 최대치(ew)만 돌려주고 20_stats speedSolve 가 클리어 시간과 함께 풂(사용자 2026-11-19 "이동하거나 딜링하는 시간 비례로 하는게 맞아.", "모든직업에 적용.") */
+    const ew = has("cr_compass_rose") && has("cr_travelers_pledge") ? CM.endlessWalk.dmg : 0;
     /* 갇힌 자의 파멸 유지율(2026-11-19 — model.py trapped, gen/affixes.py hitchill): 기본 33%(제이 기절) 위에 장비의 적중 시 오한·감속이 따로 걸림.
        유지율 = 1 − (1 − 기본) × exp(−softcc × 초당 시전 횟수). 발동 기회 = 초당 시전 횟수(hits), 계수 1 — 사용자 "초당 주공격기 발동횟수랑 같다치면돼". 기본 유지율 몫은 기준점 쪽 보석 배율에 이미 들어 있어 비율만 곱함 */
     if (CM.trapped && (a.softcc || 0) > 0 && Object.values(build.legGems || {}).includes("trapped")) { const TR = CM.trapped, u = 1 - (1 - TR.base) * Math.exp(-a.softcc * hits); dmgMult *= (1 + TR.pct * u) / (1 + TR.pct * TR.base); softU = u; }
     if (has("unity")) dr.push(CM.unityDR);
     dr.push(CM.valor4DR);   // 용기의 방패 4세트 50중첩(model.py valor4DR)
-    return {rate, hits, dmgMult, dr, regenAdd: CM.lawsOfHope.regen, toughMult: 1,   // regenAdd = 희망의 율법 지속 효과 초당 회복(model.py lawsOfHope)
+    return {rate, hits, dmgMult, ew, msAvg: msBase, dr, regenAdd:   /* msAvg = 평균 이속 증가(군마 150% + 정복자 + 신속·날개 × 유지율 + 아이템) — 이동 시간(20_stats speedSolve)에도 씀(2026-11-19) */
+ CM.lawsOfHope.regen, toughMult: 1,   // regenAdd = 희망의 율법 지속 효과 초당 회복(model.py lawsOfHope)
             armorBuff: {mult: A.armor, uptime: build.toughWorst ? (uAwall >= 1 - 1e-9 ? 1 : 0) : uAwall},
             extra: {trappedUptime: softU, akaratUptime: uA, ironSkinUptime: uI, steedUptime: uRide, fothPerRide: nOff, fothPerRidePylon: nOn, msTotal: msBase}}; },
 };
@@ -1590,13 +1630,14 @@ CLASS_RULES.wizard = {
     let dmgMult = 1; const dr = [CM.fb.set4DR, CM.fb.safePassageDR, (build.cube || []).includes("끝없는 깊이의 보주") ? CM.fb.orbDR : 0];   // 상수 피해 감소(model.py fb 주석)
     if ((sets[WZ_SET.bastion] || 0) >= 2) dmgMult *= (1 + CM.focusRestraint) * (1 + CM.focusRestraint);
     if ((sets[WZ_SET.crimson] || 0) >= 3) { dmgMult *= 1 + cdrTotal; dr.push(rcrTotal); }
-    if ((sets[WZ_SET.endless] || 0) >= 2) dmgMult *= 1 + CM.endlessWalk.dmg;
+    /* 끝없는 걸음 = 공격력 +최대치 × 딜링 시간 몫 — 여기서는 최대치(ew)만 돌려주고 20_stats speedSolve 가 클리어 시간과 함께 풂(사용자 2026-11-19 "이동하거나 딜링하는 시간 비례로 하는게 맞아.", "모든직업에 적용.") */
+    const ew = (sets[WZ_SET.endless] || 0) >= 2 ? CM.endlessWalk.dmg : 0;
     if (has("convention")) dmgMult *= 1 + CM.coe.mult / CM.coe.n;
     if (nA >= 2) { dmgMult *= 1 + AU.dmg2; dr.push(AU.dr2); }
     if (nA >= 3) { a.elite += AU.elite3; a.elitered += AU.eliteRed3; }   // 정예 칸에 합산(새 누적 객체 — 매 계산마다 만들어짐)
     if (nG >= 2) dr.push(CM.meleeShare * a.itemVit/1000*S.guardian.meleeDrPer1000Vit + (1-CM.meleeShare) * a.itemDex/1000*S.guardian.rangedDrPer1000Dex);
     const shield = SH.galvanizingWard + SH.deflectionPerCast * rate * SH.deflectionDur;
-    return {rate, dmgMult, dr, armorMult: 1, toughMult: 1 + shield,
+    return {rate, dmgMult, ew, dr, armorMult: 1, toughMult: 1 + shield,
             extra: {mmPerSec: rate, mmFrames: Math.round(F.fps / rOff), mmFramesPylon: Math.round(F.fps / rOn), shield}}; },
   /* 꼬맹이 보호막 문턱(사용자 2026-11-12 '꼬맹이는 수도사에서의 보호막 계산과 마찬가지로 문턱을 넘으면 상시, 못넘으면 보호막 신단 유지시간만큼만') */
   post({build, CM, tough, toughNoHeal, X}){
@@ -1715,28 +1756,32 @@ function fastLight(sel, build, opts, rr){
   let pd = 1; for (let i = 0; i < X.dr.length; i++) pd = pd*(1-X.dr[i]);
   let dg = 1-B.dodge, oneDr = 1; if (K.one) { dg = 1; oneDr = K.one.drProd * (K.one.rcrDr ? 1 - rcrTotal : 1); } else if (X.dodge) for (let i = 0; i < X.dodge.length; i++) dg = dg*(1-X.dodge[i]);   // 딜러 = 한 방 강인함(20_stats buildCache ★)
   const toughPer = X.toughMult * (opts.toughScale || 1) / (takenA*(1-DRr)*(1-CM.eliteShare*DRe)*pd*K.pbDr*oneDr*dg*(1-B.rangedRed)*(1-FA[19]*M.defAvg));
-  const tough = toughPer * lifeH, toughNoHeal = toughPer * life;
+  let tough = toughPer * lifeH, toughNoHeal = toughPer * life;
   if (opts.dmgScale) dmg *= opts.dmgScale;
   const P2 = RULE.post ? RULE.post({build, CM, dmg, tough, toughNoHeal, toughMult: X.toughMult, X}) : null; if (P2) dmg *= P2.dmgMult;
-  fastSpeed(build, dmg / AD, AD - 1, c.squirt, opts, !!(P2 && P2.extra && P2.extra.squirtFull), K);
-  dmg = dmg / AD * (1 + (AD - 1) * FSP_E) * (c.squirt ? 1 + M.squirt.max * FSP_U : 1);
+  fastSpeed(build, dmg / AD, AD - 1, c.squirt, opts, !!(P2 && P2.extra && P2.extra.squirtFull), K, X.ew || 0, 1 + msAvgOf(X)); const Atr = FSP_A;
+  dmg = dmg / AD * (1 + (AD - 1) * FSP_E) * (c.squirt ? 1 + M.squirt.max * FSP_U : 1) * (1 + (X.ew || 0) * FSP_F);
+  const ewDr = X.ew ? (CM.endlessWalk && CM.endlessWalk.dr || 0) * Atr / FSP_T : 0; if (ewDr) { const kT = 1 / (1 - ewDr); tough *= kT; toughNoHeal *= kT; }   // 20_stats 와 같은 끝없는 걸음 받는 피해 감소
   FAST_R.dmg = dmg; FAST_R.tough = tough; return FAST_R; }
-/* speedSolve(20_stats) 와 같은 계산(같은 식·같은 60번 이분 탐색), 닫힘 함수·객체 없이. 결과는 FSP_U·FSP_E 에 */
-let FSP_U = 0, FSP_E = 1;
-function fastSpeed(build, d0, k, sq, opts, full, K){
-  const Q = D.config.model.squirt, base = Q.pylonMin / Q.clearMin, adOn = !!D.config.model.ad.speed && k > 0 && !build.adPull;
-  if (opts.squirtBase || (!sq && !adOn)) { FSP_U = sq ? (full ? 1 : base) : 0; FSP_E = 1; return; }
+/* speedSolve(20_stats) 와 같은 계산(같은 식·같은 60번 이분 탐색), 닫힘 함수·객체 없이. 결과는 FSP_U·FSP_E·FSP_F(끝없는 걸음 딜링 몫) 에 */
+let FSP_U = 0, FSP_E = 1, FSP_F = 0, FSP_T = 15, FSP_A = 0;
+function fastSpeed(build, d0, k, sq, opts, full, K, w, V){
+  const Q = D.config.model.squirt, base = Q.pylonMin / Q.clearMin, adOn = !!D.config.model.ad.speed && k > 0 && !build.adPull; w = w || 0; if (Q.travelDist == null) V = null;
+  if (V == null && K.travel === undefined) K.travel = travelOf(build);
+  const A15 = Math.min(V != null ? Q.travelDist / (V + (Q.speedPylonMs || 0) * Math.min(1, Q.pylonMin / Q.clearMin)) : K.travel, Q.clearMin * 0.95), Bt = Q.clearMin - A15, f1 = Bt / Q.clearMin;
+  if (opts.squirtBase || (!sq && !adOn && !w)) { FSP_U = sq ? (full ? 1 : base) : 0; FSP_E = 1; FSP_F = w ? f1 : 0; FSP_T = Q.clearMin; FSP_A = A15; return; }
   if (K.refR === undefined) { let ref = null; try { ref = gr150RefFor(build); } catch (e) { ref = null; }
     K.refR = ref ? ref.D / Math.pow(D.config.model.score.gr.hpStep, D.config.model.score.gr150.refTier - D.config.model.score.gr150.target) : null; }
-  if (K.refR === null) { FSP_U = sq ? (full ? 1 : base) : 0; FSP_E = 1; return; }
-  const R = K.refR, A = Q.travelMin || 0, Bt = Q.clearMin - A, m = sq ? Q.max : 0, pm = Q.pylonMin;
-  let lo = 0, hi = d0 * (1 + k) * (1 + m) / R + 1;
-  for (let i = 0; i < 60; i++) { const mid = (lo + hi) / 2;
-    const u = !sq ? 0 : full ? 1 : Math.min(1, Math.max(base, pm / (A + Bt / mid))), e = adOn ? Math.min(1, 1 / mid) : 1;
-    if (d0 * (1 + k * e) * (1 + m * u) / R > mid) lo = mid; else hi = mid; }
-  const x = (lo + hi) / 2; FSP_U = !sq ? 0 : full ? 1 : Math.min(1, Math.max(base, pm / (A + Bt / x))); FSP_E = adOn ? Math.min(1, 1 / x) : 1; }
+  if (K.refR === null) { FSP_U = sq ? (full ? 1 : base) : 0; FSP_E = 1; FSP_F = w ? f1 : 0; FSP_T = Q.clearMin; FSP_A = A15; return; }
+  const R = K.refR, m = sq ? Q.max : 0, pm = Q.pylonMin;
+  let lo = 0, hi = d0 * (1 + k) * (1 + m) * (1 + w) / R + 1;
+  for (let i = 0; i < 60; i++) { const mid = (lo + hi) / 2, T = mid <= 1 ? Q.clearMin : clearAt(mid, V, A15, Bt, Q);
+    const u = !sq ? 0 : full ? 1 : Math.min(1, Math.max(base, pm / T)), e = adOn ? Math.min(1, 1 / mid) : 1, f = !w ? 0 : mid <= 1 ? f1 : (Bt / mid) / T;
+    if (d0 * (1 + k * e) * (1 + m * u) * (1 + w * f) / R > mid) lo = mid; else hi = mid; }
+  const x = (lo + hi) / 2, T = x <= 1 ? Q.clearMin : clearAt(x, V, A15, Bt, Q); FSP_A = x <= 1 ? A15 : CLR_A;
+  FSP_U = !sq ? 0 : full ? 1 : Math.min(1, Math.max(base, pm / T)); FSP_E = adOn ? Math.min(1, 1 / x) : 1; FSP_F = !w ? 0 : x <= 1 ? f1 : (Bt / x) / T; FSP_T = T; }
 /* 검사용(tools/fast_check.js): fastSpeed 결과를 객체로 */
-function fastSpeedObj(build, d0, k, sq, opts, full, K){ fastSpeed(build, d0, k, sq, opts, full, K); return {u: FSP_U, e: FSP_E}; }
+function fastSpeedObj(build, d0, k, sq, opts, full, K, w, V){ fastSpeed(build, d0, k, sq, opts, full, K, w, V); return {u: FSP_U, e: FSP_E, f: FSP_F, T: FSP_T, A: FSP_A}; }
 
 /* ============================================================================================
    30_optimize.js — 정옵 찾기와 옵션 등급
@@ -3011,7 +3056,8 @@ function calc(r, paraVit, opt){ opt = opt || {};
   for (const s2 of build.skillbar.skills.concat(build.skillbar.passives.map(p => [p]))) { const e = D.config.model.oneShot.skills[s2[0]] || D.config.model.oneShot.skills[s2[0] + ':' + s2[1]] || D.config.model.oneShot.passives[s2[0]]; if (e && !e.dr && !e.nonPhys && !e.phys && !e.melee && !notes.includes(NM[s2[0]])) notes.push(NM[s2[0]]); }
   const T1 = st.toughOne / extra, sq = have('꼬맹이의 목걸이') ? 1.5 : 1,
     sh = st.shield != null ? st.shield : (r.cls === 'monk' && M.wears(build, 'st_archew') ? c.CM.tough.archewLife : null);   // 성자 아츄 보호막 = 생명력의 150%
-  return {dmg: st.dmg * gemK, dmgRaw: st.dmg, gemK, gemNote, strickenSlot, softCC, heal, guessed, elemTop: elemTop ? elemTop[0] : null, skillOther, off: {chc: a.chc, chd: a.chd, elem: a.elem, skill: a.skill, elite: a.elite, ad: a.ad, ias: a.ias, dmgAvg: a.dmgAvg, cdr: st.cdrTotal, main: st.dex}, parts: {...st.parts, one: st.oneParts, extra, paraVit, vit: st.vit, main: st.dex, eliteShare: c.CM.eliteShare, rangedRed: c.CM.base.rangedRed, mrdr: a.mrdr || 0, gearArmor: c.gearArmor, sets}, rorgUnknown, T: T1, shieldT: sh != null ? T1 * sh/(1 + sh) / sq : null, squirt: sq > 1, epiphanyUp: st.epiphanyUp, life: st.life * st.toughNoHeal / st.tough, vit: st.vit, dex: st.dex, armor: st.armor, res: st.res, sets: sn, notes, rcr: st.rcrTotal}; }
+  return {msAvg: st.msAvg, ewMax: st.ewMax, dmg: st.dmg * gemK, dmgRaw: st.dmg, gemK,   /* msAvg = 평균 이속 증가(이동 시간 역산 — tools/sample_ref.js, 2026-11-19) */
+ gemNote, strickenSlot, softCC, heal, guessed, elemTop: elemTop ? elemTop[0] : null, skillOther, off: {chc: a.chc, chd: a.chd, elem: a.elem, skill: a.skill, elite: a.elite, ad: a.ad, ias: a.ias, dmgAvg: a.dmgAvg, cdr: st.cdrTotal, main: st.dex}, parts: {...st.parts, one: st.oneParts, extra, paraVit, vit: st.vit, main: st.dex, eliteShare: c.CM.eliteShare, rangedRed: c.CM.base.rangedRed, mrdr: a.mrdr || 0, gearArmor: c.gearArmor, sets}, rorgUnknown, T: T1, shieldT: sh != null ? T1 * sh/(1 + sh) / sq : null, squirt: sq > 1, epiphanyUp: st.epiphanyUp, life: st.life * st.toughNoHeal / st.tough, vit: st.vit, dex: st.dex, armor: st.armor, res: st.res, sets: sn, notes, rcr: st.rcrTotal}; }
 /* 기준점 랭커의 정복자 활력 포인트(ref/rankers/*.json paraVit) — '기준점과 같은 포인트'를 줬을 때의 값을 같이 내려고 */
 const REFV = Object.fromEntries(Object.entries({'불새': 'fb_g_ew_남기르', '용기': 'foth_aov_YHHHY', '투검': 'impale_guardian_ChromeHearts', '부정': 'ue_dawn_TGD', '일천': 'rai_Exia', '종수도': 'wol_lod_NECER'}).map(([k, f]) => [k, JSON.parse(fs.readFileSync(__dirname + '/../ref/rankers/' + f + '.json')).paraVit || 0]));
 /* 정복자 활력 포인트(2026-11-18 고침 — 사용자 "세팅별 maxroll 추천 활력을 적용해야지"):
@@ -3021,6 +3067,54 @@ const VIT_FIX = {'용기': 800, '일천': 400}, LIFE_TARGET = {'불새': 1e6};
 function vitFor(r, setup){ if (VIT_FIX[setup] != null) return VIT_FIX[setup]; const tg = LIFE_TARGET[setup]; if (!tg) return REFV[setup];
   let lo = 0, hi = Math.max(0, r.P - 50); if (calc(r, 0).life >= tg) return 0; if (calc(r, hi).life < tg) return hi;
   while (hi - lo > 1) { const m = (lo + hi) >> 1; if (calc(r, m).life >= tg) hi = m; else lo = m; } return hi; }
+/* ---------- 서포터(우선순위 방식 — 35_priority.js) 영웅의 실제 장비 → 강인함·재감·공속 (2026-11-19, 계정 조회 탭) ----------
+   사용자 2026-11-19 "서포터도 감지해서 띄워주게 해야지.", "서포터 옵션랭크표에 표현되는 딜러와의 차이점도 반영해."
+   랭크표 서포터와 같은 잣대: 강인함 = computeStats(직업 규칙 자리에 SUPPORT_RULE — 파티 버프·회복 1.5초분·회피 포함, 한 방 강인함 아님), 단일 저항 환산은 서포터 값(model.resOne.support).
+   틀(tplId = zdh_* · zbarb_*)의 칸마다 아이템 id 를 영웅 것으로, 카나이·전설 보석도 영웅 것. 옵션은 API 문구를 읽음(딜러 calc 와 같은 꼴). 공격 옵션은 읽지 않음(서포터는 딜을 재지 않음).
+   서포터 setupOf: 공포의 땅 4세트(왕실 권위 포함) = 서사시 악사, 래코르 6세트(왕실 권위 포함) = 작살 야만용사 */
+const SUP_MAIN = {dh: '민첩', barbarian: '힘'}, SUP_SET = {dh: '공포의 땅의 장비', barbarian: '래코르의 유산'}, SUP_NEED = {dh: 4, barbarian: 6};
+function supSetupOf(r){ const k = SUP_SET[r.cls]; if (!k) return null; const names = Object.values(r.items || {}).map(x => x.name), cube = (r.cube || []).filter(Boolean), rn = D.config.model.rorgName;
+  const n = r.sets[k] || 0, rorg = names.includes(rn) || cube.includes(rn) || (cube.length < 3 && n === SUP_NEED[r.cls] - 1) ? 1 : 0;   // API 카나이가 장신구 칸을 안 주는 경우(딜러 calc 와 같은 추정)
+  return n + (n >= 2 ? rorg : 0) >= SUP_NEED[r.cls] ? {cls: r.cls, rorg} : null; }
+function calcSupport(r, tplId, paraVit){ const tpl = M.findBuild(tplId), main = SUP_MAIN[r.cls], names = Object.values(r.items).map(x => x.name), cube = (r.cube || []).filter(Boolean), sup = supSetupOf(r);
+  const build = {...tpl, cube: cube.slice()}; if (sup && sup.rorg && !cube.includes(D.config.model.rorgName)) build.cube.push(D.config.model.rorgName);
+  if (names.includes('명료의 손목싸개') && !build.cube.includes('명료의 손목싸개')) build.cube.push('명료의 손목싸개');   // 착용도 규칙(SUPPORT_RULE)이 카나이 이름으로 알아보게
+  { const slots = {}; for (const k in tpl.slots) slots[k] = {...tpl.slots[k]};
+    for (const [s, it] of Object.entries(r.items)) { const k = SLOTMAP[s], id = idOf(it.name, r.cls); if (slots[k] && id && D.itemsById[id].slot === D.itemsById[tpl.slots[k].item].slot) slots[k] = {...slots[k], item: id}; }
+    build.slots = slots; }
+  const GID = Object.fromEntries(Object.entries(D.config.legGems || {}).map(([id, g]) => [g.name, id])), lg = {};
+  for (const [s, it] of Object.entries(r.items)) for (const g of it.gems || []) if (GID[g]) lg[SLOTMAP[s]] = GID[g];
+  build.legGems = Object.keys(lg).length ? lg : tpl.legGems;
+  const c = M.buildCache(build), sets = {}, rorg = sup ? sup.rorg : 0; for (const k in r.sets) sets[k] = r.sets[k] >= 2 ? r.sets[k] + rorg : r.sets[k];
+  c.sets = sets; c.SB = c.RULE.setBonus(sets, c.CM, build); const sm = c.SB.statMult || 1;
+  if (Object.values(r.items).some(x => x.armor != null)) { let ga = 0; const seen = new Set(); for (const [s, it] of Object.entries(r.items)) { ga += it.armor || 0; seen.add(SLOTMAP[s]); }
+    for (const k in tpl.slots) if (!seen.has(k)) ga += D.slotDefs[D.itemsById[tpl.slots[k].item].slot].baseArmor || 0; c.gearArmor = ga; }
+  const a = M.newAcc(), RO = D.config.model.resOne.support; let flatVit = 0, flatMain = 0, iasItem = 0;
+  for (const [slot, it] of Object.entries(r.items)) { const wk = SLOTMAP[slot], isW = c.wKeys.includes(wk); a.curKey = wk;
+    for (const t of it.primary) { let m; const cal = /칼데산/.test(t);
+      if ((m = t.match(/^활력 \+([\d,]+)/))) cal ? flatVit += num(m[1]) : M.addGroup(a, 'vit', num(m[1]));
+      else if ((m = t.match(new RegExp('^' + main + ' \\+([\\d,]+)')))) cal ? flatMain += num(m[1]) : M.addGroup(a, 'dex', num(m[1]));
+      else if ((m = t.match(/^지능 \+([\d,]+)/))) M.addGroup(a, 'intm', num(m[1]));
+      else if ((m = t.match(/^모든 원소 저항 \+([\d,]+)/))) M.addGroup(a, 'allres', num(m[1]));
+      else if ((m = t.match(/^방어도 \+([\d,]+)/))) M.addGroup(a, 'armor', num(m[1]));
+      else if ((m = t.match(/^생명력 \+([\d.]+)%/))) M.addGroup(a, 'lifep', +m[1]);
+      else if ((m = t.match(/정예.*받는 피해.* ([\d.]+)% 감소/))) M.addGroup(a, 'elitered', +m[1]);
+      else if ((m = t.match(/자원 소모량 ([\d.]+)% 감소/))) M.addGroup(a, 'rcr', +m[1]);
+      else if ((m = t.match(/^모든 기술의 재사용 대기시간 ([\d.]+)% 감소/))) M.addGroup(a, 'cdr', +m[1]);
+      else if ((m = t.match(/^적중당 생명력 \+([\d,]+)/))) a.loh += num(m[1]);
+      else if ((m = t.match(/^초당 생명력 ([\d,]+) 회복/))) a.regen += num(m[1]);
+      else if ((m = t.match(/^공격 속도 ([\d.]+)% 증가/))) { iasItem += +m[1]; if (isW) a.iasBy[wk] = (a.iasBy[wk] || 0) + m[1]/100; else a.ias += m[1]/100; } }
+    for (const t of it.secondary) { let m;
+      if ((m = t.match(/^적 처치 시 생명력 \+([\d,]+)/))) { a.lpk = (a.lpk || 0) + num(m[1]); continue; }
+      if ((m = t.match(/^(물리|냉기|화염|번개|독|비전|신성) 저항 \+([\d,]+)/))) M.addGroup(a, 'allres', num(m[2]) * (m[1] === '물리' ? RO.phys : RO.elem));
+      else if ((m = t.match(/^(근접|원거리) 공격으로 받는 피해 ([\d.]+)% 감소/))) M.addGroup(a, 'mrdr', +m[2]); }
+    for (const g of it.gems || []) { const k = g && GEM(g); if (!k) continue;
+      if (slot === 'head') { if (k === 'amethyst') a.lifep += 0.23; else if (k === 'diamond') a.cdr.push(0.125); else if (k === 'topaz') a.rcr.push(0.125); }
+      else if (slot === 'torso' || slot === 'legs') { if (k === 'diamond') a.allres += 78; else if (k === 'amethyst') flatVit += 280; else if ((k === 'emerald' && main === '민첩') || (k === 'ruby' && main === '힘')) flatMain += 280; } } }
+  if (Object.values(build.legGems).includes('gogok')) { a.ias += 0.15; a.cdr.push(0.15); }
+  a.itemVit += flatVit / sm; a.itemDex += flatMain / sm;
+  const st = M.statsFromAcc(a, build, {paragon: r.P, paraVit, gemMode: 'solo', augRank: 1e-9, squirtBase: true, ...(r.weaponGem ? {gems: {weapon: r.weaponGem}} : {})});
+  return {T: st.tough, life: st.life, vit: st.vit, main: st.dex, cdr: st.cdrTotal, aps: st.parts.aps, fire: st.parts.xExtra && st.parts.xExtra.fire != null ? st.parts.xExtra.fire : null, iasItem, build}; }
 if (require.main === module) {
   const R = JSON.parse(fs.readFileSync(process.argv[2])), out = [];
   for (const r of R) { const setup = setupOf(r); if (!setup || !MAIN[r.cls] || !(r.stats && r.stats.toughness > 1e6)) continue;
@@ -3040,7 +3134,7 @@ if (require.main === module && process.argv.includes('--explain')) { const tag =
 function buildGemK(build){ const isRai = build.dmgModel === 'raiment', foth = build.id.startsWith('foth'); let k = 1;
   for (const g of new Set(Object.values(build.legGems || {}))) k *= g === 'trapped' ? 1 + 0.6 * (foth ? 0.33 : 1) : g === 'zei' ? 1 + 0.8 * 40/50 : g === 'taeguk' ? 1.8 : g === 'simplicity' ? (isRai ? 2 : 1) : g === 'legacyofdreams' ? 1 + 3.75 * 26 : 1;
   return k; }
-module.exports = {calc, setupOf, vitFor: (r, s) => vitFor(r, s), buildGemK};
+module.exports = {calc, setupOf, vitFor: (r, s) => vitFor(r, s), buildGemK, calcSupport, supSetupOf};
 
   __heroLib = module.exports; return __heroLib; }
 </script>
@@ -3057,6 +3151,9 @@ async function loadData(){
   const names = ["config","affixes","slots","items","builds","upgrade","skills"];   // skills = 스킬·패시브 한글 문구·스프라이트 위치(tools/d3p_import.py)
   const objs = await Promise.all(names.map(n => fetch("data/"+n+".json").then(r => { if(!r.ok) throw new Error(n+" "+r.status); return r.json(); })));
   const d = Object.fromEntries(names.map((n,i)=>[n,objs[i]]));
+  /* 우리 아이템 자료에 없는 아이템의 그림(계정 조회 탭): {이름: {icon(data URI), quality, w, h}} — 수집 기록(d3collect·d3top)의 API icon 이름으로 블리자드 CDN 에서 받음(2026-11-19, 사용자 "데이터는 수집됐는데 그림이 없는 아이템부터 수집하자."). 없어도 화면은 돎 */
+  /* 그림은 data URI 로 한 파일에 담음(아티팩트 한 판의 파일 수 상한 512 — 낱개 png 123개는 못 올림). 1.3MB 라 첫 화면을 기다리게 하지 않고 따로 받음(36_heroview 가 받는 대로 다시 그림) */
+  d.heroIcons = null; d.heroIconsP = fetch("data/hero_icons.json").then(r => r.ok ? r.json() : null).catch(() => null).then(x => { d.heroIcons = x; return x; });
   d.path = await fetch("data/path.json").then(r => r.ok ? r.json() : null).catch(() => null);   // 정복자 800→20000 경로(tools/scan.js → tools/merge_path.py)
   d.itemsById = Object.fromEntries(d.items.items.map(it => [it.id, it]));
   d.slotDefs = d.slots.slots; d.layout = d.slots.layout; d.dollBase = d.slots.dollBase || [300,426]; d.dollImage = d.slots.dollImage || {dh: "doll.png"};   // 직업별 인형 바탕(gen_data.py DOLL_IMAGE)
@@ -3931,13 +4028,28 @@ const HERO_SETUP = {'불새': {tpl: 'fb_a_fr', group: 'fb_sanct'}, '용기': {tp
 const HERO_CLS_OK = {wizard: 1, dh: 1, crusader: 1, monk: 1};
 const heroFindBuild = id => { for (const s of D.builds.seasons) for (const c of s.classes) { const b = c.builds.find(x => x.id === id); if (b) return {...b, className: c.label}; } return null; };
 /* 이 영웅이 계산기의 어느 세팅인지 → {setup, tpl(세팅 객체), group} 또는 {why}(지원 안 함) */
-function heroSetupOf(r){ if (!r || !HERO_CLS_OK[r.cls]) return {why: "이 직업의 딜러 세팅은 계산기에 없습니다"};
+/* 서포터(우선순위 방식 — 35_priority.js) 판별. 사용자 2026-11-19 "서포터도 감지해서 띄워주게 해야지.", "서포터 옵션랭크표에 표현되는 딜러와의 차이점도 반영해."
+   세트(왕실 권위 포함): 공포의 땅 4 = 서사시 악사, 래코르 6 = 작살 야만용사(tough_calc supSetupOf). 변형은 영웅 장비로: 명료의 손목싸개(카나이·착용)·난해한 변화·양의 만곡궁이 몇 개 맞는지(가장 가까운 것).
+   작살 야만용사는 4인(zbarb_sup)으로 봄 — 2인(zbarb2_sup)은 장비가 같고 파티 버프만 달라 장비로 가를 수 없음 */
+const HERO_SUP = {dh: {setup: "서사시 악사", group: "zdh_sup"}, barbarian: {setup: "작살 야만용사 (4인)", group: "zbarb_sup"}};
+function heroSupVariant(r){ const its = Object.values(r.items || {}), names = its.map(x => x.name), cube = (r.cube || []).filter(Boolean), eso = its.some(x => (x.gems || []).includes((D.config.legGems.esoteric || {}).name));
+  if (r.cls === "barbarian") return eso ? "zbarb_eso" : "zbarb_support";
+  const h = [names.includes("명료의 손목싸개") || cube.includes("명료의 손목싸개"), eso, names.includes("양의 만곡궁")].map(Number), F = {zdh_support: [0, 0, 0], zdh_clarity: [1, 0, 0], zdh_eso: [1, 1, 0], zdh_yang: [1, 1, 1]};
+  let best = null, bd = 9; for (const id in F) { const d = F[id].reduce((t, x, i) => t + Math.abs(x - h[i]), 0); if (d < bd) { bd = d; best = id; } } return best; }
+function heroSetupOf(r){ if (!r) return {why: "영웅 자료 없음"};
+  if (HERO_SUP[r.cls]) { let sup = null; try { sup = heroCalcLib().supSetupOf(r); } catch (e) { sup = null; }
+    if (sup) { const tpl = heroFindBuild(heroSupVariant(r)); if (tpl) return {setup: HERO_SUP[r.cls].setup, tpl, group: HERO_SUP[r.cls].group, prio: true}; } }
+  if (!HERO_CLS_OK[r.cls]) return {why: "이 직업의 세팅은 계산기에 없습니다"};
   let s = null; try { s = heroCalcLib().setupOf(r); } catch (e) { return {why: "세팅 판별 실패: " + e.message}; }
   if (!s || !HERO_SETUP[s]) return {why: "계산기에 없는 세팅입니다"};
   const tpl = heroFindBuild(HERO_SETUP[s].tpl); if (!tpl) return {why: "세팅 자료 없음: " + HERO_SETUP[s].tpl};
   return {setup: s, tpl, group: HERO_SETUP[s].group}; }
 /* 정복자 P, 활력 포인트 v 일 때의 값. value = 150단을 버티면(cap) 공격력 단수, 아니면 둘 중 낮은 쪽(valueOfPre 와 같은 규칙) */
-function heroEval(r, S, P, v){ const M = D.config.model, C = M.score.gr150, lib = heroCalcLib(), x = lib.calc({...r, P}, v), gk = lib.buildGemK(S.tpl);
+function heroEval(r, S, P, v){ const M = D.config.model, C = M.score.gr150, lib = heroCalcLib();
+  /* 서포터: 몸만(랭크표 ParagonLine 의 서포터 단수와 같은 식 — 150 + log(강인함 ÷ 기준점 강인함) ÷ log 1.17). 공격력은 재지 않음 */
+  if (S.prio) { const x = lib.calcSupport({...r, P}, S.tpl.id, v), ref = prioRefTough(S.tpl.id), t = ref ? C.target + Math.log(x.T / ref) / Math.log(M.score.gr.hpStep) : null;
+    return {v, d: null, t, mode: "prio", value: t, tough: x.T, life: x.life, vit: x.vit, main: x.main, cdr: x.cdr, aps: x.aps, fire: x.fire, iasItem: x.iasItem}; }
+  const x = lib.calc({...r, P}, v), gk = lib.buildGemK(S.tpl);
   const T = tiers150({dmg: x.dmg / gk, tough: x.T}, gr150RefFor(S.tpl), C, M.score.gr), cap = T.t >= C.target - 1e-9;
   return {v, d: T.d, t: T.t, mode: cap ? "cap" : "balance", value: cap ? T.d : Math.min(T.d, T.t), dmg: x.dmg, dmgRaw: x.dmgRaw, tough: x.T, life: x.life, gemK: x.gemK, gemNote: x.gemNote, guessed: x.guessed, notes: x.notes, vit: x.vit, main: x.dex}; }
 /* 주능력치·활력에 나눌 수 있는 포인트(이동 속도 등 고정 몫을 뺀 것 — 모델의 poolFree) */
@@ -3946,8 +4058,14 @@ function heroEval(r, S, P, v){ const M = D.config.model, C = M.score.gr150, lib 
 const heroFree = (S, P) => paragonFree(P);
 /* 실제 장비에서의 정복자 추천 분배(50_path fromPath 와 같은 규칙): 전부 활력에 넣어도 150단을 못 버티면 '강인함 ≥ 공격력'이 되는 최소 활력(균형), 버티면 150단을 지키는 최소 활력(나머지는 주능력치) */
 function heroRecommend(r, S, P){ const free = heroFree(S, P), C = D.config.model.score.gr150, memo = new Map(), at = v => { if (!memo.has(v)) memo.set(v, heroEval(r, S, P, v)); return memo.get(v); };
+  /* 서포터: 랭크표와 같은 '강인함 최대 분배'(35_priority — 강인함은 활력에 대해 봉우리 하나 → 삼분 탐색), 나머지 주능력치 */
+  if (S.prio) { let lo = 0, hi = free; while (hi - lo > 2) { const m1 = lo + Math.floor((hi - lo) / 3), m2 = hi - Math.floor((hi - lo) / 3); if (at(m1).tough < at(m2).tough) lo = m1 + 1; else hi = m2 - 1; }
+    let v = lo; for (let x = lo; x <= hi; x++) if (at(x).tough > at(v).tough) v = x; return {...at(v), free, main: free - v}; }
   const minV = want => { if (want(at(0))) return 0; if (!want(at(free))) return free; let lo = 0, hi = free; while (hi - lo > 1) { const mid = (lo + hi) >> 1; if (want(at(mid))) hi = mid; else lo = mid; } return hi; };
-  const capOk = at(free).t >= C.target - 1e-9, v = capOk ? minV(e => e.t >= C.target - 1e-9) : minV(e => e.t >= e.d);
+  /* 굽기(tools/milp/point.js)와 같은 규칙: 먼저 균형(공격력·강인함 중 낮은 쪽 최대 = 둘이 만나는 활력). 그 지점에서 둘 다 150단 이상일 때만 상한 모드(강인함 150단을 지키는 최소 활력, 나머지 주능력치).
+     2026-11-19 고침: 전에는 '활력을 다 찍으면 강인함 150단이 되나'만 봐서, 공격력이 150단에 못 미쳐도 강인함 150단부터 맞추라고 함(사용자 악사 공격력 144단·강인함 150단에 활력 666 추천 —
+     "공격력부터 채워야하는거 아냐?") */
+  const vb = minV(e => e.t >= e.d), eb = at(vb), capOk = Math.min(eb.d, eb.t) >= C.target - 1e-9, v = capOk ? minV(e => e.t >= C.target - 1e-9) : vb;
   return {...at(v), free, main: free - v}; }
 /* 같은 정복자에서 계산기가 추천하는 구성(구운 경로)의 값 → {variant, d, t, mode, value, paraVit} 또는 null(경로 자료 없음) */
 function heroRecGear(S, P){ const m = D.path && D.path.modes.solo; if (!m) return null; const seg = (m.segments[S.group] || []).find(s => P >= s.from && P <= s.to), vid = seg ? seg.variant : S.tpl.id;
@@ -3979,17 +4097,19 @@ function heroAffixLine(aid, slotId, recBuild, val){ const a = D.affixes[aid], g 
   if (g === "mrdr") return "근접 공격으로 받는 피해 " + v + "% 감소";
   return a.name.replace(/\{v\}/g, v).replace(/\{lo\}/g, rg ? rg[0] : "").replace(/\{hi\}/g, rg ? rg[1] : "").replace(/\{elem\}/g, recBuild.elementLabel || "").replace(/\{skill\}/g, recBuild.mainSkill || ""); }
 /* 추천 구성의 그 칸을 API 꼴 아이템으로. heroIt = 영웅의 그 칸(칼데산·보석·방어도를 물려받음) */
-function heroSynthItem(recBuild, key, heroIt){ const cfg = recBuild.slots[key], item = cfg && D.itemsById[cfg.item]; if (!item) return null; const slotId = item.slot, slot = D.slotDefs[slotId];
+/* lo = 정옵을 최소 수치로(다음 세팅 전환점의 저점 — 아래 heroNextSetup). 무기 공격력처럼 범위 꼴(avg)은 그대로 최대 */
+function heroSynthItem(recBuild, key, heroIt, lo){ const cfg = recBuild.slots[key], item = cfg && D.itemsById[cfg.item]; if (!item) return null; const slotId = item.slot, slot = D.slotDefs[slotId];
   const fixed = item.fixed.filter(f => f.affix !== cfg.reroll).map(f => f.affix), prim = [], sec = [];
-  for (const aid of [...new Set(fixed.concat(cfg.goal || []))]) { const t = heroAffixLine(aid, slotId, recBuild); if (t) (D.affixes[aid].kind === "secondary" ? sec : prim).push(t); }
-  for (const aid of activeSecGoal(cfg)) { const t = heroAffixLine(aid, slotId, recBuild); if (t && !sec.includes(t)) sec.push(t); }
+  const minOf = aid => { const a = D.affixes[aid], rg = lo && a.unit !== "avg" && a.ranges && (a.ranges[slotId] || a.ranges["*"]); return rg ? rg[0] : undefined; };
+  for (const aid of [...new Set(fixed.concat(cfg.goal || []))]) { const t = heroAffixLine(aid, slotId, recBuild, (cfg.goal || []).includes(aid) ? minOf(aid) : undefined); if (t) (D.affixes[aid].kind === "secondary" ? sec : prim).push(t); }
+  for (const aid of activeSecGoal(cfg)) { const t = heroAffixLine(aid, slotId, recBuild, minOf(aid)); if (t && !sec.includes(t)) sec.push(t); }
   for (const t of (heroIt && heroIt.primary) || []) if (/칼데산/.test(t)) prim.push(t);
   const hasSock = fixed.includes("socket") || (cfg.goal || []).includes("socket"), kind = slotId === "head" ? "head" : (slotId === "chest" || slotId === "pants") ? "armor" : null, gm = recBuild.model && recBuild.model.gems;
   const gems = kind ? (hasSock && gm && gm[kind] ? Array.from({length: (item.fixed.find(f => f.affix === "socket") || {}).n || slot.socketN || 1}, () => HERO_GEMNAME[gm[kind]] || "") : []) : ((heroIt && heroIt.gems) || []);
   return {name: item.name, armor: (heroIt && heroIt.armor) || slot.baseArmor || 0, type: "원시 고대 " + (item.quality === "set" ? "세트" : "전설"), primary: prim, secondary: sec, gems}; }
 /* 영웅 자료의 한 칸(또는 여러 칸)을 추천 구성 것으로 바꾼 자료. 세트 부위 수도 같이 고침(영웅 칸의 세트는 우리 아이템 자료에서 — 모르는 아이템이면 그대로) */
-function heroSwapped(r, recBuild, keys, itemOf){ const items = {...r.items}, sets = {...r.sets}, missing = (r.missing || []).slice();
-  for (const key of keys) { const api = HERO_API[key], cur = r.items[api], syn = heroSynthItem(recBuild, key, cur); if (!syn) continue;
+function heroSwapped(r, recBuild, keys, itemOf, lo){ const items = {...r.items}, sets = {...r.sets}, missing = (r.missing || []).slice();
+  for (const key of keys) { const api = HERO_API[key], cur = r.items[api], syn = heroSynthItem(recBuild, key, cur, lo); if (!syn) continue;
     const o = cur && itemOf(cur.name), n = D.itemsById[recBuild.slots[key].item]; if (o && o.set && sets[heroSetName(o.set)]) sets[heroSetName(o.set)]--; if (n.set) sets[heroSetName(n.set)] = (sets[heroSetName(n.set)] || 0) + 1;
     items[api] = syn; const mi = missing.indexOf(api); if (mi >= 0) missing.splice(mi, 1); }
   for (const k in sets) if (!sets[k]) delete sets[k]; return {...r, items, sets, missing}; }
@@ -4109,13 +4229,56 @@ function heroDefaultSpec(itemId, key, cls, recBuild){ const item = D.itemsById[i
 function heroLiveBuild(r, S, itemOf){ const tpl = S.tpl, slots = {}, LG = D.config.legGems || {}, legGems = {};
   const cfgFor = (id, key) => { for (const s of D.builds.seasons) for (const c of s.classes) for (const b of c.builds) if (b.classId === tpl.classId && b.slots[key] && b.slots[key].item === id) return b.slots[key]; return null; };
   for (const key in tpl.slots) { const it = r.items[HERO_API[key]], o = it && itemOf(it.name), t0 = tpl.slots[key];
-    if (o && o.slot === D.itemsById[t0.item].slot && o.id !== t0.item) { const c = cfgFor(o.id, key); slots[key] = c ? {...c} : {...t0, item: o.id, goal: (t0.goal || []).filter(a => (D.slotDefs[o.slot].pool || []).includes(a) || o.fixed.some(f => f.affix === a))}; }
+    /* 서포터: 정옵은 우선순위 방식이 칸마다 새로 정함(딜러 세팅의 같은 아이템 칸 설정을 빌리지 않음). 아이템은 영웅 것으로 고정 — 틀의 다른 아이템 후보(either: 꼬맹이 자리의 론달 등)는 빼고,
+       같은 아이템의 지능 직업용 변형(<id>@int — 주능력치 자리가 지능 = 모든 저항, 랭크표의 alts)만 후보로 둠 */
+    if (isPriority(tpl)) { const id0 = o && o.slot === D.itemsById[t0.item].slot ? o.id : null; slots[key] = id0 ? {item: id0, ...(D.itemsById[id0 + "@int"] ? {alts: [id0 + "@int"]} : {})} : {...t0}; }
+    else if (o && o.slot === D.itemsById[t0.item].slot && o.id !== t0.item) { const c = cfgFor(o.id, key); slots[key] = c ? {...c} : {...t0, item: o.id, goal: (t0.goal || []).filter(a => (D.slotDefs[o.slot].pool || []).includes(a) || o.fixed.some(f => f.affix === a))}; }
     else slots[key] = {...t0};
     for (const g of (it && it.gems) || []) { const id = Object.keys(LG).find(k => LG[k].name === g); if (id) legGems[key] = id; } }
   const names = Object.values(r.items).map(x => x.name), cube = (r.cube || []).filter(Boolean).slice(), rorg = D.config.model.rorgName, classSet = Math.max(0, ...Object.values(r.sets || {}));
-  if (rorg && cube.length < 3 && !cube.includes(rorg) && !names.includes(rorg) && classSet === 5) cube.push(rorg);   // API 가 장신구 칸을 안 주는 경우가 많음 — tough_calc calc 와 같은 추정
+  const supRorg = isPriority(tpl) ? (() => { try { const x = heroCalcLib().supSetupOf(r); return !!(x && x.rorg); } catch (e) { return false; } })() : false;   // 서포터: 공포의 땅 3 + 크림슨 2 처럼 반지로 채우는 세트(tough_calc supSetupOf)
+  if (rorg && !cube.includes(rorg) && !names.includes(rorg) && (supRorg || (cube.length < 3 && classSet === 5))) cube.push(rorg);   // API 가 장신구 칸을 안 주는 경우가 많음 — tough_calc calc 와 같은 추정
   return {...tpl, slots, cube, legGems: Object.keys(legGems).length ? legGems : tpl.legGems, ...(tpl.classId === "dh" ? {dawn: names.includes("새벽") || cube.includes("새벽")} : {})}; }
+/* 서포터의 비교 기준: 영웅 아이템 구성으로 랭크표와 같은 우선순위 계산(fromPre → priorityResult, 수십 ms — 작업자·저장 없이 화면에서) */
+function heroPrioRec(liveB, P){ try { const o = {paragon: P, gemMode: "solo"}; return applyModel(liveB, fromPre(liveB, PRIO_PRE, o)); } catch (e) { return null; } }
 const heroLiveKey = (b, P) => JSON.stringify([b.id, P, Object.entries(b.slots).map(([k, c]) => k + ":" + c.item), b.cube, b.legGems]);
+
+/* ---------- 다음 세팅 전환점(계정 조회) ----------
+   사용자 2026-11-19: "지금 내 세팅이랑 비슷한 옵션에서 다음 세팅으로 넘어가려면 몇레벨이 적절한지", "장비 손실을 유지하며 넘어가는거 좋다.",
+     "장비가 바뀌면서 손실의 저고점이 다를수 있으니, 저고점 비율을따르자.", "새세팅은, 원래끼고있던 장비의 저고점에 비례하게.", "손실비율은 표기하지마. 내부적 지표야.",
+     "레벨과 장비변화만 깔끔하게 표기해." / 조건부 최적(칸 하나씩 실제 장비 기준 최적)은 "하지말자".
+   방법: ① 지금 장비의 칸마다 저고점 비율 ρ = (실제 − 저점) ÷ (고점 − 저점)(공격력 + 강인함 단수 합으로) — 고점 = 같은 아이템에 비교 기준(recBuild, 이 영웅 아이템의 최고 정옵)의 정옵이 최대 수치, 저점 = 같은 정옵이 최소 수치.
+         정옵이 빠져 저점보다 낮으면 ρ < 0 그대로. 비교할 수 없는 칸(우리 자료에 없는 아이템 등)은 다른 칸들의 평균.
+       ② 후보 = 이 묶음의 구운 경로에서 한 번이라도 이긴 변형. 정복자 P 에서 후보의 추천 구성(heroRecModel)으로 아이템이 다른 칸만 바꾸고(같은 칸은 지금 장비 그대로),
+         바뀐 칸마다 새 아이템의 고점·저점 사이 ρ 지점으로: 예측 단수 = 고점 단수 − Σ(1 − ρ_칸) × (고점 − 그 칸만 저점).
+       ③ 지금 장비의 값(정복자를 P 로 올림)과 비교해 처음 앞서는 P(정복자 경로 눈금을 1.08 배씩 훑고 이분 탐색). 값 = 둘 다 150단 이상이면 공격력, 아니면 낮은 쪽(굽기와 같은 규칙) */
+function heroCurVariant(r, S, itemOf){ const G = heroGroupOf(S); if (!G) return S.tpl.id; let best = S.tpl.id, bn = -1;
+  for (const v of G.variants) { const b = heroFindBuild(v.build); if (!b) continue; let n = 0; for (const k in b.slots) { const it = r.items[HERO_API[k]]; if (it && heroSameItem(itemOf(it.name), D.itemsById[b.slots[k].item])) n++; } if (n > bn) { bn = n; best = v.build; } }
+  return best; }
+function heroGroupOf(S){ for (const s of D.builds.seasons) for (const c of s.classes) for (const g of (c.groups || [])) if (g.id === S.group) return g; return null; }
+function heroSlotRatios(r, S, P, v, recBuild, itemOf){ const base = heroEval(r, S, P, v), out = {}, L = [];
+  for (const key in recBuild.slots) { const it = r.items[HERO_API[key]]; if (!it || !heroSameItem(itemOf(it.name), D.itemsById[recBuild.slots[key].item])) continue;
+    try { const hi = heroEval(heroSwapped(r, recBuild, [key], itemOf), S, P, v), lo = heroEval(heroSwapped(r, recBuild, [key], itemOf, true), S, P, v), span = (hi.d - lo.d) + (hi.t - lo.t);
+      /* 비율 하나 = 공격력·강인함 단수를 합친 저고점 사이 위치. 처음에는 둘을 따로 냈는데, 한쪽 폭이 거의 0인 칸(딜 칸의 강인함)에서 비율이 −5 처럼 튐(2026-11-19 시험: 성전사 장갑·무기) */
+      out[key] = Math.abs(span) < 1e-6 ? 1 : ((base.d - lo.d) + (base.t - lo.t)) / span; L.push(out[key]); } catch (e) {} }
+  out.avg = L.length ? L.reduce((s, x) => s + x, 0) / L.length : 1; return out; }
+function heroNextSetup(r, S, P0, recBuild, itemOf){ const m = D.path && D.path.modes.solo, G = heroGroupOf(S); if (!m || !G || !recBuild) return null;
+  const C = D.config.model.score.gr150, cur = heroCurVariant(r, S, itemOf), segs = m.segments[S.group] || [], cands = [...new Set(segs.map(x => x.variant))].filter(x => x !== cur && m.variants[x]);
+  if (!cands.length) return {none: true, cur};
+  const val = e => Math.min(e.d, e.t) >= C.target - 1e-9 ? e.d : Math.min(e.d, e.t), v0 = heroRecommend(r, S, P0).v, rho = heroSlotRatios(r, S, P0, v0, recBuild, itemOf);
+  const curAt = P => heroRecommend(r, S, P).value;
+  const candAt = (w, P) => { const rm = heroRecModel(w, P); if (!rm) return null; const keys = Object.keys(rm.slots).filter(k => { const it = r.items[HERO_API[k]]; return it && !heroSameItem(itemOf(it.name), D.itemsById[rm.slots[k].item]); });
+    const rw = heroSwapped(r, rm, keys, itemOf), vv = heroRecommend(rw, S, P).v, hi = heroEval(rw, S, P, vv); let pd = 0, pt = 0;
+    for (const k of keys) { const q = rho[k] != null ? rho[k] : rho.avg, lo = heroEval(heroSwapped(rw, rm, [k], itemOf, true), S, P, vv); pd += (1 - q) * (hi.d - lo.d); pt += (1 - q) * (hi.t - lo.t); }
+    return {value: val({d: hi.d - pd, t: hi.t - pt}), keys, rm}; };
+  const best = P => { let b = null; for (const w of cands) { let x = null; try { x = candAt(w, P); } catch (e) {} if (x && (!b || x.value > b.value)) b = {...x, w}; } return b; };
+  const ahead = P => { const b = best(P); return b && b.value > curAt(P) + 1e-6 ? b : null; };
+  const Pmax = D.config.model.paragon.max || 20000; let lo = P0, hit = ahead(P0);
+  if (hit) return {cur, w: hit.w, P: P0, keys: hit.keys, rm: hit.rm, now: true};
+  for (let P = Math.ceil(P0 * 1.08); P <= Pmax * 1.08; P = Math.ceil(P * 1.08)) { const q = Math.min(P, Pmax), h = ahead(q);
+    if (h) { let a = lo, b = q, hb = h; while (b - a > Math.max(5, a * 0.005)) { const mid = Math.round((a + b) / 2), hm = ahead(mid); if (hm) { b = mid; hb = hm; } else a = mid; } return {cur, w: hb.w, P: b, keys: hb.keys, rm: hb.rm}; }
+    lo = q; if (q >= Pmax) break; }
+  return {none: true, cur}; }
 
 /* ============================================================================================
    계정 조회 탭 — 배틀넷 계정의 캐릭터를 불러와 보여 줌(1단계: 목록·장비·기술. 2단계 예정: 축성 아이템 추가, 정복자 분배, 위치 계산, 정복자 추천)
@@ -4399,13 +4562,13 @@ function HeroSlotEdit({W, apiSlot, skey, cls, recBuild, tplLike, spec0, onSave})
     <div className="ae-btns"><button type="button" className="acct-chip on" onClick={() => onSave(sp)}>저장</button>{spec0 && <button type="button" className="acct-chip" onClick={() => onSave(null)}>비우기</button>}
       {recBuild && recBuild.slots[skey] && <button type="button" className="acct-chip" onClick={() => setSp(heroDefaultSpec(recBuild.slots[skey].item, skey, cls, recBuild))}>추천 구성으로</button>}</div>
   </div>; }
-function HeroTip({W, r, apiSlot, cls, classId, recBuild, tplLike, summary, spec, onSave, calc}){
+function HeroTip({W, r, apiSlot, cls, classId, recBuild, tplLike, summary, spec, onSave, calc, prio}){
   const it = apiSlot && r.items[apiSlot], key = apiSlot && HERO_SLOT[apiSlot]; const [edit, setEdit] = useState(false);
   const [more, setMore0] = useState(() => TIP_MORE.v); const setMore = f => setMore0(m => (TIP_MORE.v = typeof f === "function" ? f(m) : f));   // 펼침 상태는 랭크표 툴팁과 같이 씀
   useEffect(() => { setEdit(false); }, [apiSlot]);
   if (!apiSlot) return <Scaled W={W}><div className="tip plain"><div className="tip-inner"><div className="empty">장비 칸에 마우스를 올리면 그 장비의 실제 옵션이 나옵니다. 빈칸을 누르면 축성 아이템을 넣을 수 있습니다.</div></div></div></Scaled>;
   if (!it || edit) return <HeroSlotEdit key={apiSlot} W={W} apiSlot={apiSlot} skey={key} cls={classId} recBuild={recBuild} tplLike={tplLike} spec0={spec || null} onSave={sp => { setEdit(false); onSave(apiSlot, sp); }}/>;
-  const ours = heroItemOf(it.name, cls), slotId = ours ? ours.slot : null, slot = slotId ? D.slotDefs[slotId] : {}, quality = ours ? ours.quality : (/세트/.test(it.type || "") ? "set" : "legendary");
+  const ours = heroItemOf(it.name, cls), ext = !ours && D.heroIcons ? D.heroIcons[it.name] : null, slotId = ours ? ours.slot : null, slot = slotId ? D.slotDefs[slotId] : {}, quality = ours ? ours.quality : ext ? ext.quality : (/세트/.test(it.type || "") ? "set" : "legendary");
   const recCfg = recBuild && recBuild.slots[key], recItem = recCfg && D.itemsById[recCfg.item], sameItem = heroSameItem(ours, recItem);
   /* 줄 = 랭크표의 Line 그대로(등급 색 + [ 공격력 / 강인함 ]). 글은 실제 옵션 문구, 등급 색은 같은 정복자의 추천 구성에서 그 칸·그 옵션의 것, 증감은 이 영웅의 실제 장비 기준(아래). 사용자 2026-11-19 "추천 정옵 아님같은 표기는 필요없고, 옵션 랭크표랑 똑같이하라니까?" */
   const mk = (t, i, sec) => { const aid = slotId ? heroAidOf(t, slotId) : null, f = aid && ours && ours.fixed.find(x => x.affix === aid);
@@ -4427,6 +4590,8 @@ function HeroTip({W, r, apiSlot, cls, classId, recBuild, tplLike, summary, spec,
     if (G) { const nz = m => m && (Math.abs(m.dmg) > 1e-9 || Math.abs(m.tough) > 1e-9), sg = new Set((recCfg && activeSecGoal(recCfg)) || []), ctx2 = {elemLabel: tplLike.elementLabel, skillLabel: tplLike.mainSkill, mainLabel: mainLabelOf(tplLike)};
       restS = G.full.filter(x => x.sec && nz(x)).map(x => ({aid: "sfull" + x.i, rank: "A", text: x.text + " (최대)", short: x.text + " (최대)", util: false, fixed: false, special: false, mg: {dmg: x.dmg, tough: x.tough}}))
         .concat(secAdd.filter(a => nz(G.add[a])).map(a => { const t = affixText(a, slotId, ctx2); return {aid: a, rank: sg.has(a) ? "S" : "B", text: t.text, short: t.short, util: !!D.affixes[a].util, fixed: false, special: false, mg: G.add[a]}; })); } }
+  else if (prio) { const mgOf = aid => (recCfg && recCfg.marginals && recCfg.marginals[aid]) || null;   // 서포터: 랭크표와 같은 '우선 n'·'강인함 x%'(추천 구성의 그 칸 값)
+    P1.forEach(l => { l.mg = l._sp ? null : mgOf(l.aid); }); S1.forEach(l => { l.mg = mgOf(l.aid); }); restP = restP.map(l => ({...l, mg: mgOf(l.aid)})); }
   else restP = restP.map(l => ({...l, mg: null}));
   if (gems.length) P1.unshift({aid: "socket", rank: "S", text: "홈 (" + gems.length + ")", short: "홈 (" + gems.length + ")", util: false, fixed: true, special: lgs.length > 0, mg: null});
   return <Scaled W={W}><div className={"tip" + (summary ? " summary" : "")}>
@@ -4435,11 +4600,11 @@ function HeroTip({W, r, apiSlot, cls, classId, recBuild, tplLike, summary, spec,
       <div className={"tip-name " + quality}>{it.name}</div>
       <div className={"tip-body" + (it.armor ? " has-armor" : "")}>
         <div className="tip-head">
-          <div className={"pic " + (slot.square ? "square" : "tall") + " " + quality}>{ours && !ours.iconMissing ? <img src={ours.iconTone || ours.iconRaw} alt="" loading="lazy"/> : null}</div>
+          <div className={"pic " + (slot.square ? "square" : "tall") + " " + quality}>{ours && !ours.iconMissing ? <img src={ours.iconTone || ours.iconRaw} alt="" loading="lazy"/> : ext ? <img src={ext.icon} alt="" loading="lazy"/> : null}</div>
           <div className="meta"><div className="row1"><span className={"q " + quality}>{it.type || ""}</span><span className="slotname">{ours ? tipRightOf(ours) : ""}</span></div>
             {!!it.armor && <div className="big"><div className="num"><div className="val">{nf0(it.armor)}</div><div className="lab">방어도</div></div></div>}</div>
         </div>
-        <div className="sec"><h3>주요 옵션<span className="hcols">[ <em className="d">공격력</em> / <em className="t">강인함</em> ]</span></h3><ul className="lines">{/* key = 줄 순서(옵션 id 가 겹칠 수 있음 — 고정 민첩 + 칼데산 민첩. 겹치면 칸을 옮겨 다닐 때 줄이 쌓임: 사용자 2026-11-19) */}{P1.map((l, i) => <Line key={apiSlot + "p" + i} l={l} summary={false} gem={l.aid === "socket" && nrm.length ? {...nrm[0][1].gem, label: nrm[0][0]} : null} pr={null}/>)}</ul>
+        <div className="sec"><h3>주요 옵션<span className="hcols">{prio ? <>[ <em className="p">우선순위</em> / <em className="t">강인함</em> ]</> : <>[ <em className="d">공격력</em> / <em className="t">강인함</em> ]</>}</span></h3><ul className="lines">{/* key = 줄 순서(옵션 id 가 겹칠 수 있음 — 고정 민첩 + 칼데산 민첩. 겹치면 칸을 옮겨 다닐 때 줄이 쌓임: 사용자 2026-11-19) */}{P1.map((l, i) => <Line key={apiSlot + "p" + i} l={l} summary={false} gem={l.aid === "socket" && nrm.length ? {...nrm[0][1].gem, label: nrm[0][0]} : null} pr={null}/>)}</ul>
           {restP.length > 0 && <button type="button" className={"morebtn" + (more ? " open" : "")} onClick={e => { e.stopPropagation(); setMore(m => !m); }} aria-expanded={more}><span className="chev" aria-hidden="true">▾</span>주요 옵션 비교</button>}
           {more && restP.length > 0 && <ul className="lines more">{restP.map((l, i) => <Line key={apiSlot + "r" + i} l={l} summary={false} gem={null} pr={null}/>)}</ul>}</div>
         {(S1.length > 0 || restS.length > 0) && <div className="sec secopt"><h3>보조 옵션</h3><ul className="lines">{S1.map((l, i) => <Line key={apiSlot + "s" + i} l={l} summary={false} gem={null} pr={null}/>)}</ul>
@@ -4466,17 +4631,33 @@ function heroLiveRun(liveB, P){ return new Promise(res => { const o = HERO_LIVE_
   const fb = () => setTimeout(() => { try { res(liveResult(optimizeMulti(liveB, o, n))); } catch (e) { res(null); } }, 50);
   let w = null; try { w = makeModelWorker(); w.onmessage = ev => { w.terminate(); res(ev.data); }; w.onerror = () => { w.terminate(); fb(); }; w.postMessage({data: workerData(), build: liveB, opts: o, n}); } catch (e) { fb(); } }); }
 const heroLiveApply = (liveB, P, e) => { try { return e ? applyModel(liveB, fromPre(liveB, e, HERO_LIVE_OPTS(P))) : null; } catch (err) { return null; } };
-function heroLiveOf(h){ try { const S = heroSetupOf(h.r); if (S.why) return null; const b = heroLiveBuild(h.r, S, n => heroItemOf(n, h.r.cls)); return b ? {b, P: h.r.P || 0, k: heroLiveKey(b, h.r.P || 0)} : null; } catch (e) { return null; } }
+function heroLiveOf(h){ try { const S = heroSetupOf(h.r); if (S.why || S.prio) return null;   // 서포터는 미리 계산할 것 없음(heroPrioRec 이 화면에서 바로)
+ const b = heroLiveBuild(h.r, S, n => heroItemOf(n, h.r.cls)); return b ? {b, P: h.r.P || 0, k: heroLiveKey(b, h.r.P || 0)} : null; } catch (e) { return null; } }
 /* 조회 직후 계정의 모든 영웅을 미리 탐색(작업자 4개씩). onProg(끝난 수, 전체) */
 async function heroPrecompute(doc, onProg){ const L = (doc.heroes || []).filter(h => h.r).map(h => [h, heroLiveOf(h)]).filter(x => x[1]); let i = 0, done = 0;
   const one = async () => { while (i < L.length) { const [h, x] = L[i++]; try { const e = await heroLiveRun(x.b, x.P); if (e) h.live = {k: x.k, e: JSON.parse(JSON.stringify(e))}; } catch (err) {} if (onProg) onProg(++done, L.length); } };
   await Promise.all(Array.from({length: Math.min(4, L.length)}, one)); return doc; }
+/* 서포터 인형 아래 두 줄(랭크표 PriorityLine·서포터 ParagonLine 과 같은 꼴, 값은 이 영웅의 실제 장비):
+   '재사용 감소 : x% (고통 감내 상시 63.5% 이상) / 공격 속도 : +n% (/ 주 기술 발사 : 초당 n발)', '대균열 : n단 / 정복자 활력 … · 주능력치 …'(강인함 최대 분배, 150 상한) */
+function HeroPrioLines({rec, S, style}){ const C = (S.tpl.priority || {}).cdr || {}, pc = v => (v * 100).toFixed(1) + "%", cap = D.config.model.score.gr150.target, pg = D.config.model.paragon;
+  const tier = rec.t != null ? Math.min(cap, Math.floor(rec.t + 0.02)) : null;
+  return <><div className="paraline" style={style}><span className="pitem augline">재사용 감소 : <b className={C.gate && rec.cdr < C.gate ? "bad" : ""}>{pc(rec.cdr)}</b>{C.gate && <> ({C.gateLabel} {pc(C.gate)} 이상)</>} / 공격 속도 : <b>+{rec.iasItem}%</b>
+      {rec.fire != null && <> / 주 기술 발사 : <b>초당 {rec.fire.toFixed(1)}발</b> (초당 공격 {rec.aps.toFixed(2)}회)</>}</span></div>
+    <div className="paraline" style={style}><span className="pitem augline">{S.setup} · {tier != null && <>강인함 : 대균열 <b>{tier}단</b> / </>}정복자 활력 : <b>{rec.v.toLocaleString()}</b> (+{(rec.v * (pg.vitPerPoint || 5)).toLocaleString()}) · {mainLabelOf(S.tpl) || (S.tpl.classId === "barbarian" ? "힘" : "민첩")} : <b>{rec.main.toLocaleString()}</b> (+{(rec.main * (pg.dexPerPoint || 5)).toLocaleString()})</span></div></>; }
+/* 다음 세팅 두 줄: '다음 세팅 : <변형> · 정복자 N' / '바꿀 장비 : 투구, 장갑 …'(칸 이름에 마우스 = 지금 아이템 → 바꿀 아이템). 사용자 2026-11-19 "레벨과 장비변화만 깔끔하게 표기해." */
+function HeroNextLines({next, S, r, itemOf, style}){ const G = heroGroupOf(S), nm = id => { const v = G && G.variants.find(x => x.build === id); return v ? v.short : (heroFindBuild(id) || {}).label || id; };
+  if (next.none) return <div className="paraline" style={style}><span className="pitem augline">다음 세팅 : <b>없음</b></span></div>;
+  const keys = next.keys.slice().sort((a, b) => Object.keys(HERO_API).indexOf(a) - Object.keys(HERO_API).indexOf(b));
+  return <><div className="paraline" style={style}><span className="pitem augline">다음 세팅 : <b>{nm(next.w)}</b> · 정복자 <b>{next.P.toLocaleString()}</b>{next.now ? " (지금)" : ""}</span></div>
+    <div className="paraline" style={style}><span className="pitem augline">바꿀 장비 : {keys.map((k, i) => { const to = D.itemsById[next.rm.slots[k].item], cur = r.items[HERO_API[k]];
+      return <React.Fragment key={k}>{i ? ", " : ""}<span title={(cur ? cur.name : "") + " → " + (to ? to.name : "")}>{to ? (D.slotDefs[to.slot] || {}).label || k : k}</span></React.Fragment>; })}</span></div></>; }
 function HeroView({acc, hero, rid}){
   const A = useAcct(), okey = rid || acc.key + "_" + hero.id, ov = (A.over[okey] && A.over[okey].slots) || {}, ovSig = JSON.stringify(ov), r0 = hero.r;
   const S = useMemo(() => heroSetupOf(r0), [hero.id, acc.fetchedAt]), ok = !S.why, P = r0.P || 0, itemOf = n => heroItemOf(n, r0.cls);
-  const liveB = useMemo(() => { if (!ok) return null; try { return heroLiveBuild(r0, S, itemOf); } catch (e) { return null; } }, [hero.id, acc.fetchedAt]), liveK = liveB ? heroLiveKey(liveB, P) : null;
+  const liveB = useMemo(() => { if (!ok) return null; try { return heroLiveBuild(r0, S, itemOf); } catch (e) { return null; } }, [hero.id, acc.fetchedAt]), liveK = liveB && !S.prio ? heroLiveKey(liveB, P) : null;
+  const prioRec = useMemo(() => ok && S.prio && liveB ? heroPrioRec(liveB, P) : null, [liveB, P]);   // 서포터 비교 기준(34_herocalc heroPrioRec)
   if (liveK && !HERO_LIVE.has(liveK) && hero.live && hero.live.k === liveK) HERO_LIVE.set(liveK, heroLiveApply(liveB, P, hero.live.e));   // 저장된 결과
-  const [liveTick, setLiveTick] = useState(0), recBuild = liveK && HERO_LIVE.get(liveK) || null, liveBusy = !!liveK && !HERO_LIVE.has(liveK);
+  const [liveTick, setLiveTick] = useState(0), recBuild = S.prio ? prioRec : liveK && HERO_LIVE.get(liveK) || null, liveBusy = !!liveK && !HERO_LIVE.has(liveK);
   useEffect(() => { if (!liveK || HERO_LIVE.has(liveK)) return; let stop = false;
     heroLiveRun(liveB, P).then(e => { if (stop) return; HERO_LIVE.set(liveK, heroLiveApply(liveB, P, e)); setLiveTick(x => x + 1); if (e) acctSaveLive(acc, okey, hero.id, {k: liveK, e: JSON.parse(JSON.stringify(e))}); });
     return () => { stop = true; }; }, [liveK]);
@@ -4486,7 +4667,22 @@ function HeroView({acc, hero, rid}){
   const [sel, setSel] = useState(null), [hover, setHover] = useState(null), curSlot = sel && !r.items[sel] ? sel : (hover || sel);
   const sameAt = key => { const c = recBuild && recBuild.slots[key], it = c && r.items[HERO_API[key]]; return !!(it && heroSameItem(itemOf(it.name), D.itemsById[c.item])); };
   const [gaps, setGaps] = useState(null); const [gemGaps, setGemGaps] = useState(null);
-  useEffect(() => { setGaps(null); setGemGaps(null); if (!ok || !rec || rec.err || !recBuild) return; let stop = false;
+  /* 다음 세팅 전환점(34_herocalc heroNextSetup — 지금 장비의 저고점 비율을 새 장비에 그대로). 비율은 화면에 안 띄움(사용자 "손실비율은 표기하지마. 내부적 지표야.") */
+  const [next, setNext] = useState(null);
+  const [, setIconTick] = useState(0); useEffect(() => { if (!D.heroIcons && D.heroIconsP) D.heroIconsP.then(() => setIconTick(x => x + 1)); }, []);   // 자료 밖 아이템 그림(00_base heroIconsP)이 늦게 오면 다시 그림
+  useEffect(() => { setNext(null); if (!ok || S.prio || !rec || rec.err || !recBuild) return; let stop = false;
+    const t = setTimeout(() => { if (stop) return; let x = null; try { x = heroNextSetup(r, S, P, recBuild, itemOf); } catch (e) { x = null; } if (!stop) setNext(x); }, 50);
+    return () => { stop = true; clearTimeout(t); }; }, [r, rec, recBuild]);
+  /* 서포터 칸 위 표기(랭크표의 서포터처럼 % 등락 대신): 추천 정옵(우선순위 방식, 이 영웅의 아이템 그대로) 가운데 빠진 옵션 수 → '옵션 −n', 다 있으면 최대 수치가 아닌 정옵 수 → '수치 −n', 둘 다 없으면 '정옵'.
+     사용자 2026-11-19 "서포터 옵션랭크표에 표현되는 딜러와의 차이점도 반영해." */
+  const prioTags = useMemo(() => { if (!S.prio || !recBuild) return null; const out = {};
+    for (const key in recBuild.slots) { const api = HERO_API[key], it = api && r.items[api], c = recBuild.slots[key], ri = D.itemsById[c.item]; if (!it || !ri) continue; const slotId = ri.slot;
+      if (!sameAt(key)) { out[key] = {txt: "다른 아이템", tip: "추천 아이템: " + ri.name + " (우리 자료에 없는 아이템이면 그 칸은 틀 세팅의 아이템으로 계산)"}; continue; }
+      const miss = heroMissing(it, slotId, c, ri), goal = new Set((c.goal || []).concat(activeSecGoal(c)));
+      const low = (it.primary || []).concat(it.secondary || []).filter(t => { const aid = heroAidOf(t, slotId); return aid && goal.has(aid) && heroFullText(t, aid, slotId); }).length;
+      out[key] = miss.length ? {txt: "옵션 −" + miss.length, bad: true, tip: "빠진 정옵: " + miss.map(a => ((D.affixes[a] || {}).name || a).replace(/\+?\{v\}%?/g, "").replace(/\s+/g, " ").trim()).join(", ")} : low ? {txt: "수치 −" + low, bad: true} : {txt: "정옵", ok: true}; }
+    return out; }, [r, recBuild]);
+  useEffect(() => { setGaps(null); setGemGaps(null); if (!ok || !rec || rec.err || !recBuild || S.prio) return; let stop = false;   // 서포터는 % 등락 없음(아래 prioTags)
     const t = setTimeout(() => { if (stop) return; try { const same = {...recBuild, slots: Object.fromEntries(Object.entries(recBuild.slots).filter(([k]) => sameAt(k)))}; setGaps(heroSlotGaps(r, S, P, same, itemOf, rec.v)); } catch (e) { setGaps({}); } try { setGemGaps(heroGemGaps(r, S, P, recBuild, rec.v)); } catch (e) { setGemGaps({}); } }, 30);
     return () => { stop = true; clearTimeout(t); }; }, [r, rec, recBuild]);
   const saveSlot = (api, sp) => { const slots = {...ov}; if (sp) slots[api] = sp; else delete slots[api]; acctSaveOver(okey, slots); };   // 저장 위치는 35_account acctSaveOver(아티팩트 = 데이터베이스, GitHub 판 = 브라우저)
@@ -4505,11 +4701,11 @@ function HeroView({acc, hero, rid}){
       <div className="col" style={{width: Math.max(W, Math.round(BW * k))}}>
         <div className="dollwrap" style={{height: Math.round(BH * k)}}>
           <div className="doll" style={{transform: `scale(${k})`, width: BW, height: BH, backgroundImage: `url(${D.dollImage[classId] || D.dollImage.dh})`, backgroundSize: `${BW}px ${BH}px`}} onMouseLeave={() => setHover(null)} onClick={e => { if (!e.target.closest(".slot")) setSel(null); }}>
-            {layoutOf(fake).map(entry => { const key = entry.key || entry.slot, api = keyToApi[key], it = api && r.items[api], ours = it && heroItemOf(it.name, r.cls), ic = ours && iconRect(entry, ours), active = curSlot === api, slot = D.slotDefs[entry.slot];
+            {layoutOf(fake).map(entry => { const key = entry.key || entry.slot, api = keyToApi[key], it = api && r.items[api], ours = it && heroItemOf(it.name, r.cls), ext = it && !ours && D.heroIcons ? D.heroIcons[it.name] : null, ic = ours ? iconRect(entry, ours) : ext ? iconRect(entry, {iconSize: [ext.w, ext.h]}) : null,   /* ext = 우리 자료에 없는 아이템의 그림(data/hero_icons.json) */ active = curSlot === api, slot = D.slotDefs[entry.slot];
               const gm = it ? (it.gems || []).filter(Boolean).map(n => heroGemOf(n, entry.slot, classId)).filter(Boolean) : [], nrm = gm.filter(x => x.gem), lg = gm.find(x => x.leg), gc = nrm.length > 0 ? GD.centers[key] : null;
               return <button type="button" key={key} className={"slot" + (active ? " active" : "") + (it ? " has" : " noitem")} style={{left: entry.x, top: entry.y, width: entry.w, height: entry.h, zIndex: (entry.z || 1) + (active ? 10 : 0)}} aria-label={it ? it.name : slot.label + " (빈칸 — 축성 아이템 넣기)"}
                 onMouseEnter={() => api && setHover(api)} onMouseLeave={() => setHover(null)} onFocus={() => api && setHover(api)} onBlur={() => setHover(null)} onClick={() => api && setSel(s => s === api && it ? null : api)}>
-                {it && <span className={"slotitem " + (ours ? ours.quality : "legendary") + " s-" + entry.slot + (it.manual ? " sanct" : "")}>{!ours || ours.iconMissing ? <span className="noicon">{it.name}</span> : <img src={ours.iconTone || ours.iconRaw} alt="" style={{left: ic.x, top: ic.y, width: ic.w, height: ic.h}}/>}</span>}
+                {it && <span className={"slotitem " + (ours ? ours.quality : ext ? ext.quality : "legendary") + " s-" + entry.slot + (it.manual ? " sanct" : "")}>{ext ? <img src={ext.icon} alt="" style={{left: ic.x, top: ic.y, width: ic.w, height: ic.h}}/> : !ours || ours.iconMissing ? <span className="noicon">{it.name}</span> : <img src={ours.iconTone || ours.iconRaw} alt="" style={{left: ic.x, top: ic.y, width: ic.w, height: ic.h}}/>}</span>}
                 {gc && nrm.map((x, i) => <img key={"g" + i} className="dollgem" aria-hidden="true" src={x.gem.iconTone || x.gem.icon} alt="" style={{left: gc[0] - entry.x - GD.size/2, top: gc[1] + (i - (nrm.length-1)/2)*GD.step - entry.y - GD.size/2, width: GD.size, height: GD.size}}/>)}
                 {lg && <span className="dollgem leg big" aria-hidden="true" style={entry.slot === "amulet" ? {left: (entry.w - 32)/2, top: (entry.h - 32)/2} : {right: -16, bottom: -16}}><img src={lg.leg.icon} alt=""/></span>}
                 {!it && <span className="slotlabel">{slot.label}<br/>＋</span>}</button>; })}
@@ -4518,17 +4714,20 @@ function HeroView({acc, hero, rid}){
             <div className="gaplayer" aria-hidden="true">{layoutOf(fake).map(entry => { const key = entry.key || entry.slot, api = keyToApi[key], it = api && r.items[api]; if (!it) return null; const g = gaps && gaps[key], gg = gemGaps && gemGaps[api], narrow = entry.slot === "ring", out = [];   // 두 줄은 반지만(가로가 좁음). 나머지 칸은 전처럼 칸 위 한 줄 — 사용자 2026-11-19 "반지랑 보석만 바꾸면 됐어. 나머지는 이전처럼."
               const full = recBuild && sameAt(key) && heroMissing(it, entry.slot, recBuild.slots[key], D.itemsById[recBuild.slots[key].item]).length === 0;
               const two = (x, one, force) => <><em className="d">{pc(x.dl)}</em>{(narrow || force) && !one ? <br/> : " / "}<em className="t">{pc(x.tl)}</em></>;
+              const pt = prioTags && prioTags[key]; if (pt) out.push(<div key={key} className={"gaptag" + (narrow ? " narrow" : "")} title={pt.tip} style={{left: entry.x, width: entry.w, top: entry.y - (narrow ? 11 : 7)}}><span><em className={pt.ok ? "ok" : pt.bad ? "d" : ""}>{pt.txt}</em></span></div>);
               if (g && !g.err) out.push(<div key={key} className={"gaptag" + (narrow ? " narrow" : "")} style={{left: entry.x, width: entry.w, top: entry.y - (narrow ? 11 : 7)}}><span>{full && Math.abs(g.dl) < 0.0005 && Math.abs(g.tl) < 0.0005 ? <em className="ok">정옵</em> : two(g)}</span></div>);
               if (gg && !gg.err) out.push(<div key={key + "g"} className={"gaptag ofgem narrow" + (entry.x + entry.w + 1 > BW - 31 ? " rt" : "")} title={"추천 구성: " + gg.to} style={{left: Math.min(BW - 31, entry.x + entry.w + 1), width: 30, top: entry.slot === "amulet" ? entry.y + (entry.h - 21) / 2 : entry.y + entry.h - 16 - 21}}><span>{two(gg, false, true)}</span></div>);   // 전설 보석 표기 = 장신구 오른쪽에 두 줄(반지: 보석 위·반지 오른쪽, 목걸이: 목걸이 오른쪽 가운데). 사용자 2026-11-19 "보석은 보석 위, 반지 오른쪽에 띄우자. 반지위껏처럼 두줄로." / "목걸이보석도 목걸이 오른쪽에 띄워줘". 클래스 이름은 ofgem — gem 은 보석 그림의 높이 규칙(.gem)에 걸려 아랫줄이 상자 밖으로 나갔음
               return out; })}</div>
           </div></div>
-{ok && rec && !rec.err ? <ParagonLine mainLabel={mainLabelOf(S.tpl)} st={{para: {paraVit: rec.v, paraDex: rec.main, nAug: 0, nAugVit: 0, nAugInt: 0, nAugStr: 0}}} g={{d: rec.d, t: rec.t}} split={true} prio={true /* 주능력치 포인트도 같이 적음(서포터 줄과 같은 꼴) — 사용자 2026-11-19 "뒤에 민첩 : N(+N)도" */} style={{width: Math.round(BW * k), marginLeft: Math.round((Math.max(W, BW * k) - BW * k) / 2)}}/>
+{ok && S.prio && rec && !rec.err ? <HeroPrioLines rec={rec} S={S} style={{width: Math.round(BW * k), marginLeft: Math.round((Math.max(W, BW * k) - BW * k) / 2)}}/>
+          : ok && rec && !rec.err ? <ParagonLine mainLabel={mainLabelOf(S.tpl)} st={{para: {paraVit: rec.v, paraDex: rec.main, nAug: 0, nAugVit: 0, nAugInt: 0, nAugStr: 0}}} g={{d: rec.d, t: rec.t}} split={true} prio={true /* 주능력치 포인트도 같이 적음(서포터 줄과 같은 꼴) — 사용자 2026-11-19 "뒤에 민첩 : N(+N)도" */} style={{width: Math.round(BW * k), marginLeft: Math.round((Math.max(W, BW * k) - BW * k) / 2)}}/>
           : <div className="paraline" style={{width: Math.round(BW * k), marginLeft: Math.round((Math.max(W, BW * k) - BW * k) / 2)}}><span className="pitem augline">{!ok ? S.why : rec && rec.err ? "계산 실패: " + rec.err : ""}</span></div>}
+        {next && <HeroNextLines next={next} S={S} r={r} itemOf={itemOf} style={{width: Math.round(BW * k), marginLeft: Math.round((Math.max(W, BW * k) - BW * k) / 2)}}/>}
         {liveBusy && <div className="pending" style={{maxWidth: Math.round(BW * k)}}>이 장비 구성의 최고 정옵을 계산하는 중(약 10초)… 끝나면 장비별 증감이 뜹니다.</div>}
         {sb && <div style={{width: Math.round(BW * k), height: Math.round(SKILLBAR_H * k), marginLeft: Math.round((Math.max(W, BW * k) - BW * k) / 2), overflow: "visible"}}>
           <div style={{width: BW, transform: `scale(${k})`, transformOrigin: "0 0"}}><SkillBar build={{...fake, id: "hero_" + hero.id, skillbar: sb, cube: cubeNames}}/></div></div>}
       </div>
-      <div className="col" style={{width: W}}><HeroTip W={W} r={r} apiSlot={curSlot} cls={r.cls} classId={classId} recBuild={recBuild} tplLike={tplLike} summary={summary} spec={curSlot ? ov[curSlot] : null} onSave={saveSlot} calc={ok && rec && !rec.err ? {S, P, v: rec.v} : null}/></div>
+      <div className="col" style={{width: W}}><HeroTip W={W} r={r} apiSlot={curSlot} cls={r.cls} classId={classId} recBuild={recBuild} tplLike={tplLike} summary={summary} spec={curSlot ? ov[curSlot] : null} onSave={saveSlot} prio={!!S.prio} calc={ok && rec && !rec.err && !S.prio ? {S, P, v: rec.v} : null}/></div>
     </div>
   </div>; }
 
