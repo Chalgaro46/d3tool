@@ -948,6 +948,7 @@ h1{font-size:18px;font-weight:700;color:var(--title);margin:0 auto 12px;width:90
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.3.1/umd/react.production.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.3.1/umd/react-dom.production.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.24.7/babel.min.js"></script>
+<script>const DATA_V = {"affixes.json": "c3fc1c7c44", "builds.json": "da35788485", "cmp/_part/fb_sanct@solo@@0.json": "8209d332e1", "cmp/_part/fb_sanct@solo@@1.json": "1189cb934d", "cmp/_part/foth@solo@@0.json": "0039dacd73", "cmp/_part/foth@solo@@1.json": "c9c5f0552f", "cmp/_part/impale_sanct@solo@@0.json": "315a8906c3", "cmp/_part/impale_sanct@solo@@1.json": "4b7d335e29", "cmp/_part/rai2@solo@@0.json": "c11cfab7a2", "cmp/_part/rai2@solo@@1.json": "a5bee05607", "cmp/_part/rai2_salv@solo@@0.json": "2316432aa3", "cmp/_part/rai2_salv@solo@@1.json": "3bd5dce096", "cmp/_part/rai4_heal@solo@@0.json": "12a917df67", "cmp/_part/rai4_heal@solo@@1.json": "d3eeb1d82a", "cmp/_part/rai4_salv@solo@@0.json": "45fff0af07", "cmp/_part/rai4_salv@solo@@1.json": "95bf697fb2", "cmp/_part/rai4h@solo@@0.json": "d67ad8bfc8", "cmp/_part/rai4h@solo@@1.json": "fdac64189a", "cmp/_part/rai4s@solo@@0.json": "672377dba4", "cmp/_part/rai4s@solo@@1.json": "0c8553dcda", "cmp/_part/rai_sanct@solo@@0.json": "7a0075cbfa", "cmp/_part/rai_sanct@solo@@1.json": "98a0ce36d0", "cmp/_part/ue_sanct@solo@@0.json": "e1a20c0f4c", "cmp/_part/ue_sanct@solo@@1.json": "07103fe76f", "cmp/_part/wol_sanct@solo@@0.json": "062f806a60", "cmp/_part/wol_sanct@solo@@1.json": "c10303105a", "cmp/fb_sanct_solo.json": "3ca8f94bcc", "cmp/foth_solo.json": "2b79a1014b", "cmp/impale_sanct_solo.json": "b11f760204", "cmp/rai2_solo.json": "0406b55859", "cmp/rai4h_solo.json": "d032b366bd", "cmp/rai4s_solo.json": "23b5723e7d", "cmp/rai_sanct_solo.json": "6c7911e64a", "cmp/ue_sanct_solo.json": "b34c45c9da", "cmp/wol_sanct_solo.json": "520ca9ca5c", "cmp/zbarb2_sup_solo.json": "255c85ee2a", "cmp/zbarb2_sup~mainhand_solo.json": "6517a3a42f", "cmp/zbarb2_sup~neck+mainhand_solo.json": "a7ad94de35", "cmp/zbarb2_sup~neck_solo.json": "ac62eb8620", "cmp/zbarb_sup_solo.json": "f1cee9c3b8", "cmp/zbarb_sup~mainhand_solo.json": "4902de3508", "cmp/zbarb_sup~neck+mainhand_solo.json": "6c12169900", "cmp/zbarb_sup~neck_solo.json": "410afc5c0d", "cmp/zdh_sup_solo.json": "6c7306d1df", "cmp/zdh_sup~neck_solo.json": "fc501c0fe0", "config.json": "da0292eaa0", "hero_icons.json": "2a4a6114e2", "items.json": "8c963702e3", "path.json": "0b51f8d3e1", "skills.json": "1ea89cd629", "slots.json": "1fb54e32c5", "upgrade.json": "9db40cd7d1"};</script>
 <script id="model-src">
 /* ============================================================================================
    src/model — 순수 계산(React 없음). 파일 번호 순으로 이어 붙여 <script id="model-src"> 하나가 된다(build.py).
@@ -3185,14 +3186,16 @@ module.exports = {calc, setupOf, vitFor: (r, s) => vitFor(r, s), buildGemK, calc
    ============================================================================================ */
 const {useState, useMemo, useEffect, useRef} = React;
 /* 데이터: data/*.json + 경로(path.json, 없으면 실시간 계산) → 전역 D */
+/* 데이터 주소에 내용 지문을 붙임(build.py data_ver — 바뀐 파일만 새로 받음). 지문이 없는 파일(빌드 뒤에 생긴 것)은 그냥 받음 */
+const dataUrl = f => "data/" + f + (typeof DATA_V !== "undefined" && DATA_V[f] ? "?v=" + DATA_V[f] : "");
 async function loadData(){
   const names = ["config","affixes","slots","items","builds","upgrade","skills"];   // skills = 스킬·패시브 한글 문구·스프라이트 위치(tools/d3p_import.py)
-  const objs = await Promise.all(names.map(n => fetch("data/"+n+".json").then(r => { if(!r.ok) throw new Error(n+" "+r.status); return r.json(); })));
+  const objs = await Promise.all(names.map(n => fetch(dataUrl(n+".json")).then(r => { if(!r.ok) throw new Error(n+" "+r.status); return r.json(); })));
   const d = Object.fromEntries(names.map((n,i)=>[n,objs[i]]));
   /* 우리 아이템 자료에 없는 아이템의 그림(계정 조회 탭): {이름: {icon(data URI), quality, w, h}} — 수집 기록(d3collect·d3top)의 API icon 이름으로 블리자드 CDN 에서 받음(2026-11-19, 사용자 "데이터는 수집됐는데 그림이 없는 아이템부터 수집하자."). 없어도 화면은 돎 */
   /* 그림은 data URI 로 한 파일에 담음(아티팩트 한 판의 파일 수 상한 512 — 낱개 png 123개는 못 올림). 1.3MB 라 첫 화면을 기다리게 하지 않고 따로 받음(39_heroview 가 받는 대로 다시 그림) */
-  d.heroIcons = null; d.heroIconsP = fetch("data/hero_icons.json").then(r => r.ok ? r.json() : null).catch(() => null).then(x => { d.heroIcons = x; return x; });
-  d.path = await fetch("data/path.json").then(r => r.ok ? r.json() : null).catch(() => null);   // 정복자 800→20000 경로(tools/scan.js → tools/merge_path.py)
+  d.heroIcons = null; d.heroIconsP = fetch(dataUrl("hero_icons.json")).then(r => r.ok ? r.json() : null).catch(() => null).then(x => { d.heroIcons = x; return x; });
+  d.path = await fetch(dataUrl("path.json")).then(r => r.ok ? r.json() : null).catch(() => null);   // 정복자 800→20000 경로(tools/scan.js → tools/merge_path.py)
   d.itemsById = Object.fromEntries(d.items.items.map(it => [it.id, it]));
   d.slotDefs = d.slots.slots; d.layout = d.slots.layout; d.dollBase = d.slots.dollBase || [300,426]; d.dollImage = d.slots.dollImage || {dh: "doll.png"};   // 직업별 인형 바탕(gen_data.py DOLL_IMAGE)
   return d;
@@ -4944,7 +4947,7 @@ function usePreloadIcons(entry, cls){
 function useBakedCmp(entryId, gemMode){
   const [cmpTick, setCmpTick] = useState(0);
   useEffect(() => { if (!entryId) return; const k = entryId + "_" + gemMode; D.cmp = D.cmp || {}; if (k in D.cmp) return; D.cmp[k] = null;
-    fetch("data/cmp/" + k + ".json").then(r => r.ok ? r.json() : null).then(j => { if (j) { D.cmp[k] = j; setCmpTick(t => t + 1); } }).catch(() => {}); }, [entryId, gemMode]);
+    fetch(dataUrl("cmp/" + k + ".json")).then(r => r.ok ? r.json() : null).then(j => { if (j) { D.cmp[k] = j; setCmpTick(t => t + 1); } }).catch(() => {}); }, [entryId, gemMode]);
   return cmpTick; }
 /* 비교 미리 계산: 랭크표에서 결과가 확정되고 0.6초 머물면 작업자가 compareBase 를 해 CMP_CACHE 에 넣음 → 탭 전환이 즉시.
    세팅·정복자가 바뀌면 진행 중인 작업자를 끝냄. 출처: 사용자 2026-11-09 '미리 굽자'. */
