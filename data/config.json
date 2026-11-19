@@ -257,6 +257,12 @@
  "model": {
   "_doc": "상대 비교용 모델. 상수 배율(세트 6종, 카를레이, 전설 보석 등)은 모든 후보에 공통이라 생략. 공격력·강인함은 '기준 대비 배율'만 의미 있음.",
   "level": 70,
+  "coe": {
+   "mult": 2.0,
+   "fixed": {
+    "wol": 2.0
+   }
+  },
   "squirt": {
    "max": 1.0,
    "pylonMin": 2,
@@ -429,6 +435,17 @@
     "phys": 0.5
    }
   },
+  "additive": {
+   "taeguk": 0.8
+  },
+  "gemDmg": {
+   "trapped": 0.6,
+   "trappedFoth": 0.33,
+   "zei": 0.64,
+   "simplicity": 1.0,
+   "lod": 3.75,
+   "lodUnits": 26
+  },
   "defAvg": 0.3333333333333333,
   "oneShot": {
    "meleeClassDr": 0.3,
@@ -440,56 +457,71 @@
    "physShare": 0.0,
    "gems": {
     "taeguk": {
+     "id": "gem/taeguk",
      "armorK": 1.2
     },
     "powerful": {
+     "id": "gem/powerful",
      "elite": 0.15
     },
     "esoteric": {
+     "id": "gem/esoteric",
      "nonPhys": 0.6
     },
     "legacyofdreams": {
+     "id": "gem/legacyofdreams",
      "perUnit": 0.02,
      "units": 26
     }
    },
    "skills": {
     "monk/mantraofsalvation": {
+     "id": "monk/skill/mantra-of-salvation",
      "resK": 1.2
     },
-    "monk/mantraofhealing:b": {
+    "monk/mantraofhealing:c": {
+     "id": "monk/skill/mantra-of-healing/c",
      "lifePct": 0.2
     },
     "crusader/lawsofhope:c": {
+     "id": "crusader/skill/laws-of-hope/c",
      "phys": 0.25,
      "uptime": 0.16666666666666666
     },
     "demonhunter/evasivefire:a": {
+     "id": "demon-hunter/skill/evasive-fire/a",
      "armorK": 1.25
     }
    },
    "passives": {
     "demonhunter/numbingtraps": {
+     "id": "demon-hunter/passive/numbing-traps",
      "dr": 0.25
     },
     "demonhunter/perfectionist": {
+     "id": "demon-hunter/passive/perfectionist",
      "armorK": 1.1,
      "resK": 1.1
     },
     "wizard/glasscannon": {
+     "id": "wizard/passive/glass-cannon",
      "armorK": 0.9,
      "resK": 0.9
     },
     "wizard/blur": {
-     "melee": 0.17
+     "id": "wizard/passive/blur",
+     "dr": 0.17
     },
     "crusader/vigilant": {
+     "id": "crusader/passive/vigilant",
      "nonPhys": 0.2
     },
     "monk/sixthsense": {
+     "id": "monk/passive/sixth-sense",
      "nonPhys": 0.25
     },
     "monk/resolve": {
+     "id": "monk/passive/resolve",
      "dr": 0.2
     }
    }
@@ -523,7 +555,7 @@
       "same": "zdh_yang"
      },
      "impale_guardian": {
-      "dmg": 243778984,
+      "dmg": 438802171,
       "tough": 1077366139,
       "P": 8071,
       "who": "아수라발발타#32638",
@@ -531,10 +563,10 @@
       "toughWho": "미호입니다#31553",
       "toughP": 6115,
       "sample": 3,
-      "gemK": 4.7232
+      "gemK": 2.624
      },
      "impale_crimson": {
-      "dmg": 243778984,
+      "dmg": 438802171,
       "tough": 1077366139,
       "P": 8071,
       "who": "아수라발발타#32638",
@@ -542,10 +574,10 @@
       "toughWho": "미호입니다#31553",
       "toughP": 6115,
       "sample": 3,
-      "gemK": 4.7232
+      "gemK": 2.624
      },
      "ue_dawn": {
-      "dmg": 608160455277,
+      "dmg": 1094688819499,
       "tough": 1623133602,
       "P": 8747,
       "who": "aMonkstone#2663",
@@ -553,10 +585,10 @@
       "toughWho": "aMonkstone#2663",
       "toughP": 8747,
       "sample": 1,
-      "gemK": 2.88
+      "gemK": 1.6
      },
      "ue_odyssey": {
-      "dmg": 608160455277,
+      "dmg": 667493182621,
       "tough": 1623133602,
       "P": 8747,
       "who": "aMonkstone#2663",
@@ -564,10 +596,10 @@
       "toughWho": "aMonkstone#2663",
       "toughP": 8747,
       "sample": 1,
-      "gemK": 2.88
+      "gemK": 2.624
      },
      "ue_odyssey_g": {
-      "dmg": 608160455277,
+      "dmg": 667493182621,
       "tough": 1623133602,
       "P": 8747,
       "who": "aMonkstone#2663",
@@ -575,10 +607,10 @@
       "toughWho": "aMonkstone#2663",
       "toughP": 8747,
       "sample": 1,
-      "gemK": 2.88
+      "gemK": 2.624
      },
      "ue_dawn_g": {
-      "dmg": 608160455277,
+      "dmg": 1094688819499,
       "tough": 1623133602,
       "P": 8747,
       "who": "aMonkstone#2663",
@@ -586,10 +618,10 @@
       "toughWho": "aMonkstone#2663",
       "toughP": 8747,
       "sample": 1,
-      "gemK": 2.88
+      "gemK": 1.6
      },
      "wol_archew": {
-      "dmg": 25154247,
+      "dmg": 50308495,
       "tough": 1843422821,
       "P": 1549,
       "who": "Delusions#1413",
@@ -600,7 +632,7 @@
       "gemK": 157.6
      },
      "wol_soj": {
-      "dmg": 25154247,
+      "dmg": 50308495,
       "tough": 1843422821,
       "P": 1549,
       "who": "Delusions#1413",
@@ -611,7 +643,7 @@
       "gemK": 157.6
      },
      "wol_soj_archew": {
-      "dmg": 25154247,
+      "dmg": 50308495,
       "tough": 1843422821,
       "P": 1549,
       "who": "Delusions#1413",
@@ -623,7 +655,7 @@
      },
      "rai_crimson": {
       "dmg": 703254036,
-      "tough": 1311163911,
+      "tough": 1268251936,
       "P": 1490,
       "who": "Exia#3306",
       "region": "아시아",
@@ -634,7 +666,7 @@
      },
      "rai_guard": {
       "dmg": 703254036,
-      "tough": 1311163911,
+      "tough": 1268251936,
       "P": 1490,
       "who": "Exia#3306",
       "region": "아시아",
@@ -645,7 +677,7 @@
      },
      "rai4_salv": {
       "dmg": 703254036,
-      "tough": 1311163911,
+      "tough": 1268251936,
       "P": 1490,
       "who": "Exia#3306",
       "region": "아시아",
@@ -656,7 +688,7 @@
      },
      "rai4_heal": {
       "dmg": 703254036,
-      "tough": 1311163911,
+      "tough": 1268251936,
       "P": 1490,
       "who": "Exia#3306",
       "region": "아시아",
@@ -667,7 +699,7 @@
      },
      "rai2_salv": {
       "dmg": 703254036,
-      "tough": 1311163911,
+      "tough": 1268251936,
       "P": 1490,
       "who": "Exia#3306",
       "region": "아시아",
@@ -678,7 +710,7 @@
      },
      "rai_crimson_gp": {
       "dmg": 703254036,
-      "tough": 1311163911,
+      "tough": 1268251936,
       "P": 1490,
       "who": "Exia#3306",
       "region": "아시아",
@@ -689,7 +721,7 @@
      },
      "rai_guard_gp": {
       "dmg": 703254036,
-      "tough": 1311163911,
+      "tough": 1268251936,
       "P": 1490,
       "who": "Exia#3306",
       "region": "아시아",
@@ -700,7 +732,7 @@
      },
      "rai2_salv_gp": {
       "dmg": 703254036,
-      "tough": 1311163911,
+      "tough": 1268251936,
       "P": 1490,
       "who": "Exia#3306",
       "region": "아시아",
@@ -711,7 +743,7 @@
      },
      "rai4_salv_gp": {
       "dmg": 703254036,
-      "tough": 1311163911,
+      "tough": 1268251936,
       "P": 1490,
       "who": "Exia#3306",
       "region": "아시아",
@@ -722,7 +754,7 @@
      },
      "rai4_heal_gp": {
       "dmg": 703254036,
-      "tough": 1311163911,
+      "tough": 1268251936,
       "P": 1490,
       "who": "Exia#3306",
       "region": "아시아",
@@ -732,7 +764,7 @@
       "gemK": 3.2
      },
      "wol_lod": {
-      "dmg": 25154247,
+      "dmg": 50308495,
       "tough": 1843422821,
       "P": 1549,
       "who": "Delusions#1413",
@@ -743,311 +775,311 @@
       "gemK": 157.6
      },
      "foth_aov": {
-      "dmg": 562693571,
-      "tough": 369141443,
+      "dmg": 844040356,
+      "tough": 358465003,
       "P": 1834,
       "who": "Shell#2510",
       "region": "유럽",
       "toughWho": "Cold#2226",
       "toughP": 2032,
-      "sample": 12,
+      "sample": 14,
       "gemK": 1.9647
      },
      "foth_g_ew_s": {
-      "dmg": 562693571,
-      "tough": 369141443,
+      "dmg": 844040356,
+      "tough": 358465003,
       "P": 1834,
       "who": "Shell#2510",
       "region": "유럽",
       "toughWho": "Cold#2226",
       "toughP": 2032,
-      "sample": 12,
+      "sample": 14,
       "gemK": 1.9647
      },
      "foth_g_soj_f": {
-      "dmg": 562693571,
-      "tough": 369141443,
+      "dmg": 844040356,
+      "tough": 358465003,
       "P": 1834,
       "who": "Shell#2510",
       "region": "유럽",
       "toughWho": "Cold#2226",
       "toughP": 2032,
-      "sample": 12,
+      "sample": 14,
       "gemK": 1.9647
      },
      "foth_g_soj_s": {
-      "dmg": 562693571,
-      "tough": 369141443,
+      "dmg": 844040356,
+      "tough": 358465003,
       "P": 1834,
       "who": "Shell#2510",
       "region": "유럽",
       "toughWho": "Cold#2226",
       "toughP": 2032,
-      "sample": 12,
+      "sample": 14,
       "gemK": 1.9647
      },
      "foth_g_unity_f": {
-      "dmg": 562693571,
-      "tough": 369141443,
+      "dmg": 844040356,
+      "tough": 358465003,
       "P": 1834,
       "who": "Shell#2510",
       "region": "유럽",
       "toughWho": "Cold#2226",
       "toughP": 2032,
-      "sample": 12,
+      "sample": 14,
       "gemK": 1.9647
      },
      "foth_g_unity_s": {
-      "dmg": 562693571,
-      "tough": 369141443,
+      "dmg": 844040356,
+      "tough": 358465003,
       "P": 1834,
       "who": "Shell#2510",
       "region": "유럽",
       "toughWho": "Cold#2226",
       "toughP": 2032,
-      "sample": 12,
+      "sample": 14,
       "gemK": 1.9647
      },
      "foth_g_rechel_f": {
-      "dmg": 562693571,
-      "tough": 369141443,
+      "dmg": 844040356,
+      "tough": 358465003,
       "P": 1834,
       "who": "Shell#2510",
       "region": "유럽",
       "toughWho": "Cold#2226",
       "toughP": 2032,
-      "sample": 12,
+      "sample": 14,
       "gemK": 1.9647
      },
      "foth_g_rechel_s": {
-      "dmg": 562693571,
-      "tough": 369141443,
+      "dmg": 844040356,
+      "tough": 358465003,
       "P": 1834,
       "who": "Shell#2510",
       "region": "유럽",
       "toughWho": "Cold#2226",
       "toughP": 2032,
-      "sample": 12,
+      "sample": 14,
       "gemK": 1.9647
      },
      "foth_a_ew_f": {
-      "dmg": 562693571,
-      "tough": 369141443,
+      "dmg": 844040356,
+      "tough": 358465003,
       "P": 1834,
       "who": "Shell#2510",
       "region": "유럽",
       "toughWho": "Cold#2226",
       "toughP": 2032,
-      "sample": 12,
+      "sample": 14,
       "gemK": 1.9647
      },
      "foth_a_ew_s": {
-      "dmg": 562693571,
-      "tough": 369141443,
+      "dmg": 844040356,
+      "tough": 358465003,
       "P": 1834,
       "who": "Shell#2510",
       "region": "유럽",
       "toughWho": "Cold#2226",
       "toughP": 2032,
-      "sample": 12,
+      "sample": 14,
       "gemK": 1.9647
      },
      "foth_a_soj_f": {
-      "dmg": 562693571,
-      "tough": 369141443,
+      "dmg": 844040356,
+      "tough": 358465003,
       "P": 1834,
       "who": "Shell#2510",
       "region": "유럽",
       "toughWho": "Cold#2226",
       "toughP": 2032,
-      "sample": 12,
+      "sample": 14,
       "gemK": 1.9647
      },
      "foth_a_soj_s": {
-      "dmg": 562693571,
-      "tough": 369141443,
+      "dmg": 844040356,
+      "tough": 358465003,
       "P": 1834,
       "who": "Shell#2510",
       "region": "유럽",
       "toughWho": "Cold#2226",
       "toughP": 2032,
-      "sample": 12,
+      "sample": 14,
       "gemK": 1.9647
      },
      "foth_a_unity_f": {
-      "dmg": 562693571,
-      "tough": 369141443,
+      "dmg": 844040356,
+      "tough": 358465003,
       "P": 1834,
       "who": "Shell#2510",
       "region": "유럽",
       "toughWho": "Cold#2226",
       "toughP": 2032,
-      "sample": 12,
+      "sample": 14,
       "gemK": 1.9647
      },
      "foth_a_unity_s": {
-      "dmg": 562693571,
-      "tough": 369141443,
+      "dmg": 844040356,
+      "tough": 358465003,
       "P": 1834,
       "who": "Shell#2510",
       "region": "유럽",
       "toughWho": "Cold#2226",
       "toughP": 2032,
-      "sample": 12,
+      "sample": 14,
       "gemK": 1.9647
      },
      "foth_a_rechel_f": {
-      "dmg": 562693571,
-      "tough": 369141443,
+      "dmg": 844040356,
+      "tough": 358465003,
       "P": 1834,
       "who": "Shell#2510",
       "region": "유럽",
       "toughWho": "Cold#2226",
       "toughP": 2032,
-      "sample": 12,
+      "sample": 14,
       "gemK": 1.9647
      },
      "foth_a_rechel_s": {
-      "dmg": 562693571,
-      "tough": 369141443,
+      "dmg": 844040356,
+      "tough": 358465003,
       "P": 1834,
       "who": "Shell#2510",
       "region": "유럽",
       "toughWho": "Cold#2226",
       "toughP": 2032,
-      "sample": 12,
+      "sample": 14,
       "gemK": 1.9647
      },
      "foth_w_ew_f": {
-      "dmg": 562693571,
-      "tough": 369141443,
+      "dmg": 844040356,
+      "tough": 358465003,
       "P": 1834,
       "who": "Shell#2510",
       "region": "유럽",
       "toughWho": "Cold#2226",
       "toughP": 2032,
-      "sample": 12,
+      "sample": 14,
       "gemK": 1.9647
      },
      "foth_w_ew_s": {
-      "dmg": 562693571,
-      "tough": 369141443,
+      "dmg": 844040356,
+      "tough": 358465003,
       "P": 1834,
       "who": "Shell#2510",
       "region": "유럽",
       "toughWho": "Cold#2226",
       "toughP": 2032,
-      "sample": 12,
+      "sample": 14,
       "gemK": 1.9647
      },
      "foth_w_soj_f": {
-      "dmg": 562693571,
-      "tough": 369141443,
+      "dmg": 844040356,
+      "tough": 358465003,
       "P": 1834,
       "who": "Shell#2510",
       "region": "유럽",
       "toughWho": "Cold#2226",
       "toughP": 2032,
-      "sample": 12,
+      "sample": 14,
       "gemK": 1.9647
      },
      "foth_w_soj_s": {
-      "dmg": 562693571,
-      "tough": 369141443,
+      "dmg": 844040356,
+      "tough": 358465003,
       "P": 1834,
       "who": "Shell#2510",
       "region": "유럽",
       "toughWho": "Cold#2226",
       "toughP": 2032,
-      "sample": 12,
+      "sample": 14,
       "gemK": 1.9647
      },
      "foth_w_unity_f": {
-      "dmg": 562693571,
-      "tough": 369141443,
+      "dmg": 844040356,
+      "tough": 358465003,
       "P": 1834,
       "who": "Shell#2510",
       "region": "유럽",
       "toughWho": "Cold#2226",
       "toughP": 2032,
-      "sample": 12,
+      "sample": 14,
       "gemK": 1.9647
      },
      "foth_w_unity_s": {
-      "dmg": 562693571,
-      "tough": 369141443,
+      "dmg": 844040356,
+      "tough": 358465003,
       "P": 1834,
       "who": "Shell#2510",
       "region": "유럽",
       "toughWho": "Cold#2226",
       "toughP": 2032,
-      "sample": 12,
+      "sample": 14,
       "gemK": 1.9647
      },
      "foth_w_rechel_f": {
-      "dmg": 562693571,
-      "tough": 369141443,
+      "dmg": 844040356,
+      "tough": 358465003,
       "P": 1834,
       "who": "Shell#2510",
       "region": "유럽",
       "toughWho": "Cold#2226",
       "toughP": 2032,
-      "sample": 12,
+      "sample": 14,
       "gemK": 1.9647
      },
      "foth_w_rechel_s": {
-      "dmg": 562693571,
-      "tough": 369141443,
+      "dmg": 844040356,
+      "tough": 358465003,
       "P": 1834,
       "who": "Shell#2510",
       "region": "유럽",
       "toughWho": "Cold#2226",
       "toughP": 2032,
-      "sample": 12,
+      "sample": 14,
       "gemK": 1.9647
      },
      "fb_g_ew": {
-      "dmg": 187585466,
+      "dmg": 178206733,
       "tough": 5191953382,
-      "P": 1931,
-      "who": "pedrineowo#1499",
-      "region": "미국",
+      "P": 2783,
+      "who": "sunny#3346",
+      "region": "한국",
       "toughWho": "Howxrd#1562",
       "toughP": 6574,
-      "sample": 7,
+      "sample": 8,
       "gemK": 1.6
      },
      "fb_guard": {
-      "dmg": 187585466,
+      "dmg": 178206733,
       "tough": 5191953382,
-      "P": 1931,
-      "who": "pedrineowo#1499",
-      "region": "미국",
+      "P": 2783,
+      "who": "sunny#3346",
+      "region": "한국",
       "toughWho": "Howxrd#1562",
       "toughP": 6574,
-      "sample": 7,
+      "sample": 8,
       "gemK": 1.6
      },
      "fb_a_fr": {
-      "dmg": 187585466,
+      "dmg": 178206733,
       "tough": 5191953382,
-      "P": 1931,
-      "who": "pedrineowo#1499",
-      "region": "미국",
+      "P": 2783,
+      "who": "sunny#3346",
+      "region": "한국",
       "toughWho": "Howxrd#1562",
       "toughP": 6574,
-      "sample": 7,
+      "sample": 8,
       "gemK": 1.6
      },
      "fb_a_ew": {
-      "dmg": 187585466,
+      "dmg": 178206733,
       "tough": 5191953382,
-      "P": 1931,
-      "who": "pedrineowo#1499",
-      "region": "미국",
+      "P": 2783,
+      "who": "sunny#3346",
+      "region": "한국",
       "toughWho": "Howxrd#1562",
       "toughP": 6574,
-      "sample": 7,
+      "sample": 8,
       "gemK": 1.6
      },
      "zbarb_eso": {
@@ -1431,10 +1463,6 @@
      "alacrity": 0.15,
      "focusRestraint": 1.5,
      "spiritGuardsDR": 0.6,
-     "coe": {
-      "mult": 2.0,
-      "n": 5
-     },
      "spirit": {
       "base": 250,
       "paragon": 50,
@@ -1754,10 +1782,6 @@
      "src": "https://maxroll.gg/d3/resources/greater-rift-explained"
     },
     "focusRestraint": 0.5,
-    "coe": {
-     "mult": 2.0,
-     "n": 4
-    },
     "endlessWalk": {
      "dmg": 1.0,
      "dr": 0.5

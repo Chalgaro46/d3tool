@@ -695,9 +695,9 @@
         ]
        },
        "legGems": {
-        "leftfinger": "taeguk",
-        "rightfinger": "trapped",
-        "neck": "stricken"
+        "leftfinger": "trapped",
+        "rightfinger": "stricken",
+        "neck": "zei"
        }
       },
       {
@@ -1167,9 +1167,9 @@
         ]
        },
        "legGems": {
-        "leftfinger": "taeguk",
-        "rightfinger": "trapped",
-        "neck": "stricken"
+        "leftfinger": "trapped",
+        "rightfinger": "stricken",
+        "neck": "zei"
        }
       },
       {
@@ -1525,6 +1525,19 @@
          "armorPct": 0.2,
          "resPct": 0.2,
          "lifePct": 0.2,
+         "ids": [
+          "barbarian/skill/war-cry",
+          "monk/skill/mantra-of-salvation",
+          "monk/skill/mantra-of-healing/c",
+          "demon-hunter/passive/numbing-traps",
+          "demon-hunter/skill/sentry/e",
+          "set/dreadlands/4",
+          "item/P4_Unique_Chest_012",
+          "barbarian/skill/ignore-pain/c",
+          "barbarian/skill/threatening-shout",
+          "barbarian/skill/war-cry/b",
+          "barbarian/passive/inspiring-presence"
+         ],
          "dr": [
           0.25,
           0.25,
@@ -1731,6 +1744,19 @@
          "armorPct": 0.2,
          "resPct": 0.2,
          "lifePct": 0.2,
+         "ids": [
+          "barbarian/skill/war-cry",
+          "monk/skill/mantra-of-salvation",
+          "monk/skill/mantra-of-healing/c",
+          "demon-hunter/passive/numbing-traps",
+          "demon-hunter/skill/sentry/e",
+          "set/dreadlands/4",
+          "item/P4_Unique_Chest_012",
+          "barbarian/skill/ignore-pain/c",
+          "barbarian/skill/threatening-shout",
+          "barbarian/skill/war-cry/b",
+          "barbarian/passive/inspiring-presence"
+         ],
          "dr": [
           0.25,
           0.25,
@@ -1937,6 +1963,19 @@
          "armorPct": 0.2,
          "resPct": 0.2,
          "lifePct": 0.2,
+         "ids": [
+          "barbarian/skill/war-cry",
+          "monk/skill/mantra-of-salvation",
+          "monk/skill/mantra-of-healing/c",
+          "demon-hunter/passive/numbing-traps",
+          "demon-hunter/skill/sentry/e",
+          "set/dreadlands/4",
+          "item/P4_Unique_Chest_012",
+          "barbarian/skill/ignore-pain/c",
+          "barbarian/skill/threatening-shout",
+          "barbarian/skill/war-cry/b",
+          "barbarian/passive/inspiring-presence"
+         ],
          "dr": [
           0.25,
           0.25,
@@ -2143,6 +2182,19 @@
          "armorPct": 0.2,
          "resPct": 0.2,
          "lifePct": 0.2,
+         "ids": [
+          "barbarian/skill/war-cry",
+          "monk/skill/mantra-of-salvation",
+          "monk/skill/mantra-of-healing/c",
+          "demon-hunter/passive/numbing-traps",
+          "demon-hunter/skill/sentry/e",
+          "set/dreadlands/4",
+          "item/P4_Unique_Chest_012",
+          "barbarian/skill/ignore-pain/c",
+          "barbarian/skill/threatening-shout",
+          "barbarian/skill/war-cry/b",
+          "barbarian/passive/inspiring-presence"
+         ],
          "dr": [
           0.25,
           0.25,
@@ -3752,7 +3804,7 @@
         "armorPct": 0.2,
         "resPct": 0.2,
         "lifePct": 0.2,
-        "chc": 0.08,
+        "chcTaken": 0.08,
         "base": {
          "cdr": 0.1,
          "ias": 0.1594
@@ -3766,7 +3818,19 @@
         "dodge": [
          0.3
         ],
-        "healPct": 0.03
+        "healPct": 0.03,
+        "ids": [
+         "barbarian/skill/war-cry",
+         "monk/skill/mantra-of-salvation",
+         "monk/skill/mantra-of-healing/c",
+         "demon-hunter/skill/multishot/b",
+         "barbarian/skill/ignore-pain/c",
+         "barbarian/skill/threatening-shout",
+         "barbarian/skill/war-cry/b",
+         "barbarian/passive/inspiring-presence",
+         "demon-hunter/passive/numbing-traps",
+         "demon-hunter/skill/sentry/e"
+        ]
        },
        "mantra": "salvation",
        "slots": {
@@ -4004,7 +4068,7 @@
         "armorPct": 0.2,
         "resPct": 0.2,
         "lifePct": 0.2,
-        "chc": 0.08,
+        "chcTaken": 0.08,
         "base": {
          "cdr": 0.1,
          "ias": 0.1594
@@ -4018,7 +4082,19 @@
         "dodge": [
          0.3
         ],
-        "healPct": 0.03
+        "healPct": 0.03,
+        "ids": [
+         "barbarian/skill/war-cry",
+         "monk/skill/mantra-of-salvation",
+         "monk/skill/mantra-of-healing/c",
+         "demon-hunter/skill/multishot/b",
+         "barbarian/skill/ignore-pain/c",
+         "barbarian/skill/threatening-shout",
+         "barbarian/skill/war-cry/b",
+         "barbarian/passive/inspiring-presence",
+         "demon-hunter/passive/numbing-traps",
+         "demon-hunter/skill/sentry/e"
+        ]
        },
        "mantra": "healing",
        "slots": {
@@ -4264,7 +4340,15 @@
         "dodge": [
          0.3
         ],
-        "healPct": 0.03
+        "healPct": 0.03,
+        "ids": [
+         "barbarian/skill/war-cry",
+         "monk/skill/mantra-of-salvation",
+         "barbarian/skill/ignore-pain/c",
+         "barbarian/skill/threatening-shout",
+         "barbarian/skill/war-cry/b",
+         "barbarian/passive/inspiring-presence"
+        ]
        },
        "mantra": "salvation",
        "slots": {
@@ -4969,7 +5053,15 @@
         "dodge": [
          0.3
         ],
-        "healPct": 0.03
+        "healPct": 0.03,
+        "ids": [
+         "barbarian/skill/war-cry",
+         "monk/skill/mantra-of-salvation",
+         "barbarian/skill/ignore-pain/c",
+         "barbarian/skill/threatening-shout",
+         "barbarian/skill/war-cry/b",
+         "barbarian/passive/inspiring-presence"
+        ]
        },
        "mantra": "salvation",
        "slots": {
@@ -5207,7 +5299,7 @@
         "armorPct": 0.2,
         "resPct": 0.2,
         "lifePct": 0.2,
-        "chc": 0.08,
+        "chcTaken": 0.08,
         "base": {
          "cdr": 0.1,
          "ias": 0.1594
@@ -5221,7 +5313,19 @@
         "dodge": [
          0.3
         ],
-        "healPct": 0.03
+        "healPct": 0.03,
+        "ids": [
+         "barbarian/skill/war-cry",
+         "monk/skill/mantra-of-salvation",
+         "monk/skill/mantra-of-healing/c",
+         "demon-hunter/skill/multishot/b",
+         "barbarian/skill/ignore-pain/c",
+         "barbarian/skill/threatening-shout",
+         "barbarian/skill/war-cry/b",
+         "barbarian/passive/inspiring-presence",
+         "demon-hunter/passive/numbing-traps",
+         "demon-hunter/skill/sentry/e"
+        ]
        },
        "mantra": "salvation",
        "slots": {
@@ -5459,7 +5563,7 @@
         "armorPct": 0.2,
         "resPct": 0.2,
         "lifePct": 0.2,
-        "chc": 0.08,
+        "chcTaken": 0.08,
         "base": {
          "cdr": 0.1,
          "ias": 0.1594
@@ -5473,7 +5577,19 @@
         "dodge": [
          0.3
         ],
-        "healPct": 0.03
+        "healPct": 0.03,
+        "ids": [
+         "barbarian/skill/war-cry",
+         "monk/skill/mantra-of-salvation",
+         "monk/skill/mantra-of-healing/c",
+         "demon-hunter/skill/multishot/b",
+         "barbarian/skill/ignore-pain/c",
+         "barbarian/skill/threatening-shout",
+         "barbarian/skill/war-cry/b",
+         "barbarian/passive/inspiring-presence",
+         "demon-hunter/passive/numbing-traps",
+         "demon-hunter/skill/sentry/e"
+        ]
        },
        "mantra": "healing",
        "slots": {
@@ -12740,6 +12856,19 @@
          "armorPct": 0.2,
          "resPct": 0.2,
          "lifePct": 0.2,
+         "ids": [
+          "barbarian/skill/war-cry",
+          "monk/skill/mantra-of-salvation",
+          "monk/skill/mantra-of-healing/c",
+          "barbarian/skill/ignore-pain",
+          "barbarian/skill/threatening-shout",
+          "item/P61_Unique_Ring_05",
+          "barbarian/passive/superstition",
+          "barbarian/skill/war-cry/b",
+          "barbarian/passive/inspiring-presence",
+          "demon-hunter/passive/numbing-traps",
+          "demon-hunter/skill/sentry/e"
+         ],
          "dr": [
           0.5,
           0.2,
@@ -12952,6 +13081,16 @@
         "buffs": {
          "armorPct": 0.2,
          "resPct": 0.2,
+         "ids": [
+          "barbarian/skill/war-cry",
+          "monk/skill/mantra-of-salvation",
+          "barbarian/skill/ignore-pain",
+          "barbarian/skill/threatening-shout",
+          "item/P61_Unique_Ring_05",
+          "barbarian/passive/superstition",
+          "barbarian/skill/war-cry/b",
+          "barbarian/passive/inspiring-presence"
+         ],
          "dr": [
           0.5,
           0.2,
@@ -13163,6 +13302,19 @@
          "armorPct": 0.2,
          "resPct": 0.2,
          "lifePct": 0.2,
+         "ids": [
+          "barbarian/skill/war-cry",
+          "monk/skill/mantra-of-salvation",
+          "monk/skill/mantra-of-healing/c",
+          "barbarian/skill/ignore-pain",
+          "barbarian/skill/threatening-shout",
+          "item/P61_Unique_Ring_05",
+          "barbarian/passive/superstition",
+          "barbarian/skill/war-cry/b",
+          "barbarian/passive/inspiring-presence",
+          "demon-hunter/passive/numbing-traps",
+          "demon-hunter/skill/sentry/e"
+         ],
          "dr": [
           0.5,
           0.2,
@@ -13375,6 +13527,16 @@
         "buffs": {
          "armorPct": 0.2,
          "resPct": 0.2,
+         "ids": [
+          "barbarian/skill/war-cry",
+          "monk/skill/mantra-of-salvation",
+          "barbarian/skill/ignore-pain",
+          "barbarian/skill/threatening-shout",
+          "item/P61_Unique_Ring_05",
+          "barbarian/passive/superstition",
+          "barbarian/skill/war-cry/b",
+          "barbarian/passive/inspiring-presence"
+         ],
          "dr": [
           0.5,
           0.2,
