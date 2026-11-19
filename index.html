@@ -505,7 +505,10 @@ h1{font-size:18px;font-weight:700;color:var(--title);margin:0 auto 12px;width:90
 .gain .gem{width:12px;height:12px;vertical-align:-2px;margin-right:1px}
 .hcols{margin-left:4px;font-size:.8em;font-weight:400;color:#8a7f6a}.hcols em{font-style:normal}.hcols em.d{color:#7d9a6a}.hcols em.t{color:#a87a70}.hcols em.p{color:#968d75}
 .gemlvs{display:block;opacity:.85}.gemlvs .gemlv{display:block;padding-left:.4em;font-size:10px;line-height:15px;color:#968d75}   /* 2026-11-10 사용자 "보석 표기 레벨도 같은색으로" — 정복자 색(#968d75)과 통일 */
-.plv{display:inline-block;margin-left:6px;font-size:10px;color:#968d75;white-space:nowrap}.tip.summary .plv{font-size:15px}   /* 정복자 범위: 옆에 붙이고 넘치면 통째로 다음 줄 */
+.plv{display:inline-block;max-width:100%;margin-left:6px;font-size:10px;color:#968d75;white-space:normal;overflow-wrap:anywhere}.tip.summary .plv{font-size:15px}
+/* 정복자 범위: 옆에 붙이고 넘치면 다음 줄, 구간이 많으면 그 안에서 줄바꿈(쉼표 뒤).
+   2026-11-19 고침: 전에는 nowrap 이라 구간이 수십 개(성전사 P1200 질주의 도리깨 광역 피해)면 한 줄이 툴팁 밖으로 길게 나가 휴대폰에서 페이지 폭이 넓어짐
+   → 화면이 PC 배치처럼 바뀌고 작은 인형이 사라짐. 사용자 "질주의 도리깨를 작은 인형에서 누르면 안열리고, 큰 인형에서 누르면 pc처럼 확대되면서 작은 인형이 사라지네?" */
 .gemlvs .gem{width:12px;height:12px;vertical-align:-2px;margin-right:3px}.gemlvs em{font-style:normal}
 .tip.summary .gemlvs .gemlv{font-size:15px;line-height:22px}.tip.summary .gemlvs .gem{width:16px;height:16px;vertical-align:-3px}   /* 보석이 바뀌는 구간은 줄마다 하나씩 */
 /* 시즌·인원·직업·세팅 한 줄(사용자 2026-11-07, 인원 2026-11-13): 시즌은 숫자만. 모바일 폭(390)에서 세팅 칸이 남도록 시즌·인원 58, 직업 98 */
@@ -1209,51 +1212,6 @@ function accumulateRef(sel, build, opts, rr){
    · slotOps: 부위별 '미리 풀어 둔 옵션 목록' [그룹, 값, slotId, n, skillOk] — 옵션 표·범위 조회를 매번 하지 않음.
      기억 키 = 정옵 배열 자체(문자열을 안 만듦) → 돌린 고정·뺀 보조 문자열. 그래서 정옵 배열은 내용이 바뀌면 새 배열이어야 함(코드 전체 규칙).
    · accumulateFast: 부위마다 직전 호출과 입력이 같으면(대부분 — 최적화는 한 부위만 바꿈) 조회 없이 직전 목록 */
-/* 꼬맹이 유지율·광역 효율은 아래 speedSolve(2026-11-14). 이전 squirtUptime(꼬맹이만, 15분 ÷ 1.17^(단수 − 150))은 git 기록. */
-/* speedSolve(build, d0 = 꼬맹이·광역·끝없는 걸음 빼고 딜, k = 광역 배율 − 1, sq = 꼬맹이 착용, opts, full = 꼬맹이 상시, w = 끝없는 걸음 최대 공격력(없으면 0))
-     → {u 꼬맹이 유지율, e 광역 효율, f 끝없는 걸음 몫(딜링 시간 ÷ 클리어 시간)}
-   x = 지금 딜 ÷ 기준점 딜 = d0(1 + k·e)(1 + max·u)(1 + w·f) ÷ 기준점 딜. 클리어 T = 이동 A + 딜링 B ÷ x (A = 세팅별 이동 시간 travelOf, B = 15분 − A).
-   u = 신단 ÷ T(바닥 2/15, 1 상한), e = min(1, 1/x), f = (B ÷ x) ÷ T. x = h(x) 를 이분 탐색(h 는 위아래로 묶여 있어 근이 있음).
-   기준점 산출(opts.squirtBase)·기준점 없는 세팅은 x = 1(u = 2/15, e = 1, f = B ÷ 15).
-   2026-11-19: 이동·딜링 시간을 나눔(tools/sample_ref.js — 표본 클리어 시간에서 역산) + 끝없는 걸음을 여기로(직업 규칙은 최대치 ew 만 돌려줌).
-     사용자 "끝없는걸음, 우리 내부적으로 이동시간이랑 딜링시간 있잖아. 거기에 비례하게 변화하도록 해야할거같아. 딜링시간이 짧아지면 꼬맹이처럼, 딜량이 올라가고 수렴할때까지 하는 그거.",
-     "멈추는 횟수는 중요하지 않아. … 이동하거나 딜링하는 시간 비례로 하는게 맞아.", "꼬맹이는 … 클리어타임과만 관련있지."(꼬맹이 = 신단 ÷ 클리어 시간 그대로, 클리어 시간에 이동이 들어감)
-     이전(2026-11-14~): 이동 0분(squirt.travelMin — 사용자 '꼬맹이 유지율도 일단 둬봐'), 끝없는 걸음은 직업 규칙에서 상시 +100% */
-/* 끝없는 걸음 최대 공격력(세트 2부위) — 직업 규칙의 ew 와 같은 판정. 풀이기(tools/milp/point.js)가 단수 변환에 씀 */
-function ewMaxOf(build){ const CM = classModel(build); return CM.endlessWalk && (setCounts(build)["끝없는 걸음"] || 0) >= 2 ? CM.endlessWalk.dmg : 0; }
-function travelOf(build){ const C = D.config.model.score.gr150; let f = C.ref && C.ref[build.id]; if (f && f.same) f = C.ref[f.same];
-  return f && f.travel != null ? f.travel : (D.config.model.squirt.travelMin || 0); }
-/* 이동 시간(분, 15분 클리어 기준) = 공통 이동 거리 ÷ 평균 이속. 사용자 2026-11-19 "이동거리는 전 대균열 모든난이도 공통.", "아동기는 무시."(순간 이동기 무시),
-   "군마질주등 이동속도버프의 유지율도 계산에 넣어야하는거 알지?", "군마세팅에서의 이동속도 버프는 군마질주 발동마다 그 텀에만 쓰는거고."(성전사 규칙의 유지율 그대로).
-   평균 이속 = 1 + (직업 규칙 msAvg — 성전사 / 없으면 정복자 25% + 규칙의 상시 이속 ms). 거리(squirt.travelDist = 이속 1 일 때 분)는 tools/sample_ref.js 가 표본 클리어 시간에서 역산. */
-function msAvgOf(X){ return X.msAvg != null ? X.msAvg : (D.config.model.msParagon || 0.25) + (X.ms || 0); }
-/* 속도 신단(2026-11-19): 신단 시간 = squirt.pylonMin(1분 × 추종자 시간의 향취 2배 = 2분 — 꼬맹이의 신단과 같은 값), 그동안 이속 +speedPylonMs(100%).
-   신단 시간은 판 안에서 이동·딜링 구분 없이 흐름 → 이동의 평균 이속 = V + 신단 이속 × min(1, 신단 ÷ 클리어 시간). 사용자 "이 이동거리에 이동속도 신단에 대한 가정이 빠져있는거 아닐까",
-   "얘도 추종자 향취때문에 지속시간이 두배인건 고려해야해." 클리어 시간과 순환 → clearAt 이 고정점 반복(8회 — 이동 시간의 T 에 대한 기울기가 작아 충분, 2026-11-19 확인) */
-let CLR_A = 0;   // clearAt 의 마지막 이동 시간
-function clearAt(x, V, Afix, Bt, Q){ if (V == null) { CLR_A = Afix; return Afix + Bt / x; }
-  let T = Q.clearMin, A = 0; for (let i = 0; i < 8; i++) { A = Q.travelDist / (V + (Q.speedPylonMs || 0) * Math.min(1, Q.pylonMin / T)); T = A + Bt / x; } CLR_A = A; return T; }
-/* 15분 판(150단 기준점)의 이동 시간 — 풀이기의 150단 미만 몫(form_rule cellRule)·화면 표시 */
-function travelAt(build, X){ const Q = D.config.model.squirt; return Q.travelDist != null ? Q.travelDist / (1 + msAvgOf(X) + (Q.speedPylonMs || 0) * Math.min(1, Q.pylonMin / Q.clearMin)) : travelOf(build); }
-/* 클리어 시간 T(분)를 정해 둔 이동 시간(평균 이속 ms 는 msAvgOf 값). T = 15 이면 travelAt 과 같음(0.95 × T 상한은 speedSolve 의 A15 상한과 같은 꼴).
-   풀이기(tools/milp point.js)의 고정점: 클리어 시간을 직전 해의 실제 값으로 묶고 칸마다 딜링·이동 몫을 이 값으로 — 2026-11-19 사용자 "딜과 강인함을 둘다 동시에 수렴시키는게 더 정확하고 빠르지 않아?" */
-function travelAtMs(build, ms, T){ const Q = D.config.model.squirt; if (Q.travelDist == null) return Math.min(travelOf(build), T * 0.95);
-  return Math.min(Q.travelDist / (1 + ms + (Q.speedPylonMs || 0) * Math.min(1, Q.pylonMin / T)), T * 0.95); }
-/* V = 1 + 평균 이속(신단 뺌, 20_stats 호출부) — 없으면(도구의 직접 호출) 세팅 고정 이동 시간(travelOf) */
-function speedSolve(build, d0, k, sq, opts, full, w, V){
-  const Q = D.config.model.squirt, base = Q.pylonMin / Q.clearMin, adOn = !!D.config.model.ad.speed && k > 0 && !build.adPull; w = w || 0; if (Q.travelDist == null) V = null;
-  const A15 = Math.min(V != null ? Q.travelDist / (V + (Q.speedPylonMs || 0) * Math.min(1, Q.pylonMin / Q.clearMin)) : travelOf(build), Q.clearMin * 0.95), Bt = Q.clearMin - A15, f1 = Bt / Q.clearMin;
-  if (opts.squirtBase || (!sq && !adOn && !w)) return {u: sq ? (full ? 1 : base) : 0, e: 1, f: w ? f1 : 0, T: Q.clearMin, A: A15};
-  let ref; try { ref = gr150RefFor(build); } catch (e) { return {u: sq ? (full ? 1 : base) : 0, e: 1, f: w ? f1 : 0, T: Q.clearMin, A: A15}; }
-  const R = ref.D / Math.pow(D.config.model.score.gr.hpStep, D.config.model.score.gr150.refTier - D.config.model.score.gr150.target);
-  const m = sq ? Q.max : 0;
-  /* 150단 미만(x ≤ 1)은 15분 판 값(꼬맹이 바닥과 같은 처리 — 풀이기의 '150단 미만 = 상수 배율' 가정 유지, tools/milp/point.js) */
-  const Tof = x => x <= 1 ? Q.clearMin : clearAt(x, V, A15, Bt, Q);
-  const uOf = T => !sq ? 0 : full ? 1 : Math.min(1, Math.max(base, Q.pylonMin / T)), eOf = x => adOn ? Math.min(1, 1 / x) : 1, fOf = (x, T) => !w ? 0 : x <= 1 ? f1 : (Bt / x) / T;
-  const h = x => { const T = Tof(x); return d0 * (1 + k * eOf(x)) * (1 + m * uOf(T)) * (1 + w * fOf(x, T)) / R; };
-  let lo = 0, hi = d0 * (1 + k) * (1 + m) * (1 + w) / R + 1;
-  for (let i = 0; i < 60; i++) { const mid = (lo + hi) / 2; if (h(mid) > mid) lo = mid; else hi = mid; }
-  const x = (lo + hi) / 2, T = Tof(x), A = x <= 1 ? A15 : CLR_A; return {u: uOf(T), e: eOf(x), f: fOf(x, T), T, A}; }   // T = 클리어 시간(분, 150단 미만은 15), A = 그때 이동 시간
 const BUILD_CACHE = new WeakMap();
 /* 딜러의 한 방 설정(buildCache ★ 주석): {one, CM(기본치를 덮어쓴 직업 모델)}. 서포터는 {one: null, CM 그대로} */
 function dealerOne(build, CM, sets){
@@ -1418,12 +1376,78 @@ function statsFromAcc(a, build, opts, rr, light){ rr = rr || {};
   dmg = dmg / AD * (1 + (AD - 1) * SP.e) * (c.squirt ? 1 + M.squirt.max * SP.u : 1) * (1 + (X.ew || 0) * SP.f);   // 끝없는 걸음 = 최대치 × 딜링 몫(speedSolve)
   /* 끝없는 걸음 받는 피해 감소 = 최대치 × 이동 몫(이동 시간 ÷ 클리어 시간). 사용자 2026-11-19 "받피감도, 이동시간에 비례해서 올라." (그 전 같은 날 '받피감 빼기' 결정을 대체)
      강인함이 정해진 뒤(post — 꼬맹이 보호막 판정)에 곱함 → 그 판정은 이 감소 없이(보수적) */
-  const ewDr = X.ew ? (CM.endlessWalk && CM.endlessWalk.dr || 0) * Atr / SP.T : 0;
+  const ewDr = ewDrOf(CM, X, Atr, SP.T);   // 21_speed
   if (ewDr) { const kT = 1 / (1 - ewDr); tough *= kT; toughNoHeal *= kT; if (toughOne != null) toughOne *= kT; }
   const SQ = c.squirt ? {u: SP.u} : null, ADe = 1 + (AD - 1) * SP.e;
   if (light) return {dmg, tough};
   return {dmg, tough, toughNoHeal, toughOne, oneParts, parts: {aps, softUptime: X.extra && X.extra.trappedUptime != null ? X.extra.trappedUptime : null, healSec: healPart/HEAL_SEC, xRate: X.rate, xDmgMult: X.dmgMult, xExtra: X.extra, life, armor, res, takenA, DRr, DRe, dr: X.dr, toughMult: X.toughMult, armorMult: X.armorMult, armorBuff: X.armorBuff} /* 강인함 항목별 값 — tools/tough_calc.js --explain 용(2026-11-18) */, dodgeTaken /* 맞을 확률(회피 뺀 몫) — tools/tough_calc.js 가 한 방 강인함에서 회피를 걷어낼 때 씀(2026-11-18) */, ...(P2 ? P2.extra : {}), ...X.extra, squirtUptime: SQ ? SQ.u : null, ewMax: X.ew || 0, ewFrac: X.ew ? SP.f : null, ewDr, ewDrFloor: X.ew ? (CM.endlessWalk && CM.endlessWalk.dr || 0) * travelAt(build, X) / M.squirt.clearMin : 0, travelMin: Atr, travel15: travelAt(build, X), clearMin: SP.T, msAvg: msAvgOf(X), adEff: SP.e, para: PS, dex, vit, cdrTotal, rcrTotal, chc: chcT, chd: chdT, elem: a.elem, skill: a.skill, ad: B.ad + a.ad, aps, iasG, life: lifeH, armor, res, sets, AD: ADe, gems: {head: gH.id, armor: gA.id, weapon: gW.id}};
 }
+
+/* ============================================================================================
+   21_speed.js — 클리어 속도에 묶인 계산 한 곳: 이동 시간(공통 거리 ÷ 평균 이속, 속도 신단), 클리어 시간, 꼬맹이 유지율, 광역 효율, 끝없는 걸음 몫.
+   쓰는 곳: 20_stats computeStats·29_fast(같은 fastSpeed), 풀이기(tools/milp form_rule·point·gbake·check — travelAtMs·ewShare·lnDScaled), 표본 역산(tools/sample_ref.js 는 따로 식 — 머리말 참고).
+   2026-11-19 모듈화(사용자 "이제 진짜 계산식이랑 ui코드 모듈화 해야겠는데? 더 미루면 계속 꼬일거같아"): 전에는 20_stats speedSolve 와 29_fast fastSpeed 가 같은 식을 따로 적었고,
+   풀이기 쪽은 끝없는 걸음 몫·이동 시간을 파일마다 다시 적어 한 곳만 고쳐진 일이 있었음(같은 날 묶음 상한에만 이동 시간이 빠져 꼬맹이 변형이 탈락).
+   ============================================================================================ */
+/* 끝없는 걸음 최대 공격력(세트 2부위) — 직업 규칙의 ew 와 같은 판정. 풀이기(tools/milp/point.js)가 단수 변환에 씀 */
+function ewMaxOf(build){ const CM = classModel(build); return CM.endlessWalk && (setCounts(build)["끝없는 걸음"] || 0) >= 2 ? CM.endlessWalk.dmg : 0; }
+function travelOf(build){ const C = D.config.model.score.gr150; let f = C.ref && C.ref[build.id]; if (f && f.same) f = C.ref[f.same];
+  return f && f.travel != null ? f.travel : (D.config.model.squirt.travelMin || 0); }
+/* 이동 시간(분, 15분 클리어 기준) = 공통 이동 거리 ÷ 평균 이속. 사용자 2026-11-19 "이동거리는 전 대균열 모든난이도 공통.", "아동기는 무시."(순간 이동기 무시),
+   "군마질주등 이동속도버프의 유지율도 계산에 넣어야하는거 알지?", "군마세팅에서의 이동속도 버프는 군마질주 발동마다 그 텀에만 쓰는거고."(성전사 규칙의 유지율 그대로).
+   평균 이속 = 1 + (직업 규칙 msAvg — 성전사 / 없으면 정복자 25% + 규칙의 상시 이속 ms). 거리(squirt.travelDist = 이속 1 일 때 분)는 tools/sample_ref.js 가 표본 클리어 시간에서 역산. */
+function msAvgOf(X){ return X.msAvg != null ? X.msAvg : (D.config.model.msParagon || 0.25) + (X.ms || 0); }
+/* 속도 신단(2026-11-19): 신단 시간 = squirt.pylonMin(1분 × 추종자 시간의 향취 2배 = 2분 — 꼬맹이의 신단과 같은 값), 그동안 이속 +speedPylonMs(100%).
+   신단 시간은 판 안에서 이동·딜링 구분 없이 흐름 → 이동의 평균 이속 = V + 신단 이속 × min(1, 신단 ÷ 클리어 시간). 사용자 "이 이동거리에 이동속도 신단에 대한 가정이 빠져있는거 아닐까",
+   "얘도 추종자 향취때문에 지속시간이 두배인건 고려해야해." 클리어 시간과 순환 → clearAt 이 고정점 반복(8회 — 이동 시간의 T 에 대한 기울기가 작아 충분, 2026-11-19 확인) */
+let CLR_A = 0;   // clearAt 의 마지막 이동 시간
+function clearAt(x, V, Afix, Bt, Q){ if (V == null) { CLR_A = Afix; return Afix + Bt / x; }
+  let T = Q.clearMin, A = 0; for (let i = 0; i < 8; i++) { A = Q.travelDist / (V + (Q.speedPylonMs || 0) * Math.min(1, Q.pylonMin / T)); T = A + Bt / x; } CLR_A = A; return T; }
+/* 15분 판(150단 기준점)의 이동 시간 — 풀이기의 150단 미만 몫(form_rule cellRule)·화면 표시 */
+function travelAt(build, X){ const Q = D.config.model.squirt; return Q.travelDist != null ? Q.travelDist / (1 + msAvgOf(X) + (Q.speedPylonMs || 0) * Math.min(1, Q.pylonMin / Q.clearMin)) : travelOf(build); }
+/* 클리어 시간 T(분)를 정해 둔 이동 시간(평균 이속 ms 는 msAvgOf 값). T = 15 이면 travelAt 과 같음(0.95 × T 상한은 speedSolve 의 A15 상한과 같은 꼴).
+   풀이기(tools/milp point.js)의 고정점: 클리어 시간을 직전 해의 실제 값으로 묶고 칸마다 딜링·이동 몫을 이 값으로 — 2026-11-19 사용자 "딜과 강인함을 둘다 동시에 수렴시키는게 더 정확하고 빠르지 않아?" */
+function travelAtMs(build, ms, T){ const Q = D.config.model.squirt; if (Q.travelDist == null) return Math.min(travelOf(build), T * 0.95);
+  return Math.min(Q.travelDist / (1 + ms + (Q.speedPylonMs || 0) * Math.min(1, Q.pylonMin / T)), T * 0.95); }
+/* 끝없는 걸음 받는 피해 감소 = 최대치(직업 모델 endlessWalk.dr) × 이동 몫(A ÷ T). 사용자 2026-11-19 "받피감도, 이동시간에 비례해서 올라." — 20_stats·29_fast 가 함께 씀 */
+function ewDrOf(CM, X, A, T){ return X.ew ? (CM.endlessWalk && CM.endlessWalk.dr || 0) * A / T : 0; }
+/* 풀이기 척도(tools/milp): 클리어 시간 T 를 정해 둔 끝없는 걸음의 딜링 몫 1 − A/T 와 이동 몫 A/T(A = 그 이속의 travelAtMs). T 없으면 15분 판 */
+function ewShare(build, ms, T){ const Tc = T || D.config.model.squirt.clearMin, A = travelAtMs(build, ms, Tc); return {deal: 1 - A / Tc, A, T: Tc}; }   // 이동 몫은 A / T(곱하는 쪽이 dr × A ÷ T 순서로 — 20_stats ewDrOf 와 같은 연산 순서)
+/* 기존 계산의 스탯 → 풀이기 척도의 ln 딜: 꼬맹이 배율·실제 끝없는 걸음 배율을 빼고, 클리어 시간 Tc 의 끝없는 걸음 배율을 곱함(point.js lnD0·check.js 대조) */
+function lnDScaled(build, st, Tc){ const Q = D.config.model.squirt, ew = st.ewMax || 0; return Math.log(st.dmg / (1 + Q.max * (st.squirtUptime || 0)) / (1 + ew * (st.ewFrac || 0)) * (ew ? 1 + ew * ewShare(build, st.msAvg, Tc).deal : 1)); }
+/* 꼬맹이 유지율·광역 효율은 아래 speedSolve(2026-11-14). 이전 squirtUptime(꼬맹이만, 15분 ÷ 1.17^(단수 − 150))은 git 기록. */
+/* speedSolve(build, d0 = 꼬맹이·광역·끝없는 걸음 빼고 딜, k = 광역 배율 − 1, sq = 꼬맹이 착용, opts, full = 꼬맹이 상시, w = 끝없는 걸음 최대 공격력(없으면 0))
+     → {u 꼬맹이 유지율, e 광역 효율, f 끝없는 걸음 몫(딜링 시간 ÷ 클리어 시간)}
+   x = 지금 딜 ÷ 기준점 딜 = d0(1 + k·e)(1 + max·u)(1 + w·f) ÷ 기준점 딜. 클리어 T = 이동 A + 딜링 B ÷ x (A = 세팅별 이동 시간 travelOf, B = 15분 − A).
+   u = 신단 ÷ T(바닥 2/15, 1 상한), e = min(1, 1/x), f = (B ÷ x) ÷ T. x = h(x) 를 이분 탐색(h 는 위아래로 묶여 있어 근이 있음).
+   기준점 산출(opts.squirtBase)·기준점 없는 세팅은 x = 1(u = 2/15, e = 1, f = B ÷ 15).
+   2026-11-19: 이동·딜링 시간을 나눔(tools/sample_ref.js — 표본 클리어 시간에서 역산) + 끝없는 걸음을 여기로(직업 규칙은 최대치 ew 만 돌려줌).
+     사용자 "끝없는걸음, 우리 내부적으로 이동시간이랑 딜링시간 있잖아. 거기에 비례하게 변화하도록 해야할거같아. 딜링시간이 짧아지면 꼬맹이처럼, 딜량이 올라가고 수렴할때까지 하는 그거.",
+     "멈추는 횟수는 중요하지 않아. … 이동하거나 딜링하는 시간 비례로 하는게 맞아.", "꼬맹이는 … 클리어타임과만 관련있지."(꼬맹이 = 신단 ÷ 클리어 시간 그대로, 클리어 시간에 이동이 들어감)
+     이전(2026-11-14~): 이동 0분(squirt.travelMin — 사용자 '꼬맹이 유지율도 일단 둬봐'), 끝없는 걸음은 직업 규칙에서 상시 +100% */
+/* 계산 본체 = fastSpeed(아래, 닫힘 함수 없이 결과를 FSP_* 에). speedSolve 는 같은 것을 객체로 — 세팅마다 고정인 값(이동 시간 대체값·기준점 딜)은 SPEED_K 에 기억 */
+const SPEED_K = new WeakMap();
+function speedSolve(build, d0, k, sq, opts, full, w, V){ let K = SPEED_K.get(build); if (!K) { K = {}; SPEED_K.set(build, K); }
+  fastSpeed(build, d0, k, sq, opts, full, K, w, V); return {u: FSP_U, e: FSP_E, f: FSP_F, T: FSP_T, A: FSP_A}; }   // T = 클리어 시간(분, 150단 미만은 15), A = 그때 이동 시간
+/* speedSolve(20_stats) 와 같은 계산(같은 식·같은 60번 이분 탐색), 닫힘 함수·객체 없이. 결과는 FSP_U·FSP_E·FSP_F(끝없는 걸음 딜링 몫) 에 */
+let FSP_U = 0, FSP_E = 1, FSP_F = 0, FSP_T = 15, FSP_A = 0;
+function fastSpeed(build, d0, k, sq, opts, full, K, w, V){
+  const Q = D.config.model.squirt, base = Q.pylonMin / Q.clearMin, adOn = !!D.config.model.ad.speed && k > 0 && !build.adPull; w = w || 0; if (Q.travelDist == null) V = null;
+  if (V == null && K.travel === undefined) K.travel = travelOf(build);
+  const A15 = Math.min(V != null ? Q.travelDist / (V + (Q.speedPylonMs || 0) * Math.min(1, Q.pylonMin / Q.clearMin)) : K.travel, Q.clearMin * 0.95), Bt = Q.clearMin - A15, f1 = Bt / Q.clearMin;
+  if (opts.squirtBase || (!sq && !adOn && !w)) { FSP_U = sq ? (full ? 1 : base) : 0; FSP_E = 1; FSP_F = w ? f1 : 0; FSP_T = Q.clearMin; FSP_A = A15; return; }
+  if (K.refR === undefined) { let ref = null; try { ref = gr150RefFor(build); } catch (e) { ref = null; }
+    K.refR = ref ? ref.D / Math.pow(D.config.model.score.gr.hpStep, D.config.model.score.gr150.refTier - D.config.model.score.gr150.target) : null; }
+  if (K.refR === null) { FSP_U = sq ? (full ? 1 : base) : 0; FSP_E = 1; FSP_F = w ? f1 : 0; FSP_T = Q.clearMin; FSP_A = A15; return; }
+  const R = K.refR, m = sq ? Q.max : 0, pm = Q.pylonMin;
+  let lo = 0, hi = d0 * (1 + k) * (1 + m) * (1 + w) / R + 1;
+  for (let i = 0; i < 60; i++) { const mid = (lo + hi) / 2, T = mid <= 1 ? Q.clearMin : clearAt(mid, V, A15, Bt, Q);
+    const u = !sq ? 0 : full ? 1 : Math.min(1, Math.max(base, pm / T)), e = adOn ? Math.min(1, 1 / mid) : 1, f = !w ? 0 : mid <= 1 ? f1 : (Bt / mid) / T;
+    if (d0 * (1 + k * e) * (1 + m * u) * (1 + w * f) / R > mid) lo = mid; else hi = mid; }
+  const x = (lo + hi) / 2, T = x <= 1 ? Q.clearMin : clearAt(x, V, A15, Bt, Q); FSP_A = x <= 1 ? A15 : CLR_A;
+  FSP_U = !sq ? 0 : full ? 1 : Math.min(1, Math.max(base, pm / T)); FSP_E = adOn ? Math.min(1, 1 / x) : 1; FSP_F = !w ? 0 : x <= 1 ? f1 : (Bt / x) / T; FSP_T = T; }
+/* 검사용(tools/fast_check.js): fastSpeed 결과를 객체로 */
+function fastSpeedObj(build, d0, k, sq, opts, full, K, w, V){ fastSpeed(build, d0, k, sq, opts, full, K, w, V); return {u: FSP_U, e: FSP_E, f: FSP_F, T: FSP_T, A: FSP_A}; }
 
 /* ============================================================================================
    25_class_dh.js — 악마사냥꾼 규칙(CLASS_RULES.dh). 상수 = config.classes.dh.model (gen_data/classes/dh/model.py, 출처·판단 근거 주석)
@@ -1509,7 +1533,7 @@ function MONK_RAIMENT({build, CM, a, sets, apsBase, iasG, cdrTotal, rcrTotal}){
   let dmgMult = 1;
   if ((sets[MK_SET.bastion] || 0) >= 2) dmgMult *= R.focusRestraint * R.focusRestraint;
   if ((sets[MK_SET.crimson] || 0) >= 3) dmgMult *= 1 + cdrTotal;
-  /* 끝없는 걸음 = 공격력 +최대치 × 딜링 시간 몫 — 여기서는 최대치(ew)만 돌려주고 20_stats speedSolve 가 클리어 시간과 함께 풂(사용자 2026-11-19 "이동하거나 딜링하는 시간 비례로 하는게 맞아.", "모든직업에 적용.") */
+  /* 끝없는 걸음: 여기서는 최대치(ew)만 — 딜링 몫·받피감은 21_speed(결정·근거는 그 파일의 speedSolve 주석) */
   const ew = has("mk_compass_rose") && has("mk_travelers_pledge") ? CM.endlessWalk.dmg : 0;
   if (has("convention")) dmgMult *= 1 + R.coe.mult / R.coe.n;
   /* 셴룽 2세트: 공력 1당 2% (model.py raiment.spirit). a.maxdisc = 장비의 최대 공력 합(최대 자원 합 칸 — gen/affixes.py maxspirit). 패시브는 세팅의 skillbar 로 판정(기준점은 랭커의 실제 패시브 — tools/ref_calc.js) */
@@ -1591,14 +1615,14 @@ CLASS_RULES.crusader = {
     const dr = [nG >= 2 ? CM.meleeShare * a.itemVit/1000*S.guardian.meleeDrPer1000Vit + (1-CM.meleeShare) * a.itemDex/1000*S.guardian.rangedDrPer1000Dex : 0, I.dr*(build.toughWorst ? (uI >= 1 - 1e-9 ? 1 : 0) : uI)];   // toughWorst(한 방 조건 — 사용자 2026-11-18 "철갑 피부·아카라트·복수는 무한유지시 적용, 불가능할시 꺼진걸로"): 지금은 tools/tough_calc.js 만 켬
     if (nA >= 2) { dmgMult *= 1 + AU.dmg2; dr.push(AU.dr2); }
     if (nA >= 3) { a.elite += AU.elite3; a.elitered += AU.eliteRed3; }   // 정예 칸에 합산(새 누적 객체 — 매 계산마다 만들어짐)
-    /* 끝없는 걸음 = 공격력 +최대치 × 딜링 시간 몫 — 여기서는 최대치(ew)만 돌려주고 20_stats speedSolve 가 클리어 시간과 함께 풂(사용자 2026-11-19 "이동하거나 딜링하는 시간 비례로 하는게 맞아.", "모든직업에 적용.") */
+    /* 끝없는 걸음: 여기서는 최대치(ew)만 — 딜링 몫·받피감은 21_speed(결정·근거는 그 파일의 speedSolve 주석) */
     const ew = has("cr_compass_rose") && has("cr_travelers_pledge") ? CM.endlessWalk.dmg : 0;
     /* 갇힌 자의 파멸 유지율(2026-11-19 — model.py trapped, gen/affixes.py hitchill): 기본 33%(제이 기절) 위에 장비의 적중 시 오한·감속이 따로 걸림.
        유지율 = 1 − (1 − 기본) × exp(−softcc × 초당 시전 횟수). 발동 기회 = 초당 시전 횟수(hits), 계수 1 — 사용자 "초당 주공격기 발동횟수랑 같다치면돼". 기본 유지율 몫은 기준점 쪽 보석 배율에 이미 들어 있어 비율만 곱함 */
     if (CM.trapped && (a.softcc || 0) > 0 && Object.values(build.legGems || {}).includes("trapped")) { const TR = CM.trapped, u = 1 - (1 - TR.base) * Math.exp(-a.softcc * hits); dmgMult *= (1 + TR.pct * u) / (1 + TR.pct * TR.base); softU = u; }
     if (has("unity")) dr.push(CM.unityDR);
     dr.push(CM.valor4DR);   // 용기의 방패 4세트 50중첩(model.py valor4DR)
-    return {rate, hits, dmgMult, ew, msAvg: msBase, dr, regenAdd:   /* msAvg = 평균 이속 증가(군마 150% + 정복자 + 신속·날개 × 유지율 + 아이템) — 이동 시간(20_stats speedSolve)에도 씀(2026-11-19) */
+    return {rate, hits, dmgMult, ew, msAvg: msBase, dr, regenAdd:   /* msAvg = 평균 이속 증가(군마 150% + 정복자 + 신속·날개 × 유지율 + 아이템) — 이동 시간(21_speed speedSolve)에도 씀(2026-11-19) */
  CM.lawsOfHope.regen, toughMult: 1,   // regenAdd = 희망의 율법 지속 효과 초당 회복(model.py lawsOfHope)
             armorBuff: {mult: A.armor, uptime: build.toughWorst ? (uAwall >= 1 - 1e-9 ? 1 : 0) : uAwall},
             extra: {trappedUptime: softU, akaratUptime: uA, ironSkinUptime: uI, steedUptime: uRide, fothPerRide: nOff, fothPerRidePylon: nOn, msTotal: msBase}}; },
@@ -1630,7 +1654,7 @@ CLASS_RULES.wizard = {
     let dmgMult = 1; const dr = [CM.fb.set4DR, CM.fb.safePassageDR, (build.cube || []).includes("끝없는 깊이의 보주") ? CM.fb.orbDR : 0];   // 상수 피해 감소(model.py fb 주석)
     if ((sets[WZ_SET.bastion] || 0) >= 2) dmgMult *= (1 + CM.focusRestraint) * (1 + CM.focusRestraint);
     if ((sets[WZ_SET.crimson] || 0) >= 3) { dmgMult *= 1 + cdrTotal; dr.push(rcrTotal); }
-    /* 끝없는 걸음 = 공격력 +최대치 × 딜링 시간 몫 — 여기서는 최대치(ew)만 돌려주고 20_stats speedSolve 가 클리어 시간과 함께 풂(사용자 2026-11-19 "이동하거나 딜링하는 시간 비례로 하는게 맞아.", "모든직업에 적용.") */
+    /* 끝없는 걸음: 여기서는 최대치(ew)만 — 딜링 몫·받피감은 21_speed(결정·근거는 그 파일의 speedSolve 주석) */
     const ew = (sets[WZ_SET.endless] || 0) >= 2 ? CM.endlessWalk.dmg : 0;
     if (has("convention")) dmgMult *= 1 + CM.coe.mult / CM.coe.n;
     if (nA >= 2) { dmgMult *= 1 + AU.dmg2; dr.push(AU.dr2); }
@@ -1761,27 +1785,8 @@ function fastLight(sel, build, opts, rr){
   const P2 = RULE.post ? RULE.post({build, CM, dmg, tough, toughNoHeal, toughMult: X.toughMult, X}) : null; if (P2) dmg *= P2.dmgMult;
   fastSpeed(build, dmg / AD, AD - 1, c.squirt, opts, !!(P2 && P2.extra && P2.extra.squirtFull), K, X.ew || 0, 1 + msAvgOf(X)); const Atr = FSP_A;
   dmg = dmg / AD * (1 + (AD - 1) * FSP_E) * (c.squirt ? 1 + M.squirt.max * FSP_U : 1) * (1 + (X.ew || 0) * FSP_F);
-  const ewDr = X.ew ? (CM.endlessWalk && CM.endlessWalk.dr || 0) * Atr / FSP_T : 0; if (ewDr) { const kT = 1 / (1 - ewDr); tough *= kT; toughNoHeal *= kT; }   // 20_stats 와 같은 끝없는 걸음 받는 피해 감소
+  const ewDr = ewDrOf(CM, X, Atr, FSP_T); if (ewDr) { const kT = 1 / (1 - ewDr); tough *= kT; toughNoHeal *= kT; }   // 20_stats 와 같은 끝없는 걸음 받는 피해 감소
   FAST_R.dmg = dmg; FAST_R.tough = tough; return FAST_R; }
-/* speedSolve(20_stats) 와 같은 계산(같은 식·같은 60번 이분 탐색), 닫힘 함수·객체 없이. 결과는 FSP_U·FSP_E·FSP_F(끝없는 걸음 딜링 몫) 에 */
-let FSP_U = 0, FSP_E = 1, FSP_F = 0, FSP_T = 15, FSP_A = 0;
-function fastSpeed(build, d0, k, sq, opts, full, K, w, V){
-  const Q = D.config.model.squirt, base = Q.pylonMin / Q.clearMin, adOn = !!D.config.model.ad.speed && k > 0 && !build.adPull; w = w || 0; if (Q.travelDist == null) V = null;
-  if (V == null && K.travel === undefined) K.travel = travelOf(build);
-  const A15 = Math.min(V != null ? Q.travelDist / (V + (Q.speedPylonMs || 0) * Math.min(1, Q.pylonMin / Q.clearMin)) : K.travel, Q.clearMin * 0.95), Bt = Q.clearMin - A15, f1 = Bt / Q.clearMin;
-  if (opts.squirtBase || (!sq && !adOn && !w)) { FSP_U = sq ? (full ? 1 : base) : 0; FSP_E = 1; FSP_F = w ? f1 : 0; FSP_T = Q.clearMin; FSP_A = A15; return; }
-  if (K.refR === undefined) { let ref = null; try { ref = gr150RefFor(build); } catch (e) { ref = null; }
-    K.refR = ref ? ref.D / Math.pow(D.config.model.score.gr.hpStep, D.config.model.score.gr150.refTier - D.config.model.score.gr150.target) : null; }
-  if (K.refR === null) { FSP_U = sq ? (full ? 1 : base) : 0; FSP_E = 1; FSP_F = w ? f1 : 0; FSP_T = Q.clearMin; FSP_A = A15; return; }
-  const R = K.refR, m = sq ? Q.max : 0, pm = Q.pylonMin;
-  let lo = 0, hi = d0 * (1 + k) * (1 + m) * (1 + w) / R + 1;
-  for (let i = 0; i < 60; i++) { const mid = (lo + hi) / 2, T = mid <= 1 ? Q.clearMin : clearAt(mid, V, A15, Bt, Q);
-    const u = !sq ? 0 : full ? 1 : Math.min(1, Math.max(base, pm / T)), e = adOn ? Math.min(1, 1 / mid) : 1, f = !w ? 0 : mid <= 1 ? f1 : (Bt / mid) / T;
-    if (d0 * (1 + k * e) * (1 + m * u) * (1 + w * f) / R > mid) lo = mid; else hi = mid; }
-  const x = (lo + hi) / 2, T = x <= 1 ? Q.clearMin : clearAt(x, V, A15, Bt, Q); FSP_A = x <= 1 ? A15 : CLR_A;
-  FSP_U = !sq ? 0 : full ? 1 : Math.min(1, Math.max(base, pm / T)); FSP_E = adOn ? Math.min(1, 1 / x) : 1; FSP_F = !w ? 0 : x <= 1 ? f1 : (Bt / x) / T; FSP_T = T; }
-/* 검사용(tools/fast_check.js): fastSpeed 결과를 객체로 */
-function fastSpeedObj(build, d0, k, sq, opts, full, K, w, V){ fastSpeed(build, d0, k, sq, opts, full, K, w, V); return {u: FSP_U, e: FSP_E, f: FSP_F, T: FSP_T, A: FSP_A}; }
 
 /* ============================================================================================
    30_optimize.js — 정옵 찾기와 옵션 등급
@@ -2496,6 +2501,19 @@ function priorityEd(build, m, cfg, primal, ancCost, key, upShare){ const C = D.c
    척도  기준점(ref) = 세팅별 150단 클리어자의 실제 장비를 모델에 넣은 공격력·강인함(config.model.score.gr150.ref, 산출은 gen/classes/<직업>/builds_*.py REF).
          딜 단수 = 150 + ln(공격력/기준)/ln hpStep(1.17), 탱 단수 = 150 + ln(강인함/기준)/ln dmgStep(1.02337).
    ============================================================================================ */
+/* 정복자 활력 분배 규칙(한 곳 — 50_path fromPath·계정 조회 34_herocalc heroRecommend): at(v) = 활력 v 일 때의 {d, t} 단수, free = 나눌 수 있는 포인트.
+   먼저 균형(강인함 ≥ 공격력이 되는 최소 활력 — 낮은 쪽 최대). 그 지점에서 둘 다 목표(150) 이상이면 상한 모드(강인함 목표를 지키는 최소 활력, 나머지 주능력치).
+   eps = 목표 비교의 여유(경로 0, 계정 조회 1e-9 — 모듈화 전 두 곳의 값을 그대로 둠). 사용자 2026-11-19 "공격력부터 채워야하는거 아냐?"(계정 조회가 다른 규칙이었던 것을 맞춤) */
+function allocParaVit(at, free, target, eps){ eps = eps || 0;
+  const minV = want => { if (want(at(0))) return 0; if (!want(at(free))) return free; let lo = 0, hi = free; while (hi - lo > 1) { const mid = (lo + hi) >> 1; if (want(at(mid))) hi = mid; else lo = mid; } return hi; };
+  let v = minV(T => T.t >= T.d), T = at(v), mode = "balance";
+  if (Math.min(T.d, T.t) >= target - eps) { v = minV(T2 => T2.t >= target - eps); T = at(v); mode = "cap"; }
+  return {v, T, mode}; }
+/* 단수로 매기는 값(세팅 비교·계정 조회): 둘 다 목표 이상이면 공격력 단수, 아니면 낮은 쪽 */
+const valueOfTiers = (T, target) => Math.min(T.d, T.t) >= target - 1e-9 ? T.d : Math.min(T.d, T.t);
+/* 서포터의 강인함 단수(랭크표 ParagonLine·계정 조회 heroEval): 150 + log(강인함 ÷ 기준점 강인함) ÷ log(dmgStep — 단마다 몬스터 공격력 증가율, 딜러 tiers150 의 t 와 같음). 표시는 150 상한.
+   2026-11-19 고침: 전에는 log(hpStep)(몬스터 체력 증가율 17%)로 나눠 강인함 단수가 실제보다 덜 내려갔음(강인함 절반 = 145.6단 → 바르게는 120단). 사용자 "어 공격력 증가율에 따르는게 맞아." */
+const prioToughTier = (tough, refT) => D.config.model.score.gr150.target + Math.log(tough / refT) / Math.log(D.config.model.score.gr.dmgStep);
 function tiers150(st, ref, C, G){ return {d: C.refTier + Math.log(st.dmg/ref.D)/Math.log(G.hpStep), t: C.refTier + Math.log(st.tough/ref.T)/Math.log(G.dmgStep)}; }
 /* 세팅의 기준점 {D, T, P, who, region}. {"same": id} = 그 세팅의 척도를 공유(같은 묶음의 변형끼리 공평하게). 없으면 오류 — 새 세팅은 REF 를 먼저 */
 function gr150RefFor(build){
@@ -2629,10 +2647,8 @@ function fromPath(build, pt, opts){
   const M = D.config.model, C = M.score.gr150, G = M.score.gr, ref = gr150RefFor(build);
   const o = {...opts, aug: pt.aug2, gems: pt.gems}, free = poolFree(o, build);
   const st = v => computeStats(pt.sel, build, {...o, paraVit: v}, pt.rr), at = v => tiers150(st(v), ref, C, G);
-  const minV = want => { if (want(at(0))) return 0; if (!want(at(free))) return free;
-    let lo = 0, hi = free; while (hi - lo > 1) { const mid = (lo + hi) >> 1; if (want(at(mid))) hi = mid; else lo = mid; } return hi; };
-  let v = minV(T2 => T2.t >= T2.d), T = at(v), mode = "balance";
-  if (Math.min(T.d, T.t) >= C.target) { v = minV(T2 => T2.t >= C.target); T = at(v); mode = "cap";
+  let {v, T, mode} = allocParaVit(at, free, C.target);   // 40_gr150
+  if (mode === "cap") {
     if (st(v).postOn === false && st(free).postOn) { let lo = v, hi = free; while (hi - lo > 1) { const mid = (lo + hi) >> 1; if (st(mid).postOn) hi = mid; else lo = mid; }
       const T2 = at(hi); if (T2.d > T.d) { v = hi; T = T2; } } }
   return {sel: pt.sel, rr: pt.rr, gems: pt.gems, aug: pt.aug2, paraVit: v, k: pt.k, d: T.d, t: T.t, mode, fromPath: true}; }
@@ -2853,13 +2869,67 @@ function edPassOff(ed, lossX, kind){ if (ed.offF !== undefined && ed.F != null) 
 
 </script>
 <script id="hero-calc">
+const HERO_PARSE = (() => { const module = {exports: {}}, require = n => ({get D(){ return (0, eval)('D'); }, M: new Proxy({}, {get: (_, k) => (0, eval)(String(k))})});
+/* ============================================================================================
+   tools/hero_parse.js — 배틀넷 영웅 API 자료를 우리 자료로 읽는 공용 부품(계정 조회 화면 · tools/tough_calc.js · 조사 도구가 같이 씀)
+   담는 것  칸 이름 표(API ↔ 우리), 아이템 이름 → 우리 아이템 id, 보석 이름 → 보석 id, 옵션 문구 한 줄 → 합산표(강인함·유틸 쪽 공통 줄), 방어구 기본 방어도 합
+   화면     build.py 가 이 파일을 HERO_PARSE 로 실어 보냄(require 흉내) — 34_herocalc·36_heroview 가 HERO_PARSE.* 를 씀
+   2026-11-19 모듈화(사용자 "이제 진짜 계산식이랑 ui코드 모듈화 해야겠는데? 더 미루면 계속 꼬일거같아"): 전에는 같은 표·같은 정규식이
+     tough_calc(딜러 calc·서포터 calcSupport 두 벌)·34_herocalc(HERO_API)·36_heroview(HERO_SLOT·heroItemOf)·시험 도구들에 따로 있었음
+   ============================================================================================ */
+/* 모델은 쓸 때 읽음(MOD.D·MOD.M) — 화면에서는 이 파일이 자료(D)가 오기 전에 실행되므로 불러오는 순간의 값을 붙잡지 않음(build.py 의 require 흉내가 getter 로 줌) */
+const MOD = require('./model.js');
+/* API 칸 이름 → 우리 칸 키, 그 반대 */
+const SLOTMAP = {head: 'head', neck: 'neck', torso: 'torso', shoulders: 'shoulders', legs: 'legs', waist: 'waist', hands: 'hands', bracers: 'wrists', feet: 'feet', leftFinger: 'leftfinger', rightFinger: 'rightfinger', mainHand: 'mainhand', offHand: 'offhand'};
+const API_OF = Object.fromEntries(Object.entries(SLOTMAP).map(([a, k]) => [k, a]));
+/* 같은 이름의 아이템이 직업별 사본(cr_·mk_·wz_…)으로 여럿 있음 → 영웅 직업 것 > 공용 > 아무거나 */
+const CPRE = {crusader: 'cr_', monk: 'mk_', wizard: 'wz_', dh: 'dh_', barbarian: 'bb_', necromancer: 'nc_', wd: 'wd_'};
+let NAMEIDS = null;
+const nameIds = () => { if (!NAMEIDS) { NAMEIDS = {}; for (const it of MOD.D.items.items) (NAMEIDS[it.name] = NAMEIDS[it.name] || []).push(it.id); } return NAMEIDS; };
+const idOf = (name, cls) => { const L = nameIds()[name]; if (!L) return null; return L.find(x => x.startsWith(CPRE[cls] || '~')) || L.find(x => !/^(cr|mk|wz|dh|bb|nc|wd)_/.test(x)) || L[0]; };
+const itemOf = (name, cls) => { const id = idOf(name, cls); return id ? MOD.D.itemsById[id] : null; };
+const num = s => +s.replace(/,/g, '');
+const GEM = n => /다이아몬드/.test(n) ? 'diamond' : /자수정/.test(n) ? 'amethyst' : /에메랄드/.test(n) ? 'emerald' : /토파즈/.test(n) ? 'topaz' : /루비/.test(n) ? 'ruby' : null;
+/* 주요 옵션 한 줄 중 딜러·서포터가 같이 읽는 것(강인함·재감·자감·회복). 칼데산 줄은 세트 배율을 안 받는 고정치로(flat). heal = 회복 출처 합(딜러 조사용, 없어도 됨).
+   반환 true = 읽음(호출하는 쪽은 다음 정규식으로 넘어가지 않음) */
+function readCoreLine(t, a, main, flat, heal){ let m; const cal = /칼데산/.test(t);
+  if ((m = t.match(/^활력 \+([\d,]+)/))) { if (cal) flat.vit += num(m[1]); else MOD.M.addGroup(a, 'vit', num(m[1])); return true; }
+  if ((m = t.match(new RegExp('^' + main + ' \\+([\\d,]+)')))) { if (cal) flat.main += num(m[1]); else MOD.M.addGroup(a, 'dex', num(m[1])); return true; }
+  if ((m = t.match(/^모든 원소 저항 \+([\d,]+)/))) { MOD.M.addGroup(a, 'allres', num(m[1])); return true; }
+  if ((m = t.match(/^방어도 \+([\d,]+)/))) { MOD.M.addGroup(a, 'armor', num(m[1])); return true; }
+  if ((m = t.match(/^생명력 \+([\d.]+)%/))) { MOD.M.addGroup(a, 'lifep', +m[1]); return true; }
+  if ((m = t.match(/정예.*받는 피해.* ([\d.]+)% 감소/))) { MOD.M.addGroup(a, 'elitered', +m[1]); return true; }
+  if ((m = t.match(/자원 소모량 ([\d.]+)% 감소/))) { MOD.M.addGroup(a, 'rcr', +m[1]); return true; }
+  if ((m = t.match(/^모든 기술의 재사용 대기시간 ([\d.]+)% 감소/))) { MOD.M.addGroup(a, 'cdr', +m[1]); return true; }
+  return false; }
+/* 회복 두 줄(적중당 생명력·초당 생명력) — 딜러는 공격 옵션 다음, 서포터는 재감 다음에 읽음(순서는 결과와 무관: 정규식이 겹치지 않음) */
+function readHealLine(t, a, heal){ let m;
+  if ((m = t.match(/^적중당 생명력 \+([\d,]+)/))) { a.loh += num(m[1]); if (heal) heal.loh += num(m[1]); return true; }
+  if ((m = t.match(/^초당 생명력 ([\d,]+) 회복/))) { a.regen += num(m[1]); if (heal) heal.regen += num(m[1]); return true; }
+  return false; }
+/* 보조 옵션 중 같이 읽는 것: 단일 저항(물리·속성 → 모든 저항 환산, 딜러·서포터 환산값이 다름 — resOne·resPhys) */
+function readResLine(t, a, resOne, resPhys){ const m = t.match(/^(물리|냉기|화염|번개|독|비전|신성) 저항 \+([\d,]+)/); if (!m) return false; MOD.M.addGroup(a, 'allres', num(m[2]) * (m[1] === '물리' ? resPhys : resOne)); return true; }
+/* 일반 보석: 투구(자수정 생명력 23%·다이아 재감 12.5%·토파즈 자감 12.5%), 갑옷·바지(다이아 저항 78·자수정 활력 280·주능력치 보석 280) */
+function applyGems(it, slot, a, main, flat){ const hd = slot === 'head';
+  for (const g of it.gems || []) { const k = g && GEM(g); if (!k) continue;
+    if (hd) { if (k === 'amethyst') a.lifep += 0.23; else if (k === 'diamond') a.cdr.push(0.125); else if (k === 'topaz') a.rcr.push(0.125); }
+    else if (slot === 'torso' || slot === 'legs') { if (k === 'diamond') a.allres += 78; else if (k === 'amethyst') flat.vit += 280; else if ((k === 'emerald' && main === '민첩') || (k === 'topaz' && main === '지능') || (k === 'ruby' && main === '힘')) flat.main += 280; } } }
+/* 방어구 기본 방어도 합: 영웅의 실제 값(API items.<칸>.armor). 안 보이는 칸(축성)만 틀의 부위 평균값. 방어도를 저장하지 않은 옛 자료면 null(틀 평균 그대로).
+   사용자 2026-11-17 "왜 방어구 방어도를 안쓰고 평균치를?" */
+function gearArmorOf(r, tpl){ if (!Object.values(r.items).some(x => x.armor != null)) return null; let ga = 0; const seen = new Set();
+  for (const [s, it] of Object.entries(r.items)) { ga += it.armor || 0; seen.add(SLOTMAP[s]); }
+  for (const k in tpl.slots) if (!seen.has(k)) ga += MOD.D.slotDefs[MOD.D.itemsById[tpl.slots[k].item].slot].baseArmor || 0;
+  return ga; }
+module.exports = {SLOTMAP, API_OF, CPRE, idOf, itemOf, num, GEM, readCoreLine, readHealLine, readResLine, applyGems, gearArmorOf};
+
+  return module.exports; })();
 let __heroLib = null;
 function heroCalcLib(){ if (__heroLib) return __heroLib;
   const __REFV = {"fb_g_ew_남기르": 0, "foth_aov_YHHHY": 300, "impale_guardian_ChromeHearts": 650, "ue_dawn_TGD": 400, "rai_Exia": 0, "wol_lod_NECER": 300};
   const __fs = {readFileSync: p => JSON.stringify({paraVit: __REFV[String(p).split('/').pop().replace(/\.json$/, '')] || 0})}, __dirname = '';
   const __fb = id => { for (const s of D.builds.seasons) for (const c of s.classes) { const b = c.builds.find(x => x.id === id); if (b) return {...b, className: c.label}; } return null; };
   const __M = new Proxy({}, {get: (_, k) => k === 'findBuild' ? __fb : (0, eval)(String(k))});
-  const require = n => n === 'fs' ? __fs : {D: (0, eval)('D'), M: __M}; const module = {exports: {}}, process = {argv: []};
+  const require = n => n === 'fs' ? __fs : /hero_parse/.test(n) ? HERO_PARSE : {D: (0, eval)('D'), M: __M}; const module = {exports: {}}, process = {argv: []};
 /* tools/tough_calc.js — tough_survey.py 가 받아 둔 영웅(순위표 150단 클리어)의 장비를 계산기 식(statsFromAcc)에 넣어 '회복을 뺀 강인함'(한 방 조건)을 냄.
    사용: node tools/tough_calc.js ref/reports/data/tough150_s35_<날짜>.json [--json 출력파일]
    왜: 한 방 조건의 기준을 랭커 한 명 대신 '강인함이 낮은 아래쪽 n명 중앙값'으로 잡을 수 있는지 보려고. 시트 강인함에 배율을 곱하는 방식은 버림(세트 효과가 사람마다 값이 달라 어긋남) —
@@ -2879,13 +2949,7 @@ const MAIN = {wizard: '지능', dh: '민첩', crusader: '힘', monk: '민첩'};
 /* 수도사(2026-11-17 추가 — 사용자 "그러자.. 일단.. 찾아볼까?"): 직업 규칙(26_class_monk.js)이 강인함을 '착용 아이템 id'(wears)와 기술 목록(skillbar)으로 판정함
    → 틀의 칸마다 아이템 id 를 영웅 것으로 바꾸고(우리 데이터에 없는 이름은 틀 아이템을 복제한 자리표 '_o_…'), 기술·패시브도 영웅 것으로 바꿈(구원의 진언 날쌘 몸놀림 회피 35%, 수행자의 사명 회피 35%).
    종수도(꿈의 유산)는 세트가 없어 '빛의 파동 기술 + 세트 4부위 미만'으로 가름. 일천은 기준 틀 rai_crimson 이지만 세트 수·착용품은 영웅 것이라 수호자 변형도 같은 식으로 계산됨. */
-const NAMEIDS = {}; for (const id in D.itemsById) { const it = D.itemsById[id]; (NAMEIDS[it.name] = NAMEIDS[it.name] || []).push(id); }
-const CPRE = {crusader: 'cr_', monk: 'mk_', wizard: 'wz_', dh: 'dh_'};
-/* 같은 이름의 아이템이 직업별 사본(cr_·mk_·wz_…)으로 여럿 있음 → 영웅 직업 것 > 공용 > 아무거나 */
-const idOf = (name, cls) => { const L = NAMEIDS[name]; if (!L) return null; return L.find(x => x.startsWith(CPRE[cls])) || L.find(x => !/^(cr|mk|wz|dh|bb|nc|wd)_/.test(x)) || L[0]; };
-const SLOTMAP = {head: 'head', neck: 'neck', torso: 'torso', shoulders: 'shoulders', legs: 'legs', waist: 'waist', hands: 'hands', bracers: 'wrists', feet: 'feet', leftFinger: 'leftfinger', rightFinger: 'rightfinger', mainHand: 'mainhand', offHand: 'offhand'};
-const num = s => +s.replace(/,/g, '');
-const GEM = n => /다이아몬드/.test(n) ? 'diamond' : /자수정/.test(n) ? 'amethyst' : /에메랄드/.test(n) ? 'emerald' : /토파즈/.test(n) ? 'topaz' : /루비/.test(n) ? 'ruby' : null;
+const HP = require('./hero_parse.js'), {SLOTMAP, idOf, num, GEM} = HP;   // 칸 이름·아이템 id·보석·옵션 줄 읽기는 공용(tools/hero_parse.js, 2026-11-19 모듈화)
 function setupOf(r){ for (const k in SETKEY) if ((r.sets[k] || 0) >= 4) return SETKEY[k]; return r.cls === 'monk' && r.skills.some(s => s[0] === 'wave-of-light') ? '종수도' : null; }
 function calc(r, paraVit, opt){ opt = opt || {};
   const setup = setupOf(r), tpl = M.findBuild(TPL[setup]), main = MAIN[r.cls], names = Object.values(r.items).map(x => x.name), cube = (r.cube || []).filter(Boolean), have = n => names.includes(n) || cube.includes(n);
@@ -2922,11 +2986,8 @@ function calc(r, paraVit, opt){ opt = opt || {};
   c.sets = sets; c.SB = c.RULE.setBonus(sets, c.CM, build); const sm = c.SB.statMult || 1;
   /* 방어구 기본 방어도: 영웅의 실제 값(API items.<칸>.armor — tough_survey.py 가 저장). 안 보이는 칸(축성)만 틀의 부위 평균값. 방어도를 저장하지 않은 옛 자료(시즌 35 조사)는 전부 평균값 그대로.
      사용자 2026-11-17 "왜 방어구 방어도를 안쓰고 평균치를?" */
-  if (Object.values(r.items).some(x => x.armor != null)) { let ga = 0; const seen = new Set();
-    for (const [s, it] of Object.entries(r.items)) { ga += it.armor || 0; seen.add(SLOTMAP[s]); }
-    for (const k in tpl.slots) if (!seen.has(k)) ga += D.slotDefs[D.itemsById[tpl.slots[k].item].slot].baseArmor || 0;
-    c.gearArmor = ga; }
-  const a = M.newAcc(), notes = []; let flatVit = 0, flatMain = 0, extra = 1;
+  { const ga = HP.gearArmorOf(r, tpl); if (ga != null) c.gearArmor = ga; }
+  const a = M.newAcc(), notes = [], flat = {vit: 0, main: 0}; let extra = 1;
   const RO = D.config.model.resOne, harm = r.cls === 'monk' && hasPas('harmony') ? RO.harmony : 0, resOne = RO.dealer.elem + harm, resPhys = RO.dealer.phys + harm, PHYS = D.config.model.physShare.dealer;   // 2026-11-19 딜러: [속성] 저항 0.2·물리 저항 0, 물리 피해 몫 0(gen/common.py). 조화: 단일 저항의 40%가 모든 저항으로
   /* SK — 계산기에 식이 없던 기술·패시브·전설(사용자 2026-11-18):
      넣음: 경각심(물리 외 20% 감소)·육감(물리 외 25% 감소) 상시 / 완벽주의자(방어도·저항 +10%) / 회피 사격 단련("3초마다 쓴다고 가정" → 방어도 +25% 상시) /
@@ -2952,20 +3013,11 @@ function calc(r, paraVit, opt){ opt = opt || {};
     build.legGems = lg; }
   const elemBy = {}, skillOther = {}, wov = {};
   for (const [slot, it] of Object.entries(r.items)) { const wk = SLOTMAP[slot], isW = c.wKeys.includes(wk);
-    for (const t of it.primary) { let m; const cal = /칼데산/.test(t);
-      if ((m = t.match(/^활력 \+([\d,]+)/))) cal ? flatVit += num(m[1]) : M.addGroup(a, 'vit', num(m[1]));
-      else if ((m = t.match(new RegExp('^' + main + ' \\+([\\d,]+)')))) cal ? flatMain += num(m[1]) : M.addGroup(a, 'dex', num(m[1]));
-      else if ((m = t.match(/^모든 원소 저항 \+([\d,]+)/))) M.addGroup(a, 'allres', num(m[1]));
-      else if ((m = t.match(/^방어도 \+([\d,]+)/))) M.addGroup(a, 'armor', num(m[1]));
-      else if ((m = t.match(/^생명력 \+([\d.]+)%/))) M.addGroup(a, 'lifep', +m[1]);
-      else if ((m = t.match(/정예.*받는 피해.* ([\d.]+)% 감소/))) M.addGroup(a, 'elitered', +m[1]);
-      else if ((m = t.match(/자원 소모량 ([\d.]+)% 감소/))) M.addGroup(a, 'rcr', +m[1]);
-      else if ((m = t.match(/^모든 기술의 재사용 대기시간 ([\d.]+)% 감소/))) M.addGroup(a, 'cdr', +m[1]);
+    for (const t of it.primary) { let m;
+      if (HP.readCoreLine(t, a, main, flat) || HP.readHealLine(t, a, healSrc)) continue;   // 활력·주능력치(칼데산은 flat)·저항·방어도·생명력·정예 감소·자감·재감·적생·초생 = 서포터와 공통(hero_parse)
       /* 공격 옵션(2026-11-18 — 사용자 "공격력 기준도, 가장 공격력이 낮은사람 기준으로"): 원자료(tools/collect_during.py)의 주요 옵션 문구를 그대로 읽음 */
       /* 회복 옵션(2026-11-19 — 사용자 "회복력도 최소치로 봐야할거같은데. 물약을 초당 회복량으로 환산하고."): 적생·초생은 모델(20_stats healPart)로, 물약은 아래 heal 에서 */
-      else if ((m = t.match(/^적중당 생명력 \+([\d,]+)/))) { a.loh += num(m[1]); healSrc.loh += num(m[1]); }
-      else if ((m = t.match(/^초당 생명력 ([\d,]+) 회복/))) { a.regen += num(m[1]); healSrc.regen += num(m[1]); }
-      else if ((m = t.match(/^극대화 확률 ([\d.]+)% 증가/))) a.chc += m[1]/100;
+      if ((m = t.match(/^극대화 확률 ([\d.]+)% 증가/))) a.chc += m[1]/100;
       else if ((m = t.match(/^극대화 피해 ([\d.]+)% 증가/))) a.chd += m[1]/100;
       else if ((m = t.match(/^(물리|냉기|화염|번개|독|비전|신성) 기술로 주는 피해 ([\d.]+)% 증가/))) elemBy[m[1]] = (elemBy[m[1]] || 0) + m[2]/100;
       else if ((m = t.match(/^정예(?: 괴물)?에게 주는 피해 ([\d.]+)% 증가/))) a.elite += m[1]/100;
@@ -2980,13 +3032,10 @@ function calc(r, paraVit, opt){ opt = opt || {};
       if ((m = t.match(/^적 처치 시 생명력 \+([\d,]+)/))) { a.lpk = (a.lpk || 0) + num(m[1]); healSrc.lpk += num(m[1]); continue; }
       if ((m = t.match(/^생명의 구슬과 물약으로 회복되는 생명력 \+([\d,]+)/))) { healSrc.potionBonus += num(m[1]); continue; }
       if ((m = t.match(/^최대 (절제|공력) \+(\d+)/))) { a.maxdisc += +m[2]; continue; }
-      if ((m = t.match(/^(물리|냉기|화염|번개|독|비전|신성) 저항 \+([\d,]+)/))) M.addGroup(a, 'allres', num(m[2]) * (m[1] === '물리' ? resPhys : resOne));
+      if (HP.readResLine(t, a, resOne, resPhys)) { /* 단일 저항 → 모든 저항 환산(딜러 값) */ }
       else if ((m = t.match(/^(근접|원거리) 공격으로 받는 피해 ([\d.]+)% 감소/))) { if (it.name === '귀 꿰미') { extra *= 1 - 0.30 * c.CM.meleeShare; notes.push('귀 꿰미'); } else M.addGroup(a, 'mrdr', +m[2]); }
       else if (it.name === '카리니의 후광' && (m = t.match(/받는 피해 ([\d.]+)% 감소/))) { if (r.skills.some(s => s[0] === 'storm-armor')) { extra *= 1 - m[1]/100; notes.push('카리니 ' + m[1] + '%'); } else notes.push('카리니(천둥 갑옷 없음 — 0)'); } }
-    const hd = slot === 'head';
-    for (const g of it.gems || []) { const k = g && GEM(g); if (!k) continue;
-      if (hd) { if (k === 'amethyst') a.lifep += 0.23; else if (k === 'diamond') a.cdr.push(0.125); else if (k === 'topaz') a.rcr.push(0.125); }
-      else if (slot === 'torso' || slot === 'legs') { if (k === 'diamond') a.allres += 78; else if (k === 'amethyst') flatVit += 280; else if ((k === 'emerald' && main === '민첩') || (k === 'topaz' && main === '지능') || (k === 'ruby' && main === '힘')) flatMain += 280; } } }
+    HP.applyGems(it, slot, a, main, flat); }
   /* 안 보이는 칸(축성 = 원시 고대)이 한 칸이면 틀(우리 세팅)의 그 칸 정옵을 최댓값으로 채움 — 무기·장신구의 공격 옵션(극대화·속성·무기 공격력 등)과 재감이 빠지지 않게.
      어떤 옵션이 붙었는지는 모르므로 '우리 세팅의 정옵'이라고 가정(축성은 원시 고대라 수치는 최대가 맞음). 칼데산은 보이는 칸에서 가장 흔한 주능력치 값을 줌. 여러 칸이 안 보이면(API 누락) 채우지 않음. */
   const calMain = (() => { const cn = {}; for (const it of Object.values(r.items)) for (const t of it.primary) { const m = /칼데산/.test(t) && t.match(new RegExp('^' + main + ' \\+([\\d,]+)')); if (m) cn[m[1]] = (cn[m[1]] || 0) + 1; }
@@ -2994,7 +3043,7 @@ function calc(r, paraVit, opt){ opt = opt || {};
   if (r.missing.length === 1 && !opt.noFill) { const k = SLOTMAP[r.missing[0]], cfg = tpl.slots[k], item = D.itemsById[cfg.item], goal = cfg.goal || [];
     const sel = goal.filter(x => !item.fixed.some(f => f.affix === x)), off = item.fixed.filter(f => !goal.includes(f.affix)).map(f => f.affix); a.curKey = k;
     M.eachSlotAffix(tpl, k, sel, off, null, (aid, n) => D.affixes[aid].group === 'resone' ? M.addAffix(a, tpl, 'allres', M.affixMax(aid, item.slot) * resOne, item.slot, n) : M.addAffix(a, tpl, aid, M.affixMax(aid, item.slot), item.slot, n));
-    a.sockets = {}; flatMain += calMain; notes.push('축성 칸 채움'); }
+    a.sockets = {}; flat.main += calMain; notes.push('축성 칸 채움'); }
   const elemTop = Object.entries(elemBy).sort((x, y) => y[1] - x[1])[0]; if (elemTop) a.elem += elemTop[1];   // 속성 피해: 가장 많이 챙긴 속성(영웅의 룬 속성이 우리 세팅과 달라도 그 속성을 쓴다고 봄)
   /* 전설 보석의 공격력(읽는 쪽) — 영웅이 낀 보석을 있는 그대로 절대 배율로 곱함(변형이 달라도 한 잣대). 모델(M.stats)은 보석 공격력을 식에 안 넣으므로 여기서 곱함. 문구의 수치 = 영웅의 실제 등급.
      사용자 2026-11-18: "내생각엔 보석을, 데이터를 읽을때와 추천할때를 구분해서 식을짜야할거같아. 데이터를 읽을때는 다 읽더라도, 추천보석 풀에는 주류보석위주로, 내 컨펌을 받아서."
@@ -3028,7 +3077,7 @@ function calc(r, paraVit, opt){ opt = opt || {};
   for (const g of GD) if (!GID[g.name]) gemNote.push('목록 밖: ' + g.name);
   const strickenSlot = heroG.includes('stricken') || heroG.includes('powerful');
   if (heroG.includes('gogok')) { a.ias += 0.15; a.cdr.push(0.15); }
-  a.itemVit += flatVit / sm; a.itemDex += flatMain / sm;
+  a.itemVit += flat.vit / sm; a.itemDex += flat.main / sm;
   if (r.cls === 'wizard' && have('집중의 어깨걸이')) { extra *= 0.75; notes.push('어깨걸이'); }
   if (have('화합의 반지')) { if ((r.cls !== 'crusader' || !c.CM.unityDR) && !(r.cls === 'monk' && M.wears(build, 'unity'))) extra *= 0.5; notes.push('화합'); }   // 수도사는 착용이면 직업 규칙이 넣음(카나이일 때만 여기서)
   build.lodUnits = lodUnits; M.rebuildOne(build);   // 2026-11-19: 한 방 전용 효과는 세팅 캐시(20_stats buildCache ★)가 영웅의 기술·보석·꿈의 유산 단위로 정함 → 다 채운 뒤 캐시를 다시 만들게 함
@@ -3071,11 +3120,12 @@ function vitFor(r, setup){ if (VIT_FIX[setup] != null) return VIT_FIX[setup]; co
    사용자 2026-11-19 "서포터도 감지해서 띄워주게 해야지.", "서포터 옵션랭크표에 표현되는 딜러와의 차이점도 반영해."
    랭크표 서포터와 같은 잣대: 강인함 = computeStats(직업 규칙 자리에 SUPPORT_RULE — 파티 버프·회복 1.5초분·회피 포함, 한 방 강인함 아님), 단일 저항 환산은 서포터 값(model.resOne.support).
    틀(tplId = zdh_* · zbarb_*)의 칸마다 아이템 id 를 영웅 것으로, 카나이·전설 보석도 영웅 것. 옵션은 API 문구를 읽음(딜러 calc 와 같은 꼴). 공격 옵션은 읽지 않음(서포터는 딜을 재지 않음).
-   서포터 setupOf: 공포의 땅 4세트(왕실 권위 포함) = 서사시 악사, 래코르 6세트(왕실 권위 포함) = 작살 야만용사 */
-const SUP_MAIN = {dh: '민첩', barbarian: '힘'}, SUP_SET = {dh: '공포의 땅의 장비', barbarian: '래코르의 유산'}, SUP_NEED = {dh: 4, barbarian: 6};
+   서포터 setupOf: 공포의 땅 4~5부위(왕실 권위 포함 — 6세트는 딜러) = 서사시 악사, 래코르 6세트(왕실 권위 포함) = 작살 야만용사 */
+/* SUP_MAX: 공포의 땅은 4세트(5부위 이하)만 서포터 — 6세트는 딜러(공포 악사, 계산기에 없음). 사용자 2026-11-19 "숙면유도제는 공포6셋이잖아? 그거 서폿아니고 딜러야. 서폿은 공포4셋." */
+const SUP_MAIN = {dh: '민첩', barbarian: '힘'}, SUP_SET = {dh: '공포의 땅의 장비', barbarian: '래코르의 유산'}, SUP_NEED = {dh: 4, barbarian: 6}, SUP_MAX = {dh: 5, barbarian: 99};
 function supSetupOf(r){ const k = SUP_SET[r.cls]; if (!k) return null; const names = Object.values(r.items || {}).map(x => x.name), cube = (r.cube || []).filter(Boolean), rn = D.config.model.rorgName;
-  const n = r.sets[k] || 0, rorg = names.includes(rn) || cube.includes(rn) || (cube.length < 3 && n === SUP_NEED[r.cls] - 1) ? 1 : 0;   // API 카나이가 장신구 칸을 안 주는 경우(딜러 calc 와 같은 추정)
-  return n + (n >= 2 ? rorg : 0) >= SUP_NEED[r.cls] ? {cls: r.cls, rorg} : null; }
+  const n = r.sets[k] || 0, rorg = names.includes(rn) || cube.includes(rn) || (cube.length < 3 && (n === SUP_NEED[r.cls] - 1 || n === 5)) ? 1 : 0;   // API 카나이가 장신구 칸을 안 주는 경우: 세트가 반지 하나로 채워지는 수(4세트 직전 3·6세트 직전 5)면 왕실 권위로 봄(딜러 calc 의 '5부위면 반지'와 같은 추정)
+  const tot = n + (n >= 2 ? rorg : 0); return tot >= SUP_NEED[r.cls] && tot <= SUP_MAX[r.cls] ? {cls: r.cls, rorg} : null; }
 function calcSupport(r, tplId, paraVit){ const tpl = M.findBuild(tplId), main = SUP_MAIN[r.cls], names = Object.values(r.items).map(x => x.name), cube = (r.cube || []).filter(Boolean), sup = supSetupOf(r);
   const build = {...tpl, cube: cube.slice()}; if (sup && sup.rorg && !cube.includes(D.config.model.rorgName)) build.cube.push(D.config.model.rorgName);
   if (names.includes('명료의 손목싸개') && !build.cube.includes('명료의 손목싸개')) build.cube.push('명료의 손목싸개');   // 착용도 규칙(SUPPORT_RULE)이 카나이 이름으로 알아보게
@@ -3087,32 +3137,20 @@ function calcSupport(r, tplId, paraVit){ const tpl = M.findBuild(tplId), main = 
   build.legGems = Object.keys(lg).length ? lg : tpl.legGems;
   const c = M.buildCache(build), sets = {}, rorg = sup ? sup.rorg : 0; for (const k in r.sets) sets[k] = r.sets[k] >= 2 ? r.sets[k] + rorg : r.sets[k];
   c.sets = sets; c.SB = c.RULE.setBonus(sets, c.CM, build); const sm = c.SB.statMult || 1;
-  if (Object.values(r.items).some(x => x.armor != null)) { let ga = 0; const seen = new Set(); for (const [s, it] of Object.entries(r.items)) { ga += it.armor || 0; seen.add(SLOTMAP[s]); }
-    for (const k in tpl.slots) if (!seen.has(k)) ga += D.slotDefs[D.itemsById[tpl.slots[k].item].slot].baseArmor || 0; c.gearArmor = ga; }
-  const a = M.newAcc(), RO = D.config.model.resOne.support; let flatVit = 0, flatMain = 0, iasItem = 0;
+  { const ga = HP.gearArmorOf(r, tpl); if (ga != null) c.gearArmor = ga; }
+  const a = M.newAcc(), RO = D.config.model.resOne.support, flat = {vit: 0, main: 0}; let iasItem = 0;
   for (const [slot, it] of Object.entries(r.items)) { const wk = SLOTMAP[slot], isW = c.wKeys.includes(wk); a.curKey = wk;
-    for (const t of it.primary) { let m; const cal = /칼데산/.test(t);
-      if ((m = t.match(/^활력 \+([\d,]+)/))) cal ? flatVit += num(m[1]) : M.addGroup(a, 'vit', num(m[1]));
-      else if ((m = t.match(new RegExp('^' + main + ' \\+([\\d,]+)')))) cal ? flatMain += num(m[1]) : M.addGroup(a, 'dex', num(m[1]));
-      else if ((m = t.match(/^지능 \+([\d,]+)/))) M.addGroup(a, 'intm', num(m[1]));
-      else if ((m = t.match(/^모든 원소 저항 \+([\d,]+)/))) M.addGroup(a, 'allres', num(m[1]));
-      else if ((m = t.match(/^방어도 \+([\d,]+)/))) M.addGroup(a, 'armor', num(m[1]));
-      else if ((m = t.match(/^생명력 \+([\d.]+)%/))) M.addGroup(a, 'lifep', +m[1]);
-      else if ((m = t.match(/정예.*받는 피해.* ([\d.]+)% 감소/))) M.addGroup(a, 'elitered', +m[1]);
-      else if ((m = t.match(/자원 소모량 ([\d.]+)% 감소/))) M.addGroup(a, 'rcr', +m[1]);
-      else if ((m = t.match(/^모든 기술의 재사용 대기시간 ([\d.]+)% 감소/))) M.addGroup(a, 'cdr', +m[1]);
-      else if ((m = t.match(/^적중당 생명력 \+([\d,]+)/))) a.loh += num(m[1]);
-      else if ((m = t.match(/^초당 생명력 ([\d,]+) 회복/))) a.regen += num(m[1]);
+    for (const t of it.primary) { let m;
+      if (HP.readCoreLine(t, a, main, flat) || HP.readHealLine(t, a, null)) continue;   // 딜러와 공통(hero_parse)
+      if ((m = t.match(/^지능 \+([\d,]+)/))) M.addGroup(a, 'intm', num(m[1]));
       else if ((m = t.match(/^공격 속도 ([\d.]+)% 증가/))) { iasItem += +m[1]; if (isW) a.iasBy[wk] = (a.iasBy[wk] || 0) + m[1]/100; else a.ias += m[1]/100; } }
     for (const t of it.secondary) { let m;
       if ((m = t.match(/^적 처치 시 생명력 \+([\d,]+)/))) { a.lpk = (a.lpk || 0) + num(m[1]); continue; }
-      if ((m = t.match(/^(물리|냉기|화염|번개|독|비전|신성) 저항 \+([\d,]+)/))) M.addGroup(a, 'allres', num(m[2]) * (m[1] === '물리' ? RO.phys : RO.elem));
+      if (HP.readResLine(t, a, RO.elem, RO.phys)) { /* 단일 저항 → 모든 저항 환산(서포터 값) */ }
       else if ((m = t.match(/^(근접|원거리) 공격으로 받는 피해 ([\d.]+)% 감소/))) M.addGroup(a, 'mrdr', +m[2]); }
-    for (const g of it.gems || []) { const k = g && GEM(g); if (!k) continue;
-      if (slot === 'head') { if (k === 'amethyst') a.lifep += 0.23; else if (k === 'diamond') a.cdr.push(0.125); else if (k === 'topaz') a.rcr.push(0.125); }
-      else if (slot === 'torso' || slot === 'legs') { if (k === 'diamond') a.allres += 78; else if (k === 'amethyst') flatVit += 280; else if ((k === 'emerald' && main === '민첩') || (k === 'ruby' && main === '힘')) flatMain += 280; } } }
+    HP.applyGems(it, slot, a, main, flat); }
   if (Object.values(build.legGems).includes('gogok')) { a.ias += 0.15; a.cdr.push(0.15); }
-  a.itemVit += flatVit / sm; a.itemDex += flatMain / sm;
+  a.itemVit += flat.vit / sm; a.itemDex += flat.main / sm;
   const st = M.statsFromAcc(a, build, {paragon: r.P, paraVit, gemMode: 'solo', augRank: 1e-9, squirtBase: true, ...(r.weaponGem ? {gems: {weapon: r.weaponGem}} : {})});
   return {T: st.tough, life: st.life, vit: st.vit, main: st.dex, cdr: st.cdrTotal, aps: st.parts.aps, fire: st.parts.xExtra && st.parts.xExtra.fire != null ? st.parts.xExtra.fire : null, iasItem, build}; }
 if (require.main === module) {
@@ -3152,7 +3190,7 @@ async function loadData(){
   const objs = await Promise.all(names.map(n => fetch("data/"+n+".json").then(r => { if(!r.ok) throw new Error(n+" "+r.status); return r.json(); })));
   const d = Object.fromEntries(names.map((n,i)=>[n,objs[i]]));
   /* 우리 아이템 자료에 없는 아이템의 그림(계정 조회 탭): {이름: {icon(data URI), quality, w, h}} — 수집 기록(d3collect·d3top)의 API icon 이름으로 블리자드 CDN 에서 받음(2026-11-19, 사용자 "데이터는 수집됐는데 그림이 없는 아이템부터 수집하자."). 없어도 화면은 돎 */
-  /* 그림은 data URI 로 한 파일에 담음(아티팩트 한 판의 파일 수 상한 512 — 낱개 png 123개는 못 올림). 1.3MB 라 첫 화면을 기다리게 하지 않고 따로 받음(36_heroview 가 받는 대로 다시 그림) */
+  /* 그림은 data URI 로 한 파일에 담음(아티팩트 한 판의 파일 수 상한 512 — 낱개 png 123개는 못 올림). 1.3MB 라 첫 화면을 기다리게 하지 않고 따로 받음(39_heroview 가 받는 대로 다시 그림) */
   d.heroIcons = null; d.heroIconsP = fetch("data/hero_icons.json").then(r => r.ok ? r.json() : null).catch(() => null).then(x => { d.heroIcons = x; return x; });
   d.path = await fetch("data/path.json").then(r => r.ok ? r.json() : null).catch(() => null);   // 정복자 800→20000 경로(tools/scan.js → tools/merge_path.py)
   d.itemsById = Object.fromEntries(d.items.items.map(it => [it.id, it]));
@@ -3216,6 +3254,12 @@ function useFlip(ref, scope){ const st = useRef({scope: null, pos: new Map(), id
 /* ---------- 포맷 ---------- */
 /* 인형 위 아이콘 = 원본 png 를 픽셀당 config.iconDraw.pxScale(0.99 doll px)로(64폭 → 63.4px, 갑옷 82×164 → 81×162px, 게임은 64 로 정규화하지 않음).
    중심 = layout 의 icx/icy(인게임 캡처를 doll.png 에 정합해 실측; 없으면 칸 중심). 칸을 넘쳐도 자르지 않음. 근거: gen/slots.py layout 주석. */
+/* 인형 칸 안의 보석 자리(랭크표 20_rank·계정 조회 39_heroview 공용 — 2026-11-19 모듈화). 일반 보석 = config.gemDraw 의 칸 중심에서 세로로 i 번째(n 개),
+   전설 보석 = 목걸이는 한가운데 큰 홈(32px), 반지는 칸 오른쪽 아래 꼭짓점(근거: 20_rank 의 전설 보석 주석) */
+const dollGemStyle = (entry, gc, i, n) => { const GD = D.config.gemDraw; return {left: gc[0] - entry.x - GD.size/2, top: gc[1] + (i - (n-1)/2)*GD.step - entry.y - GD.size/2, width: GD.size, height: GD.size}; };
+/* 인형 바탕 그림(직업별, gen_data DOLL_IMAGE — 없으면 악사) — 두 화면 공용 */
+const dollBgStyle = classId => ({backgroundImage: `url(${D.dollImage[classId] || D.dollImage.dh})`, backgroundSize: `${D.dollBase[0]}px ${D.dollBase[1]}px`});
+const legGemStyle = entry => entry.slot === "amulet" ? {left: (entry.w - 32)/2, top: (entry.h - 32)/2} : {right: -16, bottom: -16};
 function iconRect(entry, item){
   const k = D.config.iconDraw.pxScale; const [rw, rh] = item.iconSize || [64, 128]; const w = rw * k, h = rh * k;
   const cx = entry.icx != null ? entry.icx - entry.x : entry.w / 2, cy = entry.icy != null ? entry.icy - entry.y : entry.h / 2;
@@ -3487,11 +3531,11 @@ function Tooltip(props){ return <Scaled W={props.W}><TooltipInner {...props}/></
 function ParagonLine({st, style, g, mainLabel, prio, toughRef, split}){ if (!st || !st.para) return null; const pg = D.config.model.paragon;
   const A = D.config.model.augment, p = st.para; const nDex = p.nAug - p.nAugVit - p.nAugInt - p.nAugStr;
   const aug = A ? [[mainLabel || "민첩", nDex], ["활력", p.nAugVit], ["지능", p.nAugInt], ["힘", p.nAugStr]].filter(x => x[1] > 0).map(x => x[0] + " × " + x[1]).join(" · ") : null;
-  /* 서포터(prio)는 몸만: 150 + log(강인함 ÷ 기준점 강인함) ÷ log 1.17, 150 상한, 시간 없음. 출처: 사용자 2026-11-14 '각 세팅이 몸이 몇단인지, 최대 150단 두고 표기해봐', '대균열 : 150단으로 하고' */
+  /* 서포터(prio)는 몸만: 150 + log(강인함 ÷ 기준점 강인함) ÷ log 1.02337(몬스터 공격력 증가율 — 40_gr150 prioToughTier), 150 상한, 시간 없음. 출처: 사용자 2026-11-14 '각 세팅이 몸이 몇단인지, 최대 150단 두고 표기해봐', '대균열 : 150단으로 하고' */
   const tier = g ? Math.min(D.config.model.score.gr150.target, Math.floor(Math.min(g.d, g.t) + 0.02))
-    : prio && toughRef && st.tough ? Math.min(D.config.model.score.gr150.target, Math.floor(D.config.model.score.gr150.target + Math.log(st.tough / toughRef) / Math.log(D.config.model.score.gr.hpStep) + 0.02)) : null;
+    : prio && toughRef && st.tough ? Math.min(D.config.model.score.gr150.target, Math.floor(prioToughTier(st.tough, toughRef) + 0.02)) : null;
   /* 150단 예상 클리어 시간 = 이동 1:10(고정) + 딜 시간 13:50 ÷ 1.17^(딜 단수 − 150). 기준점 = 150단을 15분(목표 시간)에 깸 = 13:50 딜 + 1:10 이동. 하한 없음. 150단 미만(탱 부족 포함)은 표시 안 함.
-     꼬맹이 유지율(20_stats speedSolve)은 이동 시간 없이 예전 식(사용자 '꼬맹이 유지율도 일단 둬봐') — 표시 전용 clearTravelMin.
+     꼬맹이 유지율(21_speed speedSolve)은 이동 시간 없이 예전 식(사용자 '꼬맹이 유지율도 일단 둬봐') — 표시 전용 clearTravelMin.
      출처: 사용자 2026-11-14 '150단 옆에 예상 클리어시간도 150단(00:00) 적어줄까?', '이동은 1:10 고정으로 하고, 상대적 딜링 시간을 더해서 표기해주자. 우리 기준점은 13:50동안 딜하고, 1:10동안 이동한거지', '하한은 필요없고, 꼬맹이 유지율도 그대로 바꾸는게 맞긴하겠다'
      이전(같은 날): 15분 ÷ 1.17^(…), 2:00 하한 */
   const SQ = D.config.model.squirt, TR = D.config.model.clearTravelMin || 0, clr = g && tier === D.config.model.score.gr150.target ? Math.round(TR*60 + (SQ.clearMin - TR)*60 / Math.pow(D.config.model.score.gr.hpStep, g.d - tier)) : null;
@@ -3607,15 +3651,15 @@ function RankPage({build: build0, opts, groupId, onPin, swapBuild}){
         {/* '또는' 아이템은 칸 안에 그리지 않음 — 바꿔 보기 단추가 그 그림(00_base SwapBtn, 2026-11-13). 이전: 칸 오른쪽 아래에 겹쳐 그림(oricon) */}</span>}
       {item && !mini && <SwapBtn build={build} slotKey={key} sw={sw} className="onslot"/>}
       {gc && Array.from({length: sg.n}, (_, i) => <img key={"g"+i+"_"+(gemFlash[key]||0)} className={"dollgem"+(gemFlash[key]?" bump":"")} aria-hidden="true" src={sg.gem.iconTone || sg.gem.icon} alt=""
-          style={{left: gc[0] - entry.x - GD.size/2, top: gc[1] + (i - (sg.n-1)/2)*GD.step - entry.y - GD.size/2, width: GD.size, height: GD.size}}/>)}
+          style={dollGemStyle(entry, gc, i, sg.n)}/>)}
       {/* 전설 보석(반지·목걸이): maxroll d3planner 처럼 칸 한가운데 32px(칸 38·50px, 2026-11-13 실측). 세팅의 legGems(gen/leggems.py), 표기만. 출처: 사용자 2026-11-13 '표시 방식은 MAXROLL 보석표시를 그대로 따라하고' */}
       {/* 보석 밑에 홈 모양(maxroll .d3p-Socket 배경 = 스프라이트의 (0,71) 32×32 조각 → icons/leggem/socket.png, Chrome 2026-11-13 base64 checksum 844452446).
           출처: 사용자 2026-11-13 '장신구랑 홈 높이 사이에 홈 모양도 있을텐데 MAXROLL 페이지 잘 찾아봐' */}
-      {item && legGemOf(build, key) && <span className="dollgem leg big" aria-hidden="true" style={entry.slot === "amulet" ? {left: (entry.w - 32)/2, top: (entry.h - 32)/2} : {right: -16, bottom: -16}}><img src={legGemOf(build, key).icon} alt=""/></span>}   {/* 위치: 목걸이 = 한가운데 큰 홈(32px), 반지 = 목걸이와 같은 큰 홈(32px, 사용자 '크기도 목걸이랑 같게해서')의 가운데를 칸 오른쪽 아래 꼭짓점에(바꿔 보기 단추가 오른쪽 위 꼭짓점에 걸치는 것과 같은 식) — 사용자 2026-11-13 '아님 아예 반지는 오른쪽 아래 꼭짓점에 둘까?'. 이전: 문양 반대쪽 아래 모서리 안쪽(config.legGemLeft — 지금은 안 씀, 데이터는 남겨 둠). 사용자 2026-11-13 '목걸이는 기존 정중앙에 기존크기로 변경하고, 반지는 지금이 좋은데, 반지의 문양부분이 있는쪽의 대각선방향에' */}
+      {item && legGemOf(build, key) && <span className="dollgem leg big" aria-hidden="true" style={legGemStyle(entry)}><img src={legGemOf(build, key).icon} alt=""/></span>}   {/* 위치: 목걸이 = 한가운데 큰 홈(32px), 반지 = 목걸이와 같은 큰 홈(32px, 사용자 '크기도 목걸이랑 같게해서')의 가운데를 칸 오른쪽 아래 꼭짓점에(바꿔 보기 단추가 오른쪽 위 꼭짓점에 걸치는 것과 같은 식) — 사용자 2026-11-13 '아님 아예 반지는 오른쪽 아래 꼭짓점에 둘까?'. 이전: 문양 반대쪽 아래 모서리 안쪽(config.legGemLeft — 지금은 안 씀, 데이터는 남겨 둠). 사용자 2026-11-13 '목걸이는 기존 정중앙에 기존크기로 변경하고, 반지는 지금이 좋은데, 반지의 문양부분이 있는쪽의 대각선방향에' */}
       {!item && <span className="slotlabel">{slot.label}</span>}
     </button>; };
   const doll = mini => (
-    <div className={"doll" + (mini ? " minidoll" : "")} style={{transform:`scale(${mini ? km : k})`, ...(mini ? {"--bk": k/km} : {}), width:BW, height:BH, backgroundImage:`url(${D.dollImage[classIdOf(build)] || D.dollImage.dh})`, backgroundSize:`${BW}px ${BH}px`}}
+    <div className={"doll" + (mini ? " minidoll" : "")} style={{transform:`scale(${mini ? km : k})`, ...(mini ? {"--bk": k/km} : {}), width:BW, height:BH, ...dollBgStyle(classIdOf(build))}}
       onMouseLeave={()=>setHover(null)} onClick={e=>{ if (e.target.closest('.slot')) return; if (!mini) { setPinned(null); return; }
         const r = e.currentTarget.getBoundingClientRect(), best = nearestSlot(build, (e.clientX - r.left) / km, (e.clientY - r.top) / km);
         if (best) { alignNext.current = true; setPinned(best); } }}>
@@ -4029,7 +4073,7 @@ const HERO_CLS_OK = {wizard: 1, dh: 1, crusader: 1, monk: 1};
 const heroFindBuild = id => { for (const s of D.builds.seasons) for (const c of s.classes) { const b = c.builds.find(x => x.id === id); if (b) return {...b, className: c.label}; } return null; };
 /* 이 영웅이 계산기의 어느 세팅인지 → {setup, tpl(세팅 객체), group} 또는 {why}(지원 안 함) */
 /* 서포터(우선순위 방식 — 35_priority.js) 판별. 사용자 2026-11-19 "서포터도 감지해서 띄워주게 해야지.", "서포터 옵션랭크표에 표현되는 딜러와의 차이점도 반영해."
-   세트(왕실 권위 포함): 공포의 땅 4 = 서사시 악사, 래코르 6 = 작살 야만용사(tough_calc supSetupOf). 변형은 영웅 장비로: 명료의 손목싸개(카나이·착용)·난해한 변화·양의 만곡궁이 몇 개 맞는지(가장 가까운 것).
+   세트(왕실 권위 포함): 공포의 땅 4~5부위 = 서사시 악사(6세트는 딜러 — 계산기에 없음), 래코르 6 = 작살 야만용사(tough_calc supSetupOf). 변형은 영웅 장비로: 명료의 손목싸개(카나이·착용)·난해한 변화·양의 만곡궁이 몇 개 맞는지(가장 가까운 것).
    작살 야만용사는 4인(zbarb_sup)으로 봄 — 2인(zbarb2_sup)은 장비가 같고 파티 버프만 달라 장비로 가를 수 없음 */
 const HERO_SUP = {dh: {setup: "서사시 악사", group: "zdh_sup"}, barbarian: {setup: "작살 야만용사 (4인)", group: "zbarb_sup"}};
 function heroSupVariant(r){ const its = Object.values(r.items || {}), names = its.map(x => x.name), cube = (r.cube || []).filter(Boolean), eso = its.some(x => (x.gems || []).includes((D.config.legGems.esoteric || {}).name));
@@ -4046,8 +4090,8 @@ function heroSetupOf(r){ if (!r) return {why: "영웅 자료 없음"};
   return {setup: s, tpl, group: HERO_SETUP[s].group}; }
 /* 정복자 P, 활력 포인트 v 일 때의 값. value = 150단을 버티면(cap) 공격력 단수, 아니면 둘 중 낮은 쪽(valueOfPre 와 같은 규칙) */
 function heroEval(r, S, P, v){ const M = D.config.model, C = M.score.gr150, lib = heroCalcLib();
-  /* 서포터: 몸만(랭크표 ParagonLine 의 서포터 단수와 같은 식 — 150 + log(강인함 ÷ 기준점 강인함) ÷ log 1.17). 공격력은 재지 않음 */
-  if (S.prio) { const x = lib.calcSupport({...r, P}, S.tpl.id, v), ref = prioRefTough(S.tpl.id), t = ref ? C.target + Math.log(x.T / ref) / Math.log(M.score.gr.hpStep) : null;
+  /* 서포터: 몸만(랭크표 ParagonLine 의 서포터 단수와 같은 식 — 40_gr150 prioToughTier — 몬스터 공격력 증가율로). 공격력은 재지 않음 */
+  if (S.prio) { const x = lib.calcSupport({...r, P}, S.tpl.id, v), ref = prioRefTough(S.tpl.id), t = ref ? prioToughTier(x.T, ref) : null;
     return {v, d: null, t, mode: "prio", value: t, tough: x.T, life: x.life, vit: x.vit, main: x.main, cdr: x.cdr, aps: x.aps, fire: x.fire, iasItem: x.iasItem}; }
   const x = lib.calc({...r, P}, v), gk = lib.buildGemK(S.tpl);
   const T = tiers150({dmg: x.dmg / gk, tough: x.T}, gr150RefFor(S.tpl), C, M.score.gr), cap = T.t >= C.target - 1e-9;
@@ -4061,11 +4105,11 @@ function heroRecommend(r, S, P){ const free = heroFree(S, P), C = D.config.model
   /* 서포터: 랭크표와 같은 '강인함 최대 분배'(35_priority — 강인함은 활력에 대해 봉우리 하나 → 삼분 탐색), 나머지 주능력치 */
   if (S.prio) { let lo = 0, hi = free; while (hi - lo > 2) { const m1 = lo + Math.floor((hi - lo) / 3), m2 = hi - Math.floor((hi - lo) / 3); if (at(m1).tough < at(m2).tough) lo = m1 + 1; else hi = m2 - 1; }
     let v = lo; for (let x = lo; x <= hi; x++) if (at(x).tough > at(v).tough) v = x; return {...at(v), free, main: free - v}; }
-  const minV = want => { if (want(at(0))) return 0; if (!want(at(free))) return free; let lo = 0, hi = free; while (hi - lo > 1) { const mid = (lo + hi) >> 1; if (want(at(mid))) hi = mid; else lo = mid; } return hi; };
+
   /* 굽기(tools/milp/point.js)와 같은 규칙: 먼저 균형(공격력·강인함 중 낮은 쪽 최대 = 둘이 만나는 활력). 그 지점에서 둘 다 150단 이상일 때만 상한 모드(강인함 150단을 지키는 최소 활력, 나머지 주능력치).
      2026-11-19 고침: 전에는 '활력을 다 찍으면 강인함 150단이 되나'만 봐서, 공격력이 150단에 못 미쳐도 강인함 150단부터 맞추라고 함(사용자 악사 공격력 144단·강인함 150단에 활력 666 추천 —
      "공격력부터 채워야하는거 아냐?") */
-  const vb = minV(e => e.t >= e.d), eb = at(vb), capOk = Math.min(eb.d, eb.t) >= C.target - 1e-9, v = capOk ? minV(e => e.t >= C.target - 1e-9) : vb;
+  const v = allocParaVit(at, free, C.target, 1e-9).v;   // 40_gr150 (경로와 같은 분배 규칙)
   return {...at(v), free, main: free - v}; }
 /* 같은 정복자에서 계산기가 추천하는 구성(구운 경로)의 값 → {variant, d, t, mode, value, paraVit} 또는 null(경로 자료 없음) */
 function heroRecGear(S, P){ const m = D.path && D.path.modes.solo; if (!m) return null; const seg = (m.segments[S.group] || []).find(s => P >= s.from && P <= s.to), vid = seg ? seg.variant : S.tpl.id;
@@ -4080,7 +4124,7 @@ function heroRecModel(vid, P){ const k = vid + "|" + P; if (!HERO_RECMEMO.has(k)
    방법: 추천 칸(아이템·정옵·보조 정옵)을 API 옵션 문구 꼴로 적어 영웅 자료의 그 칸에 끼움 → 같은 계산(tough_calc calc)으로 값을 다시 냄. 문구는 calc 가 읽는 꼴에 맞춤(광역 피해·처치 시 생명력·기술 피해는 게임 문구가 우리 표기와 달라 따로).
    그대로 두는 것: 그 칸의 칼데산(영웅 것), 장신구·무기의 보석(영웅 것 — 전설 보석은 칸과 무관). 머리·상의·바지 보석은 추천 구성의 보석.
    값 = 정복자를 다시 추천 분배했을 때의 단수(강인함이 늘면 활력을 덜 찍어 딜로 옴 — 랭크표의 정옵 비교와 같은 생각). 차이 % = 1 − 1.17^(−단수 차). */
-const HERO_API = {head: "head", neck: "neck", torso: "torso", shoulders: "shoulders", legs: "legs", waist: "waist", hands: "hands", wrists: "bracers", feet: "feet", leftfinger: "leftFinger", rightfinger: "rightFinger", mainhand: "mainHand", offhand: "offHand"};
+const HERO_API = HERO_PARSE.API_OF;   // 우리 칸 → API 칸(공용 tools/hero_parse.js)
 const HERO_GEMNAME = {diamond: "최상급 다이아몬드", amethyst: "최상급 자수정", emerald: "최상급 에메랄드", topaz: "최상급 토파즈", ruby: "최상급 루비"};
 function heroAffixLine(aid, slotId, recBuild, val){ const a = D.affixes[aid], g = a.group, rg0 = (a.ranges && (a.ranges[slotId] || a.ranges["*"])) || null, rg = rg0 && val != null && a.unit === "avg" ? [Math.round(rg0[0] * val / rg0[1]), val] : rg0, v = val != null ? val : rg ? rg[1] : 0, main = mainLabelOf(recBuild) || "민첩";
   if (aid === "socket") return null;
@@ -4265,7 +4309,7 @@ function heroSlotRatios(r, S, P, v, recBuild, itemOf){ const base = heroEval(r, 
 function heroNextSetup(r, S, P0, recBuild, itemOf){ const m = D.path && D.path.modes.solo, G = heroGroupOf(S); if (!m || !G || !recBuild) return null;
   const C = D.config.model.score.gr150, cur = heroCurVariant(r, S, itemOf), segs = m.segments[S.group] || [], cands = [...new Set(segs.map(x => x.variant))].filter(x => x !== cur && m.variants[x]);
   if (!cands.length) return {none: true, cur};
-  const val = e => Math.min(e.d, e.t) >= C.target - 1e-9 ? e.d : Math.min(e.d, e.t), v0 = heroRecommend(r, S, P0).v, rho = heroSlotRatios(r, S, P0, v0, recBuild, itemOf);
+  const val = e => valueOfTiers(e, C.target), v0 = heroRecommend(r, S, P0).v, rho = heroSlotRatios(r, S, P0, v0, recBuild, itemOf);
   const curAt = P => heroRecommend(r, S, P).value;
   const candAt = (w, P) => { const rm = heroRecModel(w, P); if (!rm) return null; const keys = Object.keys(rm.slots).filter(k => { const it = r.items[HERO_API[k]]; return it && !heroSameItem(itemOf(it.name), D.itemsById[rm.slots[k].item]); });
     const rw = heroSwapped(r, rm, keys, itemOf), vv = heroRecommend(rw, S, P).v, hi = heroEval(rw, S, P, vv); let pd = 0, pt = 0;
@@ -4285,7 +4329,7 @@ function heroNextSetup(r, S, P0, recBuild, itemOf){ const m = D.path && D.path.m
    사용자 2026-11-19: "획득방법 비교탭 바로 옆 탭에, 내 api key로 계정 이름을 넣고 돌려서 그사람 계정을 불러오고, 캐릭터 선택 후, 축성 아이템을 추가하고, 정복자를 손으로 분배하고,
                        계산식에 의하면 어느정도의 위치에 있는지 계산해주는. 그리고 정복자 추천은 어떻게 되는지 보여주는 탭을 만들자. 캐릭터 새로고침을 해도 축성 아이템이 저장된채로 유지되게"
                       "공개공유가 되면서, 나만 조회가 가능한 페이지를 만들자는거야."
-   화면 = 36_heroview.jsx(옵션 랭크표와 같은 모양), 계산 = 34_herocalc.jsx.
+   화면 = 39_heroview.jsx(옵션 랭크표와 같은 모양), 계산 = 34_herocalc.jsx.
    구조(같은 날 시험으로 정함):
      · 게시된 아티팩트는 다른 서버를 직접 못 부름 → 조회는 '조회 버튼' 페이지(비공개, 커넥터 Claude Code Remote 의 fire_trigger)가 예약 작업 "디아3 계정 조회"를 깨우고,
        깨어난 Claude 세션이 배틀넷 API 를 읽어 이 아티팩트의 데이터베이스 acct/a_<키> 에 씀(키 = 지역 + "_" + 배틀태그(# → -)의 UTF-8 16진). 이 탭은 그 문서를 읽기만 함.
@@ -4297,7 +4341,7 @@ function heroNextSetup(r, S, P0, recBuild, itemOf){ const m = D.path && D.path.m
    ============================================================================================ */
 const ACCT_BUTTON_URL = "https://claude.ai/artifact/7q6CpZ2VLW6kUVPXYT1Ycz";   // 조회 버튼 페이지(본인 전용) — claude.ai 판에서만 씀
 const ACCT = {db: null, local: false, ok: false, docs: [], hist: {}, over: {}, err: null, subs: new Set()};
-/* over = 직접 넣은 축성 아이템 {<기록 id>: {okey, slots}} (36_heroview saveSlot). 기록 id = GitHub 판은 조회 기록마다(아래 hist), 아티팩트 판은 <계정 키>_<영웅 번호>
+/* over = 직접 넣은 축성 아이템 {<기록 id>: {okey, slots}} (39_heroview saveSlot). 기록 id = GitHub 판은 조회 기록마다(아래 hist), 아티팩트 판은 <계정 키>_<영웅 번호>
    hist(GitHub 판만) = 캐릭터별 조회 기록 {<계정 키>_<영웅 번호>: [{rid, at, alias, sig, hero}]} — 아래 acctAddHist 주석 */
 const acctEmit = () => ACCT.subs.forEach(f => { try { f(); } catch (e) {} });
 /* 저장소 두 가지(사용자 2026-11-19 "깃허브 페이지로 만들어서 조회페이지까지 연동" → "그래 각자 키를 적는걸로 하고"):
@@ -4317,7 +4361,7 @@ const acctSortDocs = L => L.filter(d => d && d.key).sort((a, b) => String(b.fetc
       /* 한 번만 구독(렌더 안에서 구독하지 않음). 읽기가 거부되면(소유자가 아님) 탭을 숨긴 채로 둠 */
       db.collection("acct").onSnapshot(s => { ACCT.ok = true; ACCT.err = null; ACCT.over = Object.fromEntries(s.docs.map(d => d.data()).filter(d => d && d.okey).map(d => [d.okey, d])); ACCT.docs = acctSortDocs(s.docs.map(d => d.data())); acctEmit(); },
         e => { ACCT.err = (e && e.code) || "error"; acctEmit(); }); }).catch(() => {}); } catch (e) {} })();
-/* 축성 설정 저장(36_heroview saveSlot) */
+/* 축성 설정 저장(39_heroview saveSlot) */
 function acctSaveOver(okey, slots){ ACCT.over = {...ACCT.over, [okey]: {okey, slots}}; acctEmit();
   if (ACCT.local) { acctLsSet(ACCT_LS.over, ACCT.over); return; }
   try { if (ACCT.db) ACCT.db.doc("acct/o_" + okey).set({okey, slots}).catch(() => {}); } catch (e) {} }
@@ -4385,7 +4429,7 @@ function acctEditHist(hk, rid, patch){ const L = (ACCT.hist[hk] || []).map(x => 
   ACCT.hist = {...ACCT.hist, [hk]: L}; if (!L.length) delete ACCT.hist[hk];
   if (!patch && ACCT.over[rid]) { const o = {...ACCT.over}; delete o[rid]; ACCT.over = o; acctLsSet(ACCT_LS.over, ACCT.over); }
   acctLsSet(ACCT_LS.hist, ACCT.hist); acctEmit(); }
-/* 탐색 결과 저장(36_heroview — 저장된 결과가 없을 때 화면에서 탐색한 것). GitHub 판 = 그 기록의 hero.live, 아티팩트 판 = 계정 문서의 영웅 */
+/* 탐색 결과 저장(39_heroview — 저장된 결과가 없을 때 화면에서 탐색한 것). GitHub 판 = 그 기록의 hero.live, 아티팩트 판 = 계정 문서의 영웅 */
 function acctSaveLive(acc, rid, heroId, live){
   if (ACCT.local) { for (const [hk, L] of Object.entries(ACCT.hist)) { const i = L.findIndex(x => x.rid === rid); if (i < 0) continue;
       const N = L.slice(); N[i] = {...L[i], hero: {...L[i].hero, live}}; ACCT.hist = {...ACCT.hist, [hk]: N}; acctLsSet(ACCT_LS.hist, ACCT.hist); return; } return; }
@@ -4412,7 +4456,7 @@ function useAcctLookup(onDone){
     const o = await acctFetch(tag, reg, cred);
     if (o.error) { setBusy(null); return setMsg({bad: true, t: "조회 실패: " + (ACCT_ERR[o.error] || o.error)}); }
     const t1 = Date.now(); setMsg({t: "불러옴(" + ((t1 - t0) / 1000).toFixed(1) + "초) — 비교 기준 계산 중…"});
-    await heroPrecompute(o, (i, n) => setMsg({t: "불러옴(" + ((t1 - t0) / 1000).toFixed(1) + "초) — 비교 기준 계산 " + i + "/" + n}));   // 36_heroview: 조회할 때 미리 탐색해 저장
+    await heroPrecompute(o, (i, n) => setMsg({t: "불러옴(" + ((t1 - t0) / 1000).toFixed(1) + "초) — 비교 기준 계산 " + i + "/" + n}));   // 38_herolive: 조회할 때 미리 탐색해 저장
     setBusy(null); const res = acctPutLocal(o);
     setMsg(res.saved ? {t: "조회 끝 — 캐릭터 " + o.heroes.length + "개, 새 기록 " + res.added + "개" + (res.updated ? ", 바뀐 기록 " + res.updated + "개" : "") + " (" + ((Date.now() - t0) / 1000).toFixed(1) + "초)"} : {bad: true, t: ACCT_ERR.store_full});
     if (onDone) onDone(o); };
@@ -4490,20 +4534,12 @@ function AccountPage(){
 }
 
 /* ============================================================================================
-   계정 조회 탭의 캐릭터 화면 — 옵션 랭크표와 같은 모양(인형 칸 + 오른쪽 툴팁 + 아래 기술 줄)에 '실제 장비'를 넣음.
-   사용자 2026-11-19 "캐릭터 페이지는 옵션랭크표랑 똑같이 생겨야지." / "실제장비가 추천정옵에 비해 딜이 얼마나 떨어지는지, 몇 적개심 시간만큼 안좋은지, 정복자 추천분배는 몇이고, 그렇게 적용하면 몇단가능한지. 표기."
-   랭크표(20_rank RankPage)와 다른 점: 랭크표는 추천 정옵(옵션 종류·범위)을, 여기는 API 가 준 옵션 문구(실제 수치)를 그대로 보여 줌. 옵션 줄의 등급 색 = 같은 정복자의 추천 구성에서 그 칸·그 옵션이 받은 등급.
-   계산은 34_herocalc.jsx. 아직 없는 것: 적개심 시간 차이.
-   2026-11-19 사용자: "카나이 안보이고 글씨로만 나옴. -10.8이 딜말하는거야 탱말하는거야? 다른템은 뭔소리야. 신발똑같은데. 정옵이 아닌데 정옵판정은 뭐야 또? 보석표기는 왜 또 옵션랭크표랑 다른데."
-     → 카나이 = 랭크표의 기술 줄 그림(이름 → 그림 번호는 세팅 자료에서), 칸 위 표기 = [공격력 / 강인함] 둘 따로, 같은 아이템 판정 = 이름 또는 같은 세트·같은 부위, '정옵' = 추천 정옵 옵션을 전부 가졌을 때만, 보석 = 랭크표와 같은 그림(인형 칸·툴팁).
-   "빈칸눌러도 축성아이템 추가 창이 안뜨잖아. … 여기에 축성아이템 설정을 추가해." → 빈칸의 툴팁 자리가 설정 창(HeroSlotEdit). 저장 = 데이터베이스 acct/o_<계정 키>_<영웅 번호> {okey, slots: {API 칸: spec}} — 다시 조회해도 남음.
+   계정 조회: API 아이템 문구를 우리 자료로(화면용) — 옵션 문구 → 옵션 id(heroAidOf), 등급, 보석, 카나이 그림.
+   계산용 읽기(스탯 합산)는 tools/tough_calc.js · tools/hero_parse.js. 2026-11-19 모듈화로 36_heroview.jsx 에서 나눔(36 아이템 읽기 / 37 툴팁·축성 설정 / 38 비교 기준 탐색 / 39 캐릭터 화면)
    ============================================================================================ */
-const HERO_SLOT = {head: "head", neck: "neck", torso: "torso", shoulders: "shoulders", legs: "legs", waist: "waist", hands: "hands", bracers: "wrists", feet: "feet", leftFinger: "leftfinger", rightFinger: "rightfinger", mainHand: "mainhand", offHand: "offhand"};
-const HERO_CPRE = {crusader: "cr_", monk: "mk_", wizard: "wz_", dh: "dh_", barbarian: "bb_", necromancer: "nc_", wd: "wd_"};
-let HERO_NAMEIDS = null;
-/* 이름 → 우리 아이템(같은 이름의 직업별 사본이 있으면 그 직업 것 > 공용 > 아무거나 — tough_calc.js idOf 와 같은 규칙) */
-function heroItemOf(name, cls){ if (!HERO_NAMEIDS) { HERO_NAMEIDS = {}; for (const it of D.items.items) (HERO_NAMEIDS[it.name] = HERO_NAMEIDS[it.name] || []).push(it.id); }
-  const L = HERO_NAMEIDS[name]; if (!L) return null; const id = L.find(x => x.startsWith(HERO_CPRE[cls] || "~")) || L.find(x => !/^(cr|mk|wz|dh|bb|nc|wd)_/.test(x)) || L[0]; return D.itemsById[id]; }
+/* 칸 이름(API → 우리)·이름 → 우리 아이템 = 공용(tools/hero_parse.js → HERO_PARSE, 2026-11-19 모듈화 — 전에는 여기와 tough_calc 에 같은 표·같은 규칙이 따로 있었음) */
+const HERO_SLOT = HERO_PARSE.SLOTMAP;
+const heroItemOf = (name, cls) => HERO_PARSE.itemOf(name, cls);
 /* 옵션 문구 → 옵션 id: affixes.json 의 이름 틀({v}·{lo}~{hi}·{skill}·{elem})을 정규식으로. 주능력치는 직업마다 글자가 달라 셋 다 받음. 그 칸의 풀에 있는 옵션을 먼저 봄 */
 let HERO_RX = null;
 /* 틀을 정규식으로: 자리표를 먼저 표식으로 바꾸고 → 나머지 글자를 이스케이프 → 표식을 패턴으로. 게임 문구가 우리 표기와 다른 것은 따로(HERO_RX_EXTRA):
@@ -4534,6 +4570,11 @@ function heroCubeId(name){ heroCubeMaps(); return HERO_CUBEID[name] || null; }
 function heroCubePower(name){ heroCubeMaps(); return HERO_CUBEPW[name] || ((D.items.items.find(it => it.name === name) || {}).power) || null; }
 const HERO_SEC_AIDS = ["resone", "resphys", "mrdr", "lpk", "maxdisc", "maxspirit", "hitchill", "hitslow"];
 /* 빈칸(또는 직접 넣은 칸)의 설정 창: 아이템 → 옵션(수치) → 보석·칼데산. 처음 값 = 추천 구성의 그 칸 */
+
+/* ============================================================================================
+   계정 조회: 오른쪽 툴팁(HeroTip — 실제 옵션 + 등급·증감)과 빈칸·축성 칸 설정 창(HeroSlotEdit), 추천 정옵 대비 빠진 옵션(heroMissing).
+   39_heroview 가 씀
+   ============================================================================================ */
 function HeroSlotEdit({W, apiSlot, skey, cls, recBuild, tplLike, spec0, onSave}){
   const items = heroSlotItems(cls, skey, recBuild), first = spec0 || (items[0] ? heroDefaultSpec(items[0].id, skey, cls, recBuild) : null);
   const [sp, setSp] = useState(first); if (!sp) return <div className="acct-edit" style={{width: W}}><p className="acct-note">이 칸에 넣을 수 있는 아이템 자료가 없습니다.</p></div>;
@@ -4620,6 +4661,11 @@ function HeroTip({W, r, apiSlot, cls, classId, recBuild, tplLike, summary, spec,
 /* 추천 정옵 가운데 이 아이템에 없는 옵션(같은 아이템일 때만 뜻이 있음). 홈은 보석이 박혀 있으면 있는 것으로 */
 function heroMissing(it, slotId, recCfg, recItem){ if (!recCfg || !slotId) return []; const have = new Set((it.primary || []).concat(it.secondary || []).map(t => heroAidOf(t, slotId)).filter(Boolean)); if ((it.gems || []).filter(Boolean).length) have.add("socket");
   return [...new Set((recCfg.goal || []).concat(activeSecGoal(recCfg)))].filter(a => !have.has(a) && !(recItem.fixed || []).some(f => f.affix === a && a !== recCfg.reroll)); }
+
+/* ============================================================================================
+   계정 조회: 비교 기준(이 영웅 아이템 구성에서의 최고 정옵) 탐색 — 작업자 실행·저장된 결과 적용·조회 직후 미리 계산.
+   39_heroview·35_account 가 씀
+   ============================================================================================ */
 const HERO_LIVE = new Map();   // 비교 기준 탐색 결과(세팅 객체 + 모델) — 열쇠 = 틀·정복자·칸별 아이템·카나이·전설 보석(heroLiveKey)
 /* 비교 기준(recBuild) = 이 영웅의 아이템 구성에서의 최고(34_herocalc heroLiveBuild 주석). 작업자(Web Worker)에서 탐색(한 영웅 약 10초).
    조회할 때 미리 계산해 계정 문서의 영웅에 저장(hero.live = {k: 열쇠, e: 탐색 결과}) → 화면은 저장된 결과를 모델에 다시 적용만 함(빠름).
@@ -4639,6 +4685,16 @@ async function heroPrecompute(doc, onProg){ const L = (doc.heroes || []).filter(
   await Promise.all(Array.from({length: Math.min(4, L.length)}, one)); return doc; }
 /* 서포터 인형 아래 두 줄(랭크표 PriorityLine·서포터 ParagonLine 과 같은 꼴, 값은 이 영웅의 실제 장비):
    '재사용 감소 : x% (고통 감내 상시 63.5% 이상) / 공격 속도 : +n% (/ 주 기술 발사 : 초당 n발)', '대균열 : n단 / 정복자 활력 … · 주능력치 …'(강인함 최대 분배, 150 상한) */
+
+/* ============================================================================================
+   계정 조회 탭의 캐릭터 화면 — 옵션 랭크표와 같은 모양(인형 칸 + 오른쪽 툴팁 + 아래 기술 줄)에 '실제 장비'를 넣음.
+   사용자 2026-11-19 "캐릭터 페이지는 옵션랭크표랑 똑같이 생겨야지." / "실제장비가 추천정옵에 비해 딜이 얼마나 떨어지는지, 몇 적개심 시간만큼 안좋은지, 정복자 추천분배는 몇이고, 그렇게 적용하면 몇단가능한지. 표기."
+   랭크표(20_rank RankPage)와 다른 점: 랭크표는 추천 정옵(옵션 종류·범위)을, 여기는 API 가 준 옵션 문구(실제 수치)를 그대로 보여 줌. 옵션 줄의 등급 색 = 같은 정복자의 추천 구성에서 그 칸·그 옵션이 받은 등급.
+   계산은 34_herocalc.jsx. 아직 없는 것: 적개심 시간 차이.
+   2026-11-19 사용자: "카나이 안보이고 글씨로만 나옴. -10.8이 딜말하는거야 탱말하는거야? 다른템은 뭔소리야. 신발똑같은데. 정옵이 아닌데 정옵판정은 뭐야 또? 보석표기는 왜 또 옵션랭크표랑 다른데."
+     → 카나이 = 랭크표의 기술 줄 그림(이름 → 그림 번호는 세팅 자료에서), 칸 위 표기 = [공격력 / 강인함] 둘 따로, 같은 아이템 판정 = 이름 또는 같은 세트·같은 부위, '정옵' = 추천 정옵 옵션을 전부 가졌을 때만, 보석 = 랭크표와 같은 그림(인형 칸·툴팁).
+   "빈칸눌러도 축성아이템 추가 창이 안뜨잖아. … 여기에 축성아이템 설정을 추가해." → 빈칸의 툴팁 자리가 설정 창(HeroSlotEdit). 저장 = 데이터베이스 acct/o_<계정 키>_<영웅 번호> {okey, slots: {API 칸: spec}} — 다시 조회해도 남음.
+   ============================================================================================ */
 function HeroPrioLines({rec, S, style}){ const C = (S.tpl.priority || {}).cdr || {}, pc = v => (v * 100).toFixed(1) + "%", cap = D.config.model.score.gr150.target, pg = D.config.model.paragon;
   const tier = rec.t != null ? Math.min(cap, Math.floor(rec.t + 0.02)) : null;
   return <><div className="paraline" style={style}><span className="pitem augline">재사용 감소 : <b className={C.gate && rec.cdr < C.gate ? "bad" : ""}>{pc(rec.cdr)}</b>{C.gate && <> ({C.gateLabel} {pc(C.gate)} 이상)</>} / 공격 속도 : <b>+{rec.iasItem}%</b>
@@ -4700,14 +4756,14 @@ function HeroView({acc, hero, rid}){
     <div className="stage">
       <div className="col" style={{width: Math.max(W, Math.round(BW * k))}}>
         <div className="dollwrap" style={{height: Math.round(BH * k)}}>
-          <div className="doll" style={{transform: `scale(${k})`, width: BW, height: BH, backgroundImage: `url(${D.dollImage[classId] || D.dollImage.dh})`, backgroundSize: `${BW}px ${BH}px`}} onMouseLeave={() => setHover(null)} onClick={e => { if (!e.target.closest(".slot")) setSel(null); }}>
+          <div className="doll" style={{transform: `scale(${k})`, width: BW, height: BH, ...dollBgStyle(classId)}} onMouseLeave={() => setHover(null)} onClick={e => { if (!e.target.closest(".slot")) setSel(null); }}>
             {layoutOf(fake).map(entry => { const key = entry.key || entry.slot, api = keyToApi[key], it = api && r.items[api], ours = it && heroItemOf(it.name, r.cls), ext = it && !ours && D.heroIcons ? D.heroIcons[it.name] : null, ic = ours ? iconRect(entry, ours) : ext ? iconRect(entry, {iconSize: [ext.w, ext.h]}) : null,   /* ext = 우리 자료에 없는 아이템의 그림(data/hero_icons.json) */ active = curSlot === api, slot = D.slotDefs[entry.slot];
               const gm = it ? (it.gems || []).filter(Boolean).map(n => heroGemOf(n, entry.slot, classId)).filter(Boolean) : [], nrm = gm.filter(x => x.gem), lg = gm.find(x => x.leg), gc = nrm.length > 0 ? GD.centers[key] : null;
               return <button type="button" key={key} className={"slot" + (active ? " active" : "") + (it ? " has" : " noitem")} style={{left: entry.x, top: entry.y, width: entry.w, height: entry.h, zIndex: (entry.z || 1) + (active ? 10 : 0)}} aria-label={it ? it.name : slot.label + " (빈칸 — 축성 아이템 넣기)"}
                 onMouseEnter={() => api && setHover(api)} onMouseLeave={() => setHover(null)} onFocus={() => api && setHover(api)} onBlur={() => setHover(null)} onClick={() => api && setSel(s => s === api && it ? null : api)}>
                 {it && <span className={"slotitem " + (ours ? ours.quality : ext ? ext.quality : "legendary") + " s-" + entry.slot + (it.manual ? " sanct" : "")}>{ext ? <img src={ext.icon} alt="" style={{left: ic.x, top: ic.y, width: ic.w, height: ic.h}}/> : !ours || ours.iconMissing ? <span className="noicon">{it.name}</span> : <img src={ours.iconTone || ours.iconRaw} alt="" style={{left: ic.x, top: ic.y, width: ic.w, height: ic.h}}/>}</span>}
-                {gc && nrm.map((x, i) => <img key={"g" + i} className="dollgem" aria-hidden="true" src={x.gem.iconTone || x.gem.icon} alt="" style={{left: gc[0] - entry.x - GD.size/2, top: gc[1] + (i - (nrm.length-1)/2)*GD.step - entry.y - GD.size/2, width: GD.size, height: GD.size}}/>)}
-                {lg && <span className="dollgem leg big" aria-hidden="true" style={entry.slot === "amulet" ? {left: (entry.w - 32)/2, top: (entry.h - 32)/2} : {right: -16, bottom: -16}}><img src={lg.leg.icon} alt=""/></span>}
+                {gc && nrm.map((x, i) => <img key={"g" + i} className="dollgem" aria-hidden="true" src={x.gem.iconTone || x.gem.icon} alt="" style={dollGemStyle(entry, gc, i, nrm.length)}/>)}
+                {lg && <span className="dollgem leg big" aria-hidden="true" style={legGemStyle(entry)}><img src={lg.leg.icon} alt=""/></span>}
                 {!it && <span className="slotlabel">{slot.label}<br/>＋</span>}</button>; })}
             {/* 증감 표기는 칸들과 따로 맨 위 층에 그림(칸마다 겹침 순서가 달라 칸 안에 두면 옆 칸 밑에 깔림). 폭 = 그 칸의 가로 — 좁은 칸(반지 등)은 두 줄. 사용자 2026-11-19 "타 장비 위에 퍼센티지가 뜨도록 즉 최상위에 올라오게 하고, 반지같은경우 반지 가로길이에 맞춰 퍼센티지가 벗어나지 않게 해."
                 칸 위 = 같은 아이템의 추천 정옵(최대 수치) 대비 [공격력 / 강인함] 부족(추천 정옵 옵션을 다 가졌고 수치 차도 없으면 '정옵'), 전설 보석 아래 = 추천 구성의 보석(최대 등급) 대비(34_herocalc heroGemGaps) */}
@@ -4730,6 +4786,7 @@ function HeroView({acc, hero, rid}){
       <div className="col" style={{width: W}}><HeroTip W={W} r={r} apiSlot={curSlot} cls={r.cls} classId={classId} recBuild={recBuild} tplLike={tplLike} summary={summary} spec={curSlot ? ov[curSlot] : null} onSave={saveSlot} prio={!!S.prio} calc={ok && rec && !rec.err && !S.prio ? {S, P, v: rec.v} : null}/></div>
     </div>
   </div>; }
+
 
 /* ============================================================================================
    40_shell.jsx — 화면 뼈대: 시즌·직업·세팅 선택 → 목표 정복자 바 → 페이지(옵션 랭크표 20_rank / 획득 방법 비교 30_compare) → 출처
