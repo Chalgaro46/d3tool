@@ -1845,11 +1845,14 @@ function fastTail(build, opts){
 function fastLight(sel, build, opts, rr){ return fastPrep(sel, build, opts, rr) ? fastTail(build, opts) : null; }
 /* 같은 장비 구성(sel·rr·보석·덮어쓰기)에서 정복자 활력만 바꿔 강인함을 보는 함수를 돌려줌: v → computeStats(sel, build, {...o, paraVit: v}, rr, true).tough 와 같은 값.
    합산·직업 규칙은 한 번만(fastPrep), 그 뒤는 fastTail. 다른 계산이 끼어들어 준비한 값이 덮어써졌으면(FP.gen) 다시 준비. 빠른 평가를 못 쓰는 경우는 원래대로 */
-function fastVitTough(sel, build, o, rr){
-  const slow = v => computeStats(sel, build, {...o, paraVit: v}, rr, true).tough;
+function fastVitTough(sel, build, o, rr){ const f = fastVitStats(sel, build, o, rr); return v => f(v).tough; }
+/* 위와 같되 {dmg, tough}(새 객체 — 보관해도 됨). computeStats(…, light 아님) 의 dmg·tough 와도 같음(statsFromAcc 의 light 여부는 돌려주는 칸만 다름).
+   2026-11-21 딜러 쪽에도(60_compare T·50_path fromPath 의 활력 탐색) — 사용자 "서포터 말고 다른 계산들은 빨라지는지 비교해보자." */
+function fastVitStats(sel, build, o, rr){
+  const slow = v => { const s = computeStats(sel, build, {...o, paraVit: v}, rr, true); return {dmg: s.dmg, tough: s.tough}; };
   if (FAST_OFF.on || !fastPrep(sel, build, o, rr)) return slow;
   let gen = FP.gen; const oo = {...o};
-  return v => { if (FP.gen !== gen) { fastPrep(sel, build, o, rr); gen = FP.gen; } oo.paraVit = v; return fastTail(build, oo).tough; }; }
+  return v => { if (FP.gen !== gen) { fastPrep(sel, build, o, rr); gen = FP.gen; } oo.paraVit = v; const r = fastTail(build, oo); return {dmg: r.dmg, tough: r.tough}; }; }
 
 /* ============================================================================================
    30_optimize.js — 정옵 찾기와 옵션 등급
@@ -2719,7 +2722,7 @@ function pathPoint(vid, opts){
 function fromPath(build, pt, opts){
   const M = D.config.model, C = M.score.gr150, G = M.score.gr, ref = gr150RefFor(build);
   const o = {...opts, aug: pt.aug2, gems: pt.gems}, free = poolFree(o, build);
-  const st = v => computeStats(pt.sel, build, {...o, paraVit: v}, pt.rr), at = v => tiers150(st(v), ref, C, G);
+  const st = v => computeStats(pt.sel, build, {...o, paraVit: v}, pt.rr), SV = fastVitStats(pt.sel, build, o, pt.rr), at = v => tiers150(SV(v), ref, C, G);   /* at = 합산 한 번 + 활력만(29_fast — 결과 같음), postOn 은 st */
   let {v, T, mode} = allocParaVit(at, free, C.target);   // 40_gr150
   if (mode === "cap") {
     if (st(v).postOn === false && st(free).postOn) { let lo = v, hi = free; while (hi - lo > 1) { const mid = (lo + hi) >> 1; if (st(mid).postOn) hi = mid; else lo = mid; }
@@ -2763,8 +2766,8 @@ function primalEdge(build, key, m, primal, upShare, ancCost){
      남은 한계: 유지선처럼 값이 뚝 떨어지는 옵션도 '롤 범위에 고르게 퍼진 손실'로 근사함(아래 S·dOf). 정확히 하려면 유지선 아래로 떨어지는 롤의 비율을 따로 구해야 함 — 아직 안 함 */
   const obj = t => mode === "cap" ? (t.t >= MS.gr150.target - 1e-9 ? t.d : Math.min(t.d, t.t)) : Math.min(t.d, t.t);
   const want = t => mode === "cap" ? t.t >= MS.gr150.target : t.t >= t.d;
-  const T = (selK, ov, xo) => { const sel = {...res.sel, [key]: selK};
-    const at = v => tiers150(computeStats(sel, build, {...res.opts, ...(xo || {}), paraVit: v, valOverride: {[key]: ov}}, res.rr), ref, MS.gr150, MS.gr);
+  const T = (selK, ov, xo) => { const sel = {...res.sel, [key]: selK}, SV = fastVitStats(sel, build, {...res.opts, ...(xo || {}), valOverride: {[key]: ov}}, res.rr);   /* 합산은 한 번, 활력만 바꿔 봄(29_fast — 결과 같음) */
+    const at = v => tiers150(SV(v), ref, MS.gr150, MS.gr);
     /* 2026-11-17 고침: 강인함은 활력에 끝까지 늘지 않음(주능력치를 다 빼면 방어도·세트 감소가 줄어 다시 내려감 — tools/milp/point.js atMinVit 와 같은 문제).
        전에는 '전부 넣어도 조건이 안 되면 전부 넣은 값'을 썼는데 그 값이 봉우리보다 낮을 수 있음 → 조건이 안 되면 강인함이 가장 큰 활력(봉우리, 삼분 탐색)을 위쪽 끝으로 */
     let lo = 0, hi = freeV; if (want(at(0))) hi = 0; else { if (!want(at(freeV))) { let a = 0, c = freeV; while (c - a > 2) { const m1 = a + ((c - a)/3 | 0), m2 = c - ((c - a)/3 | 0); if (at(m1).t < at(m2).t) a = m1; else c = m2; }
