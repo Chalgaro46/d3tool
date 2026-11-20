@@ -1782,8 +1782,12 @@ const fastGem = (og, kind, list) => { const id = og && og[kind]; if (id === unde
 /* computeStats(sel, build, opts, rr, true) 와 같은 {dmg, tough}. 못 맡는 경우 null */
 const FAST_IASBY = {};
 const fastOvWdmg = V => { for (const k in V) for (const a in V[k]) if (D.affixes[a] && D.affixes[a].group === "wdmg") return true; return false; };
-function fastLight(sel, build, opts, rr){
-  if (opts.secOff || (opts.valOverride && fastOvWdmg(opts.valOverride))) return null;   // 무기 공격력(wdmg) 덮어쓰기는 원래 경로(무기 상수 K.wk 가 최대치 기준 — tools/fast_check.js 가 잡음)
+/* 2026-11-21 둘로 나눔(계산 순서·결과는 그대로): fastPrep = 장비 합산·직업 규칙까지(정복자 분배와 무관한 부분), fastTail = 정복자 분배(활력·칼데산)부터 끝까지.
+   같은 장비 구성에서 정복자 분배만 바꿔 여러 번 볼 때(35_priority prioSplit — 활력 삼분 탐색) fastPrep 한 번 + fastTail 여러 번으로 씀(fastVitTough).
+   준비한 값은 아래 FP 와 합산 배열(FA 등)에 있음 — 다른 fastPrep 이 끼어들면 덮어써지므로 FP.gen 으로 확인 */
+const FP = {gen: 0, c: null, K: null, gH: null, gA: null, gW: null, nH: 0, nA: 0, cdrTotal: 0, rcrTotal: 0, chcT: 0, chdT: 0, W: 0, AD: 0, X: null};
+function fastPrep(sel, build, opts, rr){
+  if (opts.secOff || (opts.valOverride && fastOvWdmg(opts.valOverride))) return false;   // 무기 공격력(wdmg) 덮어쓰기는 원래 경로(무기 상수 K.wk 가 최대치 기준 — tools/fast_check.js 가 잡음)
   const c = buildCache(build), K = fastConst(build, c), keys = K.keys, nK = keys.length, last = c.last || (c.last = {});
   FA.fill(0); fnCdr = 0; fnRcr = 0; FSOCK.fill(0); for (let i = 0; i < nK; i++) { FDMGP[i] = 0; FIAS[i] = 0; }
   for (let i = 0; i < nK; i++) { const key = keys[i], sk = sel[key], rk = rr[key], L = last[key];
@@ -1792,9 +1796,6 @@ function fastLight(sel, build, opts, rr){
   const M = D.config.model, CM = c.CM, B = K.B, SB = c.SB, sets = c.sets, RULE = c.RULE;
   const G = M.gems, og = opts.gems, gH = fastGem(og, "head", G.options.head), gA = fastGem(og, "armor", G.options.armor), gW = fastGem(og, "weapon", G.options.weapon);
   const nH = Math.min(1, FSOCK[1]), nA = FSOCK[2] + FSOCK[3];
-  const PS = paragonSplitCached(opts, build, c), pg = M.paragon;
-  const dex = B.dex + PS.dexPts*pg.dexPerPoint + FA[0]*SB.statMult + nA*(gA.dex||0);
-  const vit = B.vit + PS.vitPts*(pg.vitPerPoint||5) + FA[1]*SB.statMult + nA*(gA.vit||0);
   let pc = 1; for (let i = 0; i < fnCdr; i++) pc = pc*(1-FCDR[i]); if (nH && gH.cdr) pc = pc*(1-gH.cdr); for (let i = 0; i < SB.cdr.length; i++) pc = pc*(1-SB.cdr[i]);
   const cdrTotal = 1 - (1-B.cdr) * pc;
   let pr = 1; for (let i = 0; i < fnRcr; i++) pr = pr*(1-FRCR[i]); for (let i = 0; i < SB.rcr.length; i++) pr = pr*(1-SB.rcr[i]); if (nH && gH.rcr) pr = pr*(1-gH.rcr);
@@ -1811,8 +1812,17 @@ function fastLight(sel, build, opts, rr){
   W += FA[15];   // 장신구 피해는 무기 피해 % 를 곱한 뒤에 더함(20_stats 와 같은 순서 — 2026-11-19)
   const iasG = B.ias + FA[10] + K.dual, aps = apsBase * (1 + iasG);
   const AD = 1 + M.ad.procChance * (B.ad + FA[9]) * (M.ad.targets - 1) * M.ad.splashEff;
-  const a = FAST_A; a.itemDex = FA[0]; a.itemVit = FA[1]; a.maxdisc = FA[17]; a.elite = FA[8]; a.elitered = FA[16]; a.softcc = FA[20]; a.iasBy = FAST_IASBY; for (let q = 0; q < nW; q++) FAST_IASBY[K.wk[q].key] = FIAS[K.wk[q].ki];   // 직업 규칙이 읽는 칸(iasBy = 무기별 공속 옵션 — 서포터 규칙 supHits)(성전사·마법사 오길드 3세트는 elite·elitered 를 더함)
+  /* 직업 규칙이 읽는 칸(iasBy = 무기별 공속 옵션 — 서포터 규칙 supHits) */
+  const a = FAST_A; a.itemDex = FA[0]; a.itemVit = FA[1]; a.maxdisc = FA[17]; a.elite = FA[8]; a.elitered = FA[16]; a.softcc = FA[20]; a.iasBy = FAST_IASBY; for (let q = 0; q < nW; q++) FAST_IASBY[K.wk[q].key] = FIAS[K.wk[q].ki];
   const X = RULE.apply({build, opts, CM, a, sets, aps, apsBase, iasG, cdrTotal, rcrTotal});
+  FP.gen++; FP.c = c; FP.K = K; FP.gH = gH; FP.gA = gA; FP.gW = gW; FP.nH = nH; FP.nA = nA; FP.cdrTotal = cdrTotal; FP.rcrTotal = rcrTotal; FP.chcT = chcT; FP.chdT = chdT; FP.W = W; FP.AD = AD; FP.X = X;
+  return true; }
+function fastTail(build, opts){
+  const c = FP.c, K = FP.K, gH = FP.gH, gA = FP.gA, gW = FP.gW, nH = FP.nH, nA = FP.nA, rcrTotal = FP.rcrTotal, chcT = FP.chcT, chdT = FP.chdT, W = FP.W, AD = FP.AD, X = FP.X;
+  const M = D.config.model, CM = c.CM, B = K.B, SB = c.SB, RULE = c.RULE, nW = K.nW, a = FAST_A;
+  const PS = paragonSplitCached(opts, build, c), pg = M.paragon;
+  const dex = B.dex + PS.dexPts*pg.dexPerPoint + FA[0]*SB.statMult + nA*(gA.dex||0);
+  const vit = B.vit + PS.vitPts*(pg.vitPerPoint||5) + FA[1]*SB.statMult + nA*(gA.vit||0);
   let dmg = X.dmgMult * W * X.rate * (1 + dex*CM.dmgPerDex) * (1 + chcT*chdT) * (1 + FA[6]) * (1 + (B.skillDmg + FA[7])) * (1 + (B.eliteDmg + a.elite + nW*(gW.elite||0))*CM.eliteShare) * AD;
   const armor = (B.armor + (c.gearArmor + FA[13] + dex*CM.armorPerDex + PS.augStrStat*K.strArmorPer) * (1 + K.armorPct)) * (X.armorMult || 1) * K.oneArmorK * K.pbArmor;
   const res = (B.allres + FA[12] + nA*(gA.allres||0) + PS.augIntStat*K.intAllresPer + (CM.allresPerDex ? dex*CM.allresPerDex : 0)) * (X.resMult || 1) * K.oneResK * K.pbRes;
@@ -1832,6 +1842,14 @@ function fastLight(sel, build, opts, rr){
   dmg = dmg / AD * (1 + (AD - 1) * FSP_E) * (c.squirt ? 1 + M.squirt.max * FSP_U : 1) * (1 + (X.ew || 0) * FSP_F);
   const ewDr = ewDrOf(CM, X, Atr, FSP_T); if (ewDr) { const kT = 1 / (1 - ewDr); tough *= kT; toughNoHeal *= kT; }   // 20_stats 와 같은 끝없는 걸음 받는 피해 감소
   FAST_R.dmg = dmg; FAST_R.tough = tough; return FAST_R; }
+function fastLight(sel, build, opts, rr){ return fastPrep(sel, build, opts, rr) ? fastTail(build, opts) : null; }
+/* 같은 장비 구성(sel·rr·보석·덮어쓰기)에서 정복자 활력만 바꿔 강인함을 보는 함수를 돌려줌: v → computeStats(sel, build, {...o, paraVit: v}, rr, true).tough 와 같은 값.
+   합산·직업 규칙은 한 번만(fastPrep), 그 뒤는 fastTail. 다른 계산이 끼어들어 준비한 값이 덮어써졌으면(FP.gen) 다시 준비. 빠른 평가를 못 쓰는 경우는 원래대로 */
+function fastVitTough(sel, build, o, rr){
+  const slow = v => computeStats(sel, build, {...o, paraVit: v}, rr, true).tough;
+  if (FAST_OFF.on || !fastPrep(sel, build, o, rr)) return slow;
+  let gen = FP.gen; const oo = {...o};
+  return v => { if (FP.gen !== gen) { fastPrep(sel, build, o, rr); gen = FP.gen; } oo.paraVit = v; return fastTail(build, oo).tough; }; }
 
 /* ============================================================================================
    30_optimize.js — 정옵 찾기와 옵션 등급
@@ -2258,7 +2276,7 @@ function strafeRate(aps, F){ const tick = Math.max(1, Math.floor(60/((F.coef || 
 /* 정복자·칼데산 분배 = 강인함 최대(사용자 2026-11-13 선택 '강인함 최대 분배'): 지능 칼데산 개수 nInt(0~부위 수)마다 활력 포인트를 삼분 탐색(강인함은 활력에 대해 봉우리 하나).
    힘 칼데산은 주능력치와 방어도 몫이 같아(1당 1) 따로 보지 않음. → opts 에 paraVit·aug 를 채워 돌려줌 */
 function prioSplit(sel, rr, build, opts, near){ const n = Object.keys(build.slots).length; let best = null;
-  const at = nInt => { const o = {...opts, aug: {int: nInt, str: 0}}, free = paragonSplit(o, build).free, T = v => computeStats(sel, build, {...o, paraVit: v}, rr, true).tough; let b = null;
+  const at = nInt => { const o = {...opts, aug: {int: nInt, str: 0}}, free = paragonSplit(o, build).free, T = fastVitTough(sel, build, o, rr); let b = null;   // 합산은 한 번, 활력만 바꿔 봄(29_fast — 결과 같음)
     let lo = 0, hi = Math.max(0, free); while (hi - lo > 2) { const a = lo + Math.floor((hi - lo)/3), c = hi - Math.floor((hi - lo)/3); if (T(a) < T(c)) lo = a + 1; else hi = c - 1; }
     for (let v = lo; v <= hi; v++) { const t = T(v); if (!b || t > b.t * (1 + 1e-12)) b = {t, o: {...o, paraVit: v}}; } return b; };
   /* near(획득 비교 priorityEd 전용 — 한 칸의 옵션만 바꾼 수천 번의 재분배): 기준 해의 칼데산 지능 개수에서 위·아래로 나아지는 동안만 봄(지능 개수에 대해 봉우리 하나 — 전부 훑는 것과
@@ -4242,7 +4260,9 @@ function heroGemGaps(r, S, P, recBuild, v){ const LG = D.config.legGems || {}, o
   const recNames = Object.values(recBuild.legGems || {}).map(id => LG[id] && LG[id].name).filter(Boolean), mine = [];
   for (const api of ["neck", "leftFinger", "rightFinger"]) for (const g of ((r.items[api] || {}).gems || [])) if (Object.values(LG).some(x => x.name === g)) mine.push([api, g]);
   const spare = recNames.filter(n => !mine.some(m => m[1] === n));
-  for (const [api, g] of mine) { const to = recNames.includes(g) ? g : (spare.shift() || g);   // 바꿀 추천 보석이 남지 않으면 같은 보석(최대 등급)과 비교 — 표기가 빠지지 않게(사용자 2026-11-19 "잘리는게 아니라 안띄워주네.") const e0 = Object.values(LG).find(x => x.name === to);
+  /* 바꿀 추천 보석이 남지 않으면 같은 보석(최대 등급)과 비교 — 표기가 빠지지 않게(사용자 2026-11-19 "잘리는게 아니라 안띄워주네.").
+     2026-11-21 고침: 이 설명이 줄 가운데 // 주석이어서 뒤의 e0 선언을 삼켰고, 그래서 전설 보석 증감이 하나도 안 떴음(사용자 "계정조회에서 보석은 왜 증감이 안뜸?") */
+  for (const [api, g] of mine) { const to = recNames.includes(g) ? g : (spare.shift() || g), e0 = Object.values(LG).find(x => x.name === to);
     const items = {...r.items, [api]: {...r.items[api], gems: r.items[api].gems.map(x => x === g ? to : x)}}, gemsFull = (r.gemsFull || []).filter(x => x.name !== g && x.name !== to).concat([{name: to, rank: parseInt(e0.rank) || 150, text: (e0.fx || []).join(" ").replace(/[{}]/g, "")}]);
     try { const e = heroEval({...r, items, gemsFull}, S, P, v); out[api] = {dl: 1 - base.dmg / e.dmg, tl: 1 - base.tough / e.tough, to}; } catch (err) { out[api] = {err: err.message}; } }
   return out; }
