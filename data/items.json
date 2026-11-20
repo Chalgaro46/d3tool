@@ -35,6 +35,10 @@
    "secResistP": 0,
    "set": "어둠의 어깨걸이",
    "type": "helm",
+   "secCan": [
+    "resone",
+    "resphys"
+   ],
    "secPicks": 2,
    "secP": {
     "resone": 0.6635
@@ -80,6 +84,11 @@
    "secResistP": 0,
    "set": "어둠의 어깨걸이",
    "type": "shoulders",
+   "secCan": [
+    "resone",
+    "resphys",
+    "hitchill"
+   ],
    "secPicks": 2,
    "secP": {
     "resone": 0.6676
@@ -126,6 +135,12 @@
    "secResistP": 0.727,
    "set": "어둠의 어깨걸이",
    "type": "chestarmor",
+   "secCan": [
+    "resone",
+    "resphys",
+    "mrdr",
+    "lpk"
+   ],
    "secPicks": 2,
    "secP": {
     "resone": 0.6054,
@@ -179,6 +194,10 @@
    "secResistP": 0,
    "set": "어둠의 어깨걸이",
    "type": "gloves",
+   "secCan": [
+    "resone",
+    "resphys"
+   ],
    "secPicks": 2,
    "secP": {
     "resone": 0.7075
@@ -225,6 +244,12 @@
    "secResistP": 0.801,
    "set": "어둠의 어깨걸이",
    "type": "pants",
+   "secCan": [
+    "resone",
+    "resphys",
+    "lpk",
+    "hitslow"
+   ],
    "secPicks": 2,
    "secP": {
     "resone": 0.6676
@@ -270,6 +295,10 @@
    "secResistP": 0,
    "set": "어둠의 어깨걸이",
    "type": "boots",
+   "secCan": [
+    "resone",
+    "resphys"
+   ],
    "secPicks": 2,
    "secP": {
     "resone": 0.6676
@@ -317,6 +346,11 @@
    "secResistP": 0,
    "set": "의지의 철벽",
    "type": "ring",
+   "secCan": [
+    "resone",
+    "resphys",
+    "lpk"
+   ],
    "secPicks": 2,
    "secP": {
     "resone": 0.6579
@@ -373,6 +407,11 @@
    "secResistP": 0,
    "set": "의지의 철벽",
    "type": "ring",
+   "secCan": [
+    "resone",
+    "resphys",
+    "lpk"
+   ],
    "secPicks": 2,
    "secP": {
     "resone": 0.6579
@@ -430,6 +469,12 @@
     "적에게서 얻는 금화 +80%"
    ],
    "type": "amulet",
+   "secCan": [
+    "resone",
+    "resphys",
+    "mrdr",
+    "lpk"
+   ],
    "secPicks": 1,
    "secP": {
     "resone": 0.4,
@@ -500,7 +545,12 @@
     300,
     375
    ],
-   "powerKind": "dmg"
+   "powerKind": "dmg",
+   "secCan": [
+    "lpk",
+    "hitchill",
+    "hitslow"
+   ]
   },
   {
    "id": "holy_point_shot",
@@ -544,7 +594,12 @@
     75,
     100
    ],
-   "powerKind": "dmg"
+   "powerKind": "dmg",
+   "secCan": [
+    "maxdisc",
+    "hitchill",
+    "hitslow"
+   ]
   },
   {
    "id": "guardians_case",
@@ -576,6 +631,11 @@
     "_doc": "수정 30 + 부품 20 + 가루 20 + 현상금 재료 2 + 72,000골드"
    },
    "type": "belt",
+   "secCan": [
+    "resone",
+    "resphys",
+    "lpk"
+   ],
    "secPicks": 2,
    "secP": {
     "resone": 0.6676
@@ -616,6 +676,11 @@
     "crystal": 30
    },
    "type": "bracers",
+   "secCan": [
+    "resone",
+    "resphys",
+    "mrdr"
+   ],
    "secPicks": 2,
    "secP": {
     "resone": 0.6734,
@@ -665,6 +730,11 @@
     "_doc": "수정 50 + 부품 30 + 가루 30 + 숨결 1 + 현상금 재료 1 + 72,000골드"
    },
    "type": "belt",
+   "secCan": [
+    "resone",
+    "resphys",
+    "lpk"
+   ],
    "secPicks": 2,
    "secP": {
     "resone": 0.6676
@@ -712,6 +782,10 @@
     "resphys": 0.1335,
     "resone": 0.6676
    },
+   "secCan": [
+    "resone",
+    "resphys"
+   ],
    "secPicks": 2,
    "secDist": {
     "resone": {
@@ -752,7 +826,13 @@
    "secP": {
     "pickup": 0.5176,
     "resphys": 0.1335
-   }
+   },
+   "secCan": [
+    "resone",
+    "resphys",
+    "lpk",
+    "hitslow"
+   ]
   },
   {
    "id": "wraps_of_clarity",
@@ -793,6 +873,11 @@
     50
    ],
    "powerKind": "dr",
+   "secCan": [
+    "resone",
+    "resphys",
+    "mrdr"
+   ],
    "secPicks": 1,
    "secP": {
     "resone": 0.4464,
@@ -848,6 +933,11 @@
     25
    ],
    "powerKind": "dmg",
+   "secCan": [
+    "resone",
+    "resphys",
+    "hitchill"
+   ],
    "secPicks": 1,
    "secP": {
     "resone": 0.4386
@@ -903,6 +993,10 @@
    "secResistP": 0,
    "set": "부정한 정수",
    "type": "helm",
+   "secCan": [
+    "resone",
+    "resphys"
+   ],
    "secPicks": 2,
    "secP": {
     "resone": 0.6635
@@ -948,6 +1042,11 @@
    "secResistP": 0,
    "set": "부정한 정수",
    "type": "shoulders",
+   "secCan": [
+    "resone",
+    "resphys",
+    "hitchill"
+   ],
    "secPicks": 2,
    "secP": {
     "resone": 0.6676
@@ -1001,6 +1100,13 @@
     "mrdr": 0.1579,
     "maxdisc+mrdr": 0.0675
    },
+   "secCan": [
+    "resone",
+    "resphys",
+    "mrdr",
+    "lpk",
+    "maxdisc"
+   ],
    "secPicks": 2,
    "secDist": {
     "maxdisc+resone": {
@@ -1051,6 +1157,10 @@
    "secResistP": 0,
    "set": "부정한 정수",
    "type": "gloves",
+   "secCan": [
+    "resone",
+    "resphys"
+   ],
    "secPicks": 2,
    "secP": {
     "resone": 0.7075
@@ -1096,6 +1206,10 @@
    "secResistP": 0.801,
    "set": "부정한 정수",
    "type": "boots",
+   "secCan": [
+    "resone",
+    "resphys"
+   ],
    "secPicks": 2,
    "secP": {
     "resone": 0.6676
@@ -1142,6 +1256,12 @@
    "secResistP": 0,
    "set": "부정한 정수",
    "type": "pants",
+   "secCan": [
+    "resone",
+    "resphys",
+    "lpk",
+    "hitslow"
+   ],
    "secPicks": 2,
    "secP": {
     "resone": 0.6676
@@ -1207,6 +1327,12 @@
     200
    ],
    "powerKind": "dmg",
+   "secCan": [
+    "lpk",
+    "maxdisc",
+    "hitchill",
+    "hitslow"
+   ],
    "secPicks": 1,
    "secDist": {
     "maxdisc": {
@@ -1259,6 +1385,11 @@
     200
    ],
    "powerKind": "dmg",
+   "secCan": [
+    "maxdisc",
+    "hitchill",
+    "hitslow"
+   ],
    "secPicks": 1,
    "secDist": {
     "maxdisc": {
@@ -1306,7 +1437,11 @@
     "ccred": 0.3667,
     "resphys": 0.1327
    },
-   "type": "helm"
+   "type": "helm",
+   "secCan": [
+    "resone",
+    "resphys"
+   ]
   },
   {
    "id": "mech_pauldrons",
@@ -1346,7 +1481,12 @@
     "globe": 0.3742,
     "resphys": 0.1335
    },
-   "type": "shoulders"
+   "type": "shoulders",
+   "secCan": [
+    "resone",
+    "resphys",
+    "hitchill"
+   ]
   },
   {
    "id": "gas_forearm",
@@ -1385,7 +1525,11 @@
     "pickup": 0.3846,
     "resphys": 0.1415
    },
-   "type": "gloves"
+   "type": "gloves",
+   "secCan": [
+    "resone",
+    "resphys"
+   ]
   },
   {
    "id": "aquila",
@@ -1434,6 +1578,12 @@
     95
    ],
    "type": "chestarmor",
+   "secCan": [
+    "resone",
+    "resphys",
+    "mrdr",
+    "lpk"
+   ],
    "dropShare": {
     "DemonHunter": 0.05882353,
     "Barbarian": 0.07692308,
@@ -1491,7 +1641,12 @@
     150,
     200
    ],
-   "type": "quiver"
+   "type": "quiver",
+   "secCan": [
+    "maxdisc",
+    "hitchill",
+    "hitslow"
+   ]
   },
   {
    "id": "nemesis",
@@ -1528,6 +1683,11 @@
    },
    "power": "신단과 수정탑에 가면 적 용사 하나 소환",
    "type": "bracers",
+   "secCan": [
+    "resone",
+    "resphys",
+    "mrdr"
+   ],
    "dropShare": {
     "DemonHunter": 0.1,
     "Barbarian": 0.07692308,
@@ -1579,7 +1739,12 @@
     150,
     200
    ],
-   "type": "belt"
+   "type": "belt",
+   "secCan": [
+    "resone",
+    "resphys",
+    "lpk"
+   ]
   },
   {
    "id": "vallas",
@@ -1628,7 +1793,13 @@
    "secP": {
     "maxdisc": 0.5714
    },
-   "power": "난사 투사체가 적을 관통 (악마사냥꾼 전용)"
+   "power": "난사 투사체가 적을 관통 (악마사냥꾼 전용)",
+   "secCan": [
+    "lpk",
+    "maxdisc",
+    "hitchill",
+    "hitslow"
+   ]
   },
   {
    "id": "crimson_whalers@int",
@@ -1673,6 +1844,10 @@
    ],
    "poolAdd": [
     "intm"
+   ],
+   "secCan": [
+    "resone",
+    "resphys"
    ]
   },
   {
@@ -1716,6 +1891,12 @@
    ],
    "poolAdd": [
     "intm"
+   ],
+   "secCan": [
+    "resone",
+    "resphys",
+    "lpk",
+    "hitslow"
    ]
   },
   {
@@ -1772,6 +1953,12 @@
    "poolAdd": [
     "intm"
    ],
+   "secCan": [
+    "resone",
+    "resphys",
+    "mrdr",
+    "lpk"
+   ],
    "dropShare": {
     "DemonHunter": 0.05882353,
     "Barbarian": 0.07692308,
@@ -1826,6 +2013,11 @@
    "poolAdd": [
     "intm"
    ],
+   "secCan": [
+    "resone",
+    "resphys",
+    "mrdr"
+   ],
    "dropShare": {
     "DemonHunter": 0.1,
     "Barbarian": 0.07692308,
@@ -1871,6 +2063,11 @@
    "primaries": 5,
    "type": "spiritstone",
    "power": "빛의 파동을 적의 위치에 사용할 수 있음 (수도사 전용)",
+   "secCan": [
+    "resone",
+    "resphys",
+    "maxspirit"
+   ],
    "secPicks": 1,
    "secP": {
     "resone": 0.3226
@@ -1918,6 +2115,11 @@
     50
    ],
    "powerKind": "dr",
+   "secCan": [
+    "resone",
+    "resphys",
+    "hitchill"
+   ],
    "secPicks": 1,
    "secP": {
     "resone": 0.4386
@@ -1972,6 +2174,12 @@
     30
    ],
    "powerKind": "dmg",
+   "secCan": [
+    "resone",
+    "resphys",
+    "mrdr",
+    "lpk"
+   ],
    "secPicks": 1,
    "secP": {
     "resone": 0.3817,
@@ -2030,6 +2238,11 @@
    "secResistP": 0,
    "skillN": 4,
    "type": "belt",
+   "secCan": [
+    "resone",
+    "resphys",
+    "lpk"
+   ],
    "secPicks": 2,
    "secP": {
     "resone": 0.6676
@@ -2081,6 +2294,10 @@
    "secResistP": 0,
    "power": "적중당하면 방어도 50% 증가·이동 속도 15%·공격 속도 20% 감소, 최대 5회 중첩",
    "type": "gloves",
+   "secCan": [
+    "resone",
+    "resphys"
+   ],
    "secPicks": 1,
    "secP": {
     "resone": 0.4808
@@ -2140,6 +2357,11 @@
     150
    ],
    "powerKind": "dmg",
+   "secCan": [
+    "resone",
+    "resphys",
+    "mrdr"
+   ],
    "secPicks": 1,
    "secP": {
     "resone": 0.4464,
@@ -2197,6 +2419,12 @@
    "set": "블랙손의 전투 장비",
    "skillN": 4,
    "type": "pants",
+   "secCan": [
+    "resone",
+    "resphys",
+    "lpk",
+    "hitslow"
+   ],
    "secPicks": 1,
    "secP": {
     "resone": 0.4386
@@ -2257,6 +2485,10 @@
     200
    ],
    "powerKind": "dmg",
+   "secCan": [
+    "resone",
+    "resphys"
+   ],
    "secPicks": 1,
    "secP": {
     "resone": 0.4386
@@ -2312,6 +2544,11 @@
     200
    ],
    "powerKind": "dmg",
+   "secCan": [
+    "resone",
+    "resphys",
+    "lpk"
+   ],
    "secPicks": 1,
    "secP": {
     "resone": 0.431
@@ -2369,6 +2606,11 @@
    "secResistP": 0,
    "power": "이 아이템을 착용한 자들은 모든 피해를 나눠 받음",
    "type": "ring",
+   "secCan": [
+    "resone",
+    "resphys",
+    "lpk"
+   ],
    "secPicks": 1,
    "secP": {
     "resone": 0.431
@@ -2427,6 +2669,11 @@
    "secResistP": 0,
    "power": "기술에 적용되는 가장 높은 추가 원소 고정 피해가 각각의 추가 원소 피해에 동일하게 적용",
    "type": "ring",
+   "secCan": [
+    "resone",
+    "resphys",
+    "lpk"
+   ],
    "secPicks": 1,
    "secP": {
     "resone": 0.431
@@ -2483,6 +2730,10 @@
     150
    ],
    "powerKind": "life",
+   "secCan": [
+    "resone",
+    "resphys"
+   ],
    "secPicks": 1,
    "secP": {
     "resone": 0.4808
@@ -2550,7 +2801,13 @@
     200,
     250
    ],
-   "powerKind": "dmg"
+   "powerKind": "dmg",
+   "secCan": [
+    "lpk",
+    "maxspirit",
+    "hitchill",
+    "hitslow"
+   ]
   },
   {
    "id": "rabid_strike",
@@ -2602,7 +2859,13 @@
     350,
     450
    ],
-   "powerKind": "dmg"
+   "powerKind": "dmg",
+   "secCan": [
+    "lpk",
+    "maxspirit",
+    "hitchill",
+    "hitslow"
+   ]
   },
   {
    "id": "mk_raiment_head",
@@ -2635,6 +2898,10 @@
    "secResistP": 0,
    "set": "일천폭풍 의복",
    "type": "helm",
+   "secCan": [
+    "resone",
+    "resphys"
+   ],
    "secPicks": 2,
    "secP": {
     "resone": 0.6635
@@ -2677,6 +2944,12 @@
    "secResistP": 0,
    "set": "일천폭풍 의복",
    "type": "chestarmor",
+   "secCan": [
+    "resone",
+    "resphys",
+    "mrdr",
+    "lpk"
+   ],
    "secPicks": 2,
    "secP": {
     "resone": 0.6054,
@@ -2730,6 +3003,11 @@
    "secResistP": 0,
    "set": "일천폭풍 의복",
    "type": "shoulders",
+   "secCan": [
+    "resone",
+    "resphys",
+    "hitchill"
+   ],
    "secPicks": 2,
    "secP": {
     "resone": 0.6676
@@ -2775,6 +3053,10 @@
    "secResistP": 0,
    "set": "일천폭풍 의복",
    "type": "gloves",
+   "secCan": [
+    "resone",
+    "resphys"
+   ],
    "secPicks": 2,
    "secP": {
     "resone": 0.7075
@@ -2818,6 +3100,12 @@
    "set": "일천폭풍 의복",
    "skillN": 4,
    "type": "pants",
+   "secCan": [
+    "resone",
+    "resphys",
+    "lpk",
+    "hitslow"
+   ],
    "secPicks": 2,
    "secP": {
     "resone": 0.6676
@@ -2864,6 +3152,10 @@
    "set": "일천폭풍 의복",
    "skillN": 4,
    "type": "boots",
+   "secCan": [
+    "resone",
+    "resphys"
+   ],
    "secPicks": 2,
    "secP": {
     "resone": 0.6676
@@ -2919,6 +3211,12 @@
     "spiritHeals"
    ],
    "set": "셴룽의 영혼",
+   "secCan": [
+    "lpk",
+    "maxspirit",
+    "hitchill",
+    "hitslow"
+   ],
    "secPicks": 2,
    "secP": {
     "maxspirit": 0.8447
@@ -2974,6 +3272,12 @@
     "spiritHeals"
    ],
    "set": "셴룽의 영혼",
+   "secCan": [
+    "lpk",
+    "maxspirit",
+    "hitchill",
+    "hitslow"
+   ],
    "secPicks": 2,
    "secP": {
     "maxspirit": 0.8447
@@ -3024,6 +3328,11 @@
     60
    ],
    "powerKind": "dr",
+   "secCan": [
+    "resone",
+    "resphys",
+    "mrdr"
+   ],
    "secPicks": 1,
    "secP": {
     "resone": 0.4464,
@@ -3075,6 +3384,11 @@
    "set": "끝없는 걸음",
    "primaries": 5,
    "type": "ring",
+   "secCan": [
+    "resone",
+    "resphys",
+    "lpk"
+   ],
    "secPicks": 1,
    "secP": {
     "resone": 0.431
@@ -3129,6 +3443,12 @@
    "secResistP": 0,
    "set": "끝없는 걸음",
    "type": "amulet",
+   "secCan": [
+    "resone",
+    "resphys",
+    "mrdr",
+    "lpk"
+   ],
    "secPicks": 2,
    "secP": {
     "resone": 0.6238,
@@ -3190,7 +3510,11 @@
     "crystal": 30,
     "_doc": "수호자의 위기 제작법(악사 items.py 와 같음)"
    },
-   "type": "helm"
+   "type": "helm",
+   "secCan": [
+    "resone",
+    "resphys"
+   ]
   },
   {
    "id": "mk_crimson_waders",
@@ -3222,6 +3546,10 @@
     "_doc": "크림슨 제작법(악사 items.py 와 같음)"
    },
    "type": "boots",
+   "secCan": [
+    "resone",
+    "resphys"
+   ],
    "secPicks": 2,
    "secP": {
     "resone": 0.6676
@@ -3273,6 +3601,12 @@
     100
    ],
    "powerKind": "dmg",
+   "secCan": [
+    "resone",
+    "resphys",
+    "lpk",
+    "hitslow"
+   ],
    "secPicks": 1,
    "secP": {
     "resone": 0.4386
@@ -3328,6 +3662,10 @@
    },
    "skillN": 6,
    "type": "helm",
+   "secCan": [
+    "resone",
+    "resphys"
+   ],
    "secPicks": 2,
    "secP": {
     "resone": 0.6635
@@ -3374,6 +3712,11 @@
    "set": "용기의 방패",
    "skillN": 4,
    "type": "shoulders",
+   "secCan": [
+    "resone",
+    "resphys",
+    "hitchill"
+   ],
    "secPicks": 2,
    "secP": {
     "hitchill": 0.0413,
@@ -3432,6 +3775,12 @@
     "hatred"
    ],
    "type": "chestarmor",
+   "secCan": [
+    "resone",
+    "resphys",
+    "mrdr",
+    "lpk"
+   ],
    "secPicks": 2,
    "secP": {
     "resone": 0.6054,
@@ -3485,6 +3834,10 @@
    "secResistP": 0,
    "set": "용기의 방패",
    "type": "gloves",
+   "secCan": [
+    "resone",
+    "resphys"
+   ],
    "secPicks": 2,
    "secP": {
     "resone": 0.7075
@@ -3526,6 +3879,11 @@
     "_doc": "수호자의 위기 제작법(악사 items.py 와 같음)"
    },
    "type": "bracers",
+   "secCan": [
+    "resone",
+    "resphys",
+    "mrdr"
+   ],
    "secPicks": 2,
    "secP": {
     "resone": 0.6734,
@@ -3580,6 +3938,11 @@
    "skillN": 4,
    "power": "군마 질주가 활성화된 동안 천상의 주먹이 이동 속도만큼 추가 피해를 주고, 공격 속도에 따라 근처의 무작위 적에게 자동으로 내리꽂힘 (성전사 전용)",
    "type": "belt",
+   "secCan": [
+    "resone",
+    "resphys",
+    "lpk"
+   ],
    "secPicks": 2,
    "secP": {
     "resone": 0.6676
@@ -3627,6 +3990,12 @@
    "set": "용기의 방패",
    "skillN": 4,
    "type": "pants",
+   "secCan": [
+    "resone",
+    "resphys",
+    "lpk",
+    "hitslow"
+   ],
    "secPicks": 2,
    "secP": {
     "hitslow": 0.0413,
@@ -3681,6 +4050,10 @@
    "set": "용기의 방패",
    "skillN": 6,
    "type": "boots",
+   "secCan": [
+    "resone",
+    "resphys"
+   ],
    "secPicks": 2,
    "secP": {
     "resone": 0.6676
@@ -3727,6 +4100,11 @@
    "set": "끝없는 걸음",
    "primaries": 5,
    "type": "ring",
+   "secCan": [
+    "resone",
+    "resphys",
+    "lpk"
+   ],
    "secPicks": 1,
    "secP": {
     "resone": 0.431
@@ -3781,6 +4159,12 @@
    "secResistP": 0,
    "set": "끝없는 걸음",
    "type": "amulet",
+   "secCan": [
+    "resone",
+    "resphys",
+    "mrdr",
+    "lpk"
+   ],
    "secPicks": 2,
    "secP": {
     "resone": 0.6238,
@@ -3845,6 +4229,10 @@
    "set": "용기의 방패",
    "skillN": 6,
    "type": "helm",
+   "secCan": [
+    "resone",
+    "resphys"
+   ],
    "secPicks": 2,
    "secP": {
     "resone": 0.6635
@@ -3887,6 +4275,11 @@
    },
    "skillN": 4,
    "type": "shoulders",
+   "secCan": [
+    "resone",
+    "resphys",
+    "hitchill"
+   ],
    "secPicks": 2,
    "secP": {
     "hitchill": 0.0413,
@@ -3936,6 +4329,11 @@
     "_doc": "수호자의 위기 제작법(악사 items.py 와 같음)"
    },
    "type": "bracers",
+   "secCan": [
+    "resone",
+    "resphys",
+    "mrdr"
+   ],
    "secPicks": 2,
    "secP": {
     "resone": 0.6734,
@@ -3989,6 +4387,11 @@
    "secResistP": 0,
    "power": "파괴 가능한 개체를 파괴할 때마다, 잠시 이동 속도 폭발적으로 증가",
    "type": "bracers",
+   "secCan": [
+    "resone",
+    "resphys",
+    "mrdr"
+   ],
    "dropShare": {
     "DemonHunter": 0.1,
     "Barbarian": 0.07692308,
@@ -4030,6 +4433,11 @@
    "secResistP": 0,
    "power": "적을 공포에 빠뜨리면 4초 동안 이동 속도 60% 증가",
    "type": "ring",
+   "secCan": [
+    "resone",
+    "resphys",
+    "lpk"
+   ],
    "dropShare": {
     "DemonHunter": 0.04210526,
     "Barbarian": 0.04255319,
@@ -4083,6 +4491,11 @@
     "wrathHeals"
    ],
    "set": "노르발드의 열정",
+   "secCan": [
+    "lpk",
+    "hitchill",
+    "hitslow"
+   ],
    "secPicks": 2,
    "secP": {
     "hitchill": 0.0347
@@ -4128,6 +4541,13 @@
    "secResistP": 0,
    "type": "crusadershield",
    "set": "노르발드의 열정",
+   "secCan": [
+    "resone",
+    "resphys",
+    "mrdr",
+    "hitchill",
+    "hitslow"
+   ],
    "secPicks": 2,
    "secP": {
     "hitchill": 0.0176,
@@ -4186,6 +4606,10 @@
    "secResistP": 0,
    "set": "불새의 화려한 옷",
    "type": "helm",
+   "secCan": [
+    "resone",
+    "resphys"
+   ],
    "secPicks": 2,
    "secP": {
     "resone": 0.6635
@@ -4231,6 +4655,11 @@
    "secResistP": 0,
    "set": "불새의 화려한 옷",
    "type": "shoulders",
+   "secCan": [
+    "resone",
+    "resphys",
+    "hitchill"
+   ],
    "secPicks": 2,
    "secP": {
     "resone": 0.6676
@@ -4277,6 +4706,12 @@
    "secResistP": 0,
    "set": "불새의 화려한 옷",
    "type": "chestarmor",
+   "secCan": [
+    "resone",
+    "resphys",
+    "mrdr",
+    "lpk"
+   ],
    "secPicks": 2,
    "secP": {
     "resone": 0.6054,
@@ -4330,6 +4765,10 @@
    "secResistP": 0,
    "set": "불새의 화려한 옷",
    "type": "gloves",
+   "secCan": [
+    "resone",
+    "resphys"
+   ],
    "secPicks": 2,
    "secP": {
     "resone": 0.7075
@@ -4376,6 +4815,12 @@
    "secResistP": 0,
    "set": "불새의 화려한 옷",
    "type": "pants",
+   "secCan": [
+    "resone",
+    "resphys",
+    "lpk",
+    "hitslow"
+   ],
    "secPicks": 2,
    "secP": {
     "resone": 0.6676
@@ -4426,7 +4871,11 @@
    "secResistP": 0,
    "set": "불새의 화려한 옷",
    "primaries": 5,
-   "type": "source"
+   "type": "source",
+   "secCan": [
+    "hitchill",
+    "hitslow"
+   ]
   },
   {
    "id": "wz_fod",
@@ -4466,7 +4915,12 @@
     357
    ],
    "type": "wand",
-   "power": "고유 주문의 공격 속도 50% 증가 및 공격력 세 배로 증가. 고유 주문 적중 시 저승의 파편 중첩(중첩당 히드라 공격력 30%, 최대 10회) (마법사 전용)"
+   "power": "고유 주문의 공격 속도 50% 증가 및 공격력 세 배로 증가. 고유 주문 적중 시 저승의 파편 중첩(중첩당 히드라 공격력 30%, 최대 10회) (마법사 전용)",
+   "secCan": [
+    "lpk",
+    "hitchill",
+    "hitslow"
+   ]
   },
   {
    "id": "wz_crimson_thrust",
@@ -4498,6 +4952,12 @@
     "_doc": "크림슨 제작법(악사 items.py 와 같음)"
    },
    "type": "pants",
+   "secCan": [
+    "resone",
+    "resphys",
+    "lpk",
+    "hitslow"
+   ],
    "secPicks": 2,
    "secP": {
     "resone": 0.6676
@@ -4539,6 +4999,10 @@
     "_doc": "크림슨 제작법(악사 items.py 와 같음)"
    },
    "type": "boots",
+   "secCan": [
+    "resone",
+    "resphys"
+   ],
    "secPicks": 2,
    "secP": {
     "resone": 0.6676
@@ -4580,6 +5044,11 @@
     "_doc": "오길드 제작법(성전사 items.py 와 같음)"
    },
    "type": "shoulders",
+   "secCan": [
+    "resone",
+    "resphys",
+    "hitchill"
+   ],
    "secPicks": 2,
    "secP": {
     "resone": 0.6676
@@ -4988,6 +5457,11 @@
    ],
    "powerMust": true,
    "type": "ring",
+   "secCan": [
+    "resone",
+    "resphys",
+    "lpk"
+   ],
    "dropShare": {
     "DemonHunter": 0.04210526,
     "Barbarian": 0.04255319,
@@ -5042,6 +5516,11 @@
    },
    "power": "자원을 소모하는 공격이 적중할 때마다 기술 하나의 남은 재사용 대기시간이 1초 감소",
    "type": "ring",
+   "secCan": [
+    "resone",
+    "resphys",
+    "lpk"
+   ],
    "dropShare": {
     "DemonHunter": 0.04210526,
     "Barbarian": 0.04255319,
@@ -5091,6 +5570,12 @@
    "primaries": 5,
    "power": "수정탑 효과 지속시간 두 배로 증가",
    "type": "amulet",
+   "secCan": [
+    "resone",
+    "resphys",
+    "mrdr",
+    "lpk"
+   ],
    "dropShare": {
     "DemonHunter": 0.06896552,
     "Barbarian": 0.06896552,
@@ -5395,6 +5880,11 @@
    "poolAdd": [
     "intm"
    ],
+   "secCan": [
+    "resone",
+    "resphys",
+    "lpk"
+   ],
    "dropShare": {
     "DemonHunter": 0.04210526,
     "Barbarian": 0.04255319,
@@ -5452,6 +5942,12 @@
    ],
    "poolAdd": [
     "intm"
+   ],
+   "secCan": [
+    "resone",
+    "resphys",
+    "mrdr",
+    "lpk"
    ],
    "dropShare": {
     "DemonHunter": 0.06896552,
