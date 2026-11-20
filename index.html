@@ -4711,7 +4711,8 @@ function HeroTip({W, r, apiSlot, cls, classId, recBuild, tplLike, summary, spec,
   const recCfg = recBuild && recBuild.slots[key], recItem = recCfg && D.itemsById[recCfg.item], sameItem = heroSameItem(ours, recItem);
   /* 줄 = 랭크표의 Line 그대로(등급 색 + [ 공격력 / 강인함 ]). 글은 실제 옵션 문구, 등급 색은 같은 정복자의 추천 구성에서 그 칸·그 옵션의 것, 증감은 이 영웅의 실제 장비 기준(아래). 사용자 2026-11-19 "추천 정옵 아님같은 표기는 필요없고, 옵션 랭크표랑 똑같이하라니까?" */
   const mk = (t, i, sec) => { const aid = slotId ? heroAidOf(t, slotId) : null, f = aid && ours && ours.fixed.find(x => x.affix === aid);
-    return {aid: aid || ((sec ? "s" : "p") + i), rank: heroRankOf(recBuild, key, aid) || "F", text: t, short: t, util: !!(aid && D.affixes[aid].util), fixed: !!f, special: !!(f && f.special), mg: null, _sp: !!(f && f.special)}; };
+    /* 칼데산의 절망 줄(민첩 +625 (칼데산의 절망 125등급))은 옵션 칸이 아니라 등급 색을 안 씀(rank "cal" — 색 규칙 없음). 사용자 2026-11-21 "계정조회에서 칼데산은 뭐하러 랭크표시를 해줘?" */
+    return {aid: aid || ((sec ? "s" : "p") + i), rank: /칼데산/.test(t) ? "cal" : heroRankOf(recBuild, key, aid) || "F", text: t, short: t, util: !!(aid && D.affixes[aid].util), fixed: !!f, special: !!(f && f.special), mg: null, _sp: !!(f && f.special)}; };
   const gems = (it.gems || []).filter(Boolean).map(g => [g, heroGemOf(g, slotId, classId)]), nrm = gems.filter(x => x[1] && x[1].gem), lgs = gems.filter(x => x[1] && x[1].leg);
   const P1 = (it.primary || []).map((t, i) => mk(t, i, false)), S1 = (it.secondary || []).map((t, i) => mk(t, i, true));
   /* 주요 옵션 비교(랭크표와 같은 펼치기): 이 아이템에 없는 주요 옵션들 — 추천 구성의 그 칸에서 랭크표가 보여 주는 줄(buildLines)을 그대로 가져와, 이 아이템이 이미 가진 옵션만 뺌. 같은 아이템일 때만.
