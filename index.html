@@ -1507,7 +1507,8 @@ CLASS_RULES.dh = {
     const rate = DH_RATE[build.dmgModel || "impale"]({CM, aps, build});
     let dmgMult = (1 + V.dmg*uptime) * (crimson && S.crimson.dmgEqCdr ? 1 + cdrTotal : 1), toughMult = 1, disc = null;
     /* 더하기 묶음(gen/common.py additive 주석): 태극 + 서사시의 끝을 더한 합이 배율 하나(maxroll damage-multipliers 'Additive', 2026-11-20 — 그 전엔 서사시의 끝을 따로 곱했음) */
-    let addDmg = Object.values(build.legGems || {}).includes("taeguk") ? D.config.model.additive.taeguk : 0;
+    /* 태극 = 150등급 값(config), 계정 조회는 그 영웅의 실제 등급 값(build.taegukDmg — tools/tough_calc.js, 2026-11-21) */
+    let addDmg = Object.values(build.legGems || {}).includes("taeguk") ? (build.taegukDmg != null ? build.taegukDmg : D.config.model.additive.taeguk) : 0;
     const GM = guardian2 ? guardianMR(a, S) : null;   // 수호자 2세트 → 근접·투사체 감소(20_stats mrTaken)
     const dr = [
                 crimson && S.crimson.drEqRcr ? rcrTotal : 0,
@@ -3142,6 +3143,10 @@ function calc(r, paraVit, opt){ opt = opt || {};
      · 1 로 두는 것: 고통받는 자의 파멸·강한 자의 파멸(둘은 같은 자리 — "보통 고통받는자의 파멸과 스왑되지"; 이 자리가 주류와 다른 사람은 표본에서 뺌 → rank_summary.py), 증통제("어차피 법사 다 증통제쓰는데"),
        미리내("딜이 없고 회복력"), 강제자("배율로 계산할게 아니야"). */
   const GD = r.gemsFull || [], gtxt = n => { const g = GD.find(x => x.name === n); return g ? g.text : null; }, pct = (t, re) => { const m = t && t.match(re); return m ? +m[1]/100 : null; };
+  /* 태극의 실제 등급: 문구의 중첩당 공격력 % × 최대 중첩 → build.taegukDmg(직업 규칙 25_class_dh 의 더하기 묶음이 읽음, 없으면 150등급 0.80).
+     2026-11-21 사용자 "태극 등급이 떨어지는데도 불구, 공격력 및 강인함 감소가 표기가 안되는데?" — 전에는 모델이 늘 150등급 값을 써서 등급 차이가 0 이었음.
+     방어도 쪽(중첩당 2%)은 등급과 무관. ※ 표본 기준점(ref/sample_refs.json)은 아직 150등급 가정으로 만든 값 — 다시 만들 때 반영됨 */
+  { const t = gtxt('태극'), p = pct(t, /공격력 ([\d.]+)% 증가/); if (p != null) build.taegukDmg = p * (+((t.match(/최대 (\d+)회 중첩/) || [])[1]) || 10); }
   const isRai = tpl.dmgModel === 'raiment', softCC = Object.values(r.items).some(it => (it.secondary || []).some(t => /적중 시 (오한|감속) 확률/.test(t)));
   const GDM = D.config.model.gemDmg, trapUp = tpl.id === 'foth_aov' ? GDM.trappedFoth : 1, ZEI = GDM.zei / 0.8;   // 수치 = gen/effects.py(2026-11-20 정본) — ZEI = 40m ÷ 50m
   const gemMult = id => { const nm = (D.config.legGems[id] || {}).name, t = gtxt(nm);
