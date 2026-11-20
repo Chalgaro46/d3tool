@@ -4418,7 +4418,12 @@ function heroNextSetup(r, S, P0, recBuild, itemOf){ const m = D.path && D.path.m
   if (!cands.length) return {none: true, cur};
   const val = e => valueOfTiers(e, C.target), v0 = heroRecommend(r, S, P0).v, rho = heroSlotRatios(r, S, P0, v0, recBuild, itemOf);
   const curAt = P => heroRecommend(r, S, P).value;
-  const candAt = (w, P) => { const rm = heroRecModel(w, P); if (!rm) return null; const keys = Object.keys(rm.slots).filter(k => { const it = r.items[HERO_API[k]]; return it && !heroSameItem(itemOf(it.name), D.itemsById[rm.slots[k].item]); });
+  /* 바꾸는 칸 = 다음 세팅의 아이템이 지금 세팅(cur)의 아이템과 다른 칸 중, 영웅이 아직 그 아이템을 안 낀 칸. 두 세팅의 아이템이 같은 칸(세팅 전환과 무관한 칸)은 영웅 장비 그대로 —
+     표기에서도 계산에서도 뺌. 사용자 2026-11-21 "다음세팅 추천을 할때, 무슨장비를 무슨장비로 바꾸는지만 얘기해주고, 바꿀 필요없는건 언급하지말자."
+     (전: 영웅 장비와 다른 칸을 전부 바꿈 → 지금 세팅에서도 안 낀 추천 아이템까지 '바꿀 장비'에 들어가고 예측값도 그만큼 올라갔음) */
+  const curB = heroFindBuild(cur);
+  const candAt = (w, P) => { const rm = heroRecModel(w, P); if (!rm) return null; const keys = Object.keys(rm.slots).filter(k => { const it = r.items[HERO_API[k]], to = D.itemsById[rm.slots[k].item];
+      return it && !heroSameItem(itemOf(it.name), to) && !(curB && curB.slots[k] && heroSameItem(D.itemsById[curB.slots[k].item], to)); });
     const rw = heroSwapped(r, rm, keys, itemOf), vv = heroRecommend(rw, S, P).v, hi = heroEval(rw, S, P, vv); let pd = 0, pt = 0;
     for (const k of keys) { const q = rho[k] != null ? rho[k] : rho.avg, lo = heroEval(heroSwapped(rw, rm, [k], itemOf, true), S, P, vv); pd += (1 - q) * (hi.d - lo.d); pt += (1 - q) * (hi.t - lo.t); }
     return {value: val({d: hi.d - pd, t: hi.t - pt}), keys, rm}; };
@@ -4833,8 +4838,9 @@ function HeroNextLines({next, S, r, itemOf, style}){ const G = heroGroupOf(S), n
   if (next.none) return <div className="paraline" style={style}><span className="pitem augline">다음 세팅 : <b>없음</b></span></div>;
   const keys = next.keys.slice().sort((a, b) => Object.keys(HERO_API).indexOf(a) - Object.keys(HERO_API).indexOf(b));
   return <><div className="paraline" style={style}><span className="pitem augline">다음 세팅 : <b>{nm(next.w)}</b> · 정복자 <b>{next.P.toLocaleString()}</b>{next.now ? " (지금)" : ""}</span></div>
-    <div className="paraline" style={style}><span className="pitem augline">바꿀 장비 : {keys.map((k, i) => { const to = D.itemsById[next.rm.slots[k].item], cur = r.items[HERO_API[k]];
-      return <React.Fragment key={k}>{i ? ", " : ""}<span title={(cur ? cur.name : "") + " → " + (to ? to.name : "")}>{to ? (D.slotDefs[to.slot] || {}).label || k : k}</span></React.Fragment>; })}</span></div></>; }
+    {/* 바꿀 장비 = '지금 아이템 → 새 아이템'만(바꿀 필요 없는 칸은 heroNextSetup 이 뺌). 사용자 2026-11-21 "무슨장비를 무슨장비로 바꾸는지만 얘기해주고" */}
+    {keys.length > 0 && <div className="paraline" style={style}><span className="pitem augline">바꿀 장비 : {keys.map((k, i) => { const to = D.itemsById[next.rm.slots[k].item], cur = r.items[HERO_API[k]];
+      return <React.Fragment key={k}>{i ? ", " : ""}<span>{cur ? cur.name : (D.slotDefs[to && to.slot] || {}).label || k} → <b>{to ? to.name : k}</b></span></React.Fragment>; })}</span></div>}</>; }
 function HeroView({acc, hero, rid}){
   const A = useAcct(), okey = rid || acc.key + "_" + hero.id, ov = (A.over[okey] && A.over[okey].slots) || {}, ovSig = JSON.stringify(ov), r0 = hero.r;
   const S = useMemo(() => heroSetupOf(r0), [hero.id, acc.fetchedAt]), ok = !S.why, P = r0.P || 0, itemOf = n => heroItemOf(n, r0.cls);
