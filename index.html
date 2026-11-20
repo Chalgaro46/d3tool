@@ -415,7 +415,7 @@ h1{font-size:18px;font-weight:700;color:var(--title);margin:0 auto 12px;width:90
 .empty{color:var(--fg-dim);padding:40px;text-align:center}
 /* ===== v3 고정 옵션 표기: 글자색이 등급색보다 우선, 끝에 ✦ ===== */
 /* 고정 옵션(사용자 2026-11-07): 글자색은 등급색 그대로, 고정 옵션 색 밑줄(옵션 글에만). 마부로 돌린 고정 옵션도 밑줄, ✦ 없음. 전설 효과·보조 옵션 줄은 밑줄 없음(사용자: 고정 옵션으로 볼 필요 없음) */
-.line.cal .txt{color:#fff}   /* 계정 조회 칼데산의 절망 줄: 흰색 고정(37_herotip — 사용자 2026-11-21) */
+.line.cal .txt{color:var(--tF)}   /* 계정 조회 칼데산의 절망 줄: 최하 등급(F) 색 고정(37_herotip — 사용자 2026-11-21 "흰색 말고 최하단계 랭크 색을 그대로 쓰자") */
 .line.fx .txt .opt,.line.rr .txt .opt,.fxlegend{text-decoration:underline;text-decoration-color:var(--fixed);text-decoration-thickness:1px;text-underline-offset:3px}
 .tip.summary .line.fx .txt .opt,.tip.summary .line.rr .txt .opt{text-decoration-thickness:2px;text-underline-offset:4px}
 /* 랭크 마름모: 첫 줄 글자 높이 가운데에 맞춤(줄 높이와 같은 칸에 배경 가운데) */
@@ -4712,7 +4712,7 @@ function HeroTip({W, r, apiSlot, cls, classId, recBuild, tplLike, summary, spec,
   const recCfg = recBuild && recBuild.slots[key], recItem = recCfg && D.itemsById[recCfg.item], sameItem = heroSameItem(ours, recItem);
   /* 줄 = 랭크표의 Line 그대로(등급 색 + [ 공격력 / 강인함 ]). 글은 실제 옵션 문구, 등급 색은 같은 정복자의 추천 구성에서 그 칸·그 옵션의 것, 증감은 이 영웅의 실제 장비 기준(아래). 사용자 2026-11-19 "추천 정옵 아님같은 표기는 필요없고, 옵션 랭크표랑 똑같이하라니까?" */
   const mk = (t, i, sec) => { const cal = /칼데산/.test(t), aid = slotId ? heroAidOf(t, slotId) : null, f = !cal && aid && ours && ours.fixed.find(x => x.affix === aid);
-    /* 칼데산의 절망 줄(민첩 +625 (칼데산의 절망 125등급))은 옵션 칸이 아님 → 등급 색·고정 밑줄·증감 숫자 없이 흰 글자(rank "cal" — style.css .line.cal).
+    /* 칼데산의 절망 줄(민첩 +625 (칼데산의 절망 125등급))은 옵션 칸이 아님 → 등급 색·고정 밑줄·증감 숫자 없이 최하 등급(F) 색 고정(rank "cal" — style.css .line.cal).
        사용자 2026-11-21 "계정조회에서 칼데산은 뭐하러 랭크표시를 해줘?" → "칼데산은 밑줄도 없애고, 공격력·강인함 증감 숫자도 없애고, 색도 흰색으로 고정하자." */
     return {aid: aid || ((sec ? "s" : "p") + i), cal, rank: cal ? "cal" : heroRankOf(recBuild, key, aid) || "F", text: t, short: t, util: !!(aid && D.affixes[aid].util), fixed: !!f, special: !!(f && f.special), mg: null, _sp: !!(f && f.special)}; };
   const gems = (it.gems || []).filter(Boolean).map(g => [g, heroGemOf(g, slotId, classId)]), nrm = gems.filter(x => x[1] && x[1].gem), lgs = gems.filter(x => x[1] && x[1].leg);
