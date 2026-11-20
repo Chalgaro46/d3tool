@@ -1321,6 +1321,12 @@
    "secP": {
     "maxdisc": 0.67
    },
+   "poolAdd": [
+    "elite2h"
+   ],
+   "poolDrop": [
+    "elite"
+   ],
    "power": "다발 사격의 공격 속도 50% 증가 및 공격력 200% 증가 (악마사냥꾼 전용)",
    "powerRoll": [
     150,
@@ -4488,7 +4494,11 @@
    "type": "flail2h",
    "poolAdd": [
     "wrathRegen",
-    "wrathHeals"
+    "wrathHeals",
+    "elite2h"
+   ],
+   "poolDrop": [
+    "elite"
    ],
    "set": "노르발드의 열정",
    "secCan": [

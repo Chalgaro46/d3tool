@@ -96,6 +96,21 @@
   },
   "step": 1
  },
+ "elite2h": {
+  "name": "정예에게 주는 피해 {v}% 증가",
+  "short": "정예 피해 {v}%",
+  "unit": "pct1",
+  "weight": 100,
+  "group": "elite",
+  "util": true,
+  "ranges": {
+   "*": [
+    9,
+    10
+   ]
+  },
+  "step": 1
+ },
  "dmg": {
   "name": "피해 +{lo}~{hi}",
   "short": "피해 +{lo}~{hi}",
@@ -738,7 +753,7 @@
   "group": "dex",
   "ranges": {
    "*": [
-    1230,
+    1237,
     1465
    ]
   },
