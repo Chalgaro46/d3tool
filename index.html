@@ -415,6 +415,7 @@ h1{font-size:18px;font-weight:700;color:var(--title);margin:0 auto 12px;width:90
 .empty{color:var(--fg-dim);padding:40px;text-align:center}
 /* ===== v3 고정 옵션 표기: 글자색이 등급색보다 우선, 끝에 ✦ ===== */
 /* 고정 옵션(사용자 2026-11-07): 글자색은 등급색 그대로, 고정 옵션 색 밑줄(옵션 글에만). 마부로 돌린 고정 옵션도 밑줄, ✦ 없음. 전설 효과·보조 옵션 줄은 밑줄 없음(사용자: 고정 옵션으로 볼 필요 없음) */
+.line.cal .txt{color:#fff}   /* 계정 조회 칼데산의 절망 줄: 흰색 고정(37_herotip — 사용자 2026-11-21) */
 .line.fx .txt .opt,.line.rr .txt .opt,.fxlegend{text-decoration:underline;text-decoration-color:var(--fixed);text-decoration-thickness:1px;text-underline-offset:3px}
 .tip.summary .line.fx .txt .opt,.tip.summary .line.rr .txt .opt{text-decoration-thickness:2px;text-underline-offset:4px}
 /* 랭크 마름모: 첫 줄 글자 높이 가운데에 맞춤(줄 높이와 같은 칸에 배경 가운데) */
@@ -4710,9 +4711,10 @@ function HeroTip({W, r, apiSlot, cls, classId, recBuild, tplLike, summary, spec,
   const ours = heroItemOf(it.name, cls), ext = !ours && D.heroIcons ? D.heroIcons[it.name] : null, slotId = ours ? ours.slot : null, slot = slotId ? D.slotDefs[slotId] : {}, quality = ours ? ours.quality : ext ? ext.quality : (/세트/.test(it.type || "") ? "set" : "legendary");
   const recCfg = recBuild && recBuild.slots[key], recItem = recCfg && D.itemsById[recCfg.item], sameItem = heroSameItem(ours, recItem);
   /* 줄 = 랭크표의 Line 그대로(등급 색 + [ 공격력 / 강인함 ]). 글은 실제 옵션 문구, 등급 색은 같은 정복자의 추천 구성에서 그 칸·그 옵션의 것, 증감은 이 영웅의 실제 장비 기준(아래). 사용자 2026-11-19 "추천 정옵 아님같은 표기는 필요없고, 옵션 랭크표랑 똑같이하라니까?" */
-  const mk = (t, i, sec) => { const aid = slotId ? heroAidOf(t, slotId) : null, f = aid && ours && ours.fixed.find(x => x.affix === aid);
-    /* 칼데산의 절망 줄(민첩 +625 (칼데산의 절망 125등급))은 옵션 칸이 아니라 등급 색을 안 씀(rank "cal" — 색 규칙 없음). 사용자 2026-11-21 "계정조회에서 칼데산은 뭐하러 랭크표시를 해줘?" */
-    return {aid: aid || ((sec ? "s" : "p") + i), rank: /칼데산/.test(t) ? "cal" : heroRankOf(recBuild, key, aid) || "F", text: t, short: t, util: !!(aid && D.affixes[aid].util), fixed: !!f, special: !!(f && f.special), mg: null, _sp: !!(f && f.special)}; };
+  const mk = (t, i, sec) => { const cal = /칼데산/.test(t), aid = slotId ? heroAidOf(t, slotId) : null, f = !cal && aid && ours && ours.fixed.find(x => x.affix === aid);
+    /* 칼데산의 절망 줄(민첩 +625 (칼데산의 절망 125등급))은 옵션 칸이 아님 → 등급 색·고정 밑줄·증감 숫자 없이 흰 글자(rank "cal" — style.css .line.cal).
+       사용자 2026-11-21 "계정조회에서 칼데산은 뭐하러 랭크표시를 해줘?" → "칼데산은 밑줄도 없애고, 공격력·강인함 증감 숫자도 없애고, 색도 흰색으로 고정하자." */
+    return {aid: aid || ((sec ? "s" : "p") + i), cal, rank: cal ? "cal" : heroRankOf(recBuild, key, aid) || "F", text: t, short: t, util: !!(aid && D.affixes[aid].util), fixed: !!f, special: !!(f && f.special), mg: null, _sp: !!(f && f.special)}; };
   const gems = (it.gems || []).filter(Boolean).map(g => [g, heroGemOf(g, slotId, classId)]), nrm = gems.filter(x => x[1] && x[1].gem), lgs = gems.filter(x => x[1] && x[1].leg);
   const P1 = (it.primary || []).map((t, i) => mk(t, i, false)), S1 = (it.secondary || []).map((t, i) => mk(t, i, true));
   /* 주요 옵션 비교(랭크표와 같은 펼치기): 이 아이템에 없는 주요 옵션들 — 추천 구성의 그 칸에서 랭크표가 보여 주는 줄(buildLines)을 그대로 가져와, 이 아이템이 이미 가진 옵션만 뺌. 같은 아이템일 때만.
@@ -4726,7 +4728,7 @@ function HeroTip({W, r, apiSlot, cls, classId, recBuild, tplLike, summary, spec,
   const hasAllres = P1.some(l => l.aid === "allres"), canSec = a => (!ours || !ours.secCan || ours.secCan.includes(a)) && !(hasAllres && (a === "resone" || a === "resphys"));
   let restS = []; const haveS = new Set(S1.map(l => l.aid)), secAdd = slotId ? HERO_SEC_AIDS.filter(a => D.affixes[a] && !haveS.has(a) && canSec(a)) : [];
   if (calc) { let G = null; try { G = heroLineGains(r, calc.S, calc.P, calc.v, apiSlot, restP.filter(l => !/\[기술 이름\]/.test(l.text || "")).map(l => l.aid).concat(secAdd), slotId, tplLike, {p: (it.primary || []).map(t => slotId ? heroAidOf(t, slotId) : null), s: (it.secondary || []).map(t => slotId ? heroAidOf(t, slotId) : null)}); } catch (e) { G = null; }
-    P1.forEach((l, i) => { l.mg = G && !l._sp ? G.p[i] : null; }); S1.forEach((l, i) => { l.mg = G ? G.s[i] : null; });
+    P1.forEach((l, i) => { l.mg = G && !l._sp && !l.cal ? G.p[i] : null; }); S1.forEach((l, i) => { l.mg = G ? G.s[i] : null; });
     restP = restP.map(l => ({...l, mg: G && G.add[l.aid] ? G.add[l.aid] : null}));
     /* 최대 수치가 아닌 주요 옵션은 '최대였다면'을 비교 목록 맨 앞에(증감 = 최대 수치일 때의 값어치 전체 — 위 가진 줄의 숫자와 바로 견줄 수 있게) */
     if (G) restP = G.full.filter(x => !x.sec).map(x => { const src = P1.find(l => l.text === it.primary[x.i]) || {}; return {aid: "full" + x.i, rank: src.rank || "F", text: x.text + " (최대)", short: x.text + " (최대)", util: !!src.util, fixed: false, special: false, mg: {dmg: x.dmg, tough: x.tough}}; }).concat(restP);
