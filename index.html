@@ -980,8 +980,16 @@ function affixText(aid, slotId, ctx){
   else { const pct = /%/.test(a.name); range = "["+fmtNum(r[0],a.unit)+"~"+fmtNum(r[1],a.unit)+"]"+(pct?"%":""); }
   // 주능력치 이름: 모델 id 'dex'(그룹 dex)는 '주능력치'. 힘 직업(성전사)은 ctx.mainLabel = "힘" 으로 표기만 바꿈(2026-11-09)
   const ms = t => (ctx.mainLabel && a.group === "dex") ? t.replace("민첩", ctx.mainLabel) : t;
-  return {text: applyJosa(ms(sub(a.name))), short: applyJosa(ms(sub(a.short))), range};
+  return {text: applyJosa(ms(sub(a.name))), short: affixShortFill(aid, {v: fmtNum(r[1], a.unit), lo: fmtNum(r[0], a.unit), hi: fmtNum(r[1], a.unit)}, ctx), range};
 }
+/* 짧은 표기(모바일 요약 툴팁) — 옵션 id 의 short 틀에 값을 채움. 랭크표(위 affixText — 최대 수치)와 계정 조회(36_heroitems heroShortOf — 그 아이템의 실제 수치)가 같이 씀.
+   vals: {v, lo, hi, n, elem, skill, kind([속성]·[근접/원거리] 자리), main(주능력치 이름)} — 없는 칸은 ctx(세팅 표기)로. 2026-11-21 사용자 "숏폼을 모듈화를 해서 양쪽다 적용되게" */
+function affixShortFill(aid, vals, ctx){ const a = D.affixes[aid]; ctx = ctx || {};
+  let s = a.short.replace("{v}", vals.v).replace("{lo}", vals.lo).replace("{hi}", vals.hi)
+    .replace("{elem}", vals.elem || ctx.elemLabel || "속성").replace("{skill}", vals.skill || ctx.skillLabel || "[기술 이름]").replace("{n}", vals.n || ctx.n || 1);
+  if (vals.kind) s = s.replace(/\[속성\]|\[근접\/원거리\]/, vals.kind);
+  const main = vals.main || (a.group === "dex" && ctx.mainLabel); if (main) s = s.replace(vals.main ? /^(민첩|지능)/ : "민첩", main);
+  return applyJosa(s); }
 
 /* ---------- 수치 통과 확률 ---------- */
 // th: {top, dex, vit, allres, ringdmg, wdmg} (각 1~100). 반환: (aid, slotId) → 통과 확률
@@ -4653,6 +4661,22 @@ function heroAidOf(text, slotId){ if (!HERO_RX) HERO_RX = Object.entries(D.affix
   const pool = (D.slotDefs[slotId] || {}).pool || []; let hit = null, hitW = null;
   /* 같은 문구에 여러 옵션 id 가 맞으면(이름이 같은 변형 — dex·dex2h, wdmg·wdmgBow …): 그 칸의 풀에 있는 것 > 가중치가 있는 것(일반 옵션) > 아무거나 */
   for (const [aid, rx] of HERO_RX) if (rx.test(text)) { if (pool.includes(aid)) return aid; if (!hitW && D.affixes[aid].weight) hitW = aid; hit = hit || aid; } return hitW || hit; }
+/* 실제 옵션 문구 → 짧은 표기(모바일 요약 툴팁). 값만 문구에서 읽고, 틀은 랭크표와 같은 affixShortFill(00_core — 옵션 id 의 short).
+   칼데산의 절망 줄은 "민첩 625 (칼데산 125)". 틀의 자리를 다 못 채우면 원래 문구 그대로. 사용자 2026-11-21 "모바일에서 옵션 표기를 단순하게 하는거, 그거 조회페이지에도" · "숏폼을 모듈화를 해서 양쪽다 적용되게" */
+/* 우리 옵션 id 가 없는 보조 옵션(계산에 안 쓰는 것)의 짧은 표기 — 계정 조회에만 나옴 */
+const HERO_SHORT_ETC = [[/^적에게서 얻는 금화 \+([\d,]+%)/, m => "금화 +" + m[1]], [/^적을 처치하고 얻는 경험치 \+([\d,]+)/, m => "경험치 +" + m[1]],
+  [/^생명의 구슬 및 금화 획득 반경 (\d+)미터 증가/, m => "획득 반경 " + m[1] + "m"], [/^생명의 구슬과 물약으로 회복되는 생명력 \+([\d,]+)/, m => "구슬 회복 +" + m[1]],
+  [/^제어 방해 효과의 지속시간 ([\d.]+%) 감소/, m => "제어 시간 감소 " + m[1]], [/^가시 피해 \+([\d,]+)/, m => "가시 +" + m[1]], [/^요구 레벨 (\d+) 감소/, m => "요구 레벨 −" + m[1]]];
+function heroShortOf(text, aid){
+  const cal = text.match(/^(\S+) \+([\d,]+) \(칼데산의 절망 (\d+)등급\)/); if (cal) return cal[1] + " " + cal[2] + " (칼데산 " + cal[3] + ")";
+  const a = aid && D.affixes[aid]; if (!a || !a.short) { for (const [rx, f] of HERO_SHORT_ETC) { const m = text.match(rx); if (m) return f(m); } return text; }
+  const nums = text.match(/\d[\d,]*(?:\.\d+)?/g) || [], first = (text.match(/^\S+/) || [""])[0], vals = {v: nums[0], lo: nums[0], hi: nums[1], n: nums[0]};
+  if (/\{skill\}/.test(a.short)) { const m = text.match(/^(.+?)(?:\(으\)로|으로|로) 주는 피해/); if (m) vals.skill = m[1]; }
+  if (/\{elem\}/.test(a.short)) vals.elem = first;
+  if (/\[속성\]|\[근접\/원거리\]/.test(a.short)) vals.kind = first;
+  if (a.group === "dex" || /^(민첩|지능|힘|활력) /.test(a.short)) { if (/^(민첩|지능|힘)$/.test(first)) vals.main = first; }
+  if ((/\{v\}|\{lo\}|\{n\}/.test(a.short) && vals.v == null) || (/\{hi\}/.test(a.short) && vals.hi == null) || (/\{skill\}/.test(a.short) && !vals.skill)) return text;
+  return affixShortFill(aid, vals, {}); }
 function heroRankOf(recBuild, key, aid){ const c = recBuild && recBuild.slots[key]; if (!c || !aid) return null; const it = D.itemsById[c.item], rk = c.ranks || (it && D.slotDefs[it.slot].ranks) || {};
   for (const r of ORDER) if ((rk[r] || []).includes(aid)) return r; if ((c.goal || []).includes(aid) || (it && it.fixed.some(f => f.affix === aid))) return "S"; return null; }
 /* 보석 이름 → 그릴 것: 전설 보석이면 {leg: config.legGems 항목}, 일반 보석이면 {gem: 그 칸 종류의 보석(직업별 그림)} */
@@ -4714,7 +4738,7 @@ function HeroTip({W, r, apiSlot, cls, classId, recBuild, tplLike, summary, spec,
   const mk = (t, i, sec) => { const cal = /칼데산/.test(t), aid = slotId ? heroAidOf(t, slotId) : null, f = !cal && aid && ours && ours.fixed.find(x => x.affix === aid);
     /* 칼데산의 절망 줄(민첩 +625 (칼데산의 절망 125등급))은 옵션 칸이 아님 → 등급 색·고정 밑줄·증감 숫자 없이 최하 등급(F) 색 고정(rank "cal" — style.css .line.cal).
        사용자 2026-11-21 "계정조회에서 칼데산은 뭐하러 랭크표시를 해줘?" → "칼데산은 밑줄도 없애고, 공격력·강인함 증감 숫자도 없애고, 색도 흰색으로 고정하자." */
-    return {aid: aid || ((sec ? "s" : "p") + i), cal, rank: cal ? "cal" : heroRankOf(recBuild, key, aid) || "F", text: t, short: t, util: !!(aid && D.affixes[aid].util), fixed: !!f, special: !!(f && f.special), mg: null, _sp: !!(f && f.special)}; };
+    return {aid: aid || ((sec ? "s" : "p") + i), cal, rank: cal ? "cal" : heroRankOf(recBuild, key, aid) || "F", text: t, short: heroShortOf(t, aid), util: !!(aid && D.affixes[aid].util), fixed: !!f, special: !!(f && f.special), mg: null, _sp: !!(f && f.special)}; };
   const gems = (it.gems || []).filter(Boolean).map(g => [g, heroGemOf(g, slotId, classId)]), nrm = gems.filter(x => x[1] && x[1].gem), lgs = gems.filter(x => x[1] && x[1].leg);
   const P1 = (it.primary || []).map((t, i) => mk(t, i, false)), S1 = (it.secondary || []).map((t, i) => mk(t, i, true));
   /* 주요 옵션 비교(랭크표와 같은 펼치기): 이 아이템에 없는 주요 옵션들 — 추천 구성의 그 칸에서 랭크표가 보여 주는 줄(buildLines)을 그대로 가져와, 이 아이템이 이미 가진 옵션만 뺌. 같은 아이템일 때만.
@@ -4749,12 +4773,12 @@ function HeroTip({W, r, apiSlot, cls, classId, recBuild, tplLike, summary, spec,
           <div className="meta"><div className="row1"><span className={"q " + quality}>{it.type || ""}</span><span className="slotname">{ours ? tipRightOf(ours) : ""}</span></div>
             {!!it.armor && <div className="big"><div className="num"><div className="val">{nf0(it.armor)}</div><div className="lab">방어도</div></div></div>}</div>
         </div>
-        <div className="sec"><h3>주요 옵션<span className="hcols">{prio ? <>[ <em className="p">우선순위</em> / <em className="t">강인함</em> ]</> : <>[ <em className="d">공격력</em> / <em className="t">강인함</em> ]</>}</span></h3><ul className="lines">{/* key = 줄 순서(옵션 id 가 겹칠 수 있음 — 고정 민첩 + 칼데산 민첩. 겹치면 칸을 옮겨 다닐 때 줄이 쌓임: 사용자 2026-11-19) */}{P1.map((l, i) => <Line key={apiSlot + "p" + i} l={l} summary={false} gem={l.aid === "socket" && nrm.length ? {...nrm[0][1].gem, label: nrm[0][0]} : null} pr={null}/>)}</ul>
+        <div className="sec"><h3>주요 옵션<span className="hcols">{prio ? <>[ <em className="p">우선순위</em> / <em className="t">강인함</em> ]</> : <>[ <em className="d">공격력</em> / <em className="t">강인함</em> ]</>}</span></h3><ul className="lines">{/* key = 줄 순서(옵션 id 가 겹칠 수 있음 — 고정 민첩 + 칼데산 민첩. 겹치면 칸을 옮겨 다닐 때 줄이 쌓임: 사용자 2026-11-19) */}{P1.map((l, i) => <Line key={apiSlot + "p" + i} l={l} summary={summary} gem={l.aid === "socket" && nrm.length ? {...nrm[0][1].gem, label: nrm[0][0]} : null} pr={null}/>)}</ul>
           {restP.length > 0 && <button type="button" className={"morebtn" + (more ? " open" : "")} onClick={e => { e.stopPropagation(); setMore(m => !m); }} aria-expanded={more}><span className="chev" aria-hidden="true">▾</span>주요 옵션 비교</button>}
-          {more && restP.length > 0 && <ul className="lines more">{restP.map((l, i) => <Line key={apiSlot + "r" + i} l={l} summary={false} gem={null} pr={null}/>)}</ul>}</div>
-        {(S1.length > 0 || restS.length > 0) && <div className="sec secopt"><h3>보조 옵션</h3><ul className="lines">{S1.map((l, i) => <Line key={apiSlot + "s" + i} l={l} summary={false} gem={null} pr={null}/>)}</ul>
+          {more && restP.length > 0 && <ul className="lines more">{restP.map((l, i) => <Line key={apiSlot + "r" + i} l={l} summary={summary} gem={null} pr={null}/>)}</ul>}</div>
+        {(S1.length > 0 || restS.length > 0) && <div className="sec secopt"><h3>보조 옵션</h3><ul className="lines">{S1.map((l, i) => <Line key={apiSlot + "s" + i} l={l} summary={summary} gem={null} pr={null}/>)}</ul>
           {restS.length > 0 && <button type="button" className={"morebtn" + (more ? " open" : "")} onClick={e => { e.stopPropagation(); setMore(m => !m); }} aria-expanded={more}><span className="chev" aria-hidden="true">▾</span>보조 옵션 비교</button>}
-          {more && restS.length > 0 && <ul className="lines more">{restS.map((l, i) => <Line key={apiSlot + "rs" + i} l={l} summary={false} gem={null} pr={null}/>)}</ul>}</div>}
+          {more && restS.length > 0 && <ul className="lines more">{restS.map((l, i) => <Line key={apiSlot + "rs" + i} l={l} summary={summary} gem={null} pr={null}/>)}</ul>}</div>}
         {lgs.map(([n, x]) => { const g = x.leg, mine = (r.gemsFull || []).find(y => y.name === n); return <div key={n} className="leggem"><div className="lgh"><span className="lgsock"><img src={g.icon} alt=""/></span><span className="lgn">{g.name}</span><span className="lgr"> – {mine && mine.rank != null ? mine.rank + "등급" : g.rank}</span></div>
           {/* 효과 문구 = 이 영웅의 보석 것(실제 등급의 수치). 없으면 자료의 최대 등급 문구 */}
           {mine && mine.text ? <ul><li>{mine.text}</li></ul> : g.fx && <ul>{g.fx.map((t, i) => <li key={i}>{t.split(/\{([^}]*)\}/).map((y, j) => j % 2 ? <b key={j}>{y}</b> : y)}</li>)}</ul>}</div>; })}
