@@ -1039,8 +1039,8 @@
       "gemK": 1.9647
      },
      "fb_g_ew": {
-      "dmg": 178206733,
-      "tough": 5191953382,
+      "dmg": 246391646,
+      "tough": 5628851426,
       "P": 2783,
       "who": "sunny#3346",
       "region": "한국",
@@ -1050,8 +1050,8 @@
       "gemK": 1.6
      },
      "fb_guard": {
-      "dmg": 178206733,
-      "tough": 5191953382,
+      "dmg": 246391646,
+      "tough": 5628851426,
       "P": 2783,
       "who": "sunny#3346",
       "region": "한국",
@@ -1061,8 +1061,8 @@
       "gemK": 1.6
      },
      "fb_a_fr": {
-      "dmg": 178206733,
-      "tough": 5191953382,
+      "dmg": 246391646,
+      "tough": 5628851426,
       "P": 2783,
       "who": "sunny#3346",
       "region": "한국",
@@ -1072,8 +1072,8 @@
       "gemK": 1.6
      },
      "fb_a_ew": {
-      "dmg": 178206733,
-      "tough": 5191953382,
+      "dmg": 246391646,
+      "tough": 5628851426,
       "P": 2783,
       "who": "sunny#3346",
       "region": "한국",
@@ -1771,10 +1771,16 @@
      "fps": 60,
      "delsere": 1.5,
      "fod": 1.5,
+     "smooth": 0.5,
      "src": [
       "https://maxroll.gg/d3/d3planner",
       "https://maxroll.gg/d3/guides/firebird-magic-missile-wizard-guide"
      ]
+    },
+    "pain": {
+     "bleeding": 15,
+     "iasPer": 0.03,
+     "src": "gen/leggems.py pain 문구(배틀넷 API 150등급) · 사용자 2026-11-21"
     },
     "pylon": {
      "uptime": 0.13333333333333333,
