@@ -2346,56 +2346,7 @@
        ]
       }
      ],
-     "sources": {
-      "impale": [
-       {
-        "t": "maxroll 투검(어둠) 가이드",
-        "u": "https://maxroll.gg/d3/guides/shadow-impale-demon-hunter-guide"
-       }
-      ],
-      "ue": [
-       {
-        "t": "maxroll 부정 다발사격 가이드",
-        "u": "https://maxroll.gg/d3/guides/ue-multishot-demon-hunter-guide"
-       },
-       {
-        "t": "maxroll d3planner 프로필 345357607",
-        "u": "https://maxroll.gg/d3/d3planner/345357607"
-       }
-      ],
-      "zdh": [
-       {
-        "t": "maxroll 서포터 악마사냥꾼 가이드",
-        "u": "https://maxroll.gg/d3/guides/support-demon-hunter-guide"
-       },
-       {
-        "t": "maxroll d3planner 프로필 140334289",
-        "u": "https://maxroll.gg/d3/d3planner/140334289"
-       }
-      ],
-      "common": [
-       {
-        "t": "maxroll 솔로 티어",
-        "u": "https://maxroll.gg/d3/tierlists/solo-tierlist"
-       },
-       {
-        "t": "maxroll 대균열 단계 공식",
-        "u": "https://maxroll.gg/d3/resources/greater-rift-explained"
-       },
-       {
-        "t": "maxroll 축성 효과",
-        "u": "https://maxroll.gg/d3/resources/sanctified-items-explained"
-       },
-       {
-        "t": "maxroll 칼데산의 절망",
-        "u": "https://maxroll.gg/d3/resources/a-deep-dive-into-augments"
-       },
-       {
-        "t": "maxroll 순위(클리어 당시 정복자)",
-        "u": "https://maxroll.gg/d3/leaderboards"
-       }
-      ]
-     }
+     "sources": {}
     },
     {
      "id": "monk",
@@ -5903,43 +5854,13 @@
       }
      ],
      "sources": {
-      "wol": [
-       {
-        "t": "maxroll 꿈의 유산 빛의 파동 가이드",
-        "u": "https://maxroll.gg/d3/guides/lod-wave-of-light-monk-guide"
-       },
-       {
-        "t": "maxroll d3planner 프로필 732215465",
-        "u": "https://maxroll.gg/d3/d3planner/732215465"
-       },
+      "rai": [
        {
         "t": "블리자드 순위(수도사)",
         "u": "https://kr.diablo3.blizzard.com/ko-kr/rankings/season/40/rift-monk"
        }
       ],
-      "common": [
-       {
-        "t": "maxroll 대균열 단계 공식",
-        "u": "https://maxroll.gg/d3/resources/greater-rift-explained"
-       },
-       {
-        "t": "maxroll 축성 효과",
-        "u": "https://maxroll.gg/d3/resources/sanctified-items-explained"
-       },
-       {
-        "t": "maxroll 재감·자감 공식",
-        "u": "https://maxroll.gg/d3/resources/cooldown-and-resource-cost-reduction-mechanics"
-       },
-       {
-        "t": "maxroll 순위(클리어 당시 정복자)",
-        "u": "https://maxroll.gg/d3/leaderboards"
-       }
-      ],
-      "rai": [
-       {
-        "t": "maxroll 일천수도 가이드",
-        "u": "https://maxroll.gg/d3/guides/raiment-generator-monk-guide"
-       },
+      "wol": [
        {
         "t": "블리자드 순위(수도사)",
         "u": "https://kr.diablo3.blizzard.com/ko-kr/rankings/season/40/rift-monk"
@@ -11729,26 +11650,8 @@
      "sources": {
       "foth": [
        {
-        "t": "maxroll 용맹 천상의 주먹 가이드",
-        "u": "https://maxroll.gg/d3/guides/aov-fist-of-the-heavens-crusader-guide"
-       },
-       {
         "t": "블리자드 순위(성전사)",
         "u": "https://kr.diablo3.blizzard.com/ko-kr/rankings/season/40/rift-crusader"
-       }
-      ],
-      "common": [
-       {
-        "t": "maxroll 대균열 단계 공식",
-        "u": "https://maxroll.gg/d3/resources/greater-rift-explained"
-       },
-       {
-        "t": "maxroll 재감·자감 공식",
-        "u": "https://maxroll.gg/d3/resources/cooldown-and-resource-cost-reduction-mechanics"
-       },
-       {
-        "t": "maxroll 순위(클리어 당시 정복자)",
-        "u": "https://maxroll.gg/d3/leaderboards"
        }
       ]
      }
@@ -12695,26 +12598,8 @@
      "sources": {
       "fb": [
        {
-        "t": "maxroll 불새 마력탄 가이드",
-        "u": "https://maxroll.gg/d3/guides/firebird-magic-missile-wizard-guide"
-       },
-       {
         "t": "블리자드 순위(마법사)",
         "u": "https://kr.diablo3.blizzard.com/ko-kr/rankings/season/40/rift-wizard"
-       }
-      ],
-      "common": [
-       {
-        "t": "maxroll 대균열 단계 공식",
-        "u": "https://maxroll.gg/d3/resources/greater-rift-explained"
-       },
-       {
-        "t": "maxroll 재감·자감 공식",
-        "u": "https://maxroll.gg/d3/resources/cooldown-and-resource-cost-reduction-mechanics"
-       },
-       {
-        "t": "maxroll 순위(클리어 당시 정복자)",
-        "u": "https://maxroll.gg/d3/leaderboards"
        }
       ]
      }
@@ -13649,21 +13534,7 @@
       }
      ],
      "sources": {
-      "zbarb": [
-       {
-        "t": "maxroll 서포터 야만용사(zBarb) 가이드",
-        "u": "https://maxroll.gg/d3/guides/support-zbarb-guide"
-       },
-       {
-        "t": "maxroll d3planner 프로필 595890147",
-        "u": "https://maxroll.gg/d3/d3planner/595890147"
-       }
-      ],
       "common": [
-       {
-        "t": "maxroll 4인 대균열 순위",
-        "u": "https://maxroll.gg/d3/leaderboards"
-       },
        {
         "t": "d3recipes(옵션 가중치)",
         "u": "https://github.com/FNGarvin/d3recipes"
