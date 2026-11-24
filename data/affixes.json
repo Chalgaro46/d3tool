@@ -1,334 +1,192 @@
 {
- "skill": {
+ "skill_damage": {
   "name": "{skill}(으)로 주는 피해 {v}% 증가",
   "short": "{skill} 피해 {v}%",
   "unit": "int",
   "weight": 1000,
   "group": "skill",
   "util": true,
-  "ranges": {
-   "*": [
-    10,
-    15
-   ]
-  },
-  "step": 1
+  "step": 1,
+  "attr": [
+   "Power_Damage_Percent_Bonus"
+  ],
+  "attrParam": ""
  },
- "elem": {
+ "element_skill_damage": {
   "name": "{elem} 기술로 주는 피해 {v}% 증가",
   "short": "{elem} 피해 {v}%",
   "unit": "int",
   "weight": 1000,
   "group": "elem",
   "util": true,
-  "ranges": {
-   "*": [
-    15,
-    20
-   ]
-  },
-  "step": 1
+  "step": 1,
+  "attr": [
+   "Damage_Dealt_Percent_Bonus"
+  ],
+  "attrParam": ""
  },
- "chd": {
+ "crit_damage": {
   "name": "극대화 피해 {v}% 증가",
   "short": "극대화 피해 {v}%",
   "unit": "pct1",
   "weight": 1000,
-  "group": "chd",
-  "ranges": {
-   "*": [
-    26,
-    50
-   ],
-   "amulet": [
-    51,
-    100
-   ]
-  },
-  "step": 1
+  "group": "crit_damage",
+  "step": 1,
+  "attr": [
+   "Crit_Damage_Percent"
+  ],
+  "attrParam": ""
  },
- "chc": {
+ "crit_chance": {
   "name": "극대화 확률 {v}% 증가",
   "short": "극대화 확률 {v}%",
   "unit": "pct1",
   "weight": 1000,
-  "group": "chc",
-  "ranges": {
-   "*": [
-    4.5,
-    6
-   ],
-   "gloves": [
-    8,
-    10
-   ],
-   "amulet": [
-    8,
-    10
-   ],
-   "quiver": [
-    8,
-    10
-   ],
-   "shield": [
-    8,
-    10
-   ],
-   "source": [
-    8,
-    10
-   ]
-  },
-  "step": 0.5
+  "group": "crit_chance",
+  "step": 0.5,
+  "attr": [
+   "Critical_Chance"
+  ],
+  "attrParam": ""
  },
- "elite": {
+ "elite_damage": {
   "name": "정예에게 주는 피해 {v}% 증가",
   "short": "정예 피해 {v}%",
   "unit": "pct1",
   "weight": 100,
-  "group": "elite",
+  "group": "elite_damage",
   "util": true,
-  "ranges": {
-   "*": [
-    5,
-    8
-   ]
-  },
-  "step": 1
+  "step": 1,
+  "attr": [
+   "Damage_Percent_Bonus_Vs_Elites"
+  ],
+  "attrParam": ""
  },
- "elite2h": {
-  "name": "정예에게 주는 피해 {v}% 증가",
-  "short": "정예 피해 {v}%",
-  "unit": "pct1",
-  "weight": 100,
-  "group": "elite",
-  "util": true,
-  "ranges": {
-   "*": [
-    9,
-    10
-   ]
-  },
-  "step": 1
- },
- "dmg": {
+ "flat_damage": {
   "name": "피해 +{lo}~{hi}",
   "short": "피해 +{lo}~{hi}",
   "unit": "avg",
   "weight": 1500,
   "group": "dmg",
-  "ranges": {
-   "*": [
-    105,
-    210
-   ]
-  },
-  "rangeText": "[88~105]~[168~210]",
-  "valueKey": "ringdmg"
+  "valueKey": "flat_damage",
+  "attr": [
+   "Damage_Min"
+  ],
+  "attrParam": ""
  },
- "dmgp": {
+ "weapon_damage_percent": {
   "name": "피해 +{v}%",
   "short": "피해 {v}%",
   "unit": "int",
   "weight": 1000,
-  "group": "dmgp",
-  "ranges": {
-   "*": [
-    6,
-    10
-   ]
-  },
-  "step": 1
+  "group": "weapon_damage_percent",
+  "step": 1,
+  "attr": [
+   "Damage_Weapon_Percent_All"
+  ],
+  "attrParam": ""
  },
- "cdr": {
+ "cooldown_reduction": {
   "name": "모든 기술의 재사용 대기시간 {v}% 감소",
   "short": "재사용 감소 {v}%",
   "unit": "pct1",
   "weight": 1000,
-  "group": "cdr",
+  "group": "cooldown_reduction",
   "util": true,
-  "ranges": {
-   "*": [
-    5,
-    8
-   ],
-   "weapon": [
-    6,
-    10
-   ]
-  },
-  "step": 1
+  "step": 1,
+  "attr": [
+   "Power_Cooldown_Reduction_Percent_All"
+  ],
+  "attrParam": ""
  },
- "ad": {
+ "area_damage": {
   "name": "광역 피해 {v}%",
   "short": "광역 피해 {v}%",
   "unit": "int",
   "weight": 1000,
-  "group": "ad",
+  "group": "area_damage",
   "util": true,
-  "ranges": {
-   "*": [
-    10,
-    20
-   ],
-   "weapon": [
-    16,
-    24
-   ]
-  },
-  "step": 1
+  "step": 1,
+  "attr": [
+   "Splash_Damage_Effect_Percent"
+  ],
+  "attrParam": ""
  },
- "ias": {
+ "attack_speed": {
   "name": "공격 속도 {v}% 증가",
   "short": "공격 속도 {v}%",
   "unit": "pct1",
   "weight": 1000,
-  "group": "ias",
-  "ranges": {
-   "*": [
-    5,
-    7
-   ],
-   "quiver": [
-    15,
-    20
-   ]
-  },
-  "step": 1
+  "group": "attack_speed",
+  "step": 1,
+  "attr": [
+   "Attacks_Per_Second_Percent"
+  ],
+  "attrParam": ""
  },
- "rcr": {
+ "resource_cost_reduction": {
   "name": "모든 자원 소모량 {v}% 감소",
   "short": "자원 감소 {v}%",
   "unit": "pct1",
   "weight": 1000,
-  "group": "rcr",
+  "group": "resource_cost_reduction",
   "util": true,
-  "ranges": {
-   "*": [
-    5,
-    8
-   ],
-   "weapon": [
-    8,
-    10
-   ]
-  },
-  "step": 1
+  "step": 1,
+  "attr": [
+   "Resource_Cost_Reduction_Percent_All"
+  ],
+  "attrParam": ""
  },
- "lifep": {
+ "life_percent": {
   "name": "생명력 +{v}%",
   "short": "생명력 {v}%",
   "unit": "int",
   "weight": 1000,
-  "group": "lifep",
-  "ranges": {
-   "*": [
-    10,
-    15
-   ]
-  },
-  "step": 1
+  "group": "life_percent",
+  "step": 1,
+  "attr": [
+   "Hitpoints_Max_Percent_Bonus_Item"
+  ],
+  "attrParam": ""
  },
- "allres": {
+ "all_resist": {
   "name": "모든 원소 저항 +{v}",
   "short": "모든 저항 {v}",
   "unit": "int",
   "weight": 1000,
-  "group": "allres",
-  "ranges": {
-   "*": [
-    110,
-    130
-   ]
-  },
+  "group": "all_resist",
   "step": 1,
-  "valueKey": "allres"
+  "valueKey": "all_resist",
+  "attr": [
+   "Resistance_All"
+  ],
+  "attrParam": ""
  },
- "dex": {
+ "main_stat": {
   "name": "민첩 +{v}",
   "short": "민첩 {v}",
   "unit": "int",
   "weight": 4000,
-  "group": "dex",
-  "ranges": {
-   "*": [
-    550,
-    650
-   ],
-   "head": [
-    825,
-    1000
-   ],
-   "gloves": [
-    825,
-    1000
-   ],
-   "amulet": [
-    825,
-    1000
-   ],
-   "weapon": [
-    825,
-    1000
-   ],
-   "quiver": [
-    825,
-    1000
-   ],
-   "shield": [
-    825,
-    1000
-   ],
-   "source": [
-    825,
-    1000
-   ]
-  },
+  "group": "main_stat",
   "step": 1,
-  "valueKey": "dex"
+  "valueKey": "main_stat",
+  "attr": [
+   "@main"
+  ],
+  "attrParam": ""
  },
- "vit": {
+ "vitality": {
   "name": "활력 +{v}",
   "short": "활력 {v}",
   "unit": "int",
   "weight": 4000,
-  "group": "vit",
-  "ranges": {
-   "*": [
-    550,
-    650
-   ],
-   "head": [
-    825,
-    1000
-   ],
-   "gloves": [
-    825,
-    1000
-   ],
-   "amulet": [
-    825,
-    1000
-   ],
-   "weapon": [
-    825,
-    1000
-   ],
-   "quiver": [
-    825,
-    1000
-   ],
-   "shield": [
-    825,
-    1000
-   ],
-   "source": [
-    825,
-    1000
-   ]
-  },
+  "group": "vitality",
   "step": 1,
-  "valueKey": "vit"
+  "valueKey": "vitality",
+  "attr": [
+   "Vitality_Item"
+  ],
+  "attrParam": ""
  },
  "armor": {
   "name": "방어도 +{v}",
@@ -336,240 +194,169 @@
   "unit": "int",
   "weight": 1000,
   "group": "armor",
-  "ranges": {
-   "*": [
-    373,
-    397
-   ],
-   "head": [
-    373,
-    775
-   ],
-   "chest": [
-    373,
-    775
-   ],
-   "pants": [
-    664,
-    775
-   ],
-   "amulet": [
-    654,
-    775
-   ]
-  },
-  "step": 1
+  "step": 1,
+  "attr": [
+   "Armor_Bonus_Item"
+  ],
+  "attrParam": ""
  },
- "elitered": {
+ "elite_damage_reduction": {
   "name": "정예에게 받는 피해 {v}% 감소",
   "short": "정예 피해 감소 {v}%",
   "unit": "pct1",
   "weight": 100,
-  "group": "elitered",
+  "group": "elite_damage_reduction",
   "util": true,
-  "ranges": {
-   "*": [
-    10,
-    11
-   ]
-  },
-  "step": 1
+  "step": 1,
+  "attr": [
+   "Damage_Percent_Reduction_From_Elites"
+  ],
+  "attrParam": ""
  },
- "ms": {
+ "move_speed": {
   "name": "이동 속도 +{v}%",
   "short": "이동 속도 {v}%",
   "unit": "int",
   "weight": 2000,
-  "group": "ms",
+  "group": "move_speed",
   "util": true,
-  "ranges": {
-   "*": [
-    10,
-    12
-   ]
-  },
-  "step": 1
+  "step": 1,
+  "attr": [
+   "Movement_Speed"
+  ],
+  "attrParam": ""
  },
- "regen": {
+ "life_regen": {
   "name": "초당 생명력 {v} 회복",
   "short": "초당 생명력 {v}",
   "unit": "int",
   "weight": 1000,
-  "group": "regen",
-  "ranges": {
-   "*": [
-    8445,
-    10000
-   ],
-   "shoulders": [
-    6080,
-    7185
-   ],
-   "chest": [
-    6080,
-    7185
-   ],
-   "belt": [
-    6080,
-    7185
-   ],
-   "pants": [
-    6080,
-    7185
-   ],
-   "quiver": [
-    6080,
-    7185
-   ]
-  },
-  "step": 1
+  "group": "life_regen",
+  "step": 1,
+  "attr": [
+   "Hitpoints_Regen_Per_Second"
+  ],
+  "attrParam": ""
  },
- "loh": {
+ "life_on_hit": {
   "name": "적중당 생명력 +{v}",
   "short": "적중당 생명력 {v}",
   "unit": "int",
   "weight": 1000,
-  "group": "loh",
-  "ranges": {
-   "*": [
-    10135,
-    11975
-   ],
-   "amulet": [
-    20271,
-    23950
-   ],
-   "weapon": [
-    20271,
-    23950
-   ]
-  },
-  "step": 1
+  "group": "life_on_hit",
+  "step": 1,
+  "attr": [
+   "Hitpoints_On_Hit"
+  ],
+  "attrParam": ""
  },
- "hatred": {
+ "hatred_regen": {
   "name": "초당 증오 회복량 {v} 증가",
   "short": "증오 회복 {v}",
   "unit": "dec2",
   "weight": 2000,
   "group": "hatred",
   "util": true,
-  "ranges": {
-   "*": [
-    1.35,
-    1.5
-   ]
-  },
-  "step": 0.01
+  "step": 0.01,
+  "attr": [
+   "Resource_Regen_Per_Second"
+  ],
+  "attrParam": "Hatred"
  },
- "socket": {
+ "sockets": {
   "name": "홈 ({n})",
   "short": "홈 ({n})",
   "unit": "socket",
   "weight": 1000,
-  "group": "socket"
+  "group": "socket",
+  "attr": [
+   "Sockets"
+  ],
+  "attrParam": ""
  },
- "maxspirit": {
+ "max_spirit": {
   "name": "최대 공력 +{v}",
   "short": "최대 공력 {v}",
   "unit": "int",
   "weight": 4000,
-  "group": "maxdisc",
+  "group": "max_discipline",
   "kind": "secondary",
   "dmgSec": true,
-  "ranges": {
-   "*": [
-    13,
-    15
-   ]
-  },
-  "step": 1
+  "step": 1,
+  "attr": [
+   "Resource_Max_Bonus"
+  ],
+  "attrParam": "Spirit"
  },
- "maxdisc": {
+ "max_discipline": {
   "name": "최대 절제 +{v}",
   "short": "최대 절제 {v}",
   "unit": "int",
   "weight": 6000,
-  "group": "maxdisc",
+  "group": "max_discipline",
   "kind": "secondary",
   "dmgSec": true,
-  "ranges": {
-   "*": [
-    10,
-    12
-   ]
-  },
-  "step": 1
+  "step": 1,
+  "attr": [
+   "Resource_Max_Bonus"
+  ],
+  "attrParam": "Discipline"
  },
- "lpk": {
+ "life_on_kill": {
   "name": "처치 시 생명력 +{v}",
   "short": "처생 {v}",
   "unit": "int",
   "weight": 1000,
-  "group": "lpk",
+  "group": "life_on_kill",
   "kind": "secondary",
-  "ranges": {
-   "*": [
-    6536,
-    7725
-   ],
-   "amulet": [
-    9805,
-    11590
-   ],
-   "weapon": [
-    9805,
-    11590
-   ]
-  },
-  "step": 1
+  "step": 1,
+  "attr": [
+   "Hitpoints_On_Kill"
+  ],
+  "attrParam": ""
  },
- "mrdr": {
+ "melee_or_ranged_reduction": {
   "name": "[근접/원거리] 피해 {v}% 감소",
   "short": "[근접/원거리] 피해 감소 {v}%",
   "unit": "pct1",
   "weight": 800,
-  "group": "mrdr",
+  "group": "melee_or_ranged_reduction",
   "kind": "secondary",
-  "ranges": {
-   "*": [
-    6,
-    7
-   ]
-  },
-  "step": 1
+  "step": 1,
+  "attr": [
+   "Damage_Percent_Reduction_From_Melee",
+   "Damage_Percent_Reduction_From_Ranged"
+  ],
+  "attrParam": ""
  },
- "resone": {
+ "single_resist": {
   "name": "[속성] 저항 +{v}",
   "short": "[속성] 저항 {v}",
   "unit": "int",
   "weight": 5000,
-  "group": "resone",
+  "group": "single_resist",
   "kind": "secondary",
-  "ranges": {
-   "*": [
-    176,
-    210
-   ]
-  },
-  "step": 1
+  "step": 1,
+  "attr": [
+   "Resistance"
+  ],
+  "attrParam": ""
  },
- "resphys": {
+ "physical_resist": {
   "name": "물리 저항 +{v}",
   "short": "물리 저항 {v}",
   "unit": "int",
   "weight": 1000,
-  "group": "resone",
+  "group": "single_resist",
   "kind": "secondary",
   "phys": true,
-  "ranges": {
-   "*": [
-    176,
-    210
-   ]
-  },
-  "step": 1
+  "step": 1,
+  "attr": [
+   "Resistance"
+  ],
+  "attrParam": "Physical"
  },
- "hitchill": {
+ "chill_on_hit": {
   "name": "적중 시 오한 확률 {v}%",
   "short": "적중 시 오한 {v}%",
   "unit": "pct1",
@@ -578,19 +365,13 @@
   "kind": "secondary",
   "dmgSec": true,
   "dur": 2.5,
-  "ranges": {
-   "*": [
-    1.0,
-    5.1
-   ],
-   "shield": [
-    1.0,
-    2.6
-   ]
-  },
-  "step": 0.1
+  "step": 0.1,
+  "attr": [
+   "On_Hit_Chill_Proc_Chance"
+  ],
+  "attrParam": ""
  },
- "hitslow": {
+ "slow_on_hit": {
   "name": "적중 시 감속 확률 {v}%",
   "short": "적중 시 감속 {v}%",
   "unit": "pct1",
@@ -599,424 +380,219 @@
   "kind": "secondary",
   "dmgSec": true,
   "dur": 2.0,
-  "ranges": {
-   "*": [
-    1.0,
-    5.1
-   ],
-   "shield": [
-    1.0,
-    2.6
-   ]
-  },
-  "step": 0.1
+  "step": 0.1,
+  "attr": [
+   "On_Hit_Slow_Proc_Chance"
+  ],
+  "attrParam": ""
  },
- "rcrYang": {
+ "innate_resource_cost_reduction": {
   "name": "모든 자원 소모량 {v}% 감소",
   "short": "자원 감소 {v}%",
   "unit": "pct1",
   "weight": 0,
-  "group": "rcr",
+  "group": "resource_cost_reduction",
   "util": true,
-  "ranges": {
-   "*": [
-    40,
-    50
-   ]
-  },
-  "step": 1
+  "step": 1,
+  "attr": [
+   "Resource_Cost_Reduction_Percent_All"
+  ],
+  "attrParam": ""
  },
- "wdmgBow": {
-  "name": "{elem} 무기 공격력 +{lo}~{hi}",
-  "short": "{elem} 공격력 +{lo}~{hi}",
-  "unit": "avg",
-  "weight": 0,
-  "group": "wdmg",
-  "valueKey": "wdmg",
-  "ranges": {
-   "*": [
-    1559,
-    1937
-   ]
-  },
-  "rangeText": "[1,275~1,559]~[1,528~1,937]"
- },
- "wdmgFist": {
-  "name": "{elem} 무기 공격력 +{lo}~{hi}",
-  "short": "{elem} 공격력 +{lo}~{hi}",
-  "unit": "avg",
-  "weight": 0,
-  "group": "wdmg",
-  "valueKey": "wdmg",
-  "ranges": {
-   "*": [
-    1559,
-    1937
-   ]
-  },
-  "rangeText": "[1,275~1,559]~[1,528~1,937]"
- },
- "skillTzo": {
-  "name": "{skill}(으)로 주는 피해 {v}% 증가",
-  "short": "{skill} 피해 {v}%",
-  "unit": "int",
-  "weight": 0,
-  "group": "skill",
-  "util": true,
-  "ranges": {
-   "*": [
-    125,
-    150
-   ]
-  },
-  "step": 1
- },
- "chdRabid": {
-  "name": "극대화 피해 {v}% 증가",
-  "short": "극대화 피해 {v}%",
-  "unit": "pct1",
-  "weight": 0,
-  "group": "chd",
-  "ranges": {
-   "*": [
-    31,
-    35
-   ]
-  },
-  "step": 1
- },
- "spiritRegen": {
+ "spirit_regen": {
   "name": "초당 공력 회복량 {v} 증가",
   "short": "공력 회복 {v}",
   "unit": "dec2",
   "weight": 2000,
   "group": "spiritres",
   "util": true,
-  "ranges": {
-   "*": [
-    2.5,
-    2.5
-   ]
-  },
-  "step": 0.01
+  "step": 0.01,
+  "attr": [
+   "Resource_Regen_Per_Second"
+  ],
+  "attrParam": "Spirit"
  },
- "spiritHeals": {
+ "life_per_spirit_spent": {
   "name": "공력 1 소모 시 생명력 +{v}",
   "short": "공력당 생명력 {v}",
   "unit": "int",
   "weight": 2000,
   "group": "spiritres",
   "util": true,
-  "ranges": {
-   "*": [
-    62,
-    62
-   ]
-  },
-  "step": 1
- },
- "eliteSoj": {
-  "name": "정예에게 주는 피해 {v}% 증가",
-  "short": "정예 피해 {v}%",
-  "unit": "pct1",
-  "weight": 0,
-  "group": "elite",
-  "util": true,
-  "ranges": {
-   "*": [
-    25,
-    30
-   ]
-  },
-  "step": 1
- },
- "eliteUnity": {
-  "name": "정예에게 주는 피해 {v}% 증가",
-  "short": "정예 피해 {v}%",
-  "unit": "pct1",
-  "weight": 0,
-  "group": "elite",
-  "util": true,
-  "ranges": {
-   "*": [
-    12,
-    15
-   ]
-  },
-  "step": 1
- },
- "dex2h": {
-  "name": "민첩 +{v}",
-  "short": "민첩 {v}",
-  "unit": "int",
-  "weight": 0,
-  "group": "dex",
-  "ranges": {
-   "*": [
-    1237,
-    1465
-   ]
-  },
   "step": 1,
-  "valueKey": "dex"
+  "attr": [
+   "Spending_Resource_Heals_Percent"
+  ],
+  "attrParam": "Spirit"
  },
- "wdmgFlail2h": {
-  "name": "{elem} 무기 공격력 +{lo}~{hi}",
-  "short": "{elem} 공격력 +{lo}~{hi}",
-  "unit": "avg",
-  "weight": 0,
-  "group": "wdmg",
-  "valueKey": "wdmg",
-  "ranges": {
-   "*": [
-    1871,
-    2325
-   ]
-  },
-  "rangeText": "[1,530~1,871]~[1,833~2,325]"
- },
- "wrathRegen": {
+ "wrath_regen": {
   "name": "초당 진노 회복량 {v} 증가",
   "short": "진노 회복 {v}",
   "unit": "dec2",
   "weight": 1000,
   "group": "wrathres",
   "util": true,
-  "ranges": {
-   "*": [
-    2.5,
-    2.5
-   ]
-  },
-  "step": 0.01
+  "step": 0.01,
+  "attr": [
+   "Resource_Regen_Per_Second"
+  ],
+  "attrParam": "Faith"
  },
- "wrathHeals": {
+ "life_per_wrath_spent": {
   "name": "진노 1 소모 시 생명력 +{v}",
   "short": "진노당 생명력 {v}",
   "unit": "int",
   "weight": 2000,
   "group": "wrathres",
   "util": true,
-  "ranges": {
-   "*": [
-    62,
-    62
-   ]
-  },
-  "step": 1
+  "step": 1,
+  "attr": [
+   "Spending_Resource_Heals_Percent"
+  ],
+  "attrParam": "Faith"
  },
- "block": {
+ "block_chance": {
   "name": "방패막기 확률 +{v}%",
   "short": "방패막기 {v}%",
   "unit": "pct1",
   "weight": 1000,
-  "group": "block",
+  "group": "block_chance",
   "util": true,
-  "ranges": {
-   "*": [
-    6,
-    8
-   ]
-  },
-  "step": 0.5
+  "step": 0.5,
+  "attr": [
+   "Block_Chance_Bonus_Item"
+  ],
+  "attrParam": ""
  },
- "dmgOrb": {
-  "name": "피해 +{lo}~{hi}",
-  "short": "피해 +{lo}~{hi}",
-  "unit": "avg",
-  "weight": 0,
-  "group": "dmg",
-  "ranges": {
-   "*": [
-    481,
-    585
-   ]
-  },
-  "rangeText": "[442~481]~[494~585]",
-  "valueKey": "ringdmg"
- },
- "wdmgWand": {
-  "name": "{elem} 무기 공격력 +{lo}~{hi}",
-  "short": "{elem} 공격력 +{lo}~{hi}",
-  "unit": "avg",
-  "weight": 0,
-  "group": "wdmg",
-  "valueKey": "wdmg",
-  "ranges": {
-   "*": [
-    1559,
-    1937
-   ]
-  },
-  "rangeText": "[1,275~1,559]~[1,528~1,937]"
- },
- "apoc": {
+ "arcane_power_on_crit": {
   "name": "극대화 시 비전력 {v} 회복",
   "short": "극대화 비전력 {v}",
   "unit": "int",
   "weight": 4000,
-  "group": "apoc",
+  "group": "arcane_power_on_crit",
   "util": true,
-  "ranges": {
-   "*": [
-    4,
-    4
-   ]
-  },
-  "step": 1
+  "step": 1,
+  "attr": [
+   "Resource_On_Crit"
+  ],
+  "attrParam": "Arcanum"
  },
- "pickup": {
+ "pickup_radius": {
   "name": "금화 및 생명의 구슬 획득 반경 {v}미터 증가",
   "short": "획득 반경 {v}미터",
   "unit": "int",
   "weight": 1500,
-  "group": "pickup",
+  "group": "pickup_radius",
   "kind": "secondary",
   "util": true,
-  "ranges": {
-   "*": [
-    1,
-    2
-   ]
-  },
-  "step": 1
+  "step": 1,
+  "attr": [
+   "Gold_PickUp_Radius"
+  ],
+  "attrParam": ""
  },
- "maxfury": {
+ "max_fury": {
   "name": "최대 분노 +{v}",
   "short": "최대 분노 {v}",
   "unit": "int",
   "weight": 4000,
-  "group": "maxfury",
+  "group": "max_fury",
   "kind": "secondary",
   "util": true,
-  "ranges": {
-   "*": [
-    10,
-    12
-   ]
-  },
-  "step": 1
+  "step": 1,
+  "attr": [
+   "Resource_Max_Bonus"
+  ],
+  "attrParam": "Fury"
  },
- "globe": {
+ "globe_healing": {
   "name": "생명의 구슬 및 물약의 생명력 회복량 증가",
   "short": "생명의 구슬 회복량",
   "unit": "int",
   "weight": 1000,
-  "group": "globe",
+  "group": "globe_healing",
   "kind": "secondary",
-  "util": true
+  "util": true,
+  "attr": [
+   "Health_Globe_Bonus_Health"
+  ],
+  "attrParam": ""
  },
- "ccred": {
+ "control_duration_reduction": {
   "name": "제어 방해 효과의 지속시간 감소",
   "short": "제어 방해 시간 감소",
   "unit": "int",
   "weight": 1000,
-  "group": "ccred",
+  "group": "control_duration_reduction",
   "kind": "secondary",
-  "util": true
+  "util": true,
+  "attr": [
+   "CrowdControl_Reduction"
+  ],
+  "attrParam": ""
  },
- "intm": {
+ "intelligence": {
   "name": "지능 +{v}",
   "short": "지능 {v}",
   "unit": "int",
   "weight": 4000,
-  "group": "intm",
-  "ranges": {
-   "*": [
-    550,
-    650
-   ],
-   "head": [
-    825,
-    1000
-   ],
-   "gloves": [
-    825,
-    1000
-   ],
-   "amulet": [
-    825,
-    1000
-   ],
-   "weapon": [
-    825,
-    1000
-   ],
-   "quiver": [
-    825,
-    1000
-   ]
-  },
+  "group": "intelligence",
   "step": 1,
-  "valueKey": "dex"
+  "valueKey": "main_stat",
+  "attr": [
+   "Intelligence_Item"
+  ],
+  "attrParam": ""
  },
- "furyHeals": {
+ "life_per_fury_spent": {
   "name": "분노 소모 시 생명력 회복",
   "short": "분노당 생명력",
   "unit": "int",
   "weight": 2000,
   "group": "furyres",
-  "util": true
+  "util": true,
+  "attr": [
+   "Spending_Resource_Heals_Percent"
+  ],
+  "attrParam": "Fury"
  },
- "skillStrafe": {
+ "skill_damage_demon_hunter_strafe": {
   "name": "난사로 주는 피해 {v}% 증가",
   "short": "난사 피해 {v}%",
   "unit": "int",
   "weight": 0,
   "group": "skillx",
   "util": true,
-  "ranges": {
-   "*": [
-    75,
-    100
-   ]
-  },
-  "step": 1
+  "step": 1,
+  "attr": [
+   "Power_Damage_Percent_Bonus"
+  ],
+  "attrParam": "demon-hunter/skill/strafe"
  },
- "skillSentry": {
+ "skill_damage_demon_hunter_sentry": {
   "name": "자동 쇠뇌로 주는 피해 {v}% 증가",
   "short": "자동 쇠뇌 피해 {v}%",
   "unit": "int",
   "weight": 0,
   "group": "skillx",
   "util": true,
-  "ranges": {
-   "*": [
-    75,
-    100
-   ]
-  },
-  "step": 1
+  "step": 1,
+  "attr": [
+   "Power_Damage_Percent_Bonus"
+  ],
+  "attrParam": "demon-hunter/skill/sentry"
  },
- "wdmgSword": {
+ "random_weapon_damage": {
   "name": "{elem} 무기 공격력 +{lo}~{hi}",
   "short": "{elem} 공격력 +{lo}~{hi}",
   "unit": "avg",
   "weight": 0,
-  "group": "wdmg",
-  "valueKey": "wdmg",
-  "ranges": {
-   "*": [
-    1559,
-    1937
-   ]
-  },
-  "rangeText": "[1,275~1,559]~[1,528~1,937]"
- },
- "wdmg": {
-  "name": "{elem} 무기 공격력 +{lo}~{hi}",
-  "short": "{elem} 공격력 +{lo}~{hi}",
-  "unit": "avg",
-  "weight": 0,
-  "group": "wdmg",
-  "valueKey": "wdmg",
-  "ranges": {
-   "*": [
-    1365,
-    1700
-   ]
-  },
-  "rangeText": "[1,115~1,365]~[1,336~1,700]",
+  "group": "random_weapon_damage",
+  "valueKey": "random_weapon_damage",
+  "attr": [
+   "Damage_Weapon_Min"
+  ],
+  "attrParam": "",
   "_doc": "무기 고정 속성 공격력 롤. 게임 가이드 일반 [858~1049]~[1028~1304] × 1.3 = 고대. 최소·최대 독립 롤 → 삼각분포"
  }
 }

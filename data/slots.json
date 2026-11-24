@@ -5,42 +5,29 @@
    "baseArmor": 759,
    "socketN": 1,
    "primaries": 4,
-   "skillN": 7,
    "skillGroup": 1,
    "type": "helm",
-   "pool": [
-    "skill",
-    "chc",
-    "lifep",
-    "allres",
-    "dex",
-    "vit",
-    "armor",
-    "regen",
-    "loh",
-    "socket"
-   ],
    "ranks": {
     "S": [
-     "skill"
+     "skill_damage"
     ],
     "A": [
-     "chc"
+     "crit_chance"
     ],
     "B": [
-     "lifep"
+     "life_percent"
     ],
     "C": [
-     "allres",
-     "dex",
-     "vit"
+     "all_resist",
+     "main_stat",
+     "vitality"
     ],
     "D": [
      "armor"
     ],
     "F": [
-     "regen",
-     "loh"
+     "life_regen",
+     "life_on_hit"
     ]
    }
   },
@@ -48,43 +35,30 @@
    "label": "어깨",
    "baseArmor": 674,
    "primaries": 4,
-   "skillN": 5,
    "skillGroup": 2,
    "type": "shoulders",
-   "pool": [
-    "skill",
-    "cdr",
-    "ad",
-    "rcr",
-    "lifep",
-    "allres",
-    "dex",
-    "vit",
-    "armor",
-    "regen"
-   ],
    "ranks": {
     "S": [
-     "skill",
-     "cdr"
+     "skill_damage",
+     "cooldown_reduction"
     ],
     "A": [
-     "ad"
+     "area_damage"
     ],
     "B": [
-     "rcr"
+     "resource_cost_reduction"
     ],
     "C": [
-     "lifep",
-     "allres",
-     "dex",
-     "vit"
+     "life_percent",
+     "all_resist",
+     "main_stat",
+     "vitality"
     ],
     "D": [
      "armor"
     ],
     "F": [
-     "regen"
+     "life_regen"
     ]
    }
   },
@@ -93,42 +67,29 @@
    "baseArmor": 759,
    "socketN": 3,
    "primaries": 4,
-   "skillN": 5,
    "skillGroup": 2,
-   "type": "chestarmor",
-   "pool": [
-    "skill",
-    "lifep",
-    "allres",
-    "dex",
-    "vit",
-    "elitered",
-    "armor",
-    "regen",
-    "hatred",
-    "socket"
-   ],
+   "type": "chest_armor",
    "ranks": {
     "S": [
-     "skill"
+     "skill_damage"
     ],
     "A": [
-     "lifep"
+     "life_percent"
     ],
     "B": [
-     "allres"
+     "all_resist"
     ],
     "C": [
-     "dex",
-     "vit"
+     "main_stat",
+     "vitality"
     ],
     "D": [
-     "elitered",
+     "elite_damage_reduction",
      "armor"
     ],
     "F": [
-     "regen",
-     "hatred"
+     "life_regen",
+     "hatred_regen"
     ]
    }
   },
@@ -136,46 +97,31 @@
    "label": "장갑",
    "baseArmor": 590,
    "primaries": 4,
-   "skillN": 0,
    "type": "gloves",
-   "pool": [
-    "chd",
-    "chc",
-    "cdr",
-    "ad",
-    "ias",
-    "rcr",
-    "allres",
-    "dex",
-    "vit",
-    "armor",
-    "regen",
-    "loh"
-   ],
    "ranks": {
     "S": [
-     "chd",
-     "chc"
+     "crit_damage",
+     "crit_chance"
     ],
     "A": [
-     "cdr",
-     "ad"
+     "cooldown_reduction",
+     "area_damage"
     ],
     "B": [
-     "ias"
+     "attack_speed"
     ],
     "C": [
-     "rcr",
-     "allres",
-     "dex",
-     "vit"
+     "resource_cost_reduction",
+     "all_resist",
+     "main_stat",
+     "vitality"
     ],
     "D": [
      "armor"
     ],
     "F": [
-     "regen",
-     "loh"
+     "life_regen",
+     "life_on_hit"
     ]
    }
   },
@@ -183,38 +129,27 @@
    "label": "손목",
    "baseArmor": 421,
    "primaries": 4,
-   "skillN": 0,
    "type": "bracers",
-   "pool": [
-    "elem",
-    "chc",
-    "allres",
-    "dex",
-    "vit",
-    "armor",
-    "regen",
-    "loh"
-   ],
    "ranks": {
     "S": [
-     "elem"
+     "element_skill_damage"
     ],
     "A": [
-     "chc"
+     "crit_chance"
     ],
     "B": [
-     "allres",
-     "dex"
+     "all_resist",
+     "main_stat"
     ],
     "C": [
-     "vit"
+     "vitality"
     ],
     "D": [
      "armor"
     ],
     "F": [
-     "regen",
-     "loh"
+     "life_regen",
+     "life_on_hit"
     ]
    }
   },
@@ -222,38 +157,28 @@
    "label": "허리",
    "baseArmor": 506,
    "primaries": 4,
-   "skillN": 5,
    "skillGroup": 3,
    "type": "belt",
    "square": true,
-   "pool": [
-    "skill",
-    "lifep",
-    "allres",
-    "dex",
-    "vit",
-    "armor",
-    "regen"
-   ],
    "ranks": {
     "S": [
-     "skill"
+     "skill_damage"
     ],
     "A": [
-     "lifep"
+     "life_percent"
     ],
     "B": [
-     "allres",
-     "dex"
+     "all_resist",
+     "main_stat"
     ],
     "C": [
-     "vit"
+     "vitality"
     ],
     "D": [
      "armor"
     ],
     "F": [
-     "regen"
+     "life_regen"
     ]
    }
   },
@@ -262,36 +187,26 @@
    "baseArmor": 759,
    "socketN": 2,
    "primaries": 4,
-   "skillN": 5,
    "skillGroup": 3,
    "type": "pants",
-   "pool": [
-    "skill",
-    "allres",
-    "dex",
-    "vit",
-    "armor",
-    "regen",
-    "socket"
-   ],
    "ranks": {
     "S": [
-     "skill"
+     "skill_damage"
     ],
     "A": [
-     "allres"
+     "all_resist"
     ],
     "B": [
-     "dex"
+     "main_stat"
     ],
     "C": [
-     "vit"
+     "vitality"
     ],
     "D": [
      "armor"
     ],
     "F": [
-     "regen"
+     "life_regen"
     ]
    }
   },
@@ -299,37 +214,27 @@
    "label": "장화",
    "baseArmor": 590,
    "primaries": 4,
-   "skillN": 7,
    "skillGroup": 1,
    "type": "boots",
-   "pool": [
-    "skill",
-    "allres",
-    "dex",
-    "vit",
-    "armor",
-    "ms",
-    "regen"
-   ],
    "ranks": {
     "S": [
-     "skill"
+     "skill_damage"
     ],
     "A": [
-     "allres"
+     "all_resist"
     ],
     "B": [
-     "dex",
-     "vit"
+     "main_stat",
+     "vitality"
     ],
     "C": [
      "armor"
     ],
     "D": [
-     "ms"
+     "move_speed"
     ],
     "F": [
-     "regen"
+     "life_regen"
     ]
    }
   },
@@ -337,54 +242,35 @@
    "label": "목걸이",
    "socketN": 1,
    "primaries": 4,
-   "skillN": 0,
    "type": "amulet",
    "square": true,
-   "pool": [
-    "elem",
-    "chc",
-    "chd",
-    "dmg",
-    "cdr",
-    "ad",
-    "ias",
-    "rcr",
-    "lifep",
-    "allres",
-    "dex",
-    "vit",
-    "armor",
-    "regen",
-    "loh",
-    "socket"
-   ],
    "ranks": {
     "S": [
-     "elem",
-     "chd"
+     "element_skill_damage",
+     "crit_damage"
     ],
     "A": [
-     "chc"
+     "crit_chance"
     ],
     "B": [
-     "dmg",
-     "cdr",
-     "ad"
+     "flat_damage",
+     "cooldown_reduction",
+     "area_damage"
     ],
     "C": [
-     "ias",
-     "rcr",
-     "lifep",
-     "allres",
-     "dex",
-     "vit"
+     "attack_speed",
+     "resource_cost_reduction",
+     "life_percent",
+     "all_resist",
+     "main_stat",
+     "vitality"
     ],
     "D": [
      "armor"
     ],
     "F": [
-     "regen",
-     "loh"
+     "life_regen",
+     "life_on_hit"
     ]
    }
   },
@@ -392,93 +278,63 @@
    "label": "반지",
    "socketN": 1,
    "primaries": 4,
-   "skillN": 0,
    "type": "ring",
    "square": true,
-   "pool": [
-    "chc",
-    "chd",
-    "dmg",
-    "cdr",
-    "ad",
-    "ias",
-    "rcr",
-    "lifep",
-    "allres",
-    "dex",
-    "vit",
-    "armor",
-    "regen",
-    "loh",
-    "socket"
-   ],
    "ranks": {
     "S": [
-     "chd",
-     "chc"
+     "crit_damage",
+     "crit_chance"
     ],
     "A": [
-     "dmg"
+     "flat_damage"
     ],
     "B": [
-     "cdr",
-     "ad"
+     "cooldown_reduction",
+     "area_damage"
     ],
     "C": [
-     "ias",
-     "rcr",
-     "lifep",
-     "allres",
-     "dex",
-     "vit"
+     "attack_speed",
+     "resource_cost_reduction",
+     "life_percent",
+     "all_resist",
+     "main_stat",
+     "vitality"
     ],
     "D": [
      "armor"
     ],
     "F": [
-     "regen",
-     "loh"
+     "life_regen",
+     "life_on_hit"
     ]
    }
   },
   "weapon": {
    "label": "무기",
    "primaries": 4,
-   "skillN": 0,
    "type": "dagger",
    "dps": true,
-   "pool": [
-    "elite",
-    "dmgp",
-    "cdr",
-    "ad",
-    "ias",
-    "rcr",
-    "dex",
-    "vit",
-    "loh"
-   ],
    "ranks": {
     "S": [
-     "elite",
-     "dmgp"
+     "elite_damage",
+     "weapon_damage_percent"
     ],
     "A": [
-     "cdr",
-     "ad"
+     "cooldown_reduction",
+     "area_damage"
     ],
     "B": [
-     "ias"
+     "attack_speed"
     ],
     "C": [
-     "rcr"
+     "resource_cost_reduction"
     ],
     "D": [
-     "dex",
-     "vit"
+     "main_stat",
+     "vitality"
     ],
     "F": [
-     "loh"
+     "life_on_hit"
     ]
    },
    "_doc": "정예 피해는 쌍수가 아니면 B로 강등(v1 규칙). 홈은 라말라드니 선물로 추가하므로 목표에 넣지 않음"
@@ -486,46 +342,32 @@
   "quiver": {
    "label": "화살통",
    "primaries": 5,
-   "skillN": 17,
    "skillGroup": 0,
    "type": "quiver",
    "skillAll": true,
-   "pool": [
-    "skill",
-    "chc",
-    "cdr",
-    "ad",
-    "elite",
-    "rcr",
-    "lifep",
-    "dex",
-    "vit",
-    "regen",
-    "hatred"
-   ],
    "ranks": {
     "S": [
-     "skill",
-     "chc"
+     "skill_damage",
+     "crit_chance"
     ],
     "A": [
-     "cdr",
-     "ad"
+     "cooldown_reduction",
+     "area_damage"
     ],
     "B": [
-     "elite"
+     "elite_damage"
     ],
     "C": [
-     "rcr",
-     "lifep"
+     "resource_cost_reduction",
+     "life_percent"
     ],
     "D": [
-     "dex",
-     "vit"
+     "main_stat",
+     "vitality"
     ],
     "F": [
-     "regen",
-     "hatred"
+     "life_regen",
+     "hatred_regen"
     ]
    },
    "_doc": "화살통은 주요 5칸(공속이 고유 주요 옵션). 기술 피해는 모든 기술(17종) 가능"
@@ -535,100 +377,66 @@
    "baseArmor": 2255,
    "socketN": 1,
    "primaries": 4,
-   "skillN": 14,
    "skillGroup": 1,
-   "type": "crusadershield",
-   "pool": [
-    "skill",
-    "chc",
-    "cdr",
-    "ad",
-    "rcr",
-    "elite",
-    "lifep",
-    "allres",
-    "dex",
-    "vit",
-    "armor",
-    "elitered",
-    "regen",
-    "socket",
-    "block",
-    "wrathRegen",
-    "wrathHeals"
-   ],
+   "type": "crusader_shield",
    "ranks": {
     "S": [
-     "skill",
-     "chc"
+     "skill_damage",
+     "crit_chance"
     ],
     "A": [
-     "cdr",
-     "ad"
+     "cooldown_reduction",
+     "area_damage"
     ],
     "B": [
-     "elite"
+     "elite_damage"
     ],
     "C": [
-     "rcr",
-     "lifep",
-     "allres",
-     "dex",
-     "vit"
+     "resource_cost_reduction",
+     "life_percent",
+     "all_resist",
+     "main_stat",
+     "vitality"
     ],
     "D": [
      "armor",
-     "elitered"
+     "elite_damage_reduction"
     ],
     "F": [
-     "regen",
-     "socket",
-     "block",
-     "wrathRegen",
-     "wrathHeals"
+     "life_regen",
+     "sockets",
+     "block_chance",
+     "wrath_regen",
+     "life_per_wrath_spent"
     ]
    }
   },
   "source": {
    "label": "마력원",
    "primaries": 4,
-   "skillN": 16,
    "skillGroup": 1,
    "type": "source",
-   "pool": [
-    "skill",
-    "apoc",
-    "chc",
-    "cdr",
-    "ad",
-    "rcr",
-    "elite",
-    "lifep",
-    "dex",
-    "vit",
-    "regen"
-   ],
    "ranks": {
     "S": [
-     "skill",
-     "chc"
+     "skill_damage",
+     "crit_chance"
     ],
     "A": [
-     "cdr",
-     "ad"
+     "cooldown_reduction",
+     "area_damage"
     ],
     "B": [
-     "elite"
+     "elite_damage"
     ],
     "C": [
-     "rcr",
-     "lifep",
-     "dex",
-     "vit"
+     "resource_cost_reduction",
+     "life_percent",
+     "main_stat",
+     "vitality"
     ],
     "F": [
-     "regen",
-     "apoc"
+     "life_regen",
+     "arcane_power_on_crit"
     ]
    }
   }
@@ -636,7 +444,7 @@
  "layout": [
   {
    "slot": "chest",
-   "key": "torso",
+   "key": "chest_slot",
    "x": 110,
    "y": 77,
    "w": 78,
@@ -647,7 +455,7 @@
   },
   {
    "slot": "pants",
-   "key": "legs",
+   "key": "pants_slot",
    "x": 118,
    "y": 234,
    "w": 62,
@@ -658,7 +466,7 @@
   },
   {
    "slot": "boots",
-   "key": "feet",
+   "key": "boots_slot",
    "x": 118,
    "y": 326,
    "w": 62,
@@ -669,7 +477,7 @@
   },
   {
    "slot": "shoulders",
-   "key": "shoulders",
+   "key": "shoulders_slot",
    "x": 36,
    "y": 31,
    "w": 62,
@@ -680,7 +488,7 @@
   },
   {
    "slot": "amulet",
-   "key": "neck",
+   "key": "amulet_slot",
    "x": 202,
    "y": 52,
    "w": 50,
@@ -691,7 +499,7 @@
   },
   {
    "slot": "gloves",
-   "key": "hands",
+   "key": "gloves_slot",
    "x": 10,
    "y": 130,
    "w": 62,
@@ -702,7 +510,7 @@
   },
   {
    "slot": "bracers",
-   "key": "wrists",
+   "key": "bracers_slot",
    "x": 226,
    "y": 130,
    "w": 62,
@@ -713,7 +521,7 @@
   },
   {
    "slot": "ring",
-   "key": "leftfinger",
+   "key": "ring_left_slot",
    "x": 22,
    "y": 230,
    "w": 38,
@@ -724,7 +532,7 @@
   },
   {
    "slot": "ring",
-   "key": "rightfinger",
+   "key": "ring_right_slot",
    "x": 238,
    "y": 230,
    "w": 38,
@@ -735,7 +543,7 @@
   },
   {
    "slot": "weapon",
-   "key": "mainhand",
+   "key": "main_hand_slot",
    "x": 11,
    "y": 285,
    "w": 60,
@@ -746,7 +554,7 @@
   },
   {
    "slot": "quiver",
-   "key": "offhand",
+   "key": "off_hand_slot",
    "x": 227,
    "y": 285,
    "w": 60,
@@ -760,7 +568,7 @@
   },
   {
    "slot": "weapon",
-   "key": "offhand",
+   "key": "off_hand_slot",
    "x": 227,
    "y": 285,
    "w": 60,
@@ -775,7 +583,7 @@
   },
   {
    "slot": "shield",
-   "key": "offhand",
+   "key": "off_hand_slot",
    "x": 227,
    "y": 285,
    "w": 60,
@@ -789,7 +597,7 @@
   },
   {
    "slot": "source",
-   "key": "offhand",
+   "key": "off_hand_slot",
    "x": 227,
    "y": 285,
    "w": 60,
@@ -803,7 +611,7 @@
   },
   {
    "slot": "head",
-   "key": "head",
+   "key": "head_slot",
    "x": 118,
    "y": 9,
    "w": 62,
@@ -815,7 +623,7 @@
   },
   {
    "slot": "belt",
-   "key": "waist",
+   "key": "belt_slot",
    "x": 110,
    "y": 196,
    "w": 78,

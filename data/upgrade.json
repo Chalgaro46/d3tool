@@ -1,5 +1,5 @@
 {
- "_doc": "희귀 업그레이드 시 종류별 후보와 가중치(직업별, maxroll d3planner dropData). 확률 = 가중치/합",
+ "_doc": "희귀 업그레이드 시 종류별 후보와 가중치(직업별 — db/upgrade_pool.csv). 확률 = 가중치/합",
  "byClass": {
   "dh": {
    "dagger": {
@@ -100,12 +100,6 @@
       "weight": 25
      },
      {
-      "name": "선조의 은총",
-      "nameEn": "Ancestors' Grace",
-      "quality": "legendary",
-      "weight": 25
-     },
-     {
       "name": "여백작 줄리아의 돋을새김 목걸이",
       "nameEn": "Countess Julia's Cameo",
       "quality": "legendary",
@@ -195,7 +189,8 @@
       "quality": "legendary",
       "weight": 100
      }
-    ]
+    ],
+    "_note": "2026-11-24: 선조의 은총(가중치 25)을 뺌 — 사용자 09:31 \"선조의 은총은 빼자. 애초에 하드코어가 아닌걸 가정하고, 하드코어인 경우는 그 목걸이가 고정이니까.\" (d3recipes 시즌 40 풀에도 없음 — ref/reports/2026-11-24_H8_maxroll_유래_자산.md)"
    },
    "ring": {
     "label": "반지",
@@ -470,7 +465,7 @@
      }
     ]
    },
-   "chestarmor": {
+   "chest_armor": {
     "label": "가슴 방어구",
     "items": [
      {
@@ -996,9 +991,8 @@
      }
     ]
    },
-   "handcrossbow": {
+   "hand_crossbow": {
     "label": "손쇠뇌",
-    "_doc": "d3recipes S40 pools[DemonHunter] HandXbow 11종 1,100(2026-11-13, 서포터 세팅용 — 세팅 아이템만 이름으로)",
     "items": [
      {
       "name": "발라의 유증",
@@ -1012,12 +1006,13 @@
       "quality": "legendary",
       "weight": 1000
      }
-    ]
+    ],
+    "_doc": "d3recipes S40 pools[DemonHunter] HandXbow 11종 1,100(2026-11-13, 서포터 세팅용 — 세팅 아이템만 이름으로)"
    }
   },
   "monk": {
    "_doc": "수도사 희귀 업그레이드 풀: d3planner dropData(직업 표시 없음 또는 monk) 2026-11-07. 세팅에 쓰는 아이템만 이름으로 두고 나머지는 '그 외' 한 줄(가중치 합)로 묶음 — 확률 = 가중치/합 이라 결과는 같음 / 2026-11-12 일천수도 아이템 추가(같은 dropData, 각 가중치 100), 투구 범주(helm 900) 추가 / 2026-11-13 반지에 집중·자제(각 100, 악사 풀의 같은 dropData 값) 이름으로 추가 — '그 외'에 묶여 카달라·업그레이드 0으로 나오던 것(사용자 '4인 수도사 집자가 왜 카달라 불가로 나와?')",
-   "spiritstone": {
+   "spirit_stone": {
     "label": "공력 구슬",
     "items": [
      {
@@ -1034,7 +1029,7 @@
      }
     ]
    },
-   "fistweapon": {
+   "fist_weapon": {
     "label": "주먹 무기",
     "items": [
      {
@@ -1208,7 +1203,7 @@
      }
     ]
    },
-   "chestarmor": {
+   "chest_armor": {
     "label": "가슴 방어구",
     "items": [
      {
@@ -1273,9 +1268,10 @@
       "name": "그 외",
       "nameEn": "others",
       "quality": "legendary",
-      "weight": 1475
+      "weight": 1450
      }
-    ]
+    ],
+    "_note": "2026-11-24: 선조의 은총(가중치 25)을 뺌 — 사용자 09:31 \"선조의 은총은 빼자. 애초에 하드코어가 아닌걸 가정하고, 하드코어인 경우는 그 목걸이가 고정이니까.\" (d3recipes 시즌 40 풀에도 없음 — ref/reports/2026-11-24_H8_maxroll_유래_자산.md)"
    },
    "pants": {
     "label": "바지",
@@ -1343,7 +1339,7 @@
      }
     ]
    },
-   "chestarmor": {
+   "chest_armor": {
     "label": "가슴 방어구",
     "items": [
      {
@@ -1488,11 +1484,12 @@
       "name": "그 외",
       "nameEn": "others",
       "quality": "legendary",
-      "weight": 1350
+      "weight": 1325
      }
-    ]
+    ],
+    "_note": "2026-11-24: 선조의 은총(가중치 25)을 뺌 — 사용자 09:31 \"선조의 은총은 빼자. 애초에 하드코어가 아닌걸 가정하고, 하드코어인 경우는 그 목걸이가 고정이니까.\" (d3recipes 시즌 40 풀에도 없음 — ref/reports/2026-11-24_H8_maxroll_유래_자산.md)"
    },
-   "flail2h": {
+   "two_hand_flail": {
     "label": "양손 도리깨",
     "items": [
      {
@@ -1509,7 +1506,7 @@
      }
     ]
    },
-   "crusadershield": {
+   "crusader_shield": {
     "label": "성전사 방패",
     "items": [
      {
@@ -1597,7 +1594,7 @@
      }
     ]
    },
-   "chestarmor": {
+   "chest_armor": {
     "label": "가슴 방어구",
     "items": [
      {
@@ -1864,7 +1861,7 @@
      }
     ]
    },
-   "chestarmor": {
+   "chest_armor": {
     "label": "가슴 방어구",
     "items": [
      {
@@ -1915,7 +1912,7 @@
      }
     ]
    },
-   "mightybelt": {
+   "mighty_belt": {
     "label": "거대 허리띠",
     "items": [
      {
