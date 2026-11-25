@@ -271,7 +271,7 @@
    "speedPylonMs": 1.0,
    "pylonP": 0.7,
    "eliteShieldSec": 120,
-   "travelDist": 1.8675
+   "travelDist": 3.4583
   },
   "msParagon": 0.25,
   "clearTravelMin": 1.1666666666666667,
@@ -440,6 +440,286 @@
   "additive": {
    "taeguk": 0.8
   },
+  "runeFree": [
+   [
+    "demon-hunter/skill/shadow-power",
+    "the_shadows_mantle",
+    4
+   ]
+  ],
+  "gearFx": [
+   {
+    "id": "demon-hunter/skill/impale",
+    "dm": [
+     "impale"
+    ],
+    "use": "demon-hunter/skill/impale",
+    "mul": 7.5
+   },
+   {
+    "id": "set/the_shadows_mantle/2",
+    "dm": [
+     "impale"
+    ],
+    "set": "the_shadows_mantle",
+    "n": 2,
+    "v": 60.0
+   },
+   {
+    "id": "set/the_shadows_mantle/6",
+    "dm": [
+     "impale"
+    ],
+    "set": "the_shadows_mantle",
+    "n": 6,
+    "mul": 101.0
+   },
+   {
+    "id": "item/P61_Unique_Dagger_101_x1",
+    "dm": [
+     "impale"
+    ],
+    "item": "P61_Unique_Dagger_101_x1",
+    "v": 3.75,
+    "lo": 3.0,
+    "re": "투검의 공격력이 ([\\d.]+)% 증가"
+   },
+   {
+    "id": "item/P69_Unique_Quiver_004",
+    "dm": [
+     "impale"
+    ],
+    "item": "P69_Unique_Quiver_004",
+    "v": 1.0,
+    "lo": 0.75,
+    "re": "추가 투척 및 공격력 ([\\d.]+)% 증가"
+   },
+   {
+    "id": "demon-hunter/skill/multishot",
+    "dm": [
+     "ue"
+    ],
+    "use": "demon-hunter/skill/multishot",
+    "mul": 3.6,
+    "runeMul": {
+     "a": 5.0
+    }
+   },
+   {
+    "id": "set/unhallowed_essence/4/dmg",
+    "dm": [
+     "ue"
+    ],
+    "set": "unhallowed_essence",
+    "n": 4,
+    "v": 0.6
+   },
+   {
+    "id": "item/P61_Unique_Bow_104_x1",
+    "dm": [
+     "ue"
+    ],
+    "item": "P61_Unique_Bow_104_x1",
+    "v": 2.0,
+    "lo": 1.5,
+    "re": "증가 및 공격력 ([\\d.]+)% 증가"
+   },
+   {
+    "id": "item/P61_Unique_Quiver_007/dmg",
+    "dm": [
+     "ue"
+    ],
+    "item": "P61_Unique_Quiver_007",
+    "v": 2.0,
+    "lo": 1.5,
+    "re": "다발 사격의 공격력 ([\\d.]+)% 증가"
+   },
+   {
+    "id": "set/bastions_of_will/2",
+    "dm": [
+     "impale",
+     "ue"
+    ],
+    "set": "bastions_of_will",
+    "n": 2,
+    "mul": 2.25
+   },
+   {
+    "id": "monk/skill/wave-of-light",
+    "dm": [
+     "wol"
+    ],
+    "use": "monk/skill/wave-of-light",
+    "mul": 8.35,
+    "runeMul": {
+     "b": 8.3
+    }
+   },
+   {
+    "id": "item/incense_torch",
+    "dm": [
+     "wol"
+    ],
+    "name": "대사원의 향불",
+    "v": 5.5,
+    "lo": 4.5,
+    "re": "공격력 ([\\d.]+)% 증가"
+   },
+   {
+    "id": "item/P4_Unique_Bracer_105",
+    "dm": [
+     "wol"
+    ],
+    "item": "P4_Unique_Bracer_105",
+    "v": 1.5,
+    "lo": 1.25,
+    "re": "빛의 파동의 공격력 ([\\d.]+)% 증가"
+   },
+   {
+    "id": "item/Unique_SpiritStone_007_x1",
+    "dm": [
+     "wol"
+    ],
+    "item": "Unique_SpiritStone_007_x1",
+    "v": 1.5,
+    "lo": 1.25,
+    "re": "빛의 파동으로 주는 피해 ([\\d.]+)% 증가"
+   },
+   {
+    "id": "item/P4_Unique_Fist_102",
+    "dm": [
+     "wol"
+    ],
+    "item": "P4_Unique_Fist_102",
+    "v": 1.5
+   },
+   {
+    "id": "item/P71_Unique_Fist_003",
+    "dm": [
+     "wol"
+    ],
+    "item": "P71_Unique_Fist_003",
+    "v": 4.5,
+    "lo": 3.5,
+    "re": "복제되며 공격력 ([\\d.]+)% 증가",
+    "clone": 1
+   },
+   {
+    "id": "item/bindings_of_the_lesser_gods",
+    "dm": [
+     "wol"
+    ],
+    "name": "하위 신들의 손목띠",
+    "v": 2.0,
+    "lo": 1.5,
+    "re": "받는 피해 ([\\d.]+)% 증가",
+    "clone": 2
+   },
+   {
+    "id": "item/P71_Unique_Boots_010",
+    "dm": [
+     "wol"
+    ],
+    "item": "P71_Unique_Boots_010",
+    "v": 2.0,
+    "lo": 1.5,
+    "re": "신비한 벗의 공격력이 ([\\d.]+)% 증가",
+    "clone": 2
+   },
+   {
+    "id": "gem/enforcer",
+    "dm": [
+     "wol"
+    ],
+    "gem": "Unique_Gem_010_x1",
+    "v": 0.6,
+    "clone": 2
+   }
+  ],
+  "skillFx": {
+   "monk/passive/determination": {
+    "b": "add",
+    "v": 0.2
+   },
+   "monk/passive/momentum": {
+    "b": "add",
+    "v": 0.2
+   },
+   "monk/passive/relentless-assault": {
+    "b": "sep",
+    "v": 0.2,
+    "ctx": "cc"
+   },
+   "monk/passive/combination-strike": {
+    "b": "sep",
+    "v": 1.0,
+    "fn": "others",
+    "of": [
+     "monk/skill/fists-of-thunder",
+     "monk/skill/deadly-reach",
+     "monk/skill/crippling-wave",
+     "monk/skill/way-of-the-hundred-fists"
+    ]
+   },
+   "demon-hunter/passive/ambush": {
+    "b": "sep",
+    "v": 0.4,
+    "fn": "ambush",
+    "above": 0.75,
+    "dml": {
+     "item": "P61_Unique_Quiver_007",
+     "below": 0.6,
+     "mult": 2
+    }
+   },
+   "demon-hunter/passive/cull-the-weak": {
+    "b": "sep",
+    "v": 0.2
+   },
+   "demon-hunter/passive/steady-aim": {
+    "b": "sep",
+    "v": 0.2
+   },
+   "crusader/passive/holy-cause": {
+    "b": "add",
+    "v": 0.1
+   },
+   "crusader/passive/heavenly-strength": {
+    "b": "add",
+    "v": -0.2
+   },
+   "crusader/passive/finery": {
+    "b": "sep",
+    "v": 0.015,
+    "ctx": "gems",
+    "def": 10
+   },
+   "wizard/passive/audacity": {
+    "b": "sep",
+    "v": 0.3
+   },
+   "wizard/passive/elemental-exposure": {
+    "b": "sep",
+    "v": 0.05,
+    "ctx": "ee"
+   },
+   "wizard/skill/magic-weapon": {
+    "b": "add",
+    "v": 0.1
+   },
+   "wizard/skill/black-hole/d": {
+    "b": "add",
+    "fn": "cdUptime",
+    "v": 0.03,
+    "n": 15,
+    "dur": 7,
+    "cd": 12
+   },
+   "monk/skill/deadly-reach/a": {
+    "b": "add",
+    "v": 0.15
+   }
+  },
   "gemDmg": {
    "trapped": 0.6,
    "trappedFoth": 0.33,
@@ -557,7 +837,7 @@
       "same": "zdh_yang"
      },
      "impale_guardian": {
-      "dmg": 526132408,
+      "dmg": 671551894036460,
       "tough": 1077366139,
       "P": 8071,
       "who": "아수라발발타#32638",
@@ -568,7 +848,29 @@
       "gemK": 2.624
      },
      "impale_crimson": {
-      "dmg": 526132408,
+      "dmg": 671551894036460,
+      "tough": 1077366139,
+      "P": 8071,
+      "who": "아수라발발타#32638",
+      "region": "한국",
+      "toughWho": "미호입니다#31553",
+      "toughP": 6115,
+      "sample": 4,
+      "gemK": 2.624
+     },
+     "impale_crimson_sa": {
+      "dmg": 671551894036460,
+      "tough": 1077366139,
+      "P": 8071,
+      "who": "아수라발발타#32638",
+      "region": "한국",
+      "toughWho": "미호입니다#31553",
+      "toughP": 6115,
+      "sample": 4,
+      "gemK": 2.624
+     },
+     "impale_guardian_sa": {
+      "dmg": 671551894036460,
       "tough": 1077366139,
       "P": 8071,
       "who": "아수라발발타#32638",
@@ -579,7 +881,7 @@
       "gemK": 2.624
      },
      "ue_dawn": {
-      "dmg": 1050042687253,
+      "dmg": 272789635137111,
       "tough": 1623133602,
       "P": 8747,
       "who": "aMonkstone#2663",
@@ -590,7 +892,7 @@
       "gemK": 1.6
      },
      "ue_odyssey": {
-      "dmg": 640269931252,
+      "dmg": 166335143376287,
       "tough": 1623133602,
       "P": 8747,
       "who": "aMonkstone#2663",
@@ -601,7 +903,7 @@
       "gemK": 2.624
      },
      "ue_odyssey_g": {
-      "dmg": 640269931252,
+      "dmg": 166335143376287,
       "tough": 1623133602,
       "P": 8747,
       "who": "aMonkstone#2663",
@@ -612,7 +914,7 @@
       "gemK": 2.624
      },
      "ue_dawn_g": {
-      "dmg": 1050042687253,
+      "dmg": 272789635137111,
       "tough": 1623133602,
       "P": 8747,
       "who": "aMonkstone#2663",
@@ -623,41 +925,41 @@
       "gemK": 1.6
      },
      "wol_archew": {
-      "dmg": 48280103,
-      "tough": 2060396883,
-      "P": 1549,
-      "who": "Delusions#1413",
-      "region": "미국",
-      "toughWho": "우쭐한푸른로아#3547",
-      "toughP": 2017,
-      "sample": 53,
+      "dmg": 3613626597794,
+      "tough": 2196995262,
+      "P": 1781,
+      "who": "GaSeR#2463",
+      "region": "유럽",
+      "toughWho": "groin#1827",
+      "toughP": 1326,
+      "sample": 55,
       "gemK": 157.6
      },
      "wol_soj": {
-      "dmg": 48280103,
-      "tough": 2060396883,
-      "P": 1549,
-      "who": "Delusions#1413",
-      "region": "미국",
-      "toughWho": "우쭐한푸른로아#3547",
-      "toughP": 2017,
-      "sample": 53,
+      "dmg": 3613626597794,
+      "tough": 2196995262,
+      "P": 1781,
+      "who": "GaSeR#2463",
+      "region": "유럽",
+      "toughWho": "groin#1827",
+      "toughP": 1326,
+      "sample": 55,
       "gemK": 157.6
      },
      "wol_soj_archew": {
-      "dmg": 48280103,
-      "tough": 2060396883,
-      "P": 1549,
-      "who": "Delusions#1413",
-      "region": "미국",
-      "toughWho": "우쭐한푸른로아#3547",
-      "toughP": 2017,
-      "sample": 53,
+      "dmg": 3613626597794,
+      "tough": 2196995262,
+      "P": 1781,
+      "who": "GaSeR#2463",
+      "region": "유럽",
+      "toughWho": "groin#1827",
+      "toughP": 1326,
+      "sample": 55,
       "gemK": 157.6
      },
      "rai_crimson": {
-      "dmg": 716209076,
-      "tough": 1246002913,
+      "dmg": 3157527505,
+      "tough": 1300078472,
       "P": 1490,
       "who": "Exia#3306",
       "region": "아시아",
@@ -667,8 +969,8 @@
       "gemK": 3.2
      },
      "rai_guard": {
-      "dmg": 716209076,
-      "tough": 1246002913,
+      "dmg": 3157527505,
+      "tough": 1300078472,
       "P": 1490,
       "who": "Exia#3306",
       "region": "아시아",
@@ -678,8 +980,8 @@
       "gemK": 3.2
      },
      "rai4_salv": {
-      "dmg": 716209076,
-      "tough": 1246002913,
+      "dmg": 3157527505,
+      "tough": 1300078472,
       "P": 1490,
       "who": "Exia#3306",
       "region": "아시아",
@@ -689,8 +991,8 @@
       "gemK": 3.2
      },
      "rai4_heal": {
-      "dmg": 716209076,
-      "tough": 1246002913,
+      "dmg": 3157527505,
+      "tough": 1300078472,
       "P": 1490,
       "who": "Exia#3306",
       "region": "아시아",
@@ -700,8 +1002,8 @@
       "gemK": 3.2
      },
      "rai2_salv": {
-      "dmg": 716209076,
-      "tough": 1246002913,
+      "dmg": 3157527505,
+      "tough": 1300078472,
       "P": 1490,
       "who": "Exia#3306",
       "region": "아시아",
@@ -711,8 +1013,8 @@
       "gemK": 3.2
      },
      "rai_crimson_gp": {
-      "dmg": 716209076,
-      "tough": 1246002913,
+      "dmg": 3157527505,
+      "tough": 1300078472,
       "P": 1490,
       "who": "Exia#3306",
       "region": "아시아",
@@ -722,8 +1024,8 @@
       "gemK": 3.2
      },
      "rai_guard_gp": {
-      "dmg": 716209076,
-      "tough": 1246002913,
+      "dmg": 3157527505,
+      "tough": 1300078472,
       "P": 1490,
       "who": "Exia#3306",
       "region": "아시아",
@@ -733,8 +1035,8 @@
       "gemK": 3.2
      },
      "rai2_salv_gp": {
-      "dmg": 716209076,
-      "tough": 1246002913,
+      "dmg": 3157527505,
+      "tough": 1300078472,
       "P": 1490,
       "who": "Exia#3306",
       "region": "아시아",
@@ -744,8 +1046,8 @@
       "gemK": 3.2
      },
      "rai4_salv_gp": {
-      "dmg": 716209076,
-      "tough": 1246002913,
+      "dmg": 3157527505,
+      "tough": 1300078472,
       "P": 1490,
       "who": "Exia#3306",
       "region": "아시아",
@@ -755,8 +1057,8 @@
       "gemK": 3.2
      },
      "rai4_heal_gp": {
-      "dmg": 716209076,
-      "tough": 1246002913,
+      "dmg": 3157527505,
+      "tough": 1300078472,
       "P": 1490,
       "who": "Exia#3306",
       "region": "아시아",
@@ -766,283 +1068,283 @@
       "gemK": 3.2
      },
      "wol_lod": {
-      "dmg": 48280103,
-      "tough": 2060396883,
-      "P": 1549,
-      "who": "Delusions#1413",
-      "region": "미국",
-      "toughWho": "우쭐한푸른로아#3547",
-      "toughP": 2017,
-      "sample": 53,
+      "dmg": 3613626597794,
+      "tough": 2196995262,
+      "P": 1781,
+      "who": "GaSeR#2463",
+      "region": "유럽",
+      "toughWho": "groin#1827",
+      "toughP": 1326,
+      "sample": 55,
       "gemK": 157.6
      },
      "foth_aov": {
-      "dmg": 831340901,
-      "tough": 355955394,
+      "dmg": 751046039,
+      "tough": 363341806,
       "P": 1834,
       "who": "Shell#2510",
       "region": "유럽",
       "toughWho": "Noya#2135",
       "toughP": 3012,
-      "sample": 19,
+      "sample": 20,
       "gemK": 1.9647
      },
      "foth_g_ew_s": {
-      "dmg": 831340901,
-      "tough": 355955394,
+      "dmg": 751046039,
+      "tough": 363341806,
       "P": 1834,
       "who": "Shell#2510",
       "region": "유럽",
       "toughWho": "Noya#2135",
       "toughP": 3012,
-      "sample": 19,
+      "sample": 20,
       "gemK": 1.9647
      },
      "foth_g_soj_f": {
-      "dmg": 831340901,
-      "tough": 355955394,
+      "dmg": 751046039,
+      "tough": 363341806,
       "P": 1834,
       "who": "Shell#2510",
       "region": "유럽",
       "toughWho": "Noya#2135",
       "toughP": 3012,
-      "sample": 19,
+      "sample": 20,
       "gemK": 1.9647
      },
      "foth_g_soj_s": {
-      "dmg": 831340901,
-      "tough": 355955394,
+      "dmg": 751046039,
+      "tough": 363341806,
       "P": 1834,
       "who": "Shell#2510",
       "region": "유럽",
       "toughWho": "Noya#2135",
       "toughP": 3012,
-      "sample": 19,
+      "sample": 20,
       "gemK": 1.9647
      },
      "foth_g_unity_f": {
-      "dmg": 831340901,
-      "tough": 355955394,
+      "dmg": 751046039,
+      "tough": 363341806,
       "P": 1834,
       "who": "Shell#2510",
       "region": "유럽",
       "toughWho": "Noya#2135",
       "toughP": 3012,
-      "sample": 19,
+      "sample": 20,
       "gemK": 1.9647
      },
      "foth_g_unity_s": {
-      "dmg": 831340901,
-      "tough": 355955394,
+      "dmg": 751046039,
+      "tough": 363341806,
       "P": 1834,
       "who": "Shell#2510",
       "region": "유럽",
       "toughWho": "Noya#2135",
       "toughP": 3012,
-      "sample": 19,
+      "sample": 20,
       "gemK": 1.9647
      },
      "foth_g_rechel_f": {
-      "dmg": 831340901,
-      "tough": 355955394,
+      "dmg": 751046039,
+      "tough": 363341806,
       "P": 1834,
       "who": "Shell#2510",
       "region": "유럽",
       "toughWho": "Noya#2135",
       "toughP": 3012,
-      "sample": 19,
+      "sample": 20,
       "gemK": 1.9647
      },
      "foth_g_rechel_s": {
-      "dmg": 831340901,
-      "tough": 355955394,
+      "dmg": 751046039,
+      "tough": 363341806,
       "P": 1834,
       "who": "Shell#2510",
       "region": "유럽",
       "toughWho": "Noya#2135",
       "toughP": 3012,
-      "sample": 19,
+      "sample": 20,
       "gemK": 1.9647
      },
      "foth_a_ew_f": {
-      "dmg": 831340901,
-      "tough": 355955394,
+      "dmg": 751046039,
+      "tough": 363341806,
       "P": 1834,
       "who": "Shell#2510",
       "region": "유럽",
       "toughWho": "Noya#2135",
       "toughP": 3012,
-      "sample": 19,
+      "sample": 20,
       "gemK": 1.9647
      },
      "foth_a_ew_s": {
-      "dmg": 831340901,
-      "tough": 355955394,
+      "dmg": 751046039,
+      "tough": 363341806,
       "P": 1834,
       "who": "Shell#2510",
       "region": "유럽",
       "toughWho": "Noya#2135",
       "toughP": 3012,
-      "sample": 19,
+      "sample": 20,
       "gemK": 1.9647
      },
      "foth_a_soj_f": {
-      "dmg": 831340901,
-      "tough": 355955394,
+      "dmg": 751046039,
+      "tough": 363341806,
       "P": 1834,
       "who": "Shell#2510",
       "region": "유럽",
       "toughWho": "Noya#2135",
       "toughP": 3012,
-      "sample": 19,
+      "sample": 20,
       "gemK": 1.9647
      },
      "foth_a_soj_s": {
-      "dmg": 831340901,
-      "tough": 355955394,
+      "dmg": 751046039,
+      "tough": 363341806,
       "P": 1834,
       "who": "Shell#2510",
       "region": "유럽",
       "toughWho": "Noya#2135",
       "toughP": 3012,
-      "sample": 19,
+      "sample": 20,
       "gemK": 1.9647
      },
      "foth_a_unity_f": {
-      "dmg": 831340901,
-      "tough": 355955394,
+      "dmg": 751046039,
+      "tough": 363341806,
       "P": 1834,
       "who": "Shell#2510",
       "region": "유럽",
       "toughWho": "Noya#2135",
       "toughP": 3012,
-      "sample": 19,
+      "sample": 20,
       "gemK": 1.9647
      },
      "foth_a_unity_s": {
-      "dmg": 831340901,
-      "tough": 355955394,
+      "dmg": 751046039,
+      "tough": 363341806,
       "P": 1834,
       "who": "Shell#2510",
       "region": "유럽",
       "toughWho": "Noya#2135",
       "toughP": 3012,
-      "sample": 19,
+      "sample": 20,
       "gemK": 1.9647
      },
      "foth_a_rechel_f": {
-      "dmg": 831340901,
-      "tough": 355955394,
+      "dmg": 751046039,
+      "tough": 363341806,
       "P": 1834,
       "who": "Shell#2510",
       "region": "유럽",
       "toughWho": "Noya#2135",
       "toughP": 3012,
-      "sample": 19,
+      "sample": 20,
       "gemK": 1.9647
      },
      "foth_a_rechel_s": {
-      "dmg": 831340901,
-      "tough": 355955394,
+      "dmg": 751046039,
+      "tough": 363341806,
       "P": 1834,
       "who": "Shell#2510",
       "region": "유럽",
       "toughWho": "Noya#2135",
       "toughP": 3012,
-      "sample": 19,
+      "sample": 20,
       "gemK": 1.9647
      },
      "foth_w_ew_f": {
-      "dmg": 831340901,
-      "tough": 355955394,
+      "dmg": 751046039,
+      "tough": 363341806,
       "P": 1834,
       "who": "Shell#2510",
       "region": "유럽",
       "toughWho": "Noya#2135",
       "toughP": 3012,
-      "sample": 19,
+      "sample": 20,
       "gemK": 1.9647
      },
      "foth_w_ew_s": {
-      "dmg": 831340901,
-      "tough": 355955394,
+      "dmg": 751046039,
+      "tough": 363341806,
       "P": 1834,
       "who": "Shell#2510",
       "region": "유럽",
       "toughWho": "Noya#2135",
       "toughP": 3012,
-      "sample": 19,
+      "sample": 20,
       "gemK": 1.9647
      },
      "foth_w_soj_f": {
-      "dmg": 831340901,
-      "tough": 355955394,
+      "dmg": 751046039,
+      "tough": 363341806,
       "P": 1834,
       "who": "Shell#2510",
       "region": "유럽",
       "toughWho": "Noya#2135",
       "toughP": 3012,
-      "sample": 19,
+      "sample": 20,
       "gemK": 1.9647
      },
      "foth_w_soj_s": {
-      "dmg": 831340901,
-      "tough": 355955394,
+      "dmg": 751046039,
+      "tough": 363341806,
       "P": 1834,
       "who": "Shell#2510",
       "region": "유럽",
       "toughWho": "Noya#2135",
       "toughP": 3012,
-      "sample": 19,
+      "sample": 20,
       "gemK": 1.9647
      },
      "foth_w_unity_f": {
-      "dmg": 831340901,
-      "tough": 355955394,
+      "dmg": 751046039,
+      "tough": 363341806,
       "P": 1834,
       "who": "Shell#2510",
       "region": "유럽",
       "toughWho": "Noya#2135",
       "toughP": 3012,
-      "sample": 19,
+      "sample": 20,
       "gemK": 1.9647
      },
      "foth_w_unity_s": {
-      "dmg": 831340901,
-      "tough": 355955394,
+      "dmg": 751046039,
+      "tough": 363341806,
       "P": 1834,
       "who": "Shell#2510",
       "region": "유럽",
       "toughWho": "Noya#2135",
       "toughP": 3012,
-      "sample": 19,
+      "sample": 20,
       "gemK": 1.9647
      },
      "foth_w_rechel_f": {
-      "dmg": 831340901,
-      "tough": 355955394,
+      "dmg": 751046039,
+      "tough": 363341806,
       "P": 1834,
       "who": "Shell#2510",
       "region": "유럽",
       "toughWho": "Noya#2135",
       "toughP": 3012,
-      "sample": 19,
+      "sample": 20,
       "gemK": 1.9647
      },
      "foth_w_rechel_s": {
-      "dmg": 831340901,
-      "tough": 355955394,
+      "dmg": 751046039,
+      "tough": 363341806,
       "P": 1834,
       "who": "Shell#2510",
       "region": "유럽",
       "toughWho": "Noya#2135",
       "toughP": 3012,
-      "sample": 19,
+      "sample": 20,
       "gemK": 1.9647
      },
      "fb_g_ew": {
-      "dmg": 192549235,
-      "tough": 6615012046,
+      "dmg": 416588898,
+      "tough": 6902098435,
       "P": 1721,
       "who": "Edwin#2840",
       "region": "유럽",
@@ -1052,8 +1354,8 @@
       "gemK": 1.6
      },
      "fb_guard": {
-      "dmg": 192549235,
-      "tough": 6615012046,
+      "dmg": 416588898,
+      "tough": 6902098435,
       "P": 1721,
       "who": "Edwin#2840",
       "region": "유럽",
@@ -1063,8 +1365,8 @@
       "gemK": 1.6
      },
      "fb_a_fr": {
-      "dmg": 192549235,
-      "tough": 6615012046,
+      "dmg": 416588898,
+      "tough": 6902098435,
       "P": 1721,
       "who": "Edwin#2840",
       "region": "유럽",
@@ -1074,8 +1376,8 @@
       "gemK": 1.6
      },
      "fb_a_ew": {
-      "dmg": 192549235,
-      "tough": 6615012046,
+      "dmg": 416588898,
+      "tough": 6902098435,
       "P": 1721,
       "who": "Edwin#2840",
       "region": "유럽",
@@ -1284,7 +1586,8 @@
      "move_speed": 0.6,
      "duration": 2,
      "smokeDur": 1,
-     "smokeCd": 1.5
+     "smokeCd": 1.5,
+     "smokeCdVanish": 6
     },
     "sets": {
      "captain_crimsons_trimmings": {
@@ -1449,6 +1752,7 @@
     "selfBuff": {
      "desertShroudDr": 0.5,
      "dashDodge": 0.4,
+     "dashAttackSpeed": 0.15,
      "agilityDodge": 0.35,
      "lefebvreDr": 0.5
     },
@@ -1628,9 +1932,20 @@
     "lawsOfHope": {
      "life_regen": 10728
     },
+    "lawsOfValor": {
+     "attackSpeed": 0.08,
+     "activeAttackSpeed": 0.15,
+     "duration": 5,
+     "critDamage": 0.5
+    },
+    "lawsOfJustice": {
+     "all_resist": 140
+    },
+    "longArm": 5,
     "valor4DR": 0.5,
     "steed": {
      "cooldown": 16,
+     "enduranceExtra": 1,
      "lordCommander": 0.25,
      "duration": 5,
      "norvaldTail": 5,
@@ -1794,6 +2109,7 @@
      "dmg": 1.0,
      "dr": 0.5
     },
+    "passiveCdr": 0.2,
     "shield": {
      "galvanizingWard": 0.6,
      "deflectionPerCast": 0.04,

@@ -191,7 +191,7 @@
         "skills": [
          [
           "demon-hunter/skill/bolas",
-          "d"
+          "b"
          ],
          [
           "demon-hunter/skill/impale",
@@ -207,7 +207,7 @@
          ],
          [
           "demon-hunter/skill/smoke-screen",
-          "d"
+          "a"
          ],
          [
           "demon-hunter/skill/vengeance",
@@ -2283,6 +2283,462 @@
         "ring_right_slot": "Unique_Gem_021_x1",
         "amulet_slot": "Unique_Gem_016_x1"
        }
+      },
+      {
+       "id": "impale_crimson_sa",
+       "label": "투검 악사(크림슨·침착한 조준, 축성)",
+       "element": "cold",
+       "elementLabel": "냉기",
+       "mainSkill": "투검",
+       "skillGroup": 1,
+       "weaponType": "onehand",
+       "cube": [
+        "새벽",
+        "집중의 어깨걸이",
+        "왕실 권위의 반지"
+       ],
+       "dawn": true,
+       "src": "https://maxroll.gg/d3/guides/shadow-impale-demon-hunter-guide (S40 기본 구성, d3planner 임베드)",
+       "slots": {
+        "head_slot": {
+         "item": "Unique_Helm_Set_14_x1",
+         "goal": [
+          "sockets",
+          "skill_damage",
+          "crit_chance",
+          "life_percent"
+         ],
+         "secGoal": [
+          "single_resist"
+         ]
+        },
+        "chest_slot": {
+         "item": "Unique_Chest_Set_14_x1",
+         "goal": [
+          "sockets",
+          "life_percent",
+          "all_resist",
+          "main_stat"
+         ],
+         "secGoal": [
+          "single_resist",
+          "melee_or_ranged_reduction"
+         ]
+        },
+        "gloves_slot": {
+         "item": "Unique_Gloves_Set_14_x1",
+         "goal": [
+          "crit_damage",
+          "crit_chance",
+          "cooldown_reduction",
+          "area_damage"
+         ],
+         "secGoal": [
+          "single_resist"
+         ]
+        },
+        "boots_slot": {
+         "item": "P66_Unique_Boots_017",
+         "goal": [
+          "skill_damage",
+          "all_resist",
+          "main_stat",
+          "vitality"
+         ],
+         "_doc": "크림슨 선장의 고래잡이(사용자 2026-11-07)",
+         "secGoal": [
+          "single_resist"
+         ]
+        },
+        "ring_left_slot": {
+         "item": "Unique_Ring_Set_002_x1",
+         "goal": [
+          "sockets",
+          "crit_chance",
+          "crit_damage",
+          "flat_damage"
+         ],
+         "secGoal": [
+          "single_resist"
+         ]
+        },
+        "ring_right_slot": {
+         "item": "Unique_Ring_Set_001_x1",
+         "goal": [
+          "sockets",
+          "crit_chance",
+          "crit_damage",
+          "flat_damage"
+         ],
+         "secGoal": [
+          "single_resist"
+         ]
+        },
+        "amulet_slot": {
+         "item": "P66_Unique_Amulet_010",
+         "goal": [
+          "sockets",
+          "element_skill_damage",
+          "crit_damage",
+          "crit_chance"
+         ],
+         "secGoal": [
+          "single_resist",
+          "melee_or_ranged_reduction"
+         ]
+        },
+        "main_hand_slot": {
+         "item": "P61_Unique_Dagger_101_x1",
+         "goal": [
+          "random_weapon_damage",
+          "weapon_damage_percent",
+          "cooldown_reduction",
+          "area_damage"
+         ],
+         "_doc": "홈은 라말라드니 선물로 추가"
+        },
+        "off_hand_slot": {
+         "item": "P69_Unique_Quiver_004",
+         "goal": [
+          "attack_speed",
+          "element_skill_damage",
+          "skill_damage",
+          "crit_chance",
+          "cooldown_reduction"
+         ],
+         "_doc": "주요 5칸에 딱 맞춤: 공속·냉기 고정 + 투검·극확·재감(랜덤 2 + 민첩 마부). 광피는 재감 대체 후보지만 정옵에서는 뺌(후순위)"
+        },
+        "shoulders_slot": {
+         "item": "Unique_Shoulder_Set_14_x1",
+         "goal": [
+          "cooldown_reduction",
+          "area_damage",
+          "resource_cost_reduction",
+          "all_resist"
+         ],
+         "_doc": "고정 모저·민첩 중 민첩을 자감으로 마부",
+         "secGoal": [
+          "single_resist"
+         ]
+        },
+        "belt_slot": {
+         "item": "P66_Unique_Belt_012",
+         "goal": [
+          "life_percent",
+          "all_resist",
+          "main_stat",
+          "vitality"
+         ],
+         "secGoal": [
+          "single_resist"
+         ]
+        },
+        "pants_slot": {
+         "item": "Unique_Pants_Set_14_x1",
+         "goal": [
+          "sockets",
+          "all_resist",
+          "main_stat",
+          "vitality"
+         ],
+         "_doc": "어둠의 똬리 바지(크림슨은 장화로, 사용자 2026-11-07)",
+         "secGoal": [
+          "single_resist"
+         ]
+        },
+        "bracers_slot": {
+         "item": "P61_Unique_Bracer_103",
+         "goal": [
+          "element_skill_damage",
+          "crit_chance",
+          "all_resist",
+          "main_stat"
+         ],
+         "secGoal": [
+          "single_resist",
+          "melee_or_ranged_reduction"
+         ]
+        }
+       },
+       "classId": "dh",
+       "party": 1,
+       "skillbar": {
+        "profile": "imp",
+        "skills": [
+         [
+          "demon-hunter/skill/bolas",
+          "b"
+         ],
+         [
+          "demon-hunter/skill/impale",
+          "a"
+         ],
+         [
+          "demon-hunter/skill/shadow-power",
+          "x"
+         ],
+         [
+          "demon-hunter/skill/strafe",
+          "c"
+         ],
+         [
+          "demon-hunter/skill/smoke-screen",
+          "a"
+         ],
+         [
+          "demon-hunter/skill/vengeance",
+          "b"
+         ]
+        ],
+        "passives": [
+         "demon-hunter/passive/steady-aim",
+         "demon-hunter/passive/cull-the-weak",
+         "demon-hunter/passive/ambush",
+         "demon-hunter/passive/thrill-of-the-hunt"
+        ],
+        "cube": [
+         4247297532,
+         554473194,
+         534556156
+        ],
+        "cubePower": [
+         "복수의 재사용 대기시간 65% 감소 (악마사냥꾼 전용)",
+         null,
+         "세트 효과를 받기 위해 필요한 아이템의 개수 1 감소 (최소 2개 필요)"
+        ]
+       },
+       "legGems": {
+        "ring_left_slot": "Unique_Gem_002_x1",
+        "ring_right_slot": "Unique_Gem_012_x1",
+        "amulet_slot": "Unique_Gem_015_x1"
+       }
+      },
+      {
+       "id": "impale_guardian_sa",
+       "label": "투검 악사(수호자·침착한 조준, 축성)",
+       "element": "cold",
+       "elementLabel": "냉기",
+       "mainSkill": "투검",
+       "skillGroup": 1,
+       "weaponType": "onehand",
+       "cube": [
+        "새벽",
+        "명료의 손목싸개",
+        "왕실 권위의 반지"
+       ],
+       "dawn": true,
+       "src": "maxroll 가이드 '파라곤 2000 이하면 크림슨 대신 수호자의 위기' + 사용자 확인(어깨 = 집중의 어깨걸이)",
+       "slots": {
+        "head_slot": {
+         "item": "Unique_Helm_Set_14_x1",
+         "goal": [
+          "sockets",
+          "skill_damage",
+          "crit_chance",
+          "life_percent"
+         ],
+         "secGoal": [
+          "single_resist"
+         ]
+        },
+        "chest_slot": {
+         "item": "Unique_Chest_Set_14_x1",
+         "goal": [
+          "sockets",
+          "life_percent",
+          "all_resist",
+          "main_stat"
+         ],
+         "secGoal": [
+          "single_resist",
+          "melee_or_ranged_reduction"
+         ]
+        },
+        "gloves_slot": {
+         "item": "Unique_Gloves_Set_14_x1",
+         "goal": [
+          "crit_damage",
+          "crit_chance",
+          "cooldown_reduction",
+          "area_damage"
+         ],
+         "secGoal": [
+          "single_resist"
+         ]
+        },
+        "boots_slot": {
+         "item": "Unique_Boots_Set_14_x1",
+         "goal": [
+          "skill_damage",
+          "all_resist",
+          "main_stat",
+          "vitality"
+         ],
+         "secGoal": [
+          "single_resist"
+         ]
+        },
+        "ring_left_slot": {
+         "item": "Unique_Ring_Set_002_x1",
+         "goal": [
+          "sockets",
+          "crit_chance",
+          "crit_damage",
+          "flat_damage"
+         ],
+         "secGoal": [
+          "single_resist"
+         ]
+        },
+        "ring_right_slot": {
+         "item": "Unique_Ring_Set_001_x1",
+         "goal": [
+          "sockets",
+          "crit_chance",
+          "crit_damage",
+          "flat_damage"
+         ],
+         "secGoal": [
+          "single_resist"
+         ]
+        },
+        "amulet_slot": {
+         "item": "P66_Unique_Amulet_010",
+         "goal": [
+          "sockets",
+          "element_skill_damage",
+          "crit_damage",
+          "crit_chance"
+         ],
+         "secGoal": [
+          "single_resist",
+          "melee_or_ranged_reduction"
+         ]
+        },
+        "main_hand_slot": {
+         "item": "P61_Unique_Dagger_101_x1",
+         "goal": [
+          "random_weapon_damage",
+          "weapon_damage_percent",
+          "cooldown_reduction",
+          "area_damage"
+         ],
+         "_doc": "홈은 라말라드니 선물로 추가"
+        },
+        "off_hand_slot": {
+         "item": "P69_Unique_Quiver_004",
+         "goal": [
+          "attack_speed",
+          "element_skill_damage",
+          "skill_damage",
+          "crit_chance",
+          "cooldown_reduction"
+         ],
+         "_doc": "주요 5칸에 딱 맞춤: 공속·냉기 고정 + 투검·극확·재감(랜덤 2 + 민첩 마부). 광피는 재감 대체 후보지만 정옵에서는 뺌(후순위)"
+        },
+        "shoulders_slot": {
+         "item": "P4_Unique_Shoulder_103",
+         "goal": [
+          "cooldown_reduction",
+          "area_damage",
+          "resource_cost_reduction",
+          "main_stat"
+         ],
+         "_doc": "고정 활력을 자감으로 마부",
+         "secGoal": [
+          "single_resist"
+         ]
+        },
+        "belt_slot": {
+         "item": "P74_Unique_Belt_013",
+         "goal": [
+          "life_percent",
+          "all_resist",
+          "main_stat",
+          "vitality"
+         ],
+         "secGoal": [
+          "single_resist"
+         ]
+        },
+        "pants_slot": {
+         "item": "Unique_Pants_Set_14_x1",
+         "goal": [
+          "sockets",
+          "all_resist",
+          "main_stat",
+          "vitality"
+         ],
+         "secGoal": [
+          "single_resist"
+         ]
+        },
+        "bracers_slot": {
+         "item": "P74_Unique_Bracer_010",
+         "goal": [
+          "element_skill_damage",
+          "crit_chance",
+          "all_resist",
+          "main_stat"
+         ],
+         "secGoal": [
+          "single_resist",
+          "melee_or_ranged_reduction"
+         ]
+        }
+       },
+       "classId": "dh",
+       "party": 1,
+       "skillbar": {
+        "profile": "imp",
+        "skills": [
+         [
+          "demon-hunter/skill/bolas",
+          "d"
+         ],
+         [
+          "demon-hunter/skill/impale",
+          "a"
+         ],
+         [
+          "demon-hunter/skill/shadow-power",
+          "x"
+         ],
+         [
+          "demon-hunter/skill/strafe",
+          "c"
+         ],
+         [
+          "demon-hunter/skill/smoke-screen",
+          "d"
+         ],
+         [
+          "demon-hunter/skill/vengeance",
+          "b"
+         ]
+        ],
+        "passives": [
+         "demon-hunter/passive/steady-aim",
+         "demon-hunter/passive/cull-the-weak",
+         "demon-hunter/passive/ambush",
+         "demon-hunter/passive/thrill-of-the-hunt"
+        ],
+        "cube": [
+         4247297532,
+         3059360894,
+         534556156
+        ],
+        "cubePower": [
+         "복수의 재사용 대기시간 65% 감소 (악마사냥꾼 전용)",
+         null,
+         "세트 효과를 받기 위해 필요한 아이템의 개수 1 감소 (최소 2개 필요)"
+        ]
+       },
+       "legGems": {
+        "ring_left_slot": "Unique_Gem_002_x1",
+        "ring_right_slot": "Unique_Gem_012_x1",
+        "amulet_slot": "Unique_Gem_015_x1"
+       }
       }
      ],
      "groups": [
@@ -2320,6 +2776,14 @@
         {
          "build": "impale_guardian",
          "short": "수호자"
+        },
+        {
+         "build": "impale_crimson_sa",
+         "short": "크림슨·침착한 조준"
+        },
+        {
+         "build": "impale_guardian_sa",
+         "short": "수호자·침착한 조준"
         }
        ]
       },
@@ -2546,7 +3010,7 @@
          ],
          [
           "monk/skill/cyclone-strike",
-          "b"
+          "d"
          ],
          [
           "monk/skill/dashing-strike",
@@ -2778,7 +3242,7 @@
          ],
          [
           "monk/skill/cyclone-strike",
-          "b"
+          "d"
          ],
          [
           "monk/skill/dashing-strike",
@@ -3010,7 +3474,7 @@
          ],
          [
           "monk/skill/cyclone-strike",
-          "b"
+          "d"
          ],
          [
           "monk/skill/dashing-strike",
@@ -3242,7 +3706,7 @@
          ],
          [
           "monk/skill/cyclone-strike",
-          "b"
+          "d"
          ],
          [
           "monk/skill/dashing-strike",
@@ -6068,8 +6532,8 @@
           "c"
          ],
          [
-          "crusader/skill/consecration",
-          "c"
+          "crusader/skill/shield-glare",
+          "a"
          ],
          [
           "crusader/skill/iron-skin",
@@ -6307,8 +6771,8 @@
           "c"
          ],
          [
-          "crusader/skill/consecration",
-          "c"
+          "crusader/skill/shield-glare",
+          "a"
          ],
          [
           "crusader/skill/iron-skin",
@@ -6546,8 +7010,8 @@
           "c"
          ],
          [
-          "crusader/skill/consecration",
-          "c"
+          "crusader/skill/shield-glare",
+          "a"
          ],
          [
           "crusader/skill/iron-skin",
@@ -6785,8 +7249,8 @@
           "c"
          ],
          [
-          "crusader/skill/consecration",
-          "c"
+          "crusader/skill/shield-glare",
+          "a"
          ],
          [
           "crusader/skill/iron-skin",
@@ -7024,8 +7488,8 @@
           "c"
          ],
          [
-          "crusader/skill/consecration",
-          "c"
+          "crusader/skill/shield-glare",
+          "a"
          ],
          [
           "crusader/skill/iron-skin",
@@ -7263,8 +7727,8 @@
           "c"
          ],
          [
-          "crusader/skill/consecration",
-          "c"
+          "crusader/skill/shield-glare",
+          "a"
          ],
          [
           "crusader/skill/iron-skin",
@@ -7499,8 +7963,8 @@
           "c"
          ],
          [
-          "crusader/skill/consecration",
-          "c"
+          "crusader/skill/shield-glare",
+          "a"
          ],
          [
           "crusader/skill/iron-skin",
@@ -7735,8 +8199,8 @@
           "c"
          ],
          [
-          "crusader/skill/consecration",
-          "c"
+          "crusader/skill/shield-glare",
+          "a"
          ],
          [
           "crusader/skill/iron-skin",
@@ -7973,8 +8437,8 @@
           "c"
          ],
          [
-          "crusader/skill/consecration",
-          "c"
+          "crusader/skill/shield-glare",
+          "a"
          ],
          [
           "crusader/skill/iron-skin",
@@ -8211,8 +8675,8 @@
           "c"
          ],
          [
-          "crusader/skill/consecration",
-          "c"
+          "crusader/skill/shield-glare",
+          "a"
          ],
          [
           "crusader/skill/iron-skin",
@@ -8449,8 +8913,8 @@
           "c"
          ],
          [
-          "crusader/skill/consecration",
-          "c"
+          "crusader/skill/shield-glare",
+          "a"
          ],
          [
           "crusader/skill/iron-skin",
@@ -8687,8 +9151,8 @@
           "c"
          ],
          [
-          "crusader/skill/consecration",
-          "c"
+          "crusader/skill/shield-glare",
+          "a"
          ],
          [
           "crusader/skill/iron-skin",
@@ -8925,8 +9389,8 @@
           "c"
          ],
          [
-          "crusader/skill/consecration",
-          "c"
+          "crusader/skill/shield-glare",
+          "a"
          ],
          [
           "crusader/skill/iron-skin",
@@ -9163,8 +9627,8 @@
           "c"
          ],
          [
-          "crusader/skill/consecration",
-          "c"
+          "crusader/skill/shield-glare",
+          "a"
          ],
          [
           "crusader/skill/iron-skin",
@@ -9398,8 +9862,8 @@
           "c"
          ],
          [
-          "crusader/skill/consecration",
-          "c"
+          "crusader/skill/shield-glare",
+          "a"
          ],
          [
           "crusader/skill/iron-skin",
@@ -9633,8 +10097,8 @@
           "c"
          ],
          [
-          "crusader/skill/consecration",
-          "c"
+          "crusader/skill/shield-glare",
+          "a"
          ],
          [
           "crusader/skill/iron-skin",
@@ -9867,8 +10331,8 @@
           "c"
          ],
          [
-          "crusader/skill/consecration",
-          "c"
+          "crusader/skill/shield-glare",
+          "a"
          ],
          [
           "crusader/skill/iron-skin",
@@ -10101,8 +10565,8 @@
           "c"
          ],
          [
-          "crusader/skill/consecration",
-          "c"
+          "crusader/skill/shield-glare",
+          "a"
          ],
          [
           "crusader/skill/iron-skin",
@@ -10335,8 +10799,8 @@
           "c"
          ],
          [
-          "crusader/skill/consecration",
-          "c"
+          "crusader/skill/shield-glare",
+          "a"
          ],
          [
           "crusader/skill/iron-skin",
@@ -10569,8 +11033,8 @@
           "c"
          ],
          [
-          "crusader/skill/consecration",
-          "c"
+          "crusader/skill/shield-glare",
+          "a"
          ],
          [
           "crusader/skill/iron-skin",
@@ -10803,8 +11267,8 @@
           "c"
          ],
          [
-          "crusader/skill/consecration",
-          "c"
+          "crusader/skill/shield-glare",
+          "a"
          ],
          [
           "crusader/skill/iron-skin",
@@ -11037,8 +11501,8 @@
           "c"
          ],
          [
-          "crusader/skill/consecration",
-          "c"
+          "crusader/skill/shield-glare",
+          "a"
          ],
          [
           "crusader/skill/iron-skin",
@@ -11268,8 +11732,8 @@
           "c"
          ],
          [
-          "crusader/skill/consecration",
-          "c"
+          "crusader/skill/shield-glare",
+          "a"
          ],
          [
           "crusader/skill/iron-skin",
@@ -11499,8 +11963,8 @@
           "c"
          ],
          [
-          "crusader/skill/consecration",
-          "c"
+          "crusader/skill/shield-glare",
+          "a"
          ],
          [
           "crusader/skill/iron-skin",
