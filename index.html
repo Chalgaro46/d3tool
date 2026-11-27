@@ -438,6 +438,7 @@ h1{font-size:18px;font-weight:700;color:var(--title);margin:0 auto 12px;width:90
 .gain em{font-style:normal;margin:0}
 .line .why{display:inline;margin-left:5px;font-size:10px;line-height:13px;color:#9a8f78;white-space:normal;text-decoration:none}
 .tip.summary .line .why{font-size:15px;line-height:20px}
+.pending.bad{color:#ff8a7a;border-color:#8a3a30;background:rgba(255,120,100,.08)}
 .pending{margin:6px 0;padding:4px 8px;font-size:12px;color:#e0b45c;border:1px solid #7a5f2a;border-radius:3px;background:rgba(224,180,92,.08)}
 .paraline{display:flex;flex-wrap:wrap;gap:2px 10px;align-items:baseline;margin:6px 0;font-size:12px;line-height:17px;color:#c9bfa8}
 .paraline .cubelbl{color:var(--fg-dim)}
@@ -892,7 +893,7 @@ h1{font-size:18px;font-weight:700;color:var(--title);margin:0 auto 12px;width:90
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.3.1/umd/react.production.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.3.1/umd/react-dom.production.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.24.7/babel.min.js"></script>
-<script>const DATA_V = {"affixes.json": "6a2e3a4b41", "builds.json": "e8713a8c04", "cmp/_part/fb_sanct@solo@@0.json": "fadde8eff5", "cmp/_part/fb_sanct@solo@@1.json": "7ef12c40af", "cmp/_part/foth@solo@@0.json": "ecb6f37179", "cmp/_part/foth@solo@@1.json": "0d7481d334", "cmp/_part/impale_sanct@solo@@0.json": "ab41612d3c", "cmp/_part/impale_sanct@solo@@1.json": "a4af2fe43a", "cmp/_part/rai2@solo@@0.json": "f1d5289bd3", "cmp/_part/rai2@solo@@1.json": "534129c531", "cmp/_part/rai2_salv@solo@@0.json": "ae087fdc8a", "cmp/_part/rai2_salv@solo@@1.json": "51f6b44dba", "cmp/_part/rai4_heal@solo@@0.json": "be91146cf0", "cmp/_part/rai4_heal@solo@@1.json": "af8cca8103", "cmp/_part/rai4_salv@solo@@0.json": "a0ea3e09cd", "cmp/_part/rai4_salv@solo@@1.json": "b4e1fc8c08", "cmp/_part/rai4h@solo@@0.json": "40c2f6ec3c", "cmp/_part/rai4h@solo@@1.json": "4097022593", "cmp/_part/rai4s@solo@@0.json": "cd8d6511a2", "cmp/_part/rai4s@solo@@1.json": "e9e25780ab", "cmp/_part/rai_sanct@solo@@0.json": "30f47350ef", "cmp/_part/rai_sanct@solo@@1.json": "4851fd8732", "cmp/_part/ue_sanct@solo@@0.json": "4e277add65", "cmp/_part/ue_sanct@solo@@1.json": "09ffa28d38", "cmp/_part/wol_sanct@solo@@0.json": "3eb4f346da", "cmp/_part/wol_sanct@solo@@1.json": "c9791387c3", "cmp/_part/zbarb2_sup@solo@@0.json": "52950de2fc", "cmp/_part/zbarb2_sup@solo@@1.json": "092ebf7248", "cmp/_part/zbarb2_sup@solo@amulet_slot,main_hand_slot@0.json": "14f5e4492f", "cmp/_part/zbarb2_sup@solo@amulet_slot,main_hand_slot@1.json": "5683f0a21b", "cmp/_part/zbarb2_sup@solo@amulet_slot@0.json": "745fed63c4", "cmp/_part/zbarb2_sup@solo@amulet_slot@1.json": "d665759be1", "cmp/_part/zbarb2_sup@solo@main_hand_slot@0.json": "2ad02f586e", "cmp/_part/zbarb2_sup@solo@main_hand_slot@1.json": "bbff0b81b9", "cmp/_part/zbarb2_sup@solo@mainhand@0.json": "0eca7a6a09", "cmp/_part/zbarb2_sup@solo@mainhand@1.json": "2305304e8a", "cmp/_part/zbarb2_sup@solo@neck,mainhand@0.json": "2f0067edda", "cmp/_part/zbarb2_sup@solo@neck,mainhand@1.json": "8f2a2b9c06", "cmp/_part/zbarb2_sup@solo@neck@0.json": "bc1acfc852", "cmp/_part/zbarb2_sup@solo@neck@1.json": "18bd7c0306", "cmp/_part/zbarb_sup@solo@@0.json": "775689afdd", "cmp/_part/zbarb_sup@solo@@1.json": "1e3765baa1", "cmp/_part/zbarb_sup@solo@amulet_slot,main_hand_slot@0.json": "de6981ddf5", "cmp/_part/zbarb_sup@solo@amulet_slot,main_hand_slot@1.json": "21a508d122", "cmp/_part/zbarb_sup@solo@amulet_slot@0.json": "1b28eee512", "cmp/_part/zbarb_sup@solo@amulet_slot@1.json": "2cfd0fe66c", "cmp/_part/zbarb_sup@solo@main_hand_slot@0.json": "0718881938", "cmp/_part/zbarb_sup@solo@main_hand_slot@1.json": "1efc155efc", "cmp/_part/zbarb_sup@solo@mainhand@0.json": "29cd01018b", "cmp/_part/zbarb_sup@solo@mainhand@1.json": "eb741b59c8", "cmp/_part/zbarb_sup@solo@neck,mainhand@0.json": "07fbaf01e9", "cmp/_part/zbarb_sup@solo@neck,mainhand@1.json": "7f5c80f9bc", "cmp/_part/zbarb_sup@solo@neck@0.json": "591e79e6b5", "cmp/_part/zbarb_sup@solo@neck@1.json": "771f936d2a", "cmp/_part/zdh_sup@solo@@0.json": "3a8957f6c3", "cmp/_part/zdh_sup@solo@@1.json": "59cb56f811", "cmp/_part/zdh_sup@solo@amulet_slot@0.json": "e61c78de8f", "cmp/_part/zdh_sup@solo@amulet_slot@1.json": "27cade64d3", "cmp/_part/zdh_sup@solo@neck@0.json": "2bdaf5cc9e", "cmp/_part/zdh_sup@solo@neck@1.json": "8628fe0967", "cmp/fb_sanct_solo.json": "548ddfcdd6", "cmp/foth_solo.json": "dcd9126cad", "cmp/impale_sanct_solo.json": "4ab8b6fd05", "cmp/rai2_solo.json": "2a5afc2c53", "cmp/rai4h_solo.json": "412c17c74b", "cmp/rai4s_solo.json": "e8a7187526", "cmp/rai_sanct_solo.json": "4dc002f111", "cmp/ue_sanct_solo.json": "fc762ad270", "cmp/wol_sanct_solo.json": "77fdd32780", "cmp/zbarb2_sup_solo.json": "c19f40bff6", "cmp/zbarb2_sup~amulet_slot+main_hand_slot_solo.json": "cf5859c075", "cmp/zbarb2_sup~amulet_slot_solo.json": "8cac73af0b", "cmp/zbarb2_sup~main_hand_slot_solo.json": "6645034f15", "cmp/zbarb_sup_solo.json": "763d588672", "cmp/zbarb_sup~amulet_slot+main_hand_slot_solo.json": "810b298517", "cmp/zbarb_sup~amulet_slot_solo.json": "90099868fd", "cmp/zbarb_sup~main_hand_slot_solo.json": "9fcb810ba1", "cmp/zdh_sup_solo.json": "9a17adced0", "cmp/zdh_sup~amulet_slot_solo.json": "222185f197", "config.json": "76dbe5e78f", "db.json": "9418207c6d", "hero_icons.json": "2a4a6114e2", "items.json": "77b27d327b", "path.json": "c713d49988", "skills.json": "43bf8d4ab3", "slots.json": "7b5713e0b1", "upgrade.json": "67f5224908"}; const BAKE = {"now": {"build": {"impale_crimson": "ae06b2b88433a794", "impale_guardian": "3b41475166c4ed99", "ue_odyssey": "f7cfa88b71e5c019", "ue_dawn": "e739e1dcd629e6af", "ue_odyssey_g": "79c65702448573a3", "ue_dawn_g": "b4e3850e4259bfa1", "zdh_support": "1b9f8d3cbde1f25b", "zdh_clarity": "7f1c959e9df2550e", "zdh_eso": "3d9d5b2cde261460", "zdh_yang": "d4e36357ab32f64f", "impale_crimson_sa": "a249f871036e1176", "impale_guardian_sa": "76fc00e5f51fa2c9", "wol_lod": "c14ab60833c2a841", "wol_archew": "faf319ecbc2c8510", "wol_soj": "2bef34cb02ee6b0a", "wol_soj_archew": "9e182acea442bed9", "rai_crimson": "3d96682d24a3400c", "rai_guard": "462afbbd558ecafa", "rai4_salv": "e9bcf8a511b16766", "rai4_heal": "df9bf7bb7e0f158b", "rai2_salv": "b35d32cdfd9fe1e4", "rai_crimson_gp": "e62a2cfd5c0b1617", "rai_guard_gp": "db75505c19691ecb", "rai2_salv_gp": "0cad3ab082e86daa", "rai4_salv_gp": "ee296da7c436507a", "rai4_heal_gp": "2708ee65a7e6079d", "foth_aov": "6fb4e7f57f170286", "foth_g_ew_s": "db592a51f4490aa5", "foth_g_soj_f": "ba57e6fa833b4bb0", "foth_g_soj_s": "3d5f890e4158c63b", "foth_g_unity_f": "5f5c215f1014cae1", "foth_g_unity_s": "c10052fd50ed8f0e", "foth_g_rechel_f": "7377b87f6721e8c0", "foth_g_rechel_s": "e9a23ba42147b47f", "foth_a_ew_f": "a98a37e0955ee6ea", "foth_a_ew_s": "8b04d586782edd16", "foth_a_soj_f": "3c2dd21155b4561b", "foth_a_soj_s": "d9df88f72ecafb2e", "foth_a_unity_f": "d44d05b74bdf9ed7", "foth_a_unity_s": "84d58a2dbe7ed7a0", "foth_a_rechel_f": "839b6b39f6f1cbcf", "foth_a_rechel_s": "02a88b609b92a41e", "foth_w_ew_f": "d5ea511d569f25da", "foth_w_ew_s": "0afdffaae2cad90d", "foth_w_soj_f": "ee5042754b2102db", "foth_w_soj_s": "72535b3dd1cbf364", "foth_w_unity_f": "d238485e00c70571", "foth_w_unity_s": "c7522005975fd4c7", "foth_w_rechel_f": "65a976b98d87038e", "foth_w_rechel_s": "f4e296ac6dfb0630", "fb_guard": "48e657eb4d503295", "fb_g_ew": "8eede4a23e0b90a1", "fb_a_fr": "cddaa21fb2af9a35", "fb_a_ew": "f568109af0c8fd4a", "zbarb_support": "0e7963cd8d9a84d9", "zbarb2_support": "1daece26a4e57ccf", "zbarb_eso": "a5790e9a7d158f0f", "zbarb2_eso": "e314ae5ca34bc762"}, "prio": "f010120270c787b1", "bake": {"zdh_sup": "defb844d8ae19143", "zdh_sup~amulet_slot": "c743f85ec626ddb9", "impale_sanct": "f48eed7600aeed0d", "ue_sanct": "c69fa59588eda8dd", "wol_sanct": "38fdd54d851d4245", "rai4s": "fa9280494f8cdf25", "rai4h": "442fc3e9031c4f31", "rai_sanct": "14796a64d1b31824", "rai2": "6ae42a0944d74cfc", "foth": "525106a4f2b8f868", "fb_sanct": "fb6a827424d5f618", "zbarb_sup": "30e20aa360b9ffc6", "zbarb_sup~amulet_slot,main_hand_slot": "87589fd67e9e747c", "zbarb_sup~amulet_slot": "ca783e8df566c86c", "zbarb_sup~main_hand_slot": "8fdc3d90a3b4c090", "zbarb2_sup": "5aa9647758e75766", "zbarb2_sup~amulet_slot,main_hand_slot": "61d70da0f575b5fc", "zbarb2_sup~amulet_slot": "438a50406a338136", "zbarb2_sup~main_hand_slot": "da982ea5e8706120"}}, "baked": {"build": {"impale_crimson": "ae06b2b88433a794", "impale_guardian": "3b41475166c4ed99", "ue_odyssey": "f7cfa88b71e5c019", "ue_dawn": "e739e1dcd629e6af", "ue_odyssey_g": "79c65702448573a3", "ue_dawn_g": "b4e3850e4259bfa1", "zdh_support": "1b9f8d3cbde1f25b", "zdh_clarity": "7f1c959e9df2550e", "zdh_eso": "3d9d5b2cde261460", "zdh_yang": "d4e36357ab32f64f", "impale_crimson_sa": "a249f871036e1176", "impale_guardian_sa": "76fc00e5f51fa2c9", "wol_lod": "c14ab60833c2a841", "wol_archew": "faf319ecbc2c8510", "wol_soj": "2bef34cb02ee6b0a", "wol_soj_archew": "9e182acea442bed9", "rai_crimson": "3d96682d24a3400c", "rai_guard": "462afbbd558ecafa", "rai4_salv": "e9bcf8a511b16766", "rai4_heal": "df9bf7bb7e0f158b", "rai2_salv": "b35d32cdfd9fe1e4", "rai_crimson_gp": "e62a2cfd5c0b1617", "rai_guard_gp": "db75505c19691ecb", "rai2_salv_gp": "0cad3ab082e86daa", "rai4_salv_gp": "ee296da7c436507a", "rai4_heal_gp": "2708ee65a7e6079d", "foth_aov": "6fb4e7f57f170286", "foth_g_ew_s": "db592a51f4490aa5", "foth_g_soj_f": "ba57e6fa833b4bb0", "foth_g_soj_s": "3d5f890e4158c63b", "foth_g_unity_f": "5f5c215f1014cae1", "foth_g_unity_s": "c10052fd50ed8f0e", "foth_g_rechel_f": "7377b87f6721e8c0", "foth_g_rechel_s": "e9a23ba42147b47f", "foth_a_ew_f": "a98a37e0955ee6ea", "foth_a_ew_s": "8b04d586782edd16", "foth_a_soj_f": "3c2dd21155b4561b", "foth_a_soj_s": "d9df88f72ecafb2e", "foth_a_unity_f": "d44d05b74bdf9ed7", "foth_a_unity_s": "84d58a2dbe7ed7a0", "foth_a_rechel_f": "839b6b39f6f1cbcf", "foth_a_rechel_s": "02a88b609b92a41e", "foth_w_ew_f": "d5ea511d569f25da", "foth_w_ew_s": "0afdffaae2cad90d", "foth_w_soj_f": "ee5042754b2102db", "foth_w_soj_s": "72535b3dd1cbf364", "foth_w_unity_f": "d238485e00c70571", "foth_w_unity_s": "c7522005975fd4c7", "foth_w_rechel_f": "65a976b98d87038e", "foth_w_rechel_s": "f4e296ac6dfb0630", "fb_guard": "48e657eb4d503295", "fb_g_ew": "8eede4a23e0b90a1", "fb_a_fr": "cddaa21fb2af9a35", "fb_a_ew": "f568109af0c8fd4a", "zbarb_support": "0e7963cd8d9a84d9", "zbarb2_support": "1daece26a4e57ccf", "zbarb_eso": "a5790e9a7d158f0f", "zbarb2_eso": "e314ae5ca34bc762"}, "prio": "f010120270c787b1", "bake": {"zdh_sup": "defb844d8ae19143", "zdh_sup~amulet_slot": "c743f85ec626ddb9", "impale_sanct": "f48eed7600aeed0d", "ue_sanct": "c69fa59588eda8dd", "wol_sanct": "38fdd54d851d4245", "rai4s": "fa9280494f8cdf25", "rai4h": "442fc3e9031c4f31", "rai_sanct": "14796a64d1b31824", "rai2": "6ae42a0944d74cfc", "foth": "525106a4f2b8f868", "fb_sanct": "fb6a827424d5f618", "zbarb_sup": "30e20aa360b9ffc6", "zbarb_sup~amulet_slot,main_hand_slot": "87589fd67e9e747c", "zbarb_sup~amulet_slot": "ca783e8df566c86c", "zbarb_sup~main_hand_slot": "8fdc3d90a3b4c090", "zbarb2_sup": "5aa9647758e75766", "zbarb2_sup~amulet_slot,main_hand_slot": "61d70da0f575b5fc", "zbarb2_sup~amulet_slot": "438a50406a338136", "zbarb2_sup~main_hand_slot": "da982ea5e8706120"}, "at": {"build": {"impale_crimson": "2026-11-26 01:26", "impale_guardian": "2026-11-26 01:26", "ue_odyssey": "2026-11-26 01:26", "ue_dawn": "2026-11-26 01:26", "ue_odyssey_g": "2026-11-26 01:26", "ue_dawn_g": "2026-11-26 01:26", "zdh_support": "2026-11-26 01:26", "zdh_clarity": "2026-11-26 01:26", "zdh_eso": "2026-11-26 01:26", "zdh_yang": "2026-11-26 01:26", "impale_crimson_sa": "2026-11-26 01:26", "impale_guardian_sa": "2026-11-26 01:26", "wol_lod": "2026-11-26 01:26", "wol_archew": "2026-11-26 01:26", "wol_soj": "2026-11-26 01:26", "wol_soj_archew": "2026-11-26 01:26", "rai_crimson": "2026-11-26 01:26", "rai_guard": "2026-11-26 01:26", "rai4_salv": "2026-11-26 01:26", "rai4_heal": "2026-11-26 01:26", "rai2_salv": "2026-11-26 01:26", "rai_crimson_gp": "2026-11-26 01:26", "rai_guard_gp": "2026-11-26 01:26", "rai2_salv_gp": "2026-11-26 01:26", "rai4_salv_gp": "2026-11-26 01:26", "rai4_heal_gp": "2026-11-26 01:26", "foth_aov": "2026-11-26 01:26", "foth_g_ew_s": "2026-11-26 01:26", "foth_g_soj_f": "2026-11-26 01:26", "foth_g_soj_s": "2026-11-26 01:26", "foth_g_unity_f": "2026-11-26 01:26", "foth_g_unity_s": "2026-11-26 01:26", "foth_g_rechel_f": "2026-11-26 01:26", "foth_g_rechel_s": "2026-11-26 01:26", "foth_a_ew_f": "2026-11-26 01:26", "foth_a_ew_s": "2026-11-26 01:26", "foth_a_soj_f": "2026-11-26 01:26", "foth_a_soj_s": "2026-11-26 01:26", "foth_a_unity_f": "2026-11-26 01:26", "foth_a_unity_s": "2026-11-26 01:26", "foth_a_rechel_f": "2026-11-26 01:26", "foth_a_rechel_s": "2026-11-26 01:26", "foth_w_ew_f": "2026-11-26 01:26", "foth_w_ew_s": "2026-11-26 01:26", "foth_w_soj_f": "2026-11-26 01:26", "foth_w_soj_s": "2026-11-26 01:26", "foth_w_unity_f": "2026-11-26 01:26", "foth_w_unity_s": "2026-11-26 01:26", "foth_w_rechel_f": "2026-11-26 01:26", "foth_w_rechel_s": "2026-11-26 01:26", "fb_guard": "2026-11-26 01:26", "fb_g_ew": "2026-11-26 01:26", "fb_a_fr": "2026-11-26 01:26", "fb_a_ew": "2026-11-26 01:26", "zbarb_support": "2026-11-26 01:26", "zbarb2_support": "2026-11-26 01:26", "zbarb_eso": "2026-11-26 01:26", "zbarb2_eso": "2026-11-26 01:26"}, "bake": {"zdh_sup": "2026-11-26 01:26", "zdh_sup~amulet_slot": "2026-11-26 01:26", "impale_sanct": "2026-11-26 01:26", "ue_sanct": "2026-11-26 01:26", "wol_sanct": "2026-11-26 01:26", "rai4s": "2026-11-26 01:26", "rai4h": "2026-11-26 01:26", "rai_sanct": "2026-11-26 01:26", "rai2": "2026-11-26 01:26", "foth": "2026-11-26 01:26", "fb_sanct": "2026-11-26 01:26", "zbarb_sup": "2026-11-26 01:26", "zbarb_sup~amulet_slot,main_hand_slot": "2026-11-26 01:26", "zbarb_sup~amulet_slot": "2026-11-26 01:26", "zbarb_sup~main_hand_slot": "2026-11-26 01:26", "zbarb2_sup": "2026-11-26 01:26", "zbarb2_sup~amulet_slot,main_hand_slot": "2026-11-26 01:26", "zbarb2_sup~amulet_slot": "2026-11-26 01:26", "zbarb2_sup~main_hand_slot": "2026-11-26 01:26"}, "prio": "2026-11-26 01:26"}}}; const PAGE_V = {"built": "2026-11-26 01:26", "rev": "73de67e+"};</script>
+<script>const DATA_V = {"affixes.json": "6a2e3a4b41", "builds.json": "e8713a8c04", "cmp/fb_sanct_solo.json": "548ddfcdd6", "cmp/foth_solo.json": "dcd9126cad", "cmp/impale_sanct_solo.json": "4ab8b6fd05", "cmp/rai2_solo.json": "2a5afc2c53", "cmp/rai4h_solo.json": "412c17c74b", "cmp/rai4s_solo.json": "e8a7187526", "cmp/rai_sanct_solo.json": "4dc002f111", "cmp/ue_sanct_solo.json": "fc762ad270", "cmp/wol_sanct_solo.json": "77fdd32780", "cmp/zbarb2_sup_solo.json": "c19f40bff6", "cmp/zbarb2_sup~amulet_slot+main_hand_slot_solo.json": "cf5859c075", "cmp/zbarb2_sup~amulet_slot_solo.json": "8cac73af0b", "cmp/zbarb2_sup~main_hand_slot_solo.json": "6645034f15", "cmp/zbarb_sup_solo.json": "763d588672", "cmp/zbarb_sup~amulet_slot+main_hand_slot_solo.json": "810b298517", "cmp/zbarb_sup~amulet_slot_solo.json": "90099868fd", "cmp/zbarb_sup~main_hand_slot_solo.json": "9fcb810ba1", "cmp/zdh_sup_solo.json": "9a17adced0", "cmp/zdh_sup~amulet_slot_solo.json": "222185f197", "config.json": "76dbe5e78f", "db.json": "9418207c6d", "hero_icons.json": "2a4a6114e2", "items.json": "77b27d327b", "path.json": "c713d49988", "skills.json": "43bf8d4ab3", "slots.json": "7b5713e0b1", "upgrade.json": "67f5224908"}; const BAKE = {"now": {"build": {"impale_crimson": "ae06b2b88433a794", "impale_guardian": "3b41475166c4ed99", "ue_odyssey": "f7cfa88b71e5c019", "ue_dawn": "e739e1dcd629e6af", "ue_odyssey_g": "79c65702448573a3", "ue_dawn_g": "b4e3850e4259bfa1", "zdh_support": "1b9f8d3cbde1f25b", "zdh_clarity": "7f1c959e9df2550e", "zdh_eso": "3d9d5b2cde261460", "zdh_yang": "d4e36357ab32f64f", "impale_crimson_sa": "a249f871036e1176", "impale_guardian_sa": "76fc00e5f51fa2c9", "wol_lod": "c14ab60833c2a841", "wol_archew": "faf319ecbc2c8510", "wol_soj": "2bef34cb02ee6b0a", "wol_soj_archew": "9e182acea442bed9", "rai_crimson": "3d96682d24a3400c", "rai_guard": "462afbbd558ecafa", "rai4_salv": "e9bcf8a511b16766", "rai4_heal": "df9bf7bb7e0f158b", "rai2_salv": "b35d32cdfd9fe1e4", "rai_crimson_gp": "e62a2cfd5c0b1617", "rai_guard_gp": "db75505c19691ecb", "rai2_salv_gp": "0cad3ab082e86daa", "rai4_salv_gp": "ee296da7c436507a", "rai4_heal_gp": "2708ee65a7e6079d", "foth_aov": "6fb4e7f57f170286", "foth_g_ew_s": "db592a51f4490aa5", "foth_g_soj_f": "ba57e6fa833b4bb0", "foth_g_soj_s": "3d5f890e4158c63b", "foth_g_unity_f": "5f5c215f1014cae1", "foth_g_unity_s": "c10052fd50ed8f0e", "foth_g_rechel_f": "7377b87f6721e8c0", "foth_g_rechel_s": "e9a23ba42147b47f", "foth_a_ew_f": "a98a37e0955ee6ea", "foth_a_ew_s": "8b04d586782edd16", "foth_a_soj_f": "3c2dd21155b4561b", "foth_a_soj_s": "d9df88f72ecafb2e", "foth_a_unity_f": "d44d05b74bdf9ed7", "foth_a_unity_s": "84d58a2dbe7ed7a0", "foth_a_rechel_f": "839b6b39f6f1cbcf", "foth_a_rechel_s": "02a88b609b92a41e", "foth_w_ew_f": "d5ea511d569f25da", "foth_w_ew_s": "0afdffaae2cad90d", "foth_w_soj_f": "ee5042754b2102db", "foth_w_soj_s": "72535b3dd1cbf364", "foth_w_unity_f": "d238485e00c70571", "foth_w_unity_s": "c7522005975fd4c7", "foth_w_rechel_f": "65a976b98d87038e", "foth_w_rechel_s": "f4e296ac6dfb0630", "fb_guard": "48e657eb4d503295", "fb_g_ew": "8eede4a23e0b90a1", "fb_a_fr": "cddaa21fb2af9a35", "fb_a_ew": "f568109af0c8fd4a", "zbarb_support": "0e7963cd8d9a84d9", "zbarb2_support": "1daece26a4e57ccf", "zbarb_eso": "a5790e9a7d158f0f", "zbarb2_eso": "e314ae5ca34bc762"}, "prio": "f010120270c787b1", "bake": {"zdh_sup": "defb844d8ae19143", "zdh_sup~amulet_slot": "c743f85ec626ddb9", "impale_sanct": "f48eed7600aeed0d", "ue_sanct": "c69fa59588eda8dd", "wol_sanct": "38fdd54d851d4245", "rai4s": "fa9280494f8cdf25", "rai4h": "442fc3e9031c4f31", "rai_sanct": "14796a64d1b31824", "rai2": "6ae42a0944d74cfc", "foth": "525106a4f2b8f868", "fb_sanct": "fb6a827424d5f618", "zbarb_sup": "30e20aa360b9ffc6", "zbarb_sup~amulet_slot,main_hand_slot": "87589fd67e9e747c", "zbarb_sup~amulet_slot": "ca783e8df566c86c", "zbarb_sup~main_hand_slot": "8fdc3d90a3b4c090", "zbarb2_sup": "5aa9647758e75766", "zbarb2_sup~amulet_slot,main_hand_slot": "61d70da0f575b5fc", "zbarb2_sup~amulet_slot": "438a50406a338136", "zbarb2_sup~main_hand_slot": "da982ea5e8706120"}}, "baked": {"build": {"impale_crimson": "ae06b2b88433a794", "impale_guardian": "3b41475166c4ed99", "ue_odyssey": "f7cfa88b71e5c019", "ue_dawn": "e739e1dcd629e6af", "ue_odyssey_g": "79c65702448573a3", "ue_dawn_g": "b4e3850e4259bfa1", "zdh_support": "1b9f8d3cbde1f25b", "zdh_clarity": "7f1c959e9df2550e", "zdh_eso": "3d9d5b2cde261460", "zdh_yang": "d4e36357ab32f64f", "impale_crimson_sa": "a249f871036e1176", "impale_guardian_sa": "76fc00e5f51fa2c9", "wol_lod": "c14ab60833c2a841", "wol_archew": "faf319ecbc2c8510", "wol_soj": "2bef34cb02ee6b0a", "wol_soj_archew": "9e182acea442bed9", "rai_crimson": "3d96682d24a3400c", "rai_guard": "462afbbd558ecafa", "rai4_salv": "e9bcf8a511b16766", "rai4_heal": "df9bf7bb7e0f158b", "rai2_salv": "b35d32cdfd9fe1e4", "rai_crimson_gp": "e62a2cfd5c0b1617", "rai_guard_gp": "db75505c19691ecb", "rai2_salv_gp": "0cad3ab082e86daa", "rai4_salv_gp": "ee296da7c436507a", "rai4_heal_gp": "2708ee65a7e6079d", "foth_aov": "6fb4e7f57f170286", "foth_g_ew_s": "db592a51f4490aa5", "foth_g_soj_f": "ba57e6fa833b4bb0", "foth_g_soj_s": "3d5f890e4158c63b", "foth_g_unity_f": "5f5c215f1014cae1", "foth_g_unity_s": "c10052fd50ed8f0e", "foth_g_rechel_f": "7377b87f6721e8c0", "foth_g_rechel_s": "e9a23ba42147b47f", "foth_a_ew_f": "a98a37e0955ee6ea", "foth_a_ew_s": "8b04d586782edd16", "foth_a_soj_f": "3c2dd21155b4561b", "foth_a_soj_s": "d9df88f72ecafb2e", "foth_a_unity_f": "d44d05b74bdf9ed7", "foth_a_unity_s": "84d58a2dbe7ed7a0", "foth_a_rechel_f": "839b6b39f6f1cbcf", "foth_a_rechel_s": "02a88b609b92a41e", "foth_w_ew_f": "d5ea511d569f25da", "foth_w_ew_s": "0afdffaae2cad90d", "foth_w_soj_f": "ee5042754b2102db", "foth_w_soj_s": "72535b3dd1cbf364", "foth_w_unity_f": "d238485e00c70571", "foth_w_unity_s": "c7522005975fd4c7", "foth_w_rechel_f": "65a976b98d87038e", "foth_w_rechel_s": "f4e296ac6dfb0630", "fb_guard": "48e657eb4d503295", "fb_g_ew": "8eede4a23e0b90a1", "fb_a_fr": "cddaa21fb2af9a35", "fb_a_ew": "f568109af0c8fd4a", "zbarb_support": "0e7963cd8d9a84d9", "zbarb2_support": "1daece26a4e57ccf", "zbarb_eso": "a5790e9a7d158f0f", "zbarb2_eso": "e314ae5ca34bc762"}, "prio": "f010120270c787b1", "bake": {"zdh_sup": "defb844d8ae19143", "zdh_sup~amulet_slot": "c743f85ec626ddb9", "impale_sanct": "f48eed7600aeed0d", "ue_sanct": "c69fa59588eda8dd", "wol_sanct": "38fdd54d851d4245", "rai4s": "fa9280494f8cdf25", "rai4h": "442fc3e9031c4f31", "rai_sanct": "14796a64d1b31824", "rai2": "6ae42a0944d74cfc", "foth": "525106a4f2b8f868", "fb_sanct": "fb6a827424d5f618", "zbarb_sup": "30e20aa360b9ffc6", "zbarb_sup~amulet_slot,main_hand_slot": "87589fd67e9e747c", "zbarb_sup~amulet_slot": "ca783e8df566c86c", "zbarb_sup~main_hand_slot": "8fdc3d90a3b4c090", "zbarb2_sup": "5aa9647758e75766", "zbarb2_sup~amulet_slot,main_hand_slot": "61d70da0f575b5fc", "zbarb2_sup~amulet_slot": "438a50406a338136", "zbarb2_sup~main_hand_slot": "da982ea5e8706120"}, "at": {"build": {"impale_crimson": "2026-11-26 01:26", "impale_guardian": "2026-11-26 01:26", "ue_odyssey": "2026-11-26 01:26", "ue_dawn": "2026-11-26 01:26", "ue_odyssey_g": "2026-11-26 01:26", "ue_dawn_g": "2026-11-26 01:26", "zdh_support": "2026-11-26 01:26", "zdh_clarity": "2026-11-26 01:26", "zdh_eso": "2026-11-26 01:26", "zdh_yang": "2026-11-26 01:26", "impale_crimson_sa": "2026-11-26 01:26", "impale_guardian_sa": "2026-11-26 01:26", "wol_lod": "2026-11-26 01:26", "wol_archew": "2026-11-26 01:26", "wol_soj": "2026-11-26 01:26", "wol_soj_archew": "2026-11-26 01:26", "rai_crimson": "2026-11-26 01:26", "rai_guard": "2026-11-26 01:26", "rai4_salv": "2026-11-26 01:26", "rai4_heal": "2026-11-26 01:26", "rai2_salv": "2026-11-26 01:26", "rai_crimson_gp": "2026-11-26 01:26", "rai_guard_gp": "2026-11-26 01:26", "rai2_salv_gp": "2026-11-26 01:26", "rai4_salv_gp": "2026-11-26 01:26", "rai4_heal_gp": "2026-11-26 01:26", "foth_aov": "2026-11-26 01:26", "foth_g_ew_s": "2026-11-26 01:26", "foth_g_soj_f": "2026-11-26 01:26", "foth_g_soj_s": "2026-11-26 01:26", "foth_g_unity_f": "2026-11-26 01:26", "foth_g_unity_s": "2026-11-26 01:26", "foth_g_rechel_f": "2026-11-26 01:26", "foth_g_rechel_s": "2026-11-26 01:26", "foth_a_ew_f": "2026-11-26 01:26", "foth_a_ew_s": "2026-11-26 01:26", "foth_a_soj_f": "2026-11-26 01:26", "foth_a_soj_s": "2026-11-26 01:26", "foth_a_unity_f": "2026-11-26 01:26", "foth_a_unity_s": "2026-11-26 01:26", "foth_a_rechel_f": "2026-11-26 01:26", "foth_a_rechel_s": "2026-11-26 01:26", "foth_w_ew_f": "2026-11-26 01:26", "foth_w_ew_s": "2026-11-26 01:26", "foth_w_soj_f": "2026-11-26 01:26", "foth_w_soj_s": "2026-11-26 01:26", "foth_w_unity_f": "2026-11-26 01:26", "foth_w_unity_s": "2026-11-26 01:26", "foth_w_rechel_f": "2026-11-26 01:26", "foth_w_rechel_s": "2026-11-26 01:26", "fb_guard": "2026-11-26 01:26", "fb_g_ew": "2026-11-26 01:26", "fb_a_fr": "2026-11-26 01:26", "fb_a_ew": "2026-11-26 01:26", "zbarb_support": "2026-11-26 01:26", "zbarb2_support": "2026-11-26 01:26", "zbarb_eso": "2026-11-26 01:26", "zbarb2_eso": "2026-11-26 01:26"}, "bake": {"zdh_sup": "2026-11-26 01:26", "zdh_sup~amulet_slot": "2026-11-26 01:26", "impale_sanct": "2026-11-26 01:26", "ue_sanct": "2026-11-26 01:26", "wol_sanct": "2026-11-26 01:26", "rai4s": "2026-11-26 01:26", "rai4h": "2026-11-26 01:26", "rai_sanct": "2026-11-26 01:26", "rai2": "2026-11-26 01:26", "foth": "2026-11-26 01:26", "fb_sanct": "2026-11-26 01:26", "zbarb_sup": "2026-11-26 01:26", "zbarb_sup~amulet_slot,main_hand_slot": "2026-11-26 01:26", "zbarb_sup~amulet_slot": "2026-11-26 01:26", "zbarb_sup~main_hand_slot": "2026-11-26 01:26", "zbarb2_sup": "2026-11-26 01:26", "zbarb2_sup~amulet_slot,main_hand_slot": "2026-11-26 01:26", "zbarb2_sup~amulet_slot": "2026-11-26 01:26", "zbarb2_sup~main_hand_slot": "2026-11-26 01:26"}, "prio": "2026-11-26 01:26"}}}; const PAGE_V = {"built": "2026-11-27 12:28", "rev": "a880814"};</script>
 <script id="model-src">
 /* ============================================================================================
    src/model — 순수 계산(React 없음). 파일 번호 순으로 이어 붙여 <script id="model-src"> 하나가 된다(build.py).
@@ -3718,6 +3719,872 @@ module.exports = {calc, setupOf, vitFor: (r, s) => vitFor(r, s), buildGemK, calc
 
   __heroLib = module.exports; return __heroLib; }
 </script>
+<script id="milp-src" type="text/plain">
+function milpLib(highsFactory){ const process = {env: {}, argv: []}, cache = {}, defs = {
+"lp": function(module, exports, require, process, __dirname){
+/* ============================================================================================
+   tools/milp/lp.js — 식 쓰기: 일차식과 문제 글(풀이기에 넘기는 텍스트). 계산 내용 없음 — 여기가 틀리면 '문제 글 자체'가 틀린 것
+   나눈 이유: 사용자 2026-11-16 "원인을 쉽게 찾을수 있도록 풀이기도 모듈화를 하자." — 오답이 나왔을 때 식 쓰기 / 풀이기 호출 / 접선 / 후보 / 직업 식 / 단계 중 어디인지 따로 확인할 수 있게
+   일차식 = {c 상수, t {변수 이름: 계수}}
+   ============================================================================================ */
+const E = (c = 0, t = {}) => ({c, t: {...t}}), V = (n, k = 1) => E(0, {[n]: k});
+const plus = (...es) => { const r = E(); for (const e of es) { r.c += e.c; for (const n in e.t) r.t[n] = (r.t[n] || 0) + e.t[n]; } return r; };
+const mul = (e, k) => E(e.c * k, Object.fromEntries(Object.entries(e.t).map(([n, c]) => [n, c * k])));
+const evalE = (e, val) => e.c + Object.entries(e.t).reduce((s, [n, c]) => s + c * (val[n] || 0), 0);
+const term = ([n, c]) => (c >= 0 ? '+ ' : '- ') + Math.abs(c).toPrecision(15) + ' ' + n;
+/* 문제 글(CPLEX LP 형식). v(이름, 아래, 위, 종류 'b' 0·1 | 'i' 정수 | 없음 연속), add(식, '<=' | '>=' | '=', 오른쪽 값), text(relax)
+   relax = 0·1·정수 조건을 푼 일차식 문제(상한 계산·미리 자르기용). 목표의 상수항은 글에 안 들어감(값을 읽을 때 evalE 로 다시 계산할 것) */
+/* ── 눈금 기준(2026-11-16, 사용자 "눈금에 대한 기준도 주석으로 잘 넣어두자. 이 실패랑") ──
+   기준  조건식에 들어가는 계수의 절댓값은 전부 COEF_MIN(0.000001) ~ COEF_MAX(10,000) 안. 벗어나면 굽기 전 대조(check.js)가 굽기를 멈춤. 지금 수도사 종: 0.00002 ~ 2,770
+         이유: 풀이기(HiGHS)는 '조건을 0.0000001 ~ 0.000001 안으로 지키면 만족'으로 보는데, 계수가 100만이면 그 오차가 0.1 ~ 1 로 불어나고, 0.0000003 이면 변수가 통째로 바뀌어도 오차 안에 묻힘
+         (풀이기 설명서들의 권고도 같음: 계수 범위는 6자리 안이 좋고 9자리를 넘으면 위험 — 지금은 8자리)
+   맞추는 법(식을 옮길 때 form_*.js·tangents.js 에서)
+     · 큰 합계(주능력치 수만, 생명력 수백만)는 '구간 최댓값으로 나눈 변수'로 넘김(tangents.js 의 s<name> = 식 ÷ sc)
+     · '이 칸을 골랐을 때만 이 값' 연결 변수는 0 ~ 1 단위로(값 ÷ 최댓값), 실제 크기는 그 변수를 쓰는 쪽 계수에 곱함(form_wol.js 의 L·H)
+     · 접선은 실제로 갈 수 있는 구간에만 처음 깔 것(ln 이 정의되는 끝까지 내려가면 기울기가 100만)
+     · 바꾸는 것은 풀이기에 넘기는 단위뿐 — 결과는 point.js 가 기존 계산으로 다시 내므로 값은 안 변함. 고친 뒤 check.js 대조와 replay.js(설정을 바꿔도 같은 답인가)로 확인
+   ── 이 기준이 생긴 실패 기록(종수도 화합·돌덩이 wol_lod, 404지점) ──
+     증상   2단계(딜을 지킨 채 몸 최대)가 13지점에서 몸이 0.077단 더 높은 해를 놓침. 풀이기는 매번 '최적'이라고 답함. 1단계 딜은 영향 없었음(세 가지 방법으로 대조)
+     헛짚은 것 ① 접선 겹침 간격(10억분의 1 → 100만분의 1): 일부만 줄어듦 ② 풀이기 허용치 조이기(1e-9): 오히려 더 틀림 → 기본값으로 되돌려 13 → 6지점
+               ③ 미리 풀기 끄기: 6지점은 맞지만 이번엔 변수를 전부 고정한 대조 문제에서 '해 없음'이라는 틀린 답
+     알아챈 계기  같은 문제 글인데 설정(허용치·미리 풀기)과 빌드(브라우저용·PC용)에 따라 '최적'값이 0.0018 까지 갈림 = 설정이 아니라 문제 글의 수치 상태가 나쁘다는 신호
+     원인   계수가 0.0000003(생명력 합계의 접선 기울기) ~ 1,000,000(못 가는 구간에 깔린 접선, 방어도·민첩)으로 12자리 벌어짐. 연결 변수에도 13만(적생)·66만(회복)
+     고친 뒤  계수 0.00002 ~ 2,770. 6지점 전부 모음 방식(pool.js)과 같은 몸, 설정 4가지 + PC용 풀이기가 0.000001 이내로 일치, 놓치는 지점 6 → 0, 구성이 오가는 횟수 15 → 3, 시간 그대로(322 → 320초)
+     교훈   풀이기의 답이 설정에 따라 달라지면 설정을 고르지 말고 눈금부터 볼 것. '최적'이라는 상태만으로는 믿을 수 없으니 다른 방법(pool.js)과의 대조를 계속 둘 것 */
+const COEF_MIN = 1e-6, COEF_MAX = 1e4;
+class LP { constructor(){ this.cons = []; this.bin = []; this.intelligence = []; this.bounds = []; this.obj = null; this.n = 0; this.cmin = Infinity; this.cmax = 0; }
+  v(name, lo, hi, kind){ if (kind === 'b') this.bin.push(name); else { if (kind === 'i') this.intelligence.push(name); this.bounds.push((lo == null ? '-inf' : lo) + ' <= ' + name + ' <= ' + (hi == null ? '+inf' : hi)); } return name; }
+  add(e, op, rhs){ const live = Object.entries(e.t).filter(([, c]) => Math.abs(c) > 1e-13); for (const [, c] of live) { const a = Math.abs(c); if (a < this.cmin) this.cmin = a; if (a > this.cmax) this.cmax = a; } const s = live.map(term).join(' '); if (s) this.cons.push('c' + (this.n++) + ': ' + s + ' ' + op + ' ' + (rhs - e.c).toPrecision(15)); }
+  text(relax){ return 'Maximize\n obj: ' + Object.entries(this.obj.t).map(term).join(' ') + '\nSubject To\n ' + this.cons.join('\n ') + '\nBounds\n ' + this.bounds.join('\n ')
+    + (relax ? '\n ' + this.bin.map(n => '0 <= ' + n + ' <= 1').join('\n ') : '\nGeneral\n ' + this.intelligence.join(' ') + '\nBinary\n ' + this.bin.join(' ')) + '\nEnd\n'; } }
+module.exports = {E, V, plus, mul, evalE, LP, COEF_MIN, COEF_MAX};
+
+},
+"backend": function(module, exports, require, process, __dirname){
+/* ============================================================================================
+   tools/milp/backend.js — 풀이기 호출: 문제 글을 풀이기(HiGHS, npm 'highs' 1.15.4 = 브라우저용 빌드)에 넘기고 답을 받음. 풀이기 설정은 이 파일 한 곳에만
+   ── 설정에 대한 결정과 이유 ──
+   · 최적 판정 간격 mip_rel_gap·mip_abs_gap = 1e-9: 사실상 '끝까지'. 동점 처리에서 0.05% 짜리 비용 차이를 가려야 해서 기본값(0.01%)은 못 씀
+   · 수치 허용치(primal·dual·mip feasibility)는 기본값(1e-7·1e-7·1e-6)을 건드리지 않음. 2026-11-16 추적:
+       0·1 판정 허용치(mip_feasibility_tolerance)를 1e-7 이나 1e-9 로 조이면 이 풀이기가 '최적'이라며 더 나쁜 해를 냄. 같은 문제 파일에서 기본값 32.02645155(맞음 — PC용 HiGHS 1.16 과도 같음),
+       조이면 32.02466901. 진짜 최적인 해가 계산 오차로 '조건을 미세하게 어김' 판정을 받아 버려지는 것으로 보임. 종수도 2단계에서 13지점의 몸을 0.077단 놓친 원인(기본값으로 되돌려 6지점으로 줄었고, 남은 6은 추적 중)
+       조였던 이유(풀이기가 보고하는 몸 값이 기존 계산보다 0.000027 낮음)는 '값을 읽는 정밀도'였을 뿐 — 묶는 값은 기존 계산으로 내면 됨(point.js)
+     MILP_PREC=<값> 은 이 실험을 다시 해 볼 때만
+   ── 추적 장치 ──
+   · 호출마다 tag('<단계>:P<정복자>_r<회차>' — 단계 = bal 균형·n 보통·s 보호막·s2 몸 최대·s3 배치·chk 대조, 회차 lp = 미리 자르기용 일차식 문제)를 받아 가장 최근 문제 글을 기억 → keepLast(tag) 로 꺼내 파일로 떠 둘 수 있음(replay.js 가 그 파일을 다른 풀이기·설정으로 다시 풂)
+   · MILP_DUMP=<폴더> [MILP_DUMP_MATCH=<정규식>]: tag 가 맞는 호출의 문제 글과 답을 전부 그 폴더에(파일 이름 = tag)
+   · stats: 호출 수·시간 합(단계별)
+   사용자 2026-11-16 "풀이기의 문제를 찾자" / "원인을 쉽게 찾을수 있도록 풀이기도 모듈화를 하자"
+   ============================================================================================ */
+const fs = require('fs'), path = require('path');
+const PT = +(process.env.MILP_PREC || 0), PREC = PT ? {primal_feasibility_tolerance: PT, dual_feasibility_tolerance: PT, mip_feasibility_tolerance: PT} : {};
+/* 미리 풀기(presolve)는 기본값(켬) 그대로. 2026-11-16 꺼 봤다가 되돌림(사용자 "그러자." → 결과 보고 후 단위 맞추기로):
+   끄면 2단계가 놓치던 6지점은 맞게 나오지만(같은 문제 글에서 ln 몸 +0.0018), 변수를 전부 고정한 대조 문제(check.js)에서 '가능한 해 없음'이라는 틀린 답이 나옴(켜면 정상, PC용 HiGHS 도 정상).
+   → 설정을 어느 쪽으로 돌려도 다른 곳이 틀림 = 풀이기 설정이 아니라 문제 글의 눈금(계수가 0.0000003 ~ 1,000,000 로 12자리 벌어짐)이 원인이라는 신호. 고친 곳: tangents.js(합계 변수 단위), form_wol.js(연결 변수 단위)
+   MILP_PRESOLVE=off 는 이 비교를 다시 해 볼 때만 */
+const MIP_OPTS = {mip_rel_gap: 1e-9, mip_abs_gap: 1e-9, output_flag: false, ...(process.env.MILP_PRESOLVE === 'off' ? {presolve: 'off'} : {}), ...PREC}, LP_OPTS = {output_flag: false, ...PREC};
+const DUMP = process.env.MILP_DUMP || null, DUMP_RE = process.env.MILP_DUMP_MATCH ? new RegExp(process.env.MILP_DUMP_MATCH) : null;
+const last = new Map(), stats = {};
+const loadHighs = () => require('highs')();
+/* run(highs, 문제 글, {relax 일차식 문제로, tag}) → {status, val {변수: 값}, dual {변수: 줄어드는 정도} (relax 일 때만), obj 풀이기가 말한 목표값(상수항 제외), ms} */
+/* 기억하는 문제 글은 최근 LAST_MAX 개만. 2026-11-19: tag 마다(단계 × 정복자) 글을 끝없이 쌓아, 변형 24개인 천상의 주먹 묶음이 10분쯤에 메모리 한도(2GB, 3.2GB 로 올려도)를 넘겨 죽음
+   — 오한·감속 후보가 늘어 글이 커진 뒤 드러남. keepLast 는 검산이 어긋난 직후에만 부르므로 최근 것만 있으면 됨(답은 그대로) */
+const LAST_MAX = 64;
+function run(highs, text, o){ o = o || {}; const t0 = Date.now(), tag = o.tag || 'untagged', lk = tag.replace(/_r\d+$/, ''); last.delete(lk); last.set(lk, text); if (last.size > LAST_MAX) last.delete(last.keys().next().value);
+  let sol; try { sol = highs.solve(text, o.relax ? LP_OPTS : MIP_OPTS); } catch (e) { return {status: 'Error:' + String(e && e.message || e).slice(0, 80), ms: Date.now() - t0}; }
+  /* 통계는 단계 이름(tag 의 ':' 앞)별. 2026-11-21 고침: 이 설명이 줄 가운데 // 주석이어서 통계 누적 코드를 삼키고 있었음(굽기 결과와는 무관 — 시간 통계만 비어 있었음) */
+  const ms = Date.now() - t0, key = tag.replace(/[:_].*$/, ''); (stats[key] = stats[key] || {n: 0, ms: 0}).n++; stats[key].ms += ms;
+  const res = {status: sol.Status, ms, obj: sol.ObjectiveValue}; if (sol.Status === 'Optimal') { res.val = {}; if (o.relax) res.dual = {}; for (const n in sol.Columns) { res.val[n] = sol.Columns[n].Primal; if (o.relax) res.dual[n] = sol.Columns[n].Dual; } }
+  if (DUMP && (!DUMP_RE || DUMP_RE.test(tag))) { fs.mkdirSync(DUMP, {recursive: true}); const f = path.join(DUMP, tag.replace(/[^\w.-]+/g, '_')); fs.writeFileSync(f + '.lp', text);
+    fs.writeFileSync(f + '.json', JSON.stringify({tag, relax: !!o.relax, status: res.status, obj: res.obj, ms, ones: res.val ? Object.keys(res.val).filter(n => res.val[n] > 0.5 && /^(x_|y|up$|cc_|z_|u_|er_)/.test(n)) : null, ints: res.val ? {v: res.val.v, nInt: res.val.nInt, nStr: res.val.nStr} : null})); }
+  return res; }
+/* keepLast(tag 앞부분, 파일) — 방금 푼 문제 글을 파일로(자동 검산이 어긋났을 때 point.js 가 부름) */
+const keepLast = (tag, file) => { const t = last.get(tag); if (!t) return false; fs.mkdirSync(path.dirname(file), {recursive: true}); fs.writeFileSync(file, t); return true; };
+module.exports = {loadHighs, run, keepLast, stats, MIP_OPTS, LP_OPTS};
+
+},
+"tangents": function(module, exports, require, process, __dirname){
+/* ============================================================================================
+   tools/milp/tangents.js — 접선 관리: 오목한 항(ln(1 + 합) 등)을 접선 여러 개로 위에서 누름(바깥 근사)
+   성질: 접선은 실제 값보다 낮게 나오는 일이 없음 → 풀이기의 목표값은 언제나 '실제 값 이상'(상한이 유효). 해 자리에서 접선과 실제 값의 틈(gap)이 TOL 보다 크면 그 자리에 접선을 추가해 다시 풂(solve.js)
+   여기가 틀리면: 틈이 남은 채 멈춰 실제보다 좋아 보이는 해를 고르거나(→ solve.js 의 Gtrue·Ttrue 와 point.js 검산에서 드러남), 거의 같은 접선이 겹쳐 풀이기가 불안정해짐
+   makeTangents(lp, range) → {tans, tan, tanLog, tanCond 조건부 접선, pw 볼록 항의 현 조각}.  T.gapOf(val) 이 있으면 틈은 그것으로(조건부·현 조각)  T = {name, expr, f, df, pts 접선 자리들, cut(p) 그 자리에 접선 추가(이미 있으면 false)}
+   ============================================================================================ */
+const {E, V, plus, mul, evalE} = require('./lp.js');
+/* 멈춤 기준: 틈 2e-6(로그값 ≈ 0.00001단). 풀이기 정밀도(약 5e-7)보다 느슨해야 헛돌지 않음(2026-11-15) */
+const TOL = 2e-6;
+  /* 접선을 겹쳐 넣지 않는 간격 = 자리의 100만분의 1. 2026-11-16 찾은 버그: 전에는 10억분의 1 이라, 앞 지점에서 물려받은 접선과 이번 해 자리의 접선이 사실상 같은 식으로 여러 줄 들어감
+     → 풀이기가 수치적으로 불안정해져 '최적'이라며 더 나쁜 해를 냄(종수도 화합·돌덩이 2단계: 13지점에서 몸이 0.077단 더 높은 해를 놓침. 물려받기를 끄거나 간격을 넓히면 사라짐 — 12지점 묶음으로 확인).
+     간격을 넓혀도 정확도는 그대로: 100만분의 1 떨어진 자리의 접선을 대신 쓸 때 오차는 그 제곱 수준(1조분의 1) */
+const DEDUP = +(process.env.DEDUP || 1e-6);
+/* 눈금(2026-11-16, 사용자 "해보자."): 풀이기 허용 오차는 약 0.0000001 이라 한 식 안의 계수가 크게 벌어지면 오차가 그만큼 불어남. 고치기 전에는 접선 기울기가 0.0000003(생명력 합계 수백만) ~ 1,000,000 이었음
+   ① 합계 변수 s<name> = 식 ÷ sc (sc = 구간에서 절댓값이 가장 큰 값) → s 는 −1 ~ 1, 접선 기울기는 df × sc 로 1 안팎. 접선 자리 p 와 T.expr 은 원래 단위 그대로(바깥에서 쓰는 값은 안 바뀜)
+   ② 처음 까는 접선 구간의 아래 끝: 전에는 ln(x + add) 가 정의되는 끝(x + add = 0.000001)까지 내려가 기울기 100만짜리 접선이 들어감. range() 가 정복자·칼데산 변수를 따로따로 최악으로 잡아
+      실제로는 못 가는 낮은 값이 나와서였음. 이제 위 끝의 2% 까지만. 접선은 어디에 깔든 '실제 값 이상'이라 답의 옳음과 무관하고(촘촘함만 다름), 해가 그 아래로 가면 보강 때 그 자리에 추가됨 */
+function makeTangents(lp, range){
+  /* 접선 항: 변수 name ≤ f(식) 의 접선들. 긴 합계는 변수 s<name> 하나로 묶고 접선은 그 변수만 참조(접선마다 긴 식을 다시 쓰면 식 수에 비례해 느려짐 — 2026-11-15 측정 2.7배) */
+  const tans = []; const tan = (name, expr, f, df, lo, hi) => { lp.v(name, null, null); lp.v('s' + name, null, null); const sc = Math.max(Math.abs(lo), Math.abs(hi)) || 1; lp.add(plus(V('s' + name), mul(expr, -1 / sc)), '=', 0); const T = {name, expr, f, df, pts: [], sc}; tans.push(T);
+    T.cut = p => { if (!isFinite(f(p)) || !isFinite(df(p)) || T.pts.some(q => Math.abs(q - p) <= DEDUP * Math.max(1, Math.abs(p)))) return false; T.pts.push(p); lp.add(plus(V(name), V('s' + name, -df(p) * sc)), '<=', f(p) - df(p) * p); return true; };
+    for (let i = 0; i <= 24; i++) T.cut(lo + (hi - lo) * i / 24); return V(name); };
+  const tanLog = (name, expr, add) => { const [lo, hi] = range(expr); return tan(name, expr, x => Math.log(x + add), x => 1 / (x + add), Math.max(lo, -add + (hi + add) * 0.02), hi); };   // ln(식 + add)
+  /* 조건부 접선(tanCond): 묶음 j 가 골라졌을 때만(0·1 식 Yj = 1) 변수 ≤ f_j(식). 식을 묶음별 조각 a_j 로 나눠(Σ a_j = 식 ÷ sc, a_j ≤ Yj) 접선을 't_j ≤ 기울기 × a_j + 절편 × Yj' 로 씀
+     → 안 골라진 묶음은 a_j = 0, t_j ≤ 0 이라 0, 골라진 묶음은 보통 접선과 같음(큰 수로 켜고 끄지 않음 — lp.js 눈금 기준). 식은 0 이상이어야 함
+     쓰는 곳: 재사용 버프의 방어도(form_rule.js) — 유지율이 재감 칸에 따라 달라 '어느 유지율의 곡선인가'가 칸 선택에 묶임 */
+  const tanCond = (name, expr, groups) => { const [lo, hi] = range(expr), sc = Math.max(Math.abs(lo), Math.abs(hi)) || 1, parts = E(), out = E(), names = [];
+    groups.forEach((g, j) => { const t = name + '_' + j, a = 'a' + name + '_' + j; lp.v(t, null, null); lp.v(a, 0, 1); lp.add(plus(V(a), mul(g.y, -1)), '<=', 0); parts.t[a] = 1; out.t[t] = 1; names.push(t);
+      const T = {name: t, expr: V(a, sc), f: g.f, df: g.df, pts: [], sc, on: g.y}; tans.push(T);
+      T.gapOf = val => evalE(g.y, val) > 0.5 ? val[t] - g.f(sc * val[a]) : val[t];
+      T.cut = p => { if (!(p > 0) || !isFinite(g.f(p)) || !isFinite(g.df(p)) || T.pts.some(q => Math.abs(q - p) <= DEDUP * Math.max(1, Math.abs(p)))) return false; T.pts.push(p); lp.add(plus(V(t), V(a, -g.df(p) * sc), mul(g.y, -(g.f(p) - g.df(p) * p))), '<=', 0); return true; };
+      const l0 = Math.max(lo, hi * 0.02); for (let i = 0; i <= 24; i++) T.cut(l0 + (hi - l0) * i / 24); });
+    lp.add(plus(parts, mul(expr, -1 / sc)), '=', 0); return {expr: out, names}; };
+  /* 현 조각(pw): 볼록한 f(식) 을 위에서 누름 — 접선은 볼록 함수의 아래에 있어 못 씀. 구간을 n 조각으로 나눠 '어느 조각인가'(0·1) + 조각 안 위치 w(0 ~ 1) → 값 = 조각 양 끝을 이은 현
+     현은 볼록 함수보다 항상 위(상한 유효). 오차 ≤ f''·폭²/8 → 조각 수를 오차 3e-7 이하가 되게 정함(d2 = 2차 도함수). 접선처럼 뒤에 보강하지는 못하므로 처음부터 촘촘히
+     틈(현 − 실제)은 gapOf 로 알려 solve.js 가 실제 값을 낼 때 뺌. 쓰는 곳: 수호자 2세트 −ln(1 − e) */
+  const pw = (name, expr, f, d2) => { const [lo, hi] = range(expr); if (!(hi - lo > 1e-12)) return E(f(lo)); const n = Math.min(400, Math.max(4, Math.ceil((hi - lo) * Math.sqrt(Math.max(d2(lo), d2(hi)) / (8 * 3e-7))))), h = (hi - lo) / n, sc = Math.max(Math.abs(lo), Math.abs(hi)) || 1;
+    const one = E(), pos = E(), out = E(); for (let i = 0; i < n; i++) { const p = lo + h * i, bn = lp.v(name + 'b_' + i, 0, 1, 'b'), w = lp.v(name + 'w_' + i, 0, 1); lp.add(plus(V(w), V(bn, -1)), '<=', 0); one.t[bn] = 1; pos.t[bn] = p / sc; pos.t[w] = h / sc; out.t[bn] = f(p); out.t[w] = f(p + h) - f(p); }
+    lp.add(one, '=', 1); lp.add(plus(pos, mul(expr, -1 / sc)), '=', 0); tans.push({name, expr, f, pts: [], cut: () => false, gapOf: val => evalE(out, val) - f(evalE(expr, val))}); return out; };
+  return {tans, tan, tanLog, tanCond, pw}; }
+module.exports = {makeTangents, TOL};
+
+},
+"candidates": function(module, exports, require, process, __dirname){
+/* ============================================================================================
+   tools/milp/candidates.js — 후보 준비: 부위마다 고를 수 있는 후보와 후보별 기여(주스탯·극확…), 지배되는 후보 제거, 동점 처리용 비용(적개심 시간)
+   여기가 틀리면: 풀이기가 '없는 후보'를 못 고르거나(너무 많이 뺌) 기여 수치가 기존 계산과 달라짐 → check.js 대조에서 걸림
+   결과는 정복자와 무관 → 세팅·옵션별로 한 번만 계산(setup 이 기억)
+   ============================================================================================ */
+const path = require('path'); const {D, M} = require(path.resolve(__dirname, '../model.js'));
+/* 부위 후보와 후보별 기여. dom = 지배되는 후보 제거: 같은 부위에서 모든 기여가 같거나 큰 후보가 따로 있으면 뺌(완전히 같으면 앞의 것만).
+   기여는 전부 '클수록 딜·몸에 이득이거나 무관'이어야 함 — 작을수록 이득인 것은 LOWER 에. 직업 식을 추가할 때 이 전제가 깨지는 기여가 있으면 여기에 반영할 것.
+   주의: 수치가 완전히 같은 후보(쓸모없는 옵션만 다른 것) 중 하나만 남김 → 동점 처리(재료가 싼 쪽 등)는 아직 없음(사용자 2026-11-15 '일단은 재료비교는 뒤로미루자') */
+const LOWER = {wOff: 1, cdrLog: 1, rcrLog: 1, cost: 1};
+/* 직업 식이 더 달라는 칸(form.extraFields — 자감 rcrLog·최대 절제 maxdisc)과 '같을 때만 지배로 인정'할 칸(form.exactFields — 늘려도 좋아지지 않을 수 있는 것)은 forms.js 로 물어봄 */
+const EXTRA = {rcrLog: a => a.resource_cost_reduction.reduce((s, x) => s + Math.log(1 - x), 0), max_discipline: a => a.max_discipline};
+/* 동점 처리의 비용 = 적개심 시간(사냥으로 그 부위의 정옵 고대 1개까지 걸리는 시간), 정옵 확률은 '옵션이 다 맞게 뜰 확률'로.
+   근거: 사용자 2026-11-15 "적개심 시간총합이 낮은쪽으로" → "그러면 적개심에서 옵션이 다 맞게 뜰 확률로 하면?" (손실 허용치를 쓰는 화면의 적개심 시간은 나머지 장비에 따라 달라져 부위별 합으로 못 씀 → 허용치 0% 인 셈)
+   시간 = 1 ÷ (시간당 전설 수 × 고대 비율 × 전설 1개가 이 아이템의 정옵일 몫). 몫 = 카달라 품목 몫 × (내 직업용 몫 × 품목 안 몫 × 정옵 확률 + 다른 직업용 몫 × Σ 그 직업 풀 몫 × 그 직업용으로 굴린 정옵 확률)
+     — src/ui/30_compare.jsx cmpHatred 와 같은 식. 다른 직업 경로(공용 아이템만): 주능력치가 같은 직업이면 기술 피해가 남의 것, 다른 직업이면 주능력치도 남의 것(60_compare.js primalEdge 의 off 와 같은 가정).
+     다른 직업 경로를 넣는 이유: 사용자 "내 직업용으로 떨어진 경우만 보자기엔 서포터쪽이 좀 걸리네?"
+   제작 세트는 0: 사용자 "제작세트는 뭐든 원하는걸 쉽게 구할수 있다는 전제야." */
+function hatredCoster(b){ const H = D.config.hatred, KI = D.config.kadalaItems, invSum = Object.values(KI).reduce((t, c) => t + 1 / c, 0), keys = Object.keys(b.slots), pass = M.makePass(D.config.thresholdDefaults);
+  const catShare = type => { const ki = (D.config.itemTypes[type] || {}).kadalaItem; return ki && KI[ki] ? (1 / KI[ki]) / invSum : 0; }, wOther = (1 - H.smartRate) / H.statGroup.__n, wOwn = H.smartRate + wOther;
+  const goalOf = (k, cd) => D.itemsById[b.slots[k].item].fixed.map(f => f.affix).filter(a => a !== cd.r).concat(cd.c);
+  const rows = Object.fromEntries(M.compareBase({...b, slots: Object.fromEntries(keys.map(k => [k, {...b.slots[k], goal: goalOf(k, M.slotCandidates(b.slots[k], b)[0])}]))}, true).map(x => [x.key, x]));   // 부위 상수(품목 안 몫·제작 여부)만 씀
+  return (k, cd) => { const x = rows[k]; if (!x || x.crafted) return 0; const it = x.item, cs = catShare(x.type); if (!(x.kshare > 0) || !(cs > 0)) return 0;
+    const m = M.buildModel(k, {...b.slots[k], goal: goalOf(k, cd)}, b), ownC = H.classOf[it.originClass || M.classIdOf(b)], ds = it.dropShare; let off = 0;
+    if (ds) { const pS = M.slotProb(m, (a, s) => a === 'skill_damage' ? 0 : pass(a, s)), pD = M.slotProb(m, (a, s) => a === 'skill_damage' || a === 'main_stat' ? 0 : pass(a, s)); for (const c in ds) if (c !== ownC && ds[c]) off += ds[c] * (H.statGroup[c] === H.statGroup[ownC] ? pS : pD); }
+    const ph = cs * (wOwn * x.kshare * M.slotProb(m, pass) + wOther * off); return ph > 0 ? 1 / (H.legendaryPerHour * D.config.ancientRate * ph) : 1e9; }; }
+/* 결과는 정복자와 무관 → 세팅·옵션별로 한 번만 계산해 기억(2026-11-15 측정: 적개심 비용 계산이 호출마다 2초 — 동점 처리 2단계 시간의 절반 이상이 이것이었음) */
+const SETUP_MEMO = new Map();
+function setup(b, dom, withCost){ const mk = b.id + '|' + !!dom + '|' + (withCost || ''); let v = SETUP_MEMO.get(mk); if (!v || v.b !== b) { v = {b, S: setup0(b, dom, withCost)}; SETUP_MEMO.set(mk, v); } return v.S; }
+function setup0(b, dom, withCost){
+  const keys = Object.keys(b.slots), c = M.buildCache(b), CM = c.CM, cands = {}, contrib = {}, form = require('./forms.js').formFor(b), xf = form.extraFields ? form.extraFields(b) : []; const hat = withCost === 'hatred' ? hatredCoster(b) : null;
+  for (const k of keys) { cands[k] = M.slotCandidates(b.slots[k], b); const item = D.itemsById[b.slots[k].item], wF = item.fixed.find(f => D.affixes[f.affix].group === 'random_weapon_damage');
+    contrib[k] = cands[k].map(cd => { const a = M.newAcc(); a.curKey = k; M.applyOps(a, M.slotOps(c, b, k, cd.c, cd.r, undefined));
+      return {itemDex: a.itemDex, itemVit: a.itemVit, life_on_hit: a.life_on_hit, life_regen: a.life_regen, life_on_kill: a.life_on_kill, melee_or_ranged_reduction: a.melee_or_ranged_reduction || 0, softcc: a.softcc || 0, crit_chance: a.crit_chance, crit_damage: a.crit_damage, elem: a.elem, skill: a.skill, elite_damage: a.elite_damage, area_damage: a.area_damage, attack_speed: a.attack_speed, life_percent: a.life_percent, all_resist: a.all_resist, armor: a.armor, dmgAvg: a.dmgAvg, elite_damage_reduction: a.elite_damage_reduction,
+        sH: a.sockets.head || 0, sA: (a.sockets.chest || 0) + (a.sockets.pants || 0), weapon_damage_percent: a.dmgpBy[k] || 0, iasW: a.iasBy[k] || 0, cdrLog: a.cooldown_reduction.reduce((s, x) => s + Math.log(1 - x), 0), wOff: wF && cd.r === wF.affix ? 1 : 0, ...Object.fromEntries(xf.map(f => [f, EXTRA[f](a)])),
+        ...(hat ? {cost: hat(k, cd)} : withCost ? {cost: 1 / Math.max(1e-12, M.matProb(k, b, cd.r, cd.c))} : {})}; }); }   // cost = 1 ÷ (1회당 정옵 확률) = 기대 시도 횟수(재료). 동점 처리 'mat' 일 때만 — 지배 판정에도 들어감(더 싼 후보는 남김)
+  const nBefore = keys.reduce((s, k) => s + cands[k].length, 0);
+  const EX = dom && form.exactFields ? Object.fromEntries(form.exactFields(b, {keys, contrib, c}).map(f => [f, 1])) : {};
+  if (dom) for (const k of keys) { const F = Object.keys(contrib[k][0]), sg = f => LOWER[f] ? -1 : 1, ge = (x, y) => F.every(f => EX[f] ? Math.abs(x[f] - y[f]) <= 1e-12 : sg(f) * x[f] >= sg(f) * y[f] - 1e-12), eq = (x, y) => F.every(f => Math.abs(x[f] - y[f]) <= 1e-12);
+    const keep = contrib[k].map((x, i) => !contrib[k].some((y, j) => j !== i && ge(y, x) && (!eq(y, x) || j < i)));
+    cands[k] = cands[k].filter((_, i) => keep[i]); contrib[k] = contrib[k].filter((_, i) => keep[i]); }
+  return {keys, c, CM, B: CM.base, MD: D.config.model, cands, contrib, nBefore, nAfter: keys.reduce((s, k) => s + cands[k].length, 0)}; }
+module.exports = {setup, hatredCoster, LOWER};
+
+},
+"context": function(module, exports, require, process, __dirname){
+/* ============================================================================================
+   tools/milp/context.js — 식을 쓰는 데 필요한 것 묶음(form_*.js 가 받음): 부위 후보·보석·정복자·칼데산 변수와 합계 식, 값 표, 접선 도구(tangents.js)
+   여기가 틀리면: 변수 연결(보석 홈 수, 정복자 점수 나누기, 값 표의 칸 고르기)이 기존 계산과 달라짐 → check.js 대조에서 걸림
+   ============================================================================================ */
+const path = require('path'); const {D, M} = require(path.resolve(__dirname, '../model.js'));
+const {E, V, plus, mul, LP} = require('./lp.js'), {setup} = require('./candidates.js'), {makeTangents} = require('./tangents.js');
+const key7 = v => Math.round(v * 1e7) / 1e7;
+function context(b, P, dom, withCost){
+  const S = setup(b, dom, withCost), {keys, c, CM, B, MD, cands, contrib} = S, G = MD.gems.options, nW = c.wKeys.length, lp = new LP(), pf = M.paragonFree(P), per = M.augPer({paragon: P, gemMode: 'solo'}), nSlots = keys.length;
+  /* 부위: 후보 하나씩 */
+  const sum = f => { const e = E(); for (const k of keys) contrib[k].forEach((x, i) => { const v = f(x, k); if (v) e.t['x_' + k + '_' + i] = v; }); return e; };
+  const slotSum = (k, f) => E(0, Object.fromEntries(contrib[k].map((x, i) => ['x_' + k + '_' + i, f(x)])));
+  for (const k of keys) { const e = E(); cands[k].forEach((_, i) => { lp.v('x_' + k + '_' + i, 0, 1, 'b'); e.t['x_' + k + '_' + i] = 1; }); lp.add(e, '=', 1); }
+  /* 보석: 종류 y(0·1), 효과 = 홈 수 × 종류 → w(그 종류를 골랐을 때만 홈 수, 아니면 0). 무기 홈은 항상 있음 */
+  for (const [kind, hi] of [['head', 1], ['armor', 5]]) for (const g of G[kind]) { lp.v('y' + kind + '_' + g.id, 0, 1, 'b'); lp.v('w' + kind + '_' + g.id, 0, hi); lp.add(plus(V('w' + kind + '_' + g.id), V('y' + kind + '_' + g.id, -hi)), '<=', 0); }
+  G.weapon.forEach(g => lp.v('yweapon_' + g.id, 0, 1, 'b'));
+  for (const kind of ['head', 'armor', 'weapon']) lp.add(G[kind].reduce((e, g) => plus(e, V('y' + kind + '_' + g.id)), E()), '=', 1);
+  lp.add(plus(G.head.reduce((e, g) => plus(e, V('whead_' + g.id)), E()), mul(sum(x => x.sH), -1)), '=', 0);
+  lp.add(plus(G.armor.reduce((e, g) => plus(e, V('warmor_' + g.id)), E()), mul(sum(x => x.sA), -1)), '=', 0);
+  const gH = f => G.head.reduce((e, g) => plus(e, V('whead_' + g.id, f(g) || 0)), E()), gA = f => G.armor.reduce((e, g) => plus(e, V('warmor_' + g.id, f(g) || 0)), E()), gW = f => G.weapon.reduce((e, g) => plus(e, V('yweapon_' + g.id, f(g) || 0)), E());
+  /* 정복자 활력 v, 칼데산 지능·힘 개수. 주스탯 점수 = 남는 전부(00_core.js paragonSplit 과 같은 결과: 활력 점수 = v) */
+  lp.v('v', 0, pf + nSlots * per, 'i'); lp.v('nInt', 0, CM.noIntAug ? 0 : nSlots, 'i'); lp.v('nStr', 0, CM.noStrAug ? 0 : nSlots, 'i'); lp.add(plus(V('nInt'), V('nStr')), '<=', nSlots);
+  const mainPts = plus(E(pf + nSlots * per), V('nInt', -per), V('nStr', -per), V('v', -1)); lp.add(mainPts, '>=', 0);
+  /* 식의 범위(접선을 깔 구간) */
+  const range = e => { let lo = e.c, hi = e.c; const bySlot = {}; for (const n in e.t) { const m = n.match(/^x_(\w+?)_(\d+)$/); if (m) (bySlot[m[1]] = bySlot[m[1]] || [0]).push(e.t[n]); else { const co = e.t[n], ub = n === 'v' ? pf + nSlots * per : n.startsWith('n') ? nSlots : n.startsWith('warmor') ? 5 : 1; if (co > 0) hi += co * ub; else lo += co * ub; } }
+    for (const k in bySlot) { lo += Math.min(...bySlot[k]); hi += Math.max(...bySlot[k]); } return [lo, hi]; };
+  const {tans, tan, tanLog, tanCond, pw} = makeTangents(lp, range);
+  /* 여러 부위 합으로 나올 수 있는 값 전부(값 표의 칸) */
+  const levels = (f, extra) => { let set = new Map([[0, 0]]); const step = opts => { const nx = new Map(); for (const v of set.values()) for (const o of opts) nx.set(key7(v + o), v + o); set = nx; };
+    for (const k of keys) step([...new Map(contrib[k].map(x => [key7(f(x, k)), f(x, k)])).values()]); for (const ex of (extra || [])) step(ex); return [...set.values()].sort((a, c) => a - c); };
+  /* 값 표: 식들이 각각 칸 값 중 하나(조합마다 0·1 변수). table(이름, [[식, 값들], …]) → 칸 목록 [{y, vals}] — 호출한 쪽이 칸별 결과를 일차식으로 더함 */
+  const tables = {}; const table = (name, axes) => { tables[name] = axes.map(x => x[0]); const cells = []; const rec = (i, idx, vals) => { if (i === axes.length) { cells.push({y: lp.v(name + '_' + idx.join('_'), 0, 1, 'b'), vals}); return; } axes[i][1].forEach((v, j) => rec(i + 1, idx.concat(j), vals.concat(v))); }; rec(0, [], []);
+    lp.add(cells.reduce((e, cl) => plus(e, V(cl.y)), E()), '=', 1); axes.forEach(([expr], i) => lp.add(plus(cells.reduce((e, cl) => plus(e, V(cl.y, cl.vals[i])), E()), mul(expr, -1)), '=', 0)); return cells; };
+  return {b, P, S, keys, c, CM, B, MD, G, nW, cands, contrib, lp, pf, per, nSlots, sum, slotSum, gH, gA, gW, mainPts, range, tans, tan, tanLog, tanCond, pw, levels, table, tables, E, V, plus, mul}; }
+module.exports = {context};
+
+},
+"form_wol": function(module, exports, require, process, __dirname){
+/* ============================================================================================
+   tools/milp/form_wol.js — 풀이기용 식: 수도사 종(dmgModel "wol") — src/model/26_class_monk.js MONK_WOL·MONK_WOL_POST 와 20_stats.js statsFromAcc 를 옮긴 것
+   ★ 계산식을 바꾸면(26_class_monk.js·20_stats.js) 이 파일도 같이 고칠 것. 한쪽만 고치면 check.js(굽기 전 자동 대조)가 어긋남을 잡고 굽기를 멈춤.
+     수치만 바뀌는 수정(config 값)은 여기서 config 를 그대로 읽으므로 손댈 필요 없음. 근거: 사용자 2026-11-15 "모듈화해서, 수정시 계산식만 고치고"
+   반환  {obj = ln 딜(꼬맹이 배율 빼고), lnT = ln 강인함, toughTans = 몸 쪽 접선 이름}. 꼬맹이(유지율·보호막 상시)는 point.js 가 처리
+   딜   해탈 문턱(재감 합 ≥ cdrMin 아니면 ×failMult) × 무기 × 공속 × (1 + 민첩) × (1 + 극확×극피) × (1 + 원소) × (1 + 기술) × (1 + 정예×비중) × 광역
+   몸   생명력 × 방어도 × 저항 × 정예 피해 감소 × 상수(화합·성자 아츄 생명력 등). 생명력 = (기본 + 활력×계수)(1 + 생명력%) + 회복 1.5초분(적생×공속 + 초생)
+   대조  2026-11-15 무작위 490개(4세팅): 최대 차 ln 딜 7e-8, ln 몸 8e-8
+   ============================================================================================ */
+/* 동점 처리 3단계(engine.js reassign)에서 '같다' 대신 문턱 조건으로 묶을 합계. 종: 재감은 해탈 문턱(cdrMin)에만 쓰임 → 지금 해가 문턱을 넘었으면 '넘는다'만 지키고, 못 넘었으면 재감은 아무래도 좋음 */
+function relaxTotals(b, S, r){ const path = require('path'), {D, M} = require(path.resolve(__dirname, '../model.js')), {keys, cands, contrib, c, CM, B, MD} = S, E0 = CM.epiphany;
+  const key = cd => (cd.r || '') + '|' + cd.c.slice().sort().join(','), idx = k => cands[k].findIndex(cd => key(cd) === key({r: r.rr[k] || null, c: r.sel[k]}));
+  const gH = MD.gems.options.head.find(g => g.id === r.gems.head), sH = keys.reduce((s, k) => s + contrib[k][idx(k)].sH, 0);
+  const base = Math.log(1 - B.cooldown_reduction) + c.SB.cooldown_reduction.reduce((s, x) => s + Math.log(1 - x), 0) + (sH && gH && gH.cooldown_reduction ? Math.log(1 - gH.cooldown_reduction) : 0), cur = keys.reduce((s, k) => s + contrib[k][idx(k)].cdrLog, 0), gate = Math.log(1 - (E0.cdrMin - 1e-9));
+  return {cdrLog: base + cur <= gate ? {op: '<=', rhs: gate - base} : 'free'}; }
+module.exports = function formWol(ctx){
+  const {b, c, CM, B, MD, G, nW, contrib, lp, per, sum, slotSum, gH, gA, gW, mainPts, range, tanLog, levels, table, E, V, plus, mul} = ctx, path = require('path'), {D, M} = require(path.resolve(__dirname, '../model.js'));
+  const pg = MD.paragon, SB = c.SB, AU = MD.augment.stats;
+  const dex = plus(E(B.main_stat), mul(mainPts, pg.dexPerPoint), mul(sum(x => x.itemDex), SB.statMult), gA(g => g.main_stat));
+  const vit = plus(E(B.vitality), V('v', pg.vitPerPoint || 5), mul(sum(x => x.itemVit), SB.statMult), gA(g => g.vitality));
+  let obj = E();
+  /* 해탈 문턱: ln(1 − 재감 합) = Σ ln(1 − 각 재감) 이라 일차식. up = 1 이면 문턱을 넘어야 함 */
+  const E0 = CM.epiphany, LC = plus(E(Math.log(1 - B.cooldown_reduction) + SB.cooldown_reduction.reduce((s, x) => s + Math.log(1 - x), 0)), sum(x => x.cdrLog), gH(g => g.cooldown_reduction ? Math.log(1 - g.cooldown_reduction) : 0));
+  lp.v('up', 0, 1, 'b'); lp.add(plus(LC, V('up', 10)), '<=', Math.log(1 - (E0.cdrMin - 1e-9)) + 10); obj = plus(obj, E(Math.log(E0.failMult) + Math.log(M.coeMult(b)) + Math.log(M.skillDmgK(b) * M.gearDmgK(b, M.buildCache(b).sets))   /* 기술·패시브 × 장비·세트·주 기술 계수(28y_gearfx — 2026-11-25). 둘 다 이 세팅에선 상수 */), V('up', -Math.log(E0.failMult)));   // + 원소의 회동(상수 — 20_stats coeMult) + 기술·패시브 배율(상수 — 28z_skillfx, 2026-11-24)
+  /* 무기: 평균 = Σ 무기별 (기본 + 무기 공격력(돌리면 빠짐) + 장신구 피해 + 루비) × (1 + 피해%) ÷ 무기 수. 피해% 유무(0·1) × 합계는 U 로 정확히 일차화 */
+  let W = E();
+  for (const wk of c.wKeys) { const it = D.itemsById[b.slots[wk].item], wF = it.fixed.find(f => D.affixes[f.affix].group === 'random_weapon_damage'), wBase = it.baseDamage ? (it.baseDamage[0] + it.baseDamage[1]) / 2 : MD.weapon.baseAvg, wv = wF ? M.affixMax(wF.affix, it.id) : 0;
+    const Sw = plus(E(wBase + wv), mul(slotSum(wk, x => x.wOff), -wv), gW(g => g.dmgAvg)), [slo, shi] = range(Sw), ps = [...new Set(contrib[wk].map(x => x.weapon_damage_percent).filter(x => x))]; let part = Sw;
+    ps.forEach((p, pi) => { const bE = slotSum(wk, x => x.weapon_damage_percent === p ? 1 : 0), U = lp.v('U_' + wk + '_' + pi, 0, shi);
+      lp.add(plus(V(U), mul(bE, -shi)), '<=', 0); lp.add(plus(V(U), mul(Sw, -1), mul(bE, -slo)), '<=', -slo); lp.add(plus(V(U), mul(Sw, -1), mul(bE, -shi)), '>=', -shi); lp.add(plus(V(U), mul(bE, -slo)), '>=', 0); part = plus(part, V(U, p)); });
+    W = plus(W, mul(part, 1 / nW)); }
+  W = plus(W, sum(x => x.dmgAvg));   // 장신구 피해는 무기 피해 % 밖(20_stats.js 2026-11-19 — 전에는 Sw 안에 있어 피해 % 가 장신구 피해에도 곱해졌음)
+  obj = plus(obj, tanLog('tW', W, 0));
+  /* 공속 = 무기 기본 공속(무기 공속 옵션 포함 — 쌍수면 아래 AX 조화 평균) × (1 + 더하는 공속 합) — 값 표. 같은 표로 적생 × 공속(회복)도: L = 그 칸을 골랐을 때만 적생 합 */
+  const wb = wk => D.config.weaponBaseAps[D.itemsById[b.slots[wk].item].type], aps0 = c.wKeys.reduce((s, wk) => s + wb(wk) / nW, 0);
+  const apsBaseE = c.wKeys.reduce((e, wk) => plus(e, mul(slotSum(wk, x => x.iasW), wb(wk) / nW)), E(aps0)), iasGE = plus(E(B.attack_speed + (nW > 1 ? (CM.dualWieldIas || 0) : 0) + M.monkWolIas(b, CM, true)), sum(x => x.attack_speed));   /* 기술 칸의 공속(주도권·진격타 광채 — 26_class_monk.js monkWolIas, 2026-11-25) */
+  const aLv1 = levels((x, k) => c.wKeys.includes(k) ? wb(k) * x.iasW / nW : 0).map(x => x + aps0), gLv = levels(x => x.attack_speed).map(x => x + iasGE.c), lohE = sum(x => x.life_on_hit), lohMax = range(lohE)[1], lohU = lohMax || 1;   // 눈금: L = (그 칸일 때의 적생 합) ÷ lohU → 0 ~ 1 (전에는 L ≤ 13만 × 칸 선택 — tangents.js 눈금 주석)
+  /* 쌍수 공속 = 조화 평균(20_stats.js 2026-11-19 — d3planner aps = 2 ÷ (1/주 + 1/보조)) → 무기 공속 옵션 합을 무기마다 축으로(일차식이 아님). 무기 하나면 전과 같은 한 축.
+     AX.lv[i] = i 번째 조합(축 순서대로 사전식 — table 의 칸 순서와 같음)의 기본 공속 */
+  const AX = nW > 1 ? (() => { const ax = c.wKeys.map(wk => [slotSum(wk, x => x.iasW), levels((x, k) => k === wk ? x.iasW : 0)]), cb = [];
+      const rec = (i, acc) => { if (i === ax.length) { cb.push(acc); return; } for (const v of ax[i][1]) rec(i + 1, acc.concat(v)); }; rec(0, []);
+      return {axes: ax, lv: cb.map(v => nW * nW / v.reduce((s, x, i) => s + nW / (wb(c.wKeys[i]) * (1 + x)), 0))}; })() : {axes: [[apsBaseE, aLv1]], lv: aLv1};
+  const aLv = AX.lv;
+  let heal = E(), eL = E(), zi = 0; for (const cl of table('z', [...AX.axes, [iasGE, gLv]])) { const aps = aLv[Math.floor(zi / gLv.length)] * (1 + gLv[zi % gLv.length]); zi++; const L = lp.v('L' + cl.y.slice(1), 0, 1); obj = plus(obj, V(cl.y, Math.log(aps))); lp.add(plus(V(L), V(cl.y, -1)), '<=', 0); eL = plus(eL, V(L)); heal = plus(heal, V(L, aps * lohU)); }
+  lp.add(plus(eL, mul(lohE, -1 / lohU)), '=', 0);
+  /* 주능력치·원소·기술·정예·광역: ln(1 + 합) — 오목 → 접선 */
+  obj = plus(obj, tanLog('tDex', mul(dex, CM.dmgPerDex), 1), tanLog('tElem', sum(x => x.elem), 1), tanLog('tSkill', plus(E(B.skillDmg), sum(x => x.skill)), 1),
+    tanLog('tElite', mul(plus(E(B.eliteDmg), sum(x => x.elite_damage), gW(g => nW * (g.elite_damage || 0))), CM.eliteShare), 1), tanLog('tAD', mul(plus(E(B.area_damage), sum(x => x.area_damage)), MD.area_damage.procChance * (MD.area_damage.targets - 1) * MD.area_damage.splashEff), 1));
+  /* 극확 × 극피: ln(1 + min(1, 극확) × 극피) — 곱이라 값 표 */
+  const chcE = plus(E(B.crit_chance), sum(x => x.crit_chance)), chdE = plus(E(B.crit_damage), sum(x => x.crit_damage), gW(g => nW * (g.crit_damage || 0)));
+  for (const cl of table('cc', [[chcE, levels(x => x.crit_chance).map(x => x + B.crit_chance)], [chdE, levels(x => x.crit_damage, [G.weapon.map(g => nW * (g.crit_damage || 0))]).map(x => x + B.crit_damage)]])) obj = plus(obj, V(cl.y, Math.log(1 + Math.min(0.75, cl.vals[0]) * cl.vals[1])));   // 극확 75% 상한(20_stats 2026-11-19)
+  /* ── 강인함 */
+  const armorMult = 1 + (M.wears(b, M.ITEM_ID.stone_gauntlets) ? CM.tough.stoneArmor : 0), toughMult = M.wears(b, M.ITEM_ID.archews_gage) ? 1 + CM.tough.archewLife : 1, drs = (M.wears(b, M.ITEM_ID.unity) ? [CM.tough.unityDR] : []).concat(M.wears(b, M.ITEM_ID.lefebvres_soliloquy) ? [CM.selfBuff.lefebvreDr] : []).concat(c.one ? c.one.dr.map(x => x[1]) : []);   // + 한 방 전용 감소(2026-11-19, 20_stats buildCache ★)   // 레페브레의 독백(2026-11-16, 26_class_monk.js)
+  const armorE = mul(plus(E(B.armor), mul(plus(E(c.gearArmor), sum(x => x.armor), mul(dex, CM.armorPerDex), V('nStr', per * 5 * AU.strength.armorPer)), 1 + (pg.armorPct || 0))), armorMult * (c.one ? c.one.armorK : 1));
+  const resE = mul(plus(E(B.all_resist), sum(x => x.all_resist), gA(g => g.all_resist), V('nInt', per * 5 * AU.intelligence.allresPer), CM.allresPerDex ? mul(dex, CM.allresPerDex) : E()), c.one ? c.one.resK : 1);
+  /* 생명력 = A·(V + H/A): A = 1 + 생명력% 합(값 표), V = 기본 + 활력×계수, H = 회복 1.5초분. H/A 는 'A 가 이 칸일 때만 H' 변수로 일차화 → ln(V + H/A) 는 오목 */
+  const AE = plus(E(1 + B.lifePct), sum(x => x.life_percent), gH(g => g.life_percent)), regenE = plus(sum(x => x.life_regen), E(M.setRegen(c.sets))), HE = mul(plus(heal, regenE), c.healSec);
+  const Hmax = (range(regenE)[1] + lohMax * Math.max(...aLv) * (1 + Math.max(...gLv))) * c.healSec; const HU = Hmax || 1; let lnT = E(), q = E(), eh = E();   // 눈금: H = (그 칸일 때의 회복량) ÷ HU → 0 ~ 1 (전에는 66만)
+  for (const cl of table('u', [[AE, levels(x => x.life_percent, [[0, ...G.head.map(g => g.life_percent || 0)]]).map(x => x + 1 + B.lifePct)]])) { const h = lp.v('H' + cl.y.slice(1), 0, 1); lp.add(plus(V(h), V(cl.y, -1)), '<=', 0); eh = plus(eh, V(h)); if (c.healSec) q = plus(q, V(h, HU / cl.vals[0]));   /* 딜러(회복 0)는 회복 몫을 식에 넣지 않음 — 넣으면 계수가 눈금 기준 밖(1e-8) */ lnT = plus(lnT, V(cl.y, Math.log(cl.vals[0]))); }
+  lp.add(plus(eh, mul(HE, -1 / HU)), '=', 0);
+  /* 정예 피해 감소: −ln(1 − 비중 × 감소) 는 볼록이라 값 표 */
+  /* 근접·원거리 피해 감소 합(mrdr, 보조 옵션 — 2026-11-16): 강인함 ÷ (1 − 합 × defAvg). 합이 가질 수 있는 값마다 칸(정예 피해 감소 er 과 같은 표 방식 — 근사 없음) */
+  for (const cl of table('mr', [[sum(x => x.melee_or_ranged_reduction || 0), levels(x => x.melee_or_ranged_reduction || 0)]])) lnT = plus(lnT, V(cl.y, -Math.log(M.mrTakenOfSum(cl.vals[0], M.affixRange('melee_or_ranged_reduction', '*')[1] / 100))));   // 근접·원거리 반씩 곱(20_stats mrdrAdd — 2026-11-19)
+  for (const cl of table('er', [[sum(x => x.elite_damage_reduction), levels(x => x.elite_damage_reduction)]])) lnT = plus(lnT, V(cl.y, -Math.log(1 - CM.eliteShare * (1 - (1 - B.eliteRed) * Math.exp(-cl.vals[0])))));
+  /* 자버프(2026-11-16, 26_class_monk.js MONK_WOL·model.py selfBuff): 해탈 유지 중(up = 1)이면 사막의 장막(받는 피해 −50%)·진격타 회피 40% — up 에 비례하는 상수 항 */
+  const SBF = CM.selfBuff; lnT = plus(lnT, V('up', -Math.log(1 - SBF.desertShroudDr) - (c.one ? 0 : Math.log(1 - SBF.dashDodge))));   // 딜러는 회피 없음(2026-11-19)
+  /* lnTnh = 회복을 뺀 강인함(보호막 상시 가지의 조건 — solve.js O.noHeal, 사용자 2026-11-16 "보호막이 상시 유지되는 가정에서는 치유력이 아무 효과가 없다"): 생명력 항만 회복 몫(q) 없이 */
+  const rest = plus(lnT, E(Math.log(toughMult) - Math.log(MD.armorDrConst) - Math.log(MD.resDrConst) - drs.reduce((s, x) => s + Math.log(1 - x), 0) - Math.log(1 - B.dodge) - Math.log(1 - B.rangedRed)),
+    tanLog('tArm', armorE, MD.armorDrConst), tanLog('tRes', resE, MD.resDrConst)), lifeV = plus(E(CM.lifeBase), mul(vit, CM.lifePerVit));
+  lnT = plus(rest, tanLog('tLife', plus(lifeV, q), 0)); const lnTnh = plus(rest, tanLog('tLifeN', lifeV, 0));
+  return {obj, lnT, lnTnh, toughTans: ['tLife', 'tLifeN', 'tArm', 'tRes'], nhOnly: ['tLifeN'], healOnly: ['tLife'], dmgTables: ['cc', 'z']}; };   // dmgTables: 딜을 정하는 값 표(동점 처리 2단계에서 합계를 고정 — engine.js)
+module.exports.relaxTotals = relaxTotals;
+
+},
+"form_rule": function(module, exports, require, process, __dirname){
+/* ============================================================================================
+   tools/milp/form_rule.js — 풀이기용 식(직업 공통): 직업 규칙(CLASS_RULES[직업].apply — 25·26·27·28_class_*.js)을 '그대로 불러서' 값 표로 옮김. 종수도(form_wol.js)를 뺀 딜러 전부
+   근거  사용자 2026-11-16 "아 전직업하면서 비교표도 하고" / 2026-11-15 "모듈화해서, 수정시 계산식만 고치고"
+   왜 이렇게  직업 규칙(초당 기술 횟수·버프 유지율·세트 배율)은 계단·올림·min 이 섞여 일차식으로 못 씀. 그런데 규칙이 보는 입력은 몇 가지뿐:
+              무기 기본 공속 합(apsBase)·더하는 공속 합(iasG)·재감 합(cdrTotal) → 이 셋의 가능한 조합(칸)마다 실제 규칙 함수를 불러 결과(rate·dmgMult·피해 감소·보호막)를 상수로 받아 적음.
+              ★ 그래서 직업 규칙의 '수식'을 고쳐도 이 파일은 손댈 필요가 없음(식을 두 번 적지 않음). 손대야 하는 경우는 규칙이 '새로운 입력'을 보기 시작할 때뿐(아래 가정) — 그때는 check.js 대조가 어긋나 굽기가 멈춤
+   가정(규칙이 장비에서 보는 것 — 전부 실제 함수를 찔러 보고 확인, 다르면 예외):
+     ① 칸(apsBase, iasG, cdrTotal)  ② 자감 합: '받는 피해 감소 = 자감'(크림슨 3세트)으로만 → 로그 합이라 일차식  ③ 장비 활력·주능력치 합: 수호자 2세트 피해 감소(둘의 일차식)로만
+     ④ 최대 절제 합: 공격력 × (1 + 계수 × 합) 꼴로만(부정)  ⑤ 정예 피해·정예 피해 감소에 상수 더하기(오길드 3세트)
+   나머지(무기·주능력치·극확×극피·원소·기술·정예·광역 / 생명력·방어도·저항·정예 감소)는 20_stats.js statsFromAcc 를 옮긴 것 — form_wol.js 와 같은 식. 20_stats.js 를 고치면 두 파일을 같이
+   볼록한 항 둘(접선으로 못 누름): 수호자 2세트 −ln(1 − e) → 현 조각(tangents.js pw), 재사용 버프 방어도(성전사 아카라트: 유지율이 재감에 따라 달라짐) → 유지율 값별 조건부 접선(tanCond)
+   반환  {obj ln 딜(꼬맹이 빼고), lnT ln 강인함, toughTans, dmgTables, shield?} — shield = 보호막 문턱 가지(마법사 + 꼬맹이): {ln 보호막 몫의 로그(칸별 상수), taken, ok(st)}
+   ============================================================================================ */
+const path = require('path'), {D, M} = require(path.resolve(__dirname, '../model.js'));
+const prodDr = X => X.dr.reduce((p, x) => p * (1 - x), 1);
+/* 직업 규칙을 찔러 보기: 가정 ②③④⑤ 가 맞는지, 계수가 얼마인지. 세팅마다 한 번 */
+const PROBE = new Map();
+function probe(b){ let r = PROBE.get(b.id); if (r && r.b === b) return r.p; const c = M.buildCache(b), CM = c.CM, B = CM.base, RULE = c.RULE;
+  const call = (o, a) => { const acc = {...M.newAcc(), softcc: softOf(b), ...(a || {})}; const X = RULE.apply({build: b, opts: {paragon: 2000, gemMode: 'solo'}, CM, a: acc, sets: c.sets, aps: 1.5 * (1 + (o.iasG != null ? o.iasG : 0.2)), apsBase: 1.5, iasG: 0.2, cdrTotal: 0.4, rcrTotal: 0, ...o}); return {X, acc}; };
+  const near = (x, y) => Math.abs(x - y) <= 1e-9 * Math.max(1, Math.abs(x), Math.abs(y)), base = call({}), X0 = base.X, bad = why => { throw new Error('form_rule: ' + b.id + ' 직업 규칙이 가정 밖 입력을 봄 — ' + why); };
+  // ② 자감
+  const r3 = call({rcrTotal: 0.3}).X, r5 = call({rcrTotal: 0.5}).X; if (!near(r3.rate, X0.rate) || !near(r3.dmgMult, X0.dmgMult) || !near(r3.toughMult, X0.toughMult)) bad('자감이 딜·배율에 쓰임');
+  const k3 = prodDr(r3) / prodDr(X0), k5 = prodDr(r5) / prodDr(X0), rcrDr = near(k3, 0.7) && near(k5, 0.5); if (!rcrDr && !(near(k3, 1) && near(k5, 1))) bad('자감이 피해 감소에 (1 − 자감) 이 아닌 꼴로 쓰임');
+  // ③ 장비 활력·주능력치 → 피해 감소 항 하나(둘의 일차식)
+  const gv = 1 - prodDr(call({}, {itemVit: 1000}).X) / prodDr(X0), gd = 1 - prodDr(call({}, {itemDex: 1000}).X) / prodDr(X0), g2 = 1 - prodDr(call({}, {itemVit: 3000, itemDex: 2000}).X) / prodDr(X0);
+  if (!near(g2, 3 * gv + 2 * gd)) bad('장비 활력·주능력치의 피해 감소가 일차식이 아님'); for (const f of ['itemVit', 'itemDex']) { const y = call({}, {[f]: 5000}).X; if (!near(y.rate, X0.rate) || !near(y.dmgMult, X0.dmgMult) || !near(y.toughMult, X0.toughMult)) bad(f + ' 가 딜·배율에 쓰임'); }
+  // ③-2 수호자 2세트 근접·투사체 감소(2026-11-20 — 규칙의 X.mG·X.rG, 20_stats mrTaken): 장비 활력·주능력치의 비례식이어야 함
+  const xm = call({}, {itemVit: 1000}).X, xr = call({}, {itemDex: 1000}).X, x2 = call({}, {itemVit: 3000, itemDex: 2000}).X, gm = (xm.mG || 0) / 1000, gr = (xr.rG || 0) / 1000;
+  if (!near(x2.mG || 0, 3000 * gm) || !near(x2.rG || 0, 2000 * gr) || (xm.rG || 0) > 0 || (xr.mG || 0) > 0 || (X0.mG || 0) > 0 || (X0.rG || 0) > 0) bad('근접·투사체 감소(mG·rG)가 장비 활력·주능력치 비례가 아님');
+  // ④ 최대 절제
+  const d1 = call({}, {max_discipline: 10}).X, d2 = call({}, {max_discipline: 25}).X, discK = (d1.dmgMult / X0.dmgMult - 1) / 10; if (!near(d2.dmgMult / X0.dmgMult, 1 + discK * 25) || !near(prodDr(d1), prodDr(X0)) || !near(d1.rate, X0.rate)) bad('최대 절제가 (1 + 계수 × 합) 이 아닌 꼴로 쓰임');
+  // ⑤ 정예 칸 상수
+  const eliteAdd = base.acc.elite_damage, eliteRedAdd = base.acc.elite_damage_reduction;
+  // 나머지 합산 칸은 규칙이 보지 않아야 함
+  for (const f of ['life_on_hit', 'life_regen', 'life_on_kill', 'crit_chance', 'crit_damage', 'elem', 'skill', 'elite_damage', 'area_damage', 'life_percent', 'all_resist', 'armor', 'dmgAvg', 'elite_damage_reduction', 'melee_or_ranged_reduction']) { const y = call({}, {[f]: (base.acc[f] || 0) + 0.37}).X; if (!near(y.rate, X0.rate) || !near(y.dmgMult, X0.dmgMult) || !near(prodDr(y), prodDr(X0)) || !near(y.toughMult, X0.toughMult)) bad(f + ' 를 직업 규칙이 봄'); }
+  if (X0.resMult != null || X0.lifePct != null) bad('서포터용 출력(resMult·lifePct)');   // hits(초당 적중 — 적생 환산용)는 받음: 딜용 rate 와 다른 직업이 있음(성전사 — rate 에 이속 배율이 들어감)
+  const p = {rcrDr, gv: gv / 1000, gd: gd / 1000, gm, gr, discK, eliteAdd, eliteRedAdd, shield: classIsWizardShield(b, X0)}; PROBE.set(b.id, {b, p}); return p; }
+const classIsWizardShield = (b, X0) => !!(M.wears(b, M.ITEM_ID.squirts) && X0.extra && X0.extra.shield != null && M.buildCache(b).RULE.post);
+/* 칸 하나의 규칙 결과. a 는 빈 합산표(가정 ②③④ 몫은 따로 식으로 들어감) */
+/* 적중 시 오한·감속의 합(softcc — 20_stats softK): 보조 정옵이라 풀이기가 고르지 않음 → 세팅마다 상수여야 함(부위의 후보마다 같은지 확인하고 합). 직업 규칙(성전사 갇힌 자 유지율)에 그대로 넘김 */
+const SOFT = new Map();
+function softOf(b){ if (SOFT.has(b)) return SOFT.get(b); const c = M.buildCache(b); let s = 0;
+  for (const k of Object.keys(b.slots)) { let v = null; for (const cd of M.slotCandidates(b.slots[k], b)) { const a = M.newAcc(); a.curKey = k; M.applyOps(a, M.slotOps(c, b, k, cd.c, cd.r, undefined)); if (v == null) v = a.softcc; else if (Math.abs(a.softcc - v) > 1e-12) throw new Error('form_rule: 적중 시 오한·감속이 후보마다 다름(식에 없음) — ' + b.id + ' ' + k); } s += v || 0; }
+  SOFT.set(b, s); return s; }
+function cellRule(b, apsBase, iasG, cdrTotal, Tc, Tt){ const c = M.buildCache(b); if (c.one && c.one.rcrDr) throw new Error('form_rule: 자감으로 정해지는 한 방 감소(성전사 크림슨 3세트)는 식에 없음 — ' + b.id); const X = c.RULE.apply({build: b, opts: {paragon: 2000, gemMode: 'solo'}, CM: c.CM, a: {...M.newAcc(), softcc: softOf(b)}, sets: c.sets, aps: apsBase * (1 + iasG), apsBase, iasG, cdrTotal, rcrTotal: 0});
+  /* 자버프(2026-11-16): 기술 회피(X.dodge)는 피해 감소와 같은 꼴(−ln(1 − 회피))로 lnT 에, 적생 증가·처생 환산·초생 증가(lohAdd·lpkLoh·regenAdd)는 회복 식에(아래 formRule) */
+  /* 끝없는 걸음(2026-11-19 — 21_speed speedSolve): 150단 미만 몫(이동 = 이 칸의 평균 이속으로 정한 이동 시간 ÷ 15분)으로 딜 ×(1 + ew × 딜링 몫), 몸 ÷(1 − dr × 이동 몫).
+     150단 이상에서 몫이 바뀌는 부분은 풀이기 밖(point.js tierOf·lnD0)에서 — 꼬맹이 바닥 유지율과 같은 처리 */
+  /* Tc(2026-11-19 고정점): 상한 지점에서 point.js 가 클리어 시간을 직전 해의 실제 값으로 묶어 넘김 → 딜링 몫 1 − A/Tc, 이동 몫 A/Tc(A = 이 칸의 이속·신단으로 정한 그 판의 이동 시간). 없으면 15분 판 */
+  /* Tt(몸 쪽만 다른 클리어 시간): 묶음 굽기(gbake.js)의 상한 계산 — 딜은 15분 판(딜링 몫 최대), 몸은 가능한 가장 빠른 판(이동 몫 최대)으로 두어 '실제보다 낮지 않은' 상한 */
+  const T = Tc || null, sD = X.ew ? M.ewShare(b, M.msAvgOf(X), T) : null, sT = X.ew ? M.ewShare(b, M.msAvgOf(X), Tt || T) : null, ewD = X.ew ? Math.log(1 + X.ew * sD.deal) : 0, ewT = X.ew ? -Math.log(1 - (c.CM.endlessWalk.dr || 0) * sT.A / sT.T) : 0;   // 21_speed ewShare
+  return {rate: X.rate, hits: X.hits != null ? X.hits : X.rate, lohAdd: X.lohAdd || 0, lpkLoh: X.lpkLoh || 0, regenAdd: X.regenAdd || 0, lnD: Math.log(X.rate * X.dmgMult) + ewD, lnT: ewT + Math.log(X.toughMult) - Math.log(prodDr(X)) - (c.one ? Math.log(c.one.drProd) : (X.dodge || []).reduce((s, x) => s + Math.log(1 - x), 0)),   /* 2026-11-19 딜러 = 한 방 강인함(20_stats buildCache ★): 기술 회피 대신 한 방 전용 감소의 곱(c.one.drProd) */ buff: X.armorBuff || null, s: X.extra && X.extra.shield != null ? X.extra.shield : null}; }
+/* 후보 기여에 더 넣을 칸(candidates.js): 자감(피해 감소로 쓰일 때)·최대 절제(쓰일 때). 안 쓰는 세팅에는 넣지 않음 — 넣으면 지배 제거가 덜 돼 느려지기만 함 */
+function extraFields(b){ const p = probe(b), f = []; if (p.rcrDr) f.push('rcrLog'); if (p.discK > 0) f.push('max_discipline'); return f; }
+/* 지배 제거에서 '클수록 좋다'로 볼 수 없는 칸: 재감·공속을 늘렸을 때 칸의 딜이나 몸이 내려가는 곳이 한 군데라도 있으면 그 칸은 '같을 때만' 지배로 인정.
+   (성전사: 재감이 늘면 버프를 몇 번째 질주마다 쓰는지가 바뀌어 유지율이 내려갈 수 있음 — 올림 계단) */
+function exactFields(b, S){ const {keys, contrib, c} = S, B = c.CM.base, SB = c.SB, G = D.config.model.gems.options, out = [];
+  const uniq = xs => [...new Map(xs.map(x => [Math.round(x * 1e7), x])).values()].sort((a, c) => a - c);
+  const cdrs = uniq([0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7].concat(keys.flatMap(k => contrib[k].map(x => 1 - (1 - B.cooldown_reduction) * Math.exp(x.cdrLog) * SB.cooldown_reduction.reduce((p, y) => p * (1 - y), 1))))), iass = [0, 0.07, 0.14, 0.2, 0.27, 0.34, 0.41, 0.5, 0.6], aps0 = [1.2, 1.4, 1.5, 1.61];
+  let cdrBad = false, iasBad = false; for (const a0 of aps0) { for (const g of iass) { let p = null; for (const cd of cdrs) { const r = cellRule(b, a0, g, cd); if (p && (r.lnD < p.lnD - 1e-12 || r.lnT < p.lnT - 1e-12 || (r.buff && p.buff && r.buff.uptime < p.buff.uptime - 1e-12))) cdrBad = true; p = r; } }
+    for (const cd of cdrs) { let p = null; for (const g of iass) { const r = cellRule(b, a0, g, cd); if (p && (r.lnD < p.lnD - 1e-12 || r.lnT < p.lnT - 1e-12)) iasBad = true; p = r; } } }
+  if (cdrBad) out.push('cdrLog'); if (iasBad) out.push('attack_speed', 'iasW'); return out; }
+function formRule(ctx){
+  const {b, c, CM, B, MD, G, nW, contrib, lp, per, sum, slotSum, gH, gA, gW, mainPts, range, tanLog, tanCond, pw, levels, table, E, V, plus, mul} = ctx, pg = MD.paragon, SB = c.SB, AU = MD.augment.stats, PB = b.partyBuffs || null, PR = probe(b);
+  const dex = plus(E(B.main_stat), mul(mainPts, pg.dexPerPoint), mul(sum(x => x.itemDex), SB.statMult), gA(g => g.main_stat));
+  const vit = plus(E(B.vitality), V('v', pg.vitPerPoint || 5), mul(sum(x => x.itemVit), SB.statMult), gA(g => g.vitality));
+  let obj = E(), lnT = E(), shieldLn = E();
+  /* 무기(form_wol.js 와 같음): 평균 = Σ 무기별 (기본 + 무기 공격력(돌리면 빠짐) + 루비) × (1 + 피해%) ÷ 무기 수 + 장신구 피해 */
+  let W = E();
+  for (const wk of c.wKeys) { const it = D.itemsById[b.slots[wk].item], wF = it.fixed.find(f => D.affixes[f.affix].group === 'random_weapon_damage'), wBase = it.baseDamage ? (it.baseDamage[0] + it.baseDamage[1]) / 2 : MD.weapon.baseAvg, wv = wF ? M.affixMax(wF.affix, it.id) : 0;
+    const Sw = plus(E(wBase + wv), mul(slotSum(wk, x => x.wOff), -wv), gW(g => g.dmgAvg)), [slo, shi] = range(Sw), ps = [...new Set(contrib[wk].map(x => x.weapon_damage_percent).filter(x => x))]; let part = Sw;
+    ps.forEach((p, pi) => { const bE = slotSum(wk, x => x.weapon_damage_percent === p ? 1 : 0), U = lp.v('U_' + wk + '_' + pi, 0, shi);
+      lp.add(plus(V(U), mul(bE, -shi)), '<=', 0); lp.add(plus(V(U), mul(Sw, -1), mul(bE, -slo)), '<=', -slo); lp.add(plus(V(U), mul(Sw, -1), mul(bE, -shi)), '>=', -shi); lp.add(plus(V(U), mul(bE, -slo)), '>=', 0); part = plus(part, V(U, p)); });
+    W = plus(W, mul(part, 1 / nW)); }
+  W = plus(W, sum(x => x.dmgAvg));   // 장신구 피해는 무기 피해 % 밖(20_stats.js 2026-11-19 — 전에는 Sw 안에 있어 피해 % 가 장신구 피해에도 곱해졌음)
+  obj = plus(obj, tanLog('tW', W, 0));
+  /* 칸 = 무기 기본 공속 합 × 더하는 공속 합 × 재감 로그 합. 칸마다 직업 규칙을 불러 ln(rate × dmgMult)·ln(toughMult ÷ Π(1 − 피해 감소))·보호막을 상수로 */
+  const wb = wk => D.config.weaponBaseAps[D.itemsById[b.slots[wk].item].type], aps0 = c.wKeys.reduce((s, wk) => s + wb(wk) / nW, 0);
+  const apsBaseE = c.wKeys.reduce((e, wk) => plus(e, mul(slotSum(wk, x => x.iasW), wb(wk) / nW)), E(aps0)), iasGE = plus(E(B.attack_speed + (nW > 1 ? (CM.dualWieldIas || 0) : 0)), sum(x => x.attack_speed));
+  const LC = plus(E(Math.log(1 - B.cooldown_reduction) + SB.cooldown_reduction.reduce((s, x) => s + Math.log(1 - x), 0)), sum(x => x.cdrLog), gH(g => g.cooldown_reduction ? Math.log(1 - g.cooldown_reduction) : 0));
+  const aLv1 = levels((x, k) => c.wKeys.includes(k) ? wb(k) * x.iasW / nW : 0).map(x => x + aps0), gLv = levels(x => x.attack_speed).map(x => x + iasGE.c), cLv = levels(x => x.cdrLog, [[0, ...G.head.map(g => g.cooldown_reduction ? Math.log(1 - g.cooldown_reduction) : 0)]]).map(x => x + LC.c);
+  /* 쌍수 공속 = 조화 평균(20_stats.js 2026-11-19 — d3planner aps = 2 ÷ (1/주 + 1/보조)) → 무기 공속 옵션 합을 무기마다 축으로(일차식이 아님). 무기 하나면 전과 같은 한 축.
+     AX.lv[i] = i 번째 조합(축 순서대로 사전식 — table 의 칸 순서와 같음)의 기본 공속 */
+  const AX = nW > 1 ? (() => { const ax = c.wKeys.map(wk => [slotSum(wk, x => x.iasW), levels((x, k) => k === wk ? x.iasW : 0)]), cb = [];
+      const rec = (i, acc) => { if (i === ax.length) { cb.push(acc); return; } for (const v of ax[i][1]) rec(i + 1, acc.concat(v)); }; rec(0, []);
+      return {axes: ax, lv: cb.map(v => nW * nW / v.reduce((s, x, i) => s + nW / (wb(c.wKeys[i]) * (1 + x)), 0))}; })() : {axes: [[apsBaseE, aLv1]], lv: aLv1};
+  const aLv = AX.lv;
+  const H0 = cellRule(b, aLv[0], gLv[0], 1 - Math.exp(cLv[0]), ctx.clrT, ctx.clrTt);   // 자버프 회복 상수(칸과 무관해야 함 — 아래에서 전 칸 확인)
+  const lohE = plus(sum(x => x.life_on_hit + H0.lpkLoh * (x.life_on_kill || 0)), E(H0.lohAdd)), lohU = range(lohE)[1] || 1; let heal = E(), eL = E(), rateMax = 0; const buffs = new Map();
+  const addBuff = (R, y) => { if (!R.buff) return; const k = R.buff.mult + '|' + Math.round(R.buff.uptime * 1e12); if (!buffs.has(k)) buffs.set(k, {...R.buff, y: E()}); buffs.get(k).y.t[y] = 1; };
+const addRate = (R, y) => { rateMax = Math.max(rateMax, R.hits); const L = lp.v('L' + y.slice(1), 0, 1); lp.add(plus(V(L), V(y, -1)), '<=', 0); eL = plus(eL, V(L)); heal = plus(heal, V(L, R.hits * lohU)); };   // L = 그 칸일 때만 적생 합 ÷ lohU (눈금: lp.js)
+  /* 나눠지는가: 규칙 결과가 '공속 칸의 몫 + 재감 칸의 몫'으로 갈라지면(rate·보호막은 공속만, 버프는 재감만, ln 딜·ln 몸은 둘의 합) 표를 둘로(공속 a × g, 재감 c) — 칸 수가 곱에서 합으로 줄어 훨씬 빠름
+     (2026-11-16 측정: 투검 한 문제 17초 → 나눈 뒤 아래 주석). 성전사는 시전 수 × 이속(재감에 따른 버프 유지율)이 한 식 안에서 더해져 안 나눠짐 → 세 축 한 표. 판정은 전 칸을 실제로 계산해 비교(1e-11) */
+  const RR = aLv.map(a => gLv.map(g => cLv.map(cv => cellRule(b, a, g, 1 - Math.exp(cv), ctx.clrT, ctx.clrTt)))), R0 = RR[0][0];
+  for (const A of RR) for (const Gs of A) for (const R of Gs) if (R.lohAdd !== H0.lohAdd || R.lpkLoh !== H0.lpkLoh || R.regenAdd !== H0.regenAdd) throw new Error('form_rule: 자버프 회복(lohAdd·lpkLoh·regenAdd)이 칸마다 다름 — 식을 다시 세울 것');
+  const eq = (x, y) => Math.abs(x - y) <= 1e-11 * Math.max(1, Math.abs(x), Math.abs(y));
+  let sep = true; aLv.forEach((_, i) => gLv.forEach((_, j) => cLv.forEach((_, k) => { const R = RR[i][j][k], A = RR[i][j][0], C = R0[k]; if (!eq(R.rate, A.rate) || !eq(R.hits, A.hits) || !eq(R.lnD, A.lnD + C.lnD - R0[0].lnD) || !eq(R.lnT, A.lnT + C.lnT - R0[0].lnT) || (R.s == null) !== (A.s == null) || (R.s != null && !eq(R.s, A.s))
+    || !!R.buff !== !!C.buff || (R.buff && (!eq(R.buff.uptime, C.buff.uptime) || !eq(R.buff.mult, C.buff.mult)))) sep = false; })));
+  if (sep) { let i = 0; for (const cl of table('z', [...AX.axes, [iasGE, gLv]])) { const R = RR[Math.floor(i / gLv.length)][i % gLv.length][0]; i++; obj = plus(obj, V(cl.y, R.lnD)); lnT = plus(lnT, V(cl.y, R.lnT)); if (PR.shield) shieldLn = plus(shieldLn, V(cl.y, Math.log(R.s / (1 + R.s)))); addRate(R, cl.y); }
+    let k = 0; for (const cl of table('cd', [[LC, cLv]])) { const C = R0[k++]; obj = plus(obj, V(cl.y, C.lnD - R0[0].lnD)); lnT = plus(lnT, V(cl.y, C.lnT - R0[0].lnT)); addBuff(C, cl.y); } }
+  else { let n = 0; for (const cl of table('z', [...AX.axes, [iasGE, gLv], [LC, cLv]])) { const k = n % cLv.length, j = Math.floor(n / cLv.length) % gLv.length, i = Math.floor(n / cLv.length / gLv.length), R = RR[i][j][k]; n++;
+      obj = plus(obj, V(cl.y, R.lnD)); lnT = plus(lnT, V(cl.y, R.lnT)); if (PR.shield) shieldLn = plus(shieldLn, V(cl.y, Math.log(R.s / (1 + R.s)))); addRate(R, cl.y); addBuff(R, cl.y); } }
+  lp.add(plus(eL, mul(lohE, -1 / lohU)), '=', 0);
+  /* ② 자감 = 받는 피해 감소: −ln(1 − 자감 합) = −Σ ln(1 − 각 자감) */
+  if (PR.rcrDr) lnT = plus(lnT, mul(plus(E(Math.log(1 - B.resource_cost_reduction) + SB.resource_cost_reduction.reduce((s, x) => s + Math.log(1 - x), 0)), sum(x => x.rcrLog), gH(g => g.resource_cost_reduction ? Math.log(1 - g.resource_cost_reduction) : 0)), -1));
+  /* ④ 최대 절제: ln(1 + k × 합) = ln k + ln(합 + 1/k) */
+  if (PR.discK > 0) obj = plus(obj, E(Math.log(PR.discK)), tanLog('tDisc', sum(x => x.max_discipline), 1 / PR.discK));
+  /* 주능력치·원소·기술·정예·광역: ln(1 + 합) — 오목 → 접선 */
+  obj = plus(obj, tanLog('tDex', mul(dex, CM.dmgPerDex), 1), tanLog('tElem', sum(x => x.elem), 1), tanLog('tSkill', plus(E(B.skillDmg), sum(x => x.skill)), 1),
+    tanLog('tElite', mul(plus(E(B.eliteDmg + PR.eliteAdd), sum(x => x.elite_damage), gW(g => nW * (g.elite_damage || 0))), CM.eliteShare), 1), tanLog('tAD', mul(plus(E(B.area_damage), sum(x => x.area_damage)), MD.area_damage.procChance * (MD.area_damage.targets - 1) * MD.area_damage.splashEff), 1));
+  /* 극확 × 극피(4인 파티 버프의 극확 포함) — 값 표 */
+  const chcB = PB && PB.crit_chance || 0, chcX = PB && PB.chcTaken || 0, chc0 = B.crit_chance + chcB + chcX, chcE = plus(E(chc0), sum(x => x.crit_chance)), chdE = plus(E(B.crit_damage), sum(x => x.crit_damage), gW(g => nW * (g.crit_damage || 0)));
+  for (const cl of table('cc', [[chcE, levels(x => x.crit_chance).map(x => x + chc0)], [chdE, levels(x => x.crit_damage, [G.weapon.map(g => nW * (g.crit_damage || 0))]).map(x => x + B.crit_damage)]])) obj = plus(obj, V(cl.y, Math.log(1 + Math.min(1, Math.min(0.75, cl.vals[0] - chcX) + chcX) * cl.vals[1])));   // 극확 75% 상한(20_stats 2026-11-19)
+  /* ── 강인함(20_stats.js statsFromAcc) */
+  const aPct = pg.armorPct || 0, armorE = mul(plus(E(B.armor), mul(plus(E(c.gearArmor), sum(x => x.armor), mul(dex, CM.armorPerDex), V('nStr', per * 5 * AU.strength.armorPer)), 1 + aPct)), (PB && PB.armorPct ? (1 + aPct + PB.armorPct) / (1 + aPct) : 1) * (c.one ? c.one.armorK : 1));   // armorK·resK = 한 방 전용 방어도·저항 배율(태극·단련·완벽주의자·구원의 진언 …)
+  const resE = mul(plus(E(B.all_resist), sum(x => x.all_resist), gA(g => g.all_resist), V('nInt', per * 5 * AU.intelligence.allresPer), CM.allresPerDex ? mul(dex, CM.allresPerDex) : E()), (PB && PB.resPct ? 1 + PB.resPct : 1) * (c.one ? c.one.resK : 1));
+  const life0 = 1 + B.lifePct + (PB && PB.lifePct || 0), AE = plus(E(life0), sum(x => x.life_percent), gH(g => g.life_percent)), regenE = plus(sum(x => x.life_regen), E(M.setRegen(c.sets) + H0.regenAdd)), HE = mul(plus(heal, regenE), c.healSec);   // c.healSec: 딜러 0(회복 가치 없음 — 20_stats buildCache ★)
+  const HU = (range(regenE)[1] + lohU * rateMax) * c.healSec || 1; let q = E(), eh = E();
+  for (const cl of table('u', [[AE, levels(x => x.life_percent, [[0, ...G.head.map(g => g.life_percent || 0)]]).map(x => x + life0)]])) { const h = lp.v('H' + cl.y.slice(1), 0, 1); lp.add(plus(V(h), V(cl.y, -1)), '<=', 0); eh = plus(eh, V(h)); if (c.healSec) q = plus(q, V(h, HU / cl.vals[0]));   /* 딜러(회복 0)는 회복 몫을 식에 넣지 않음 — 넣으면 계수가 눈금 기준 밖(1e-8) */ lnT = plus(lnT, V(cl.y, Math.log(cl.vals[0]))); }
+  lp.add(plus(eh, mul(HE, -1 / HU)), '=', 0);
+  /* 근접·원거리 피해 감소 합(mrdr, 보조 옵션 — 2026-11-16): 강인함 ÷ (1 − 합 × defAvg). 합이 가질 수 있는 값마다 칸(정예 피해 감소 er 과 같은 표 방식 — 근사 없음) */
+  /* 칸마다(옵션 개수 k → 근접 ⌈k/2⌉·원거리 ⌊k/2⌋, 20_stats mrdrAdd) 받는 피해 T0. 수호자 2세트(mG·rG)가 있으면 T = T0 − ⅓(a·mG + b·rG)(a·b = 그 칸의 근접·원거리 통과율):
+     −ln T = −ln T0 − ln(1 − ⅓L/T0), L = a·mG + b·rG(일차식) — 칸을 고를 때만 L 을 쓰게 l(0~1) × U ≤ L, l ≤ 칸 → 볼록 → 현 조각(정확). 2026-11-20 사용자 "근접·원거리 피해 감소는 같게 맞추고." */
+  const mrP = M.affixRange('melee_or_ranged_reduction', '*')[1] / 100, mGE = sum(x => PR.gm * x.itemVit), rGE = sum(x => PR.gr * x.itemDex), mrNames = []; let mi = 0;
+  for (const cl of table('mr', [[sum(x => x.melee_or_ranged_reduction || 0), levels(x => x.melee_or_ranged_reduction || 0)]])) { const s = M.mrSplitOfSum(cl.vals[0], mrP), T0 = M.mrTaken(s.mM, s.mR); lnT = plus(lnT, V(cl.y, -Math.log(T0)));
+    if (PR.gm > 0 || PR.gr > 0) { const LE = plus(mul(mGE, Math.exp(-s.mM)), mul(rGE, Math.exp(-s.mR))), U = range(LE)[1], dA = MD.defAvg / T0;
+      if (U > 1e-12) { const l = 'mrl' + mi; lp.v(l, 0, 1); lp.add(plus(V(l, U), mul(LE, -1)), '<=', 0); lp.add(plus(V(l), V(cl.y, -1)), '<=', 0);
+        lnT = plus(lnT, pw('mrg' + mi, V(l, U), L => -Math.log(1 - dA * L), L => dA * dA / Math.pow(1 - dA * L, 2))); mrNames.push('mrg' + mi); } }
+    mi++; }
+  for (const cl of table('er', [[sum(x => x.elite_damage_reduction), levels(x => x.elite_damage_reduction)]])) lnT = plus(lnT, V(cl.y, -Math.log(1 - CM.eliteShare * (1 - (1 - B.eliteRed) * Math.exp(-(cl.vals[0] + PR.eliteRedAdd))))));
+  const toughTans = ['tLife', 'tRes', ...mrNames], K = MD.armorDrConst;
+  /* 방어도: 버프 없으면 −ln(K/(방어도 + K)). 재사용 버프(아카라트)는 받는 피해 = 유지율 × 켜짐 + (1 − 유지율) × 꺼짐 — 유지율 값이 같은 칸끼리 묶어 조건부 접선(유지율별로 오목) */
+  if (buffs.size) { const gs = [...buffs.values()].map(g => { const tk = a => g.uptime * K / (a * (1 + g.mult) + K) + (1 - g.uptime) * K / (a + K); return {y: g.y, f: a => -Math.log(tk(a)), df: a => (g.uptime * K * (1 + g.mult) / Math.pow(a * (1 + g.mult) + K, 2) + (1 - g.uptime) * K / Math.pow(a + K, 2)) / tk(a)}; });
+    const r = tanCond('tArm', armorE, gs); lnT = plus(lnT, r.expr); toughTans.push(...r.names); }
+  else { lnT = plus(lnT, tanLog('tArm', armorE, K), E(-Math.log(K))); toughTans.push('tArm'); }
+  /* ③ 수호자 2세트: −ln(1 − e), e = 장비 활력·주능력치의 일차식 — 볼록 → 현 조각 */
+  if (PR.gv > 0 || PR.gd > 0) { lnT = plus(lnT, pw('gd', sum(x => PR.gv * x.itemVit + PR.gd * x.itemDex), x => -Math.log(1 - x), x => 1 / Math.pow(1 - x, 2))); toughTans.push('gd'); }
+  /* lnTnh = 회복을 뺀 강인함(보호막 상시 가지의 조건 — solve.js O.noHeal, form_wol.js 와 같은 이유) */
+  const rest = plus(lnT, E(-Math.log(MD.resDrConst) - Math.log(1 - B.dodge) - Math.log(1 - B.rangedRed) - (PB && PB.dr || []).reduce((s, x) => s + Math.log(1 - x), 0)),   /* PB.dr = 파티가 받는 피해 감소(gen/priority.py PARTY_FX, 2026-11-19) */ tanLog('tRes', resE, MD.resDrConst)), lifeV = plus(E(CM.lifeBase), mul(vit, CM.lifePerVit));
+  lnT = plus(rest, tanLog('tLife', plus(lifeV, q), 0)); const lnTnh = plus(rest, tanLog('tLifeN', lifeV, 0)); toughTans.push('tLifeN');
+  return {obj, lnT, lnTnh, toughTans, nhOnly: ['tLifeN'], healOnly: ['tLife'], dmgTables: ['cc', 'z'], shield: PR.shield ? {ln: shieldLn} : null}; }
+/* 보호막 문턱 가지(point.js): 마법사 + 꼬맹이 — 28_class_wizard.js post. 보호막 몫 = 강인함 × s/(1 + s) ÷ (1 + taken) 이 150단을 버티면 꼬맹이 상시. 판정은 실제 계산의 squirtFull */
+formRule.shieldInfo = b => probe(b).shield ? {taken: M.buildCache(b).CM.shield.taken, share: null, ok: st => !!st.squirtFull} : null;
+formRule.extraFields = extraFields; formRule.exactFields = exactFields;
+/* 장비의 활력·주능력치 합이 '최종값'과 따로 쓰이는가(수호자 2세트의 피해 감소) — 그러면 3단계(settle.js)에서 장비 ↔ 정복자 맞바꾸기를 막음 */
+formRule.rawVitDex = b => { const p = probe(b); return p.gv > 0 || p.gd > 0 || p.gm > 0 || p.gr > 0; };
+module.exports = formRule;
+
+},
+"forms": function(module, exports, require, process, __dirname){
+/* ============================================================================================
+   tools/milp/forms.js — 직업 식 목록: 세팅 → 풀이기용 식
+   form(ctx) → {obj ln 딜(꼬맹이 빼고), lnT ln 강인함, toughTans 몸 쪽 접선 이름, dmgTables 딜을 정하는 값 표 이름, shield? 보호막 문턱 가지의 몫(식)}
+   form.relaxTotals(b, S, r)  3단계에서 '같다' 대신 문턱 조건으로 묶을 합계   form.extraFields(b)  후보 기여에 더 넣을 칸   form.exactFields(b, S)  지배 제거에서 같을 때만 인정할 칸
+   form.shieldInfo(b)  보호막 문턱 가지가 있는 세팅이면 {taken, ok(st)} (point.js)
+   종수도(wol)는 손으로 옮긴 식(form_wol.js — 해탈 문턱·돌덩이·성자 아츄), 나머지 딜러(투검·부정·일천수도·천상의 주먹·불새)는 직업 규칙을 그대로 불러 쓰는 공통 식(form_rule.js)
+   4인 서포터(우선순위 방식 — 35_priority.js)는 풀이기 대상이 아님: 딜·몸의 최적화가 아니라 정해진 우선순위대로 채우는 방식
+   ============================================================================================ */
+const path = require('path'), {M} = require(path.resolve(__dirname, '../model.js'));
+const FORMS = {wol: require('./form_wol.js')}, RULE = require('./form_rule.js'), RULED = {impale: 1, ue: 1, raiment: 1, foth: 1, fb: 1};
+const formFor = b => { if (M.isPriority(b)) throw new Error('풀이기 대상이 아닌 세팅(우선순위 방식): ' + b.id); const dm = b.dmgModel || (M.classIdOf(b) === 'dh' ? 'impale' : null);
+  if (FORMS[dm]) return FORMS[dm]; if (RULED[dm]) return RULE; throw new Error('풀이기용 식이 아직 없는 세팅: ' + b.id + ' (dmgModel ' + b.dmgModel + ')'); };
+module.exports = {formFor};
+
+},
+"solve": function(module, exports, require, process, __dirname){
+/* ============================================================================================
+   tools/milp/solve.js — 한 문제 풀기: 식 세우기(context + 직업 식) → 미리 자르기 → 풀기 ↔ 접선 보강 반복 → 해 읽기. 1단계(딜 최대·균형)와 2단계(딜을 지킨 채 몸 최대)가 같은 함수의 옵션
+   풀이기는 backend.js 로만 부름(tag = O.tag — point.js 가 '<단계>:P<정복자>'로 줌). 돌려주는 값 중 G = 풀이기 식의 목표값(접선 근사 포함), Gtrue·Ttrue = 접선 틈을 뺀 실제 식의 값 — 둘의 차이가 TOL 수준이어야 정상
+   여기가 틀리면: 자르기가 최적 해를 버리거나(→ NOTRIM=1 로 끄고 비교), 멈춤 판정이 이르거나(→ rounds·Gtrue), 묶는 값이 틀림(→ 2단계 '해 없음')
+   ============================================================================================ */
+const path = require('path'); const {D, M} = require(path.resolve(__dirname, '../model.js'));
+const {E, V, plus, mul, evalE} = require('./lp.js'), {run} = require('./backend.js'), {context} = require('./context.js'), {formFor} = require('./forms.js'), {TOL} = require('./tangents.js');
+/* solve(highs, b, P, O) → {status, sel, rr, gems, v, aug, lnD, lnT, z, …}
+   O.Treq    상한 모드: ln 딜(꼬맹이 빼고) 최대, 강인함 ≥ Treq
+   O.balance 균형 모드: z 최대, z ≤ 딜 단수, z ≤ 몸 단수 — {target, refD, refT, lnSq = ln(1 + 꼬맹이 최대 × 바닥 유지율)}.
+             150단 미만에서는 꼬맹이 유지율이 바닥값으로 고정이라(21_speed.js speedSolve: x ≤ 1 이면 u = 신단 ÷ 클리어) 딜 단수가 ln 딜의 일차식. 150 이상에서는 실제보다 낮지만 '150 이상인가'는 같음
+   O.inc     아는 해의 목표값(직전 지점의 해를 이 정복자에 쓴 값) → 계산으로 자르기: 0·1 조건을 푼 문제를 한 번 풀어 상한과 '이 선택지를 켜면 상한이 얼마나 내려가나'를 얻고, 켜면 아는 해보다 낮아지는 선택지를 뺌
+   O.need    이 값을 못 넘으면 풀 필요 없음 → 상한이 그보다 낮으면 status 'Skipped'
+   O.seed    직전 해의 변수값 → 그 자리와 둘레 ±3% 에 접선 미리 / O.pts 앞 지점들이 쓴 접선 자리
+   O.clrT    끝없는 걸음 세팅의 클리어 시간(분)을 이 값으로 묶은 칸 값(form_rule cellRule — point.js 고정점). 없으면 15분 판
+   O.clrTt   몸 쪽만 이 클리어 시간으로(gbake.js 상한 — 가장 빠른 판의 받피감)
+   O.fix·O.objT  대조용(check.js): 변수를 전부 고정하고 식 값만 뽑기(objT = ln 강인함 쪽) */
+async function solve(highs, b, P, O){ O = O || {}; const t0 = Date.now(), tag = O.tag || 'solve', ctx = Object.assign(context(b, P, O.dom !== false, O.stage2 ? O.stage2.cost : null), {clrT: O.clrT || null, clrTt: O.clrTt || null}), {lp, tans, keys, cands, G, MD} = ctx, F = formFor(b)(ctx), {obj, lnT} = F, TT = Object.fromEntries(F.toughTans.map(n => [n, 1])), BAL = O.balance, GR = MD.score.gr;
+  let goal = obj;
+  if (BAL) { lp.v('z', null, null); goal = V('z'); lp.add(plus(V('z'), mul(obj, -1 / Math.log(GR.hpStep))), '<=', BAL.target + (BAL.lnSq - Math.log(BAL.refD)) / Math.log(GR.hpStep)); lp.add(plus(V('z'), mul(lnT, -1 / Math.log(GR.dmgStep))), '<=', BAL.target - Math.log(BAL.refT) / Math.log(GR.dmgStep)); }
+  /* O.shield(보호막 문턱 가지, 마법사): 조건이 '강인함 × 보호막 몫 ≥ Treq' — 몫의 로그(F.shield.ln, 칸별 상수)를 더한 식으로 */
+  /* O.noHeal(보호막 상시 가지 — 종수도 성자 아츄 + 꼬맹이, 마법사 + 꼬맹이): 조건을 회복을 뺀 강인함(F.lnTnh)으로. 사용자 2026-11-16 "보호막이 상시 유지되는 가정에서는 치유력이 아무 효과가 없다".
+     2단계의 '몸 최대'는 그대로 실제 강인함(lnT). 접선: 조건 쪽 값(condTrue)은 조건에 든 접선(TC)의 틈만 뺌 */
+  const lnTb = O.noHeal ? F.lnTnh : lnT, TC = Object.fromEntries(F.toughTans.filter(n => !(O.noHeal ? F.healOnly : F.nhOnly || []).includes(n)).map(n => [n, 1]));
+  const NHO = Object.fromEntries((F.nhOnly || []).map(n => [n, 1])), UNUSED = Object.fromEntries((!O.noHeal ? F.nhOnly || [] : !O.stage2 && !BAL ? F.healOnly || [] : []).map(n => [n, 1]));   // 이 문제의 식에 안 든 접선(보강하지 않음)
+  const lnTc = O.shield ? plus(lnTb, F.shield.ln) : lnTb;
+  if (!BAL) { if (O.objT) goal = lnTb; else lp.add(lnTc, '>=', Math.log(O.Treq)); }
+  lp.obj = goal; if (O.fix) for (const n in O.fix) lp.add(V(n), '=', O.fix[n]);
+  for (const T of tans) T.n0 = T.pts.length;
+  if (O.pts) for (const T of tans) for (const p of (O.pts[T.name] || [])) T.cut(p);
+  if (O.seed) for (const T of tans) { const p = evalE(T.expr, O.seed); if (T.cut(p) || true) for (const d of [0.001, 0.002, 0.004, 0.008, 0.015, 0.03]) { T.cut(p * (1 + d)); T.cut(p * (1 - d)); } }
+  /* 2단계(동점 처리) — 사용자 2026-11-15 "2번에서 걸러낸 후보로 풀고 교체하면 되는거아냐?": 1단계(딜 최대)는 능력치만으로 걸러낸 적은 후보로 빨리 풀고,
+     여기서는 '더 잘 뜨는 후보'까지 남긴 전체 후보로 다시 세워, 목표값을 1단계 최적 G0 에 묶고(오차 d 안) 비용(적개심 시간 총합)이 가장 작은 조합으로 교체.
+     G0 가 정확한 최적이라 '켜면 상한이 G0 아래로 떨어지는 선택지'를 미리 다 뺄 수 있어(자르기) 문제가 작아짐. O.stage2 = {G0, cost: 'hatred' | 'mat'} */
+  let cst = null;
+  /* 순서(사용자 2026-11-16 "딜>몸>적개심 시간이지."): 1단계 딜(목표값) 최대 → 2단계(want 'tough') 그 딜을 지킨 채 몸 최대 → 3단계(want 'cost') 딜·몸을 지킨 채 적개심 시간 총합 최소.
+     묶는 값은 '실제 식으로 계산한 값'(Gtrue·Ttrue)이어야 함. 2026-11-16 고친 버그: 전에는 풀이기의 목표값(접선 근사가 실제보다 최대 0.00002 높을 수 있음)에 묶어서,
+     진짜 최적인 해가 '근사 덕을 덜 본다'는 이유로 조건 밖으로 밀려남 → 능력치가 완전히 같은 두 해 중 싼 쪽을 놓치고 지점마다 오감(종수도 변경 표시 36개 중 31개).
+     실제 값에 묶으면 진짜 최적인 해는 언제나 조건 안(접선은 실제보다 낮게 나오는 일이 없으므로) */
+  /* 묶는 여유 = 로그값 0.00001(딜 약 0.00006단, 몸 약 0.0004단). 2026-11-16 측정: 0.000001 로 두면 풀이기의 수치 오차(0·1 판정 허용치 0.000001 이 값 표의 큰 계수를 타고 번짐)보다 작아서,
+     방금 푼 해조차 다음 단계에서 '조건을 만족하는 해 없음'이 됨(종수도 17지점 중 12지점). 이 여유 안의 차이는 같은 값으로 봄 */
+  if (O.stage2) { const d = 1e-5, G0 = O.stage2.G0; O.inc = G0 - d; lp.add(goal, '>=', G0 - d); if (O.stage2.T0 != null) lp.add(lnT, '>=', O.stage2.T0 - d); cst = ctx.sum(x => x.cost || 0); }
+  /* 2단계 가볍게(2026-11-15 측정: 2단계가 1단계보다 4배 무거움 — 사용자 '다기다리면 너무 길지'): 딜을 정하는 값 표의 합계(F.dmgTables — 극확 합·극피 합, 공속 합)를 1단계 해의 값으로 고정.
+     어느 부위에서 그 합계를 채우느냐는 그대로 자유(부위끼리 맞바꾸기는 여전히 탐색). 놓치는 것은 '합계는 다른데 딜이 소수점 6자리까지 같은' 우연뿐 */
+  if (O.stage2 && O.stage2.tabVals) for (const n of (F.dmgTables || [])) (ctx.tables[n] || []).forEach((ex, i) => { const v = O.stage2.tabVals[n] && O.stage2.tabVals[n][i]; if (v != null) lp.add(ex, '=', v); });
+  let trimmed = 0;
+  if (O.inc != null) { const r0 = run(highs, lp.text(true), {relax: true, tag: tag + '_lp'});
+    if (O.boundOnly && r0.status !== 'Optimal') return {status: r0.status, ms: Date.now() - t0};
+    if (r0.status === 'Optimal') { const v0 = r0.val, zUp = evalE(goal, v0);
+      if (O.boundOnly) return {status: 'Bound', zLP: zUp, ms: Date.now() - t0};   // 상한만: 0·1 조건을 푼 문제의 값 = 이 세팅이 이 조건에서 넘을 수 없는 값(묶음 안에서 못 이기는 변형을 건너뛸 때)
+      if (O.need != null && zUp < O.need - (O.needSlack != null ? O.needSlack : 1e-6)) return {status: 'Skipped', zLP: zUp, need: O.need};
+      const rm = process.env.NOTRIM && O.stage2 ? [] : lp.bin.filter(n => r0.val[n] < 1e-9 && zUp - Math.abs(r0.dual[n]) < O.inc - 1e-6); trimmed = rm.length; if (rm.length) lp.add(E(0, Object.fromEntries(rm.map(n => [n, 1]))), '=', 0); } }
+  /* 비용의 눈금: 부위별 최소 비용의 합(= 가능한 가장 싼 조합쯤)으로 나눠 목표값이 1 안팎이 되게.
+     2026-11-16 고침: 전에는 '후보 하나의 최대 비용'으로 나눴는데, 정옵이 불가능한 후보의 표시값(1e9)이 최대라 목표값이 0.00004 수준으로 눌려, 0.05%(21시간)짜리 차이가 풀이기 허용 오차 아래로 묻힘 →
+     능력치가 완전히 같은 두 해(몸통 활력·손목 모든 저항 ↔ 반대) 사이에서 싼 쪽을 못 고르고 오감. 사용자가 화면에서 발견('활력이면 강인함 15% 증가, 모저면 14.8% 증가에서 막 진동') */
+  /* 비용의 눈금: 부위별 최소 비용의 합(가능한 가장 싼 조합쯤)으로 나눠 목표값이 1 안팎이 되게 */
+  if (O.stage2) { if (O.stage2.want === 'tough') lp.obj = lnT; else { const scale = Math.max(1e-9, ctx.keys.reduce((s, k) => s + Math.min(...ctx.contrib[k].map(x => x.cost || 0)), 0)) || 1; lp.obj = mul(cst, -1 / scale); } }
+  /* 풀기 + 접선 보강. 멈춤: 딜 쪽 접선은 해 자리에서 정확해야 함. 몸 쪽 접선은 '실제 식으로 계산한 몸이 조건을 만족'하면 보강하지 않음(몸이 남는 구간에서 몸 쪽 옵션은 아무거나라 자리가 매번 달라 헛돎 — 2026-11-15).
+     균형 모드는 실제 식으로 계산한 min(딜 단수, 몸 단수)가 z 와 같으면 끝. 어느 경우든 해가 실제로 가능하고 목표값이 상한과 같으므로 증명은 유지 */
+  let val, rounds = 0;
+  for (; rounds < 40; rounds++) { const sol = run(highs, lp.text(), {tag: tag + '_r' + rounds}); if (sol.status !== 'Optimal') return {status: sol.status, atRound: rounds + 1, trimmed};
+    val = sol.val;
+    const gap = T => T.gapOf ? T.gapOf(val) : val[T.name] - T.f(evalE(T.expr, val)), lnTtrue = evalE(lnT, val) - tans.filter(T => TT[T.name] && !NHO[T.name]).reduce((s, T) => s + gap(T), 0), lnDtrue = evalE(obj, val) - tans.filter(T => !TT[T.name]).reduce((s, T) => s + gap(T), 0);
+    if (BAL && !O.stage2 && val.z - Math.min(BAL.target + (lnDtrue + BAL.lnSq - Math.log(BAL.refD)) / Math.log(GR.hpStep), BAL.target + (lnTtrue - Math.log(BAL.refT)) / Math.log(GR.dmgStep)) <= 1e-5) break;
+    const condTrue = evalE(lnTb, val) - tans.filter(T => TC[T.name]).reduce((s, T) => s + gap(T), 0);
+    const tOk = !O.stage2 && !BAL && !O.objT && condTrue + (O.shield ? evalE(F.shield.ln, val) : 0) >= Math.log(O.Treq) - 1e-9; let added = 0;   // 2단계에서는 접선 근사로 목표값·조건을 속이지 못하게 틈이 있는 접선을 전부 보강
+    for (const T of tans) { if (UNUSED[T.name]) continue; if (TT[T.name] && tOk) continue; if (gap(T) > TOL && T.cut(evalE(T.expr, val))) added++; } if (!added) break; }
+  if (rounds >= 40) return {status: 'NotConverged'};
+  const gapF = T => T.gapOf ? T.gapOf(val) : val[T.name] - T.f(evalE(T.expr, val)), tTrue = evalE(lnT, val) - tans.filter(T => TT[T.name] && !NHO[T.name]).reduce((s, T) => s + gapF(T), 0), dTrue = evalE(obj, val) - tans.filter(T => !TT[T.name]).reduce((s, T) => s + gapF(T), 0);
+  const gTrue = BAL ? Math.min(BAL.target + (dTrue + BAL.lnSq - Math.log(BAL.refD)) / Math.log(GR.hpStep), BAL.target + (tTrue - Math.log(BAL.refT)) / Math.log(GR.dmgStep)) : O.objT ? tTrue : dTrue;
+  const tieInfo = O.stage2 ? {cost: evalE(cst, val)} : null;
+  if (O.fix) return {status: 'Optimal', lnD: evalE(obj, val), lnT: evalE(lnTb, val), coef: [lp.cmin, lp.cmax]};
+  const sel = {}, rr = {}; for (const k of keys) { const i = cands[k].findIndex((_, i) => val['x_' + k + '_' + i] > 0.5); sel[k] = cands[k][i].c; rr[k] = cands[k][i].r; }
+  const gems = Object.fromEntries(['head', 'armor', 'weapon'].map(kind => [kind, G[kind].find(g => val['y' + kind + '_' + g.id] > 0.5).id]));
+  return {status: 'Optimal', z: BAL ? val.z : null, sel, rr, gems, v: Math.round(val.v), aug: {intelligence: Math.round(val.nInt), strength: Math.round(val.nStr)}, lnD: evalE(obj, val), lnT: evalE(lnT, val), G: evalE(goal, val), Gtrue: gTrue, Ttrue: tTrue, rounds: rounds + 1, ms: Date.now() - t0, trimmed, tie: tieInfo,
+    val, tabVals: Object.fromEntries(Object.keys(ctx.tables).map(n => [n, ctx.tables[n].map(ex => evalE(ex, val))])), pts: Object.fromEntries(tans.map(T => [T.name, T.pts.slice(T.n0)])), allPts: Object.fromEntries(tans.map(T => [T.name, T.pts.slice()])), nCand: ctx.S.nAfter, nVar: Object.keys(val).length, nCon: lp.cons.length}; }
+module.exports = {solve};
+
+},
+"reassign": function(module, exports, require, process, __dirname){
+/* ============================================================================================
+   tools/milp/reassign.js — 3단계(동점 처리의 마지막): 옵션 총합을 그대로 두고 부위 배치만 적개심 시간이 가장 짧게
+   여기가 틀리면: 능력치가 달라진 배치가 나옴 → 부르는 쪽(point.js·pool.js)이 기존 계산으로 다시 내어 비교하므로 거기서 버려짐
+   ============================================================================================ */
+const {E, LP} = require('./lp.js'), {run} = require('./backend.js'), {setup} = require('./candidates.js'), {formFor} = require('./forms.js');
+/* 3단계(동점 처리의 마지막): 부위 배치만 다시 — 옵션 총합을 해 r 과 똑같이 고정하고(그러면 딜·몸은 계산할 것 없이 같음) 적개심 시간 총합이 가장 짧은 배치를 고름.
+   근거: 사용자 2026-11-15 "걸러낸 후보로 풀고 교체하면 되는거아냐?", 2026-11-16 "3단계는 그것도 괜찮을거같아. 옵션 총합은 다른데 딜과 몸이 우연히 완전히 같은 경우가 있다는건 거의 불가능할거같은데? 못찾아도될듯"
+   왜 이렇게: '딜도 몸도 최적에서 0.00001 이내'를 조건으로 걸어 다시 풀면 가능한 영역이 너무 얇아 풀이기가 '해 없음'이라고 틀리게 답함(종수도 17지점 중 11지점, 2026-11-16).
+            여기는 조건이 전부 '합계가 같다'는 등식이라 오차가 끼어들 자리가 없고 문제도 작음. 종수도 변경 표시 36개 중 23개가 '부위만 맞바꾼' 경우였음.
+   합계로 묶는 것: 후보 기여 전부(cost 제외). 무기 칸의 피해%·공속·무기 공격력 돌리기는 무기마다 따로 계산에 들어가므로 칸별로 고정. 보석·정복자·칼데산은 r 그대로.
+   reassign(highs, b, r, costMode) → {status, sel, rr, cost, moved 바뀐 부위 수} */
+/* 문턱만 넘으면 되는 합계(formFor(b).relaxTotals): '옵션 총합은 다른데 딜·몸이 완전히 같은' 경우가 실제로 있음 — 재감은 해탈 문턱만 넘으면 그 위는 딜과 무관.
+   2026-11-16 종수도 P961~1240: 장갑 민첩·주무기 재감 10%(337,640시간) ↔ 장갑 재감 8%·주무기 민첩(61,873시간)이 딜·몸 같고 비용 5.5배 차이인데 총합이 달라 비교가 안 됐음.
+   사용자 "그경우는 비용차이때문에 좁혀지지않아?" → 그런 합계는 '같다' 대신 '문턱 조건'(op·rhs)으로 묶음. 직업 식을 옮길 때 이런 옵션(공속 계단 등)을 relaxTotals 에 같이 적을 것 */
+async function reassign(highs, b, r, costMode, tag){ const S = setup(b, true, costMode), {keys, cands, contrib, c} = S, lp = new LP(), PER = {weapon_damage_percent: 1, iasW: 1, wOff: 1}, F = Object.keys(contrib[keys[0]][0]).filter(f => f !== 'cost');
+  const form = formFor(b), RELAX = form.relaxTotals ? form.relaxTotals(b, S, r) : {};
+  const key = (cd) => (cd.r || '') + '|' + cd.c.slice().sort().join(','), cur = {}; for (const k of keys) { const i = cands[k].findIndex(cd => key(cd) === key({r: r.rr[k] || null, c: r.sel[k]})); if (i < 0) return {status: 'NoCandidate', slot: k}; cur[k] = i; }
+  const obj = E(), scale = Math.max(1e-9, keys.reduce((s, k) => s + contrib[k][cur[k]].cost, 0)) || 1;
+  for (const k of keys) { const e = E(); cands[k].forEach((_, i) => { const n = lp.v('x_' + k + '_' + i, 0, 1, 'b'); e.t[n] = 1; if (contrib[k][i].cost) obj.t[n] = -contrib[k][i].cost / scale; }); lp.add(e, '=', 1); }
+  for (const f of F) { if (PER[f]) { for (const k of c.wKeys) lp.add(E(0, Object.fromEntries(contrib[k].map((x, i) => ['x_' + k + '_' + i, x[f]]))), '=', contrib[k][cur[k]][f]); continue; }
+    const e = E(); let tot = 0, any = false; for (const k of keys) { contrib[k].forEach((x, i) => { if (x[f]) { e.t['x_' + k + '_' + i] = x[f]; any = true; } }); tot += contrib[k][cur[k]][f]; }
+    if (!any) continue; const rx = RELAX[f]; if (rx === 'free') continue; if (rx) lp.add(e, rx.op, rx.rhs); else lp.add(e, '=', tot); }
+  lp.obj = obj; if (!Object.keys(obj.t).length) return {status: 'Optimal', sel: r.sel, rr: r.rr, cost: 0, moved: 0};
+  const sol = run(highs, lp.text(), {tag: tag || 's3'}); if (sol.status !== 'Optimal') return {status: sol.status};
+  const sel = {}, rr = {}; let cost = 0, moved = 0; for (const k of keys) { const i = cands[k].findIndex((_, i) => sol.val['x_' + k + '_' + i] > 0.5); sel[k] = cands[k][i].c; rr[k] = cands[k][i].r; cost += contrib[k][i].cost; if (i !== cur[k]) moved++; }
+  return {status: 'Optimal', sel, rr, cost, moved}; }
+module.exports = {reassign};
+
+},
+"engine": function(module, exports, require, process, __dirname){
+/* ============================================================================================
+   tools/milp/engine.js — 정옵 탐색을 정수계획(MILP)으로 풀기: 풀이 엔진(직업과 무관한 부분)
+   근거  사용자 2026-11-15 "이 문제를 수학적 최적해를 찾는 최적화는 어떻게 접근해야할까" → "비교해봐" → "이방식 괜찮은데?" → 구조: "모듈화해서, 수정시 계산식만 고치고,
+         컴퓨터가 켜져있을땐 컴퓨터로 돌리고 아닐땐 네가 직접 돌리는게 맞을듯?"
+   왜    기존 탐색(30_optimize.js)은 해를 한 군데씩 고쳐 가는 방식이라 골짜기에 갇힘(같은 문제에서 0.3단쯤 흔들림, 2026-11-15 측정). 풀이기(HiGHS)는 '이 범위에는 더 좋은 해가 없다'를
+         상한으로 잘라 내며 좁히므로, 끝나면 옮긴 식 안에서 최적임이 증명됨.
+   구성(2026-11-16 나눔 — 사용자 "원인을 쉽게 찾을수 있도록 풀이기도 모듈화를 하자." 오답이 나오면 어느 층인지 따로 확인할 수 있게. 이 파일은 묶어서 내보내기만 함)
+     lp.js         식 쓰기: 일차식, 문제 글                         backend.js   풀이기 호출: 설정 한 곳, tag, 문제 떠 두기(MILP_DUMP), 통계
+     candidates.js 후보 준비: 후보·기여, 지배 제거, 적개심 시간      tangents.js  접선 관리: 바깥 근사, 겹침 간격, 멈춤 기준
+     context.js    변수와 합계 식, 값 표                             forms.js + form_<dmgModel>.js  직업 규칙을 풀이기용 식으로
+     solve.js      한 문제 풀기(자르기 → 풀기 ↔ 접선 보강)           reassign.js  3단계: 총합 고정, 부위 배치만
+     point.js      한 지점의 흐름 + 단계별 기록(trace) + 자동 검산   pool.js      동점 처리(모음 방식)     vitnorm.js  활력 동치 정리
+     bake.js       경로 전체를 동시에                                check.js     풀이기용 식 = 기존 계산? 무작위 대조
+     replay.js     떠 둔 문제를 다른 설정으로 다시 풀기(replay.py = PC용 HiGHS 로)
+   원리  ① 부위마다 후보(slotCandidates 그대로) 하나 고르기 = 0·1 변수. 후보의 기여(주스탯·극확…)는 실제 slotOps·applyOps 로 계산 → 합계가 일차식
+         ② ln 딜·ln 강인함 = 묶음별 항의 합. 오목한 항(ln(1 + 합))은 접선으로 위에서 누름(바깥 근사 — 상한이 항상 유효), 곱·계단 항은 '합계가 이 값이면 결과는 이것' 값 표
+         ③ 풀고, 해 자리에서 접선이 실제 값과 다르면 그 자리에 접선을 추가해 다시(해 자리에서 정확해질 때까지) ④ 푼 해는 기존 계산으로 검산(point.js)
+   속도(2026-11-15 측정, 종수도 성자 아츄 P849 기준 지점당 25~40초 → 1~3초): 지배 후보 제거, 긴 합계를 변수 하나로 묶기(접선 식이 가벼워짐), 직전 해로 자르기·접선 자리 물려받기,
+         몸이 남을 때 몸 쪽 접선 보강 생략, 멈춤 기준을 풀이기 정밀도(약 5e-7)보다 느슨하게(2e-6 ≈ 0.00001단)
+   ============================================================================================ */
+const path = require('path'); const {D, M} = require(path.resolve(__dirname, '../model.js'));
+const {E, V, plus, mul, evalE} = require('./lp.js'), {loadHighs} = require('./backend.js'), {setup, hatredCoster} = require('./candidates.js'), {context} = require('./context.js'), {formFor} = require('./forms.js'), {solve} = require('./solve.js'), {reassign} = require('./reassign.js');
+module.exports = {solve, reassign, setup, context, formFor, loadHighs, hatredCoster, D, M, E, V, plus, mul, evalE};
+
+},
+"vitnorm": function(module, exports, require, process, __dirname){
+/* tools/milp/vitnorm.js — 활력 동치 정리(30_optimize.js 끝의 것과 같은 규칙)를 풀이기 결과에 적용.
+   장비 활력 X = 장비 주능력치 X + 정복자 활력 X/5 포인트라서, '활력만 있고 주능력치 없는 부위'는 주능력치로 바꾸고 정복자 활력을 늘린 해와 능력치가 완전히 같음.
+   화면은 표시할 때 이 정리를 거치므로(fromPre → optimize freeze), 경로 데이터가 정리 전 모양이면 '보이는 장비는 같은데 정복자 줄에는 변경 표시'가 생김.
+   근거: 사용자 2026-11-16 "후처리를 통해 활력<>민첩 변경하는거있잖아. 그거 후에 똑같아도 그게 정복자 줄에 표기되는데?" (원래 규칙: 사용자 2026-11-07 — 동치 해가 여럿이면 답이 흔들림)
+   vitNorm(b, {sel, rr, gems, aug}, P, v) → {sel, rr, v, changed} */
+const {D, M} = require('../model.js');
+function vitNorm(b, r, P, v0){ const sel = {...r.sel}, rr = {...r.rr}, MP = D.config.model.paragon; let v = Math.round(v0 || 0), changed = 0; if (!MP.optimizeSplit) return {sel, rr, v, changed};
+  const o = {paragon: P, gemMode: 'solo', gems: r.gems, aug: r.aug}, free = M.poolFree(o, b), sm = M.CLASS_RULES[M.classIdOf(b)].itemStatMult(b);
+  for (const key of Object.keys(b.slots)) { const cfg = b.slots[key], item = D.itemsById[cfg.item], slotId = item.slot, goal = item.fixed.map(f => f.affix).filter(a => a !== rr[key]).concat(sel[key]);
+    if (!goal.includes('vitality') || goal.includes('main_stat')) continue; const amt = M.affixMax('vitality', b.slots[key].item); if (Math.abs(M.affixMax('main_stat', b.slots[key].item) - amt) > 1e-9) continue;
+    const pts = amt * sm / (MP.vitPerPoint || 5); if (v + pts > free) continue; let nSel, nRr;
+    if (rr[key] === 'main_stat') { nRr = null; nSel = sel[key].filter(a => a !== 'vitality'); } else if (M.slotPool(cfg, b, rr[key]).includes('main_stat')) { nRr = rr[key] || null; nSel = sel[key].map(a => a === 'vitality' ? 'main_stat' : a); } else continue;
+    const a1 = M.computeStats(sel, b, {...o, paraVit: v}, rr), a2 = M.computeStats({...sel, [key]: nSel}, b, {...o, paraVit: v + pts}, {...rr, [key]: nRr});
+    if (Math.abs(a1.dmg / a2.dmg - 1) > 1e-9 || Math.abs(a1.tough / a2.tough - 1) > 1e-9) continue;
+    sel[key] = nSel; rr[key] = nRr; v += pts; changed++; }
+  return {sel, rr, v, changed}; }
+module.exports = {vitNorm};
+
+},
+"settle": function(module, exports, require, process, __dirname){
+/* ============================================================================================
+   tools/milp/settle.js — 3단계(동점 처리의 마지막): 능력치가 완전히 같은 해들 가운데 하나로 정리. 딜·몸은 건드리지 않음(1·2단계가 정한 값 그대로)
+   근거  사용자 2026-11-16 "딜>몸>적개심 시간이지." / 2026-11-16 (전 직업 굽기 결과를 보고) 구성이 오가는 지점이 전부 '딜·몸이 완전히 같은데 어디서 채우느냐만 다른 해'였음:
+           · 부위를 넘나드는 활력 ↔ 주능력치: 4인 일천수도 '어깨 모든 저항 + 몸통 활력, 정복자 활력 612' ↔ '어깨 주능력치 + 몸통 모든 저항, 정복자 활력 734' (28건)
+           · 보석으로: 불새 갑옷 보석 자수정(활력) ↔ 에메랄드(주능력치) (41건)       · 홈을 마부로 돌려 없앤 머리의 보석 종류(값이 아무거나 — 투검 20건)
+         전의 3단계(reassign.js)는 '장비 옵션 총합이 같은 것'끼리만, 활력 동치 정리(vitnorm.js)는 '한 부위 안에서'만 봐서 위 경우를 못 잡음.
+         사용자 2026-11-16 "풀이기가 그러면 같은 해일때, 장비>칼데산>정복자에서, 어떤것에 우선순위를 둘지 … 내부에서 풀 수 있어?" → 여기서 풂
+   방법  '최종값'이 지금 해와 같은 조합 전부를 한 문제에 놓음. 최종값 = 출처를 합친 것:
+           주능력치 = 장비 × 세트 배율 + 갑옷 보석 − 정복자 활력 포인트 × 포인트당 주능력치     활력 = 장비 × 세트 배율 + 갑옷 보석 + 정복자 활력 포인트 × 포인트당 활력
+           모든 저항 = 장비 + 갑옷 보석 / 재감·자감(로그 합) = 장비 + 머리 보석 / 생명력% = 장비 + 머리 보석 / 극피·정예·무기 피해 = 장비 + 무기 보석 / 나머지 = 장비 합
+           무기 칸의 피해%·공속·무기 공격력 돌리기는 무기마다 따로 계산에 들어가므로 칸별로 고정. 칼데산(지능·힘 개수)은 그대로
+           장비의 활력·주능력치가 따로 쓰이는 세팅(수호자 2세트 — form.rawVitDex)은 그 둘의 장비 합도 고정(그러면 맞바꿀 수 없음 — 실제로 능력치가 달라지므로)
+         조건이 전부 등식이라 2단계처럼 얇은 허용 오차에 기대지 않음. 그 안에서 차례로(큰 가중치로 한 번에 풀지 않음 — lp.js 눈금 기준):
+           ① 정복자 활력 포인트 최대: 활력은 정복자에, 장비는 주능력치·다른 옵션에(활력 동치 정리 vitnorm.js 와 같은 방향 — 화면도 표시할 때 그 정리를 거침. 정복자는 쉽게 다시 찍고 장비는 바꾸기 어려움)
+           ② ①을 지킨 채 적개심 시간 총합 최소
+         홈이 없는 부위의 보석 종류는 목록의 첫째로 고정(능력치와 무관한 칸)
+   검산  부르는 쪽(point.js·retie3.js)이 바꾼 해를 기존 계산에 넣어 딜·몸이 1e-9 이내로 같은지 확인하고, 다르면 버림
+   settle(highs, b, r {sel, rr, gems, aug, v}, P, costMode, tag) → {status, sel, rr, gems, v, cost, moved}
+   ============================================================================================ */
+const path = require('path'), {D, M} = require(path.resolve(__dirname, '../model.js'));
+const {E, V, plus, mul, LP, evalE} = require('./lp.js'), {run} = require('./backend.js'), {setup} = require('./candidates.js'), {formFor} = require('./forms.js');
+async function settle(highs, b, r, P, costMode, tag){ const S = setup(b, true, costMode), {keys, cands, contrib, c} = S, MD = D.config.model, G = MD.gems.options, pg = MD.paragon, sm = c.SB.statMult, nW = c.wKeys.length, form = formFor(b);
+  const per = M.augPer({paragon: P, gemMode: 'solo'}), vMax = M.paragonFree(P) + (keys.length - ((r.aug && r.aug.intelligence) || 0) - ((r.aug && r.aug.strength) || 0)) * per, dpp = pg.dexPerPoint, vpp = pg.vitPerPoint || 5;
+  const key = cd => (cd.r || '') + '|' + cd.c.slice().sort().join(','), cur = {}; for (const k of keys) { const i = cands[k].findIndex(cd => key(cd) === key({r: r.rr[k] || null, c: r.sel[k]})); if (i < 0) return {status: 'NoCandidate', slot: k}; cur[k] = i; }
+  const lp = new LP(), xs = f => { const e = E(); for (const k of keys) contrib[k].forEach((x, i) => { const v = f(x, k); if (v) e.t['x_' + k + '_' + i] = v; }); return e; }, cost = E();
+  for (const k of keys) { const e = E(); cands[k].forEach((_, i) => { const n = lp.v('x_' + k + '_' + i, 0, 1, 'b'); e.t[n] = 1; if (contrib[k][i].cost) cost.t[n] = contrib[k][i].cost; }); lp.add(e, '=', 1); }
+  for (const [kind, hi] of [['head', 1], ['armor', 5]]) for (const g of G[kind]) { lp.v('y' + kind + '_' + g.id, 0, 1, 'b'); lp.v('w' + kind + '_' + g.id, 0, hi); lp.add(plus(V('w' + kind + '_' + g.id), V('y' + kind + '_' + g.id, -hi)), '<=', 0); }
+  G.weapon.forEach(g => lp.v('yweapon_' + g.id, 0, 1, 'b')); for (const kind of ['head', 'armor', 'weapon']) lp.add(G[kind].reduce((e, g) => plus(e, V('y' + kind + '_' + g.id)), E()), '=', 1);
+  lp.add(plus(G.head.reduce((e, g) => plus(e, V('whead_' + g.id)), E()), mul(xs(x => x.sH), -1)), '=', 0); lp.add(plus(G.armor.reduce((e, g) => plus(e, V('warmor_' + g.id)), E()), mul(xs(x => x.sA), -1)), '=', 0);
+  lp.v('v', 0, vMax, 'i');
+  const gH = f => G.head.reduce((e, g) => plus(e, V('whead_' + g.id, f(g) || 0)), E()), gA = f => G.armor.reduce((e, g) => plus(e, V('warmor_' + g.id, f(g) || 0)), E()), gW = f => G.weapon.reduce((e, g) => plus(e, V('yweapon_' + g.id, f(g) || 0)), E()), lg = x => x ? Math.log(1 - x) : 0;
+  /* 지금 해의 변수값(최종값의 기준) */
+  const now = {v: Math.round(r.v || 0)}; for (const k of keys) cands[k].forEach((_, i) => { now['x_' + k + '_' + i] = i === cur[k] ? 1 : 0; });
+  const sH0 = keys.reduce((s, k) => s + contrib[k][cur[k]].sH, 0), sA0 = keys.reduce((s, k) => s + contrib[k][cur[k]].sA, 0);
+  for (const g of G.head) { now['yhead_' + g.id] = g.id === r.gems.head ? 1 : 0; now['whead_' + g.id] = g.id === r.gems.head ? sH0 : 0; } for (const g of G.armor) { now['yarmor_' + g.id] = g.id === r.gems.armor ? 1 : 0; now['warmor_' + g.id] = g.id === r.gems.armor ? sA0 : 0; } for (const g of G.weapon) now['yweapon_' + g.id] = g.id === r.gems.weapon ? 1 : 0;
+  const F = Object.keys(contrib[keys[0]][0]).filter(f => !['cost', 'sH', 'sA'].includes(f)), PER = {weapon_damage_percent: 1, iasW: 1, wOff: 1}, RELAX = form.relaxTotals ? form.relaxTotals(b, S, r) : {}, raw = form.rawVitDex ? form.rawVitDex(b) : false;
+  const extra = {itemDex: () => plus(gA(g => g.main_stat), V('v', -dpp)), itemVit: () => plus(gA(g => g.vitality), V('v', vpp)), all_resist: () => gA(g => g.all_resist), cdrLog: () => gH(g => lg(g.cooldown_reduction)), rcrLog: () => gH(g => lg(g.resource_cost_reduction)), life_percent: () => gH(g => g.life_percent), crit_damage: () => gW(g => nW * (g.crit_damage || 0)), elite_damage: () => gW(g => nW * (g.elite_damage || 0)), dmgAvg: () => gW(g => g.dmgAvg)};
+  for (const f of F) { if (PER[f]) { for (const k of c.wKeys) lp.add(E(0, Object.fromEntries(contrib[k].map((x, i) => ['x_' + k + '_' + i, x[f]]))), '=', contrib[k][cur[k]][f]); continue; }
+    const e = plus(mul(xs(x => x[f]), f === 'itemDex' || f === 'itemVit' ? sm : 1), extra[f] ? extra[f]() : E()); if (!Object.keys(e.t).length) continue; const tot = evalE(e, now), rx = RELAX[f];
+    if (rx === 'free') continue; if (rx) lp.add(e, rx.op, rx.rhs + (f === 'cdrLog' && sH0 ? lg((G.head.find(g => g.id === r.gems.head) || {}).cooldown_reduction) : 0)); else lp.add(e, '=', tot);   // 문턱 조건(relaxTotals)의 오른쪽 값은 '지금 머리 보석의 재감을 뺀' 값으로 주어지므로 보석 몫을 되돌려 더함
+    if (raw && (f === 'itemDex' || f === 'itemVit')) lp.add(xs(x => x[f]), '=', keys.reduce((s, k) => s + contrib[k][cur[k]][f], 0)); }
+  /* ① 정복자 활력 최대 → ② 그 값을 지킨 채 적개심 시간 최소 */
+  lp.obj = mul(V('v'), 1 / Math.max(1, vMax)); const a = run(highs, lp.text(), {tag: (tag || 's3') + 'v'}); if (a.status !== 'Optimal') return {status: a.status};
+  const vStar = Math.round(a.val.v); let val = a.val;
+  if (Object.keys(cost.t).length) { lp.add(V('v'), '=', vStar); const scale = Math.max(1e-9, keys.reduce((s, k) => s + contrib[k][cur[k]].cost, 0)) || 1; lp.obj = mul(cost, -1 / scale); const b2 = run(highs, lp.text(), {tag: (tag || 's3') + 'c'}); if (b2.status !== 'Optimal') return {status: b2.status}; val = b2.val; }
+  const sel = {}, rr = {}; let total = 0, moved = 0, sH = 0, sA = 0; for (const k of keys) { const i = cands[k].findIndex((_, i) => val['x_' + k + '_' + i] > 0.5); sel[k] = cands[k][i].c; rr[k] = cands[k][i].r; total += contrib[k][i].cost || 0; sH += contrib[k][i].sH; sA += contrib[k][i].sA; if (i !== cur[k]) moved++; }
+  const pick = kind => G[kind].find(g => val['y' + kind + '_' + g.id] > 0.5).id, gems = {head: sH ? pick('head') : G.head[0].id, armor: sA ? pick('armor') : G.armor[0].id, weapon: pick('weapon')};   // 홈이 없는 부위의 보석 종류는 첫째로
+  for (const kind of ['head', 'armor', 'weapon']) if (gems[kind] !== r.gems[kind]) moved++;
+  return {status: 'Optimal', sel, rr, gems, v: vStar, cost: total, moved}; }
+module.exports = {settle};
+
+},
+"point": function(module, exports, require, process, __dirname){
+/* ============================================================================================
+   tools/milp/point.js — 한 정복자 지점의 흐름(40_gr150.js solveGr150 과 같은 판정을 풀이기로)
+   ① 직전 지점이 상한 모드가 아니면 균형 모드부터: z = 낮은 쪽 단수 최대. z < 150 이면 균형 후보
+   ② z ≥ 150 이거나 직전이 상한이면 상한 '보통': 몸 ≥ 150단 조건에서 딜 최대
+   ③ 성자 아츄 + 꼬맹이면 상한 '보호막': 몸을 보호막 문턱(26_class_monk.js MONK_WOL_POST — 보호막이 150단 피해를 버팀)까지 올려 꼬맹이 상시(딜 ×(1 + max)).
+      균형 구간에서도 풀어 봄 — 보통으로는 150 을 못 넘어도 보호막으로는 넘는 구간이 있음(2026-11-15 시험: 기준점을 올린 wol_archew P2700~)
+      건너뛰기(증명 유지): 보통 쪽 해에서 꼬맹이 유지율이 이미 1 이면 보호막 쪽은 이길 수 없음(몸 조건이 더 센 문제라 딜 ≤ 보통, 꼬맹이 이득은 같음).
+      아니면 보호막 쪽 상한(0·1 조건을 푼 문제의 값)이 '넘어야 하는 값'보다 낮을 때 건너뜀
+   결과  상한 후보가 있으면 딜이 가장 높은 것, 없으면 균형 후보. 값은 전부 기존 계산(computeStats·fromPath)으로 다시 낸 것 — 풀이기 값은 고르는 데만 씀
+   직전 지점의 해(prev)를 넘기면 자르기 기준·접선 자리로 씀(같은 답, 더 빠름)
+   ── 추적(2026-11-16, 사용자 "원인을 쉽게 찾을수 있도록 풀이기도 모듈화를 하자.") ──
+   trace  단계마다 한 줄: {st 단계(bal·n·s·s2·s3), status, rounds 접선 보강 횟수, ms, trim 미리 뺀 선택지 수, G 풀이기 식의 목표값, Gt·Tt 접선 틈을 뺀 실제 식의 ln 딜·ln 몸, d·t 기존 계산으로 낸 단수}
+          → 결과 줄에 같이 저장. 어느 구성이 왜 뽑혔는지(어느 가지가 이겼고 각 단계가 무엇을 냈는지)를 나중에 다시 풀지 않고 봄
+   flags  자동 검산에서 어긋난 것. 걸리면 그 단계의 문제 글을 out/flag/<세팅>_P<정복자>_<단계>.lp 로 떠 둠(replay.js·replay.py 로 다른 설정·다른 풀이기에 다시 풀어 볼 것)
+          ① 값: 풀이기가 말한 ln 딜(Gt)과 그 해를 기존 계산에 넣은 값이 0.00001 넘게 다름 → 식 옮김(form_*.js)이나 접선 쪽 문제
+          ② 2단계: '딜을 지킨 채 몸 최대'의 몸이 1단계 해의 몸보다 낮음 → 1단계 해가 2단계 문제의 가능한 해인데 못 찾은 것이므로 풀이기(또는 묶는 조건) 쪽 문제
+          (③ 모음에 더 좋은 구성이 있는지는 전 지점이 끝나야 알 수 있어 pool.js 가 봄)
+   ============================================================================================ */
+const path = require('path'), {solve, hatredCoster, formFor, D, M} = require('./engine.js'), {keepLast} = require('./backend.js'), {vitNorm} = require('./vitnorm.js'), {settle} = require('./settle.js');
+function pointSolver(highs, b){
+  const MD = D.config.model, Q = MD.squirt, C = MD.score.gr150, GR = MD.score.gr, CM = M.classModel(b), ref = M.gr150RefFor(b), sq = M.wears(b, M.ITEM_ID.squirts), two = sq && M.wears(b, M.ITEM_ID.archews_gage);
+  const BAL = {target: C.target, refD: ref.D, refT: ref.T, lnSq: sq ? Math.log(1 + Q.max * Q.pylonP * (Q.pylonMin / Q.clearMin - Q.pylonMin * Q.pylonMin / (2 * Q.clearMin * Q.clearMin))) : 0};
+  /* 끝없는 걸음(2026-11-19): 풀이기 식에는 150단 미만 몫(칸마다의 이동 시간으로 — form_rule cellRule)이 들어 있음. lnD0 는 그 척도(고정점이면 그 클리어 시간의 몫).
+     VMAX = 이 세팅이 낼 수 있는 가장 큰 1 + 평균 이속(직업 규칙을 재감·공속 칸 여럿에 불러 최댓값 — 성전사 군마·악마사냥꾼 전술적 우위는 재감에 따라 커짐). tierOf 의 상한에 씀 */
+  const EW = M.ewMaxOf(b), VMAX = (() => { const c = M.buildCache(b); let v = 1 + (MD.msParagon || 0.25);
+    for (const cd of [0, 0.2, 0.4, 0.5, 0.6, 0.65, 0.7, 0.75, 0.8]) for (const g of [0, 0.3, 0.6]) { try { const X = c.RULE.apply({build: b, opts: {paragon: 2000, gemMode: 'solo'}, CM: c.CM, a: M.newAcc(), sets: c.sets, aps: 1.4 * (1 + g), apsBase: 1.4, iasG: g, cdrTotal: cd, rcrTotal: 0}); v = Math.max(v, 1 + M.msAvgOf(X)); } catch (e) {} }
+    return v; })();
+  /* 보호막 가지: 종수도(성자 아츄 + 꼬맹이)는 몫이 상수라 문턱에 접어 넣음. 마법사(+ 꼬맹이)는 몫이 시전 속도 칸에 따라 달라 풀이기 조건은 '강인함 × 몫'(solve.js O.shield), 판정은 실제 계산의 squirtFull(forms.js shieldInfo) */
+  const SH = !two && formFor(b).shieldInfo ? formFor(b).shieldInfo(b) : null, COND = new Map(), SOPT = new Map();
+  const branches = [['n', ref.T * (1 + 1e-9)]].concat(two ? [['s', ref.T * (1 + CM.squirt.taken) / CM.squirt.shieldShare * (1 + 1e-9)]] : SH ? [['s', ref.T * (1 + SH.taken) * (1 + 2e-9)]] : []);
+  /* 보호막 가지의 조건은 회복을 뺀 강인함(solve.js O.noHeal, 2026-11-16) — 판정은 두 경우 모두 실제 계산의 squirtFull(26_class_monk.js·28_class_wizard.js post 가 toughNoHeal 로 정함) */
+  if (SH) { COND.set(branches[1][1], SH.ok); SOPT.set(branches[1][1], {shield: true, noHeal: true}); }
+  if (two) { COND.set(branches[1][1], st => !!st.squirtFull); SOPT.set(branches[1][1], {noHeal: true}); }
+  /* 해 r 을 정복자 P 에서 기존 계산으로: 몸 ≥ Treq 인 최소 정복자 활력에서의 스탯(없으면 null) */
+  const atMinVit = (r, P, Treq) => { const o = {paragon: P, gemMode: 'solo', gems: r.gems, aug: r.aug}, free = M.poolFree(o, b), st = v => M.computeStats(r.sel, b, {...o, paraVit: v}, r.rr), ok = COND.get(Treq) || (s => s.tough >= Treq);
+    /* 2026-11-17 고침: 전에는 '활력을 전부 넣어도 문턱이 안 되면 불가'(!ok(st(free)) → null)로 봤는데, 강인함은 활력에 대해 끝까지 늘지 않음 — 주능력치를 전부 빼면 방어도(민첩)·세트 감소가 줄어 다시 내려감
+       (일천 크림슨 P4000: 활력 1,247 에서 ln 강인함 21.5184(문턱 21.5183 통과), 2,650 에서 21.73, 전부 넣으면 21.50 으로 미달). 문턱이 최대치에 가까워진 뒤(기준점 Exia 수행자의 사명 회피 반영) 처음 드러남:
+       풀이기는 답을 냈는데 검산이 '불가'라 하고, 균형 쪽은 '150단 이상이라 상한으로 풀라'고 해서 그 지점 결과가 통째로 비었음. 이제 전부 넣은 값이 미달이면 풀이기가 낸 활력(r.v)을 위쪽 끝으로 씀 */
+    let hi0 = free; if (!ok(st(free))) { if (r.v != null && r.v < free && ok(st(r.v))) hi0 = r.v; else return null; } let lo = -1, hi = hi0; if (ok(st(0))) hi = 0; else { lo = 0; while (hi - lo > 1) { const m = (lo + hi) >> 1; if (ok(st(m))) hi = m; else lo = m; } } return {st: st(hi), v: hi}; };
+  /* 끝없는 걸음은 풀이기에 넘긴 클리어 시간 Tc 의 몫으로(풀이기 척도 — form_rule cellRule 과 같은 travelAtMs). Tc 없으면 15분 판 */
+  const lnD0 = (st, Tc) => M.lnDScaled(b, st, Tc);   // 21_speed   // 꼬맹이 배율 뺀 ln 딜(풀이기의 목표값과 같은 척도)
+  const keys = Object.keys(b.slots), hat = process.env.MILP_TIE === 'hatred' ? hatredCoster(b) : null;   // 결과 줄의 cost = 최종 구성의 적개심 시간 총합
+  const pack = (r, mode, br, d, t, v) => ({mode, br, d, t, sel: r.sel, rr: r.rr, gems: r.gems, aug: r.aug, v});
+  /* 꼬맹이 뺀 ln 딜 → 딜 단수(꼬맹이 유지율은 그 딜에서의 값 — 21_speed.js speedSolve, full = 보호막으로 상시). 딜이 클수록 유지율도 커지므로 단조 → 상한의 ln 딜을 넣으면 단수의 상한
+     광역 효율(ad.speed)을 켜면 이 변환이 달라지므로 그때는 멈춤 */
+  if (MD.area_damage.speed) throw new Error('point.js tierOf: 광역 효율(ad.speed)이 켜진 경우는 아직 옮기지 않음');
+  /* tierOf = 풀이기 척도의 ln 딜 상한 → 딜 단수의 '상한'(묶음 굽기 gbake.js 의 탈락 판정이 이 값을 믿음 — 실제보다 낮으면 이길 변형을 버림).
+     · 끝없는 걸음: 실제 배율(1 + ew × 딜링 몫) ≤ 풀이기 척도에 든 15분 판 배율(빨리 깰수록 딜링 몫이 줄어듦) → 척도 값 그대로 두고 따로 곱하지 않음(w = 0)
+     · 꼬맹이: 이동이 가장 빠른 VMAX 로 클리어 시간을 냄(짧을수록 유지율이 큼)
+     2026-11-19 고침: 전에는 끝없는 걸음 세팅만 이속을 넘기고(그것도 처음엔 이동 시간 값을 이속 자리에), 꼬맹이 세팅은 V 없이 불러 이동 시간 모형(속도 신단·이속)이 빠진 값 → 상한이 아니게 됨.
+       종수도 묶음(wol_sanct)에서 꼬맹이 변형(wol_soj·wol_soj_archew)이 P4000 근처에서 탈락했는데 실제로는 163.47단 > 승자 wol_archew 163.42단(구운 결과를 지금 모델로 대조해 발견) */
+  const tierOf = (lnD, full) => { const d0 = Math.exp(lnD), S = sq ? M.speedSolve(b, d0, 0, sq, {}, !!full, 0, VMAX) : {u: 0}; return C.refTier + Math.log(d0 * (1 + Q.max * (sq ? S.u : 0)) / ref.D) / Math.log(GR.hpStep); };
+  const capPossible = async P => { for (const [bn, Treq] of branches) { const r = await solve(highs, b, P, {Treq, ...(SOPT.get(Treq) || {}), inc: -1e9, boundOnly: true, tag: 'ub' + bn + ':P' + P}); if (r.status === 'Bound' && tierOf(r.zLP, bn === 's') >= C.target) return true; } return false; };
+  const solvePoint = async function(P, prev){ prev = prev || {}; const t0 = Date.now(), next = {...prev}, o = {paragon: P, gemMode: 'solo'}; let best = null, bal = null, capOk = prev.mode === 'cap', skip = false, Fn = null, rounds = 0, note = '';
+    const trace = [], flags = [], tg = st => st + ':P' + P, log = (st, r, x) => trace.push({st, status: r.status, rounds: r.rounds, ms: r.ms, trim: r.trimmed, G: r.G, Gt: r.Gtrue, Tt: r.Ttrue, ...(x || {})}),
+      flag = (st, why) => { flags.push(st + ' ' + why); keepLast(tg(st), path.join(__dirname, 'out', 'flag', b.id + '_P' + P + '_' + st + '.lp')); };
+    const warm = k => prev[k] ? {seed: prev[k].val, pts: prev[k].pts} : {};
+    const doBal = async () => { let inc = null; if (prev.b) { const x = M.fromPath(b, {sel: prev.b.sel, rr: prev.b.rr, gems: prev.b.gems, aug2: prev.b.aug}, o); if (x.mode === 'balance') inc = Math.min(x.d, x.t) - 1e-6; }
+      const r = await solve(highs, b, P, {...warm('b'), inc, balance: BAL, tag: tg('bal')}); log('bal', r);
+      if (r.status === 'Optimal') { next.b = r; rounds += r.rounds; if (r.z >= C.target - 1e-6) capOk = true; else { const x = M.fromPath(b, {sel: r.sel, rr: r.rr, gems: r.gems, aug2: r.aug}, o); bal = pack(r, 'balance', 'b', x.d, x.t, x.paraVit); } } else note += '균형:' + r.status + ' '; };
+    /* 끝없는 걸음 고정점(2026-11-19): 받피감(이동 몫)이 클리어 시간에 따라 바뀌어 강인함이 딜에 묶임 → 꼬맹이처럼 '딜만 최대'로 증명할 수 없음.
+       클리어 시간 Tc 를 묶어 풀고(딜링 몫·이동 몫을 함께 그 값으로 — form_rule cellRule), 해의 실제 클리어 시간으로 Tc 를 바꿔 다시 — 바뀜이 0.0001분 아래면 멈춤(8번 넘으면 flag).
+       사용자 "딜과 강인함을 둘다 동시에 수렴시키는게 더 정확하고 빠르지 않아?" 시작 Tc = 직전 지점의 수렴값(없으면 15분).
+       고치기 전(15분 판 값 고정): 실제 받피감이 더 커서 풀이기가 활력을 더 요구 → 일천수도 수호 48지점·종수도 8지점에서 딜 0.004~0.2단 낮은 구성(모음 검산), 동점 처리 2단계 해 없음 110곳.
+       한계: 구성마다 이속이 달라 클리어 시간도 달라서 '고정한 Tc 에서의 최적'이 수렴한 해 — 증명된 최적이 아니라 고정점(모음 검산으로 확인).
+       inc(자르기)는 고정한 Tc 에서 풀이기가 그 해를 받아들인다는 보장이 없어(실제 활력 ≠ 풀이기 활력) 0.05 만큼 낮춰 씀 — 너무 높으면 최적 선택지를 잘라 버림 */
+    const doCap = async () => { for (const [bn, Treq] of branches) { if (bn === 'n' && !capOk) continue; if (skip) { note += '보호막 건너뜀(유지율 1) '; continue; }
+      const need = bn === 's' ? (Fn != null ? Fn : Math.log(ref.D)) - Math.log(1 + Q.max) : null;   // 보호막 쪽이 넘어야 하는 값: 보통 쪽 딜(없으면 150단 = 기준 딜)
+      let Tc = EW ? (prev[bn] && prev[bn].clrT) || Q.clearMin : null, src = prev[bn], wm = warm(bn), r = null, x = null, it = 0;
+      for (;;) { const pv = src && atMinVit(src, P, Treq), inc = pv ? lnD0(pv.st, Tc) - (EW ? 0.05 : 1e-6) : null;
+        r = await solve(highs, b, P, {...wm, Treq, ...(SOPT.get(Treq) || {}), clrT: Tc, inc: inc != null ? inc : (need != null ? -1e9 : null), need, tag: tg(bn)}); log(bn, r, EW ? {Tc} : null);
+        if (r.status !== 'Optimal') break; rounds += r.rounds; x = atMinVit(r, P, Treq); if (!x || !EW) break;
+        const Tn = x.st.clearMin; if (Math.abs(Tn - Tc) < 1e-4) break; if (++it >= 8) { flag(bn, '클리어 시간 고정점 수렴 안 됨 ' + Tc.toFixed(5) + '→' + Tn.toFixed(5)); break; }
+        Tc = Tn; src = r; wm = {seed: r.val, pts: r.pts}; }
+      if (r.status === 'Skipped') { note += '보호막 건너뜀(상한) '; continue; } if (r.status !== 'Optimal') { note += bn + ':' + r.status + ' '; continue; } r.clrT = Tc; next[bn] = r;
+      if (!x) { note += bn + ':검산 불가 '; continue; } const T = M.tiers150(x.st, ref, C, GR); Object.assign(trace[trace.length - 1], {d: T.d, t: T.t}); const isCap = T.d >= C.target - 1e-9 && T.t >= C.target - 1e-9;
+      if (bn === 'n' && isCap) { Fn = Math.log(x.st.dmg); if ((x.st.squirtUptime || 0) >= 1 - 1e-12) skip = true; }
+      if (isCap && (!best || T.d > best.d)) best = pack(r, 'cap', bn, T.d, T.t, x.v); } };
+    /* 순서. 직전 지점이 상한이면 상한만. 균형이었으면 균형 → 상한(위 ①②).
+       직전 지점을 모를 때(묶음의 첫 지점): 전에는 균형부터 풀었는데, 맨바닥에서 푸는 균형 문제가 느려 세팅 전체 시간의 13~31% 를 썼음(2026-11-16 측정 — 6개 세팅 모두 균형 구간이 아예 없는데도 404지점 중 묶음 첫 지점 34곳에서).
+       이제 상한(0·1 조건을 푼 문제의 값)으로 '상한 모드가 가능한가'를 먼저 봄: 어느 가지든 상한의 딜이 150단 이상이면 상한부터 풀고, 상한 모드 해가 나오면 균형은 풀지 않음(균형이 150단 이상이라고 답했을 때와 같은 길).
+       상한 모드 해가 안 나오면 균형을 풂(결과는 전과 같음). 상한이 150단 미만이면 전처럼 균형부터 */
+    if (capOk) await doCap();
+    else if (prev.mode == null && await capPossible(P)) { capOk = true; await doCap(); if (!best) { capOk = false; note = ''; await doBal(); } }
+    else { await doBal(); await doCap(); }
+    best = best || bal;
+    /* 동점 처리(MILP_TIE = hatred): 이긴 쪽 하나만 — 딜 > 몸 > 적개심 시간 순서(사용자 2026-11-16 "딜>몸>적개심 시간이지.").
+       2단계: 1단계의 딜을 지킨 채(로그값 0.00001 이내) 몸 최대 — 묶는 딜 값은 풀이기 값이 아니라 기존 계산으로 낸 값(풀이기 값은 접선 근사만큼 높아서 진짜 최적 해를 조건 밖으로 밀어냄)
+       3단계: 능력치가 완전히 같은 해들 가운데 정복자 활력 최대 → 적개심 시간 최소(settle.js) — 능력치가 완전히 같은 해로만 바꿈
+       값은 다시 기존 계산으로 내고, 상한 모드는 2단계에 건 조건 그대로 검사 — 기존 계산으로 낸 ln 딜(풀이기 척도, 같은 클리어 시간 Tc)이 G0 − 0.00001(solve.js 의 묶는 여유) 이상이 아니면 버림(걸리면 note 에 남음). 2단계 조건은 접선 근사 값(r2.lnD)에 걸려 있어서 그 해의 접선 틈(r2.lnD − r2.Gtrue, 접선 하나당 0.000002 이하 — tangents.js TOL)만큼은 실제 값이 더 낮을 수 있음 → 그 틈까지 허용(2026-11-19 측정: 종수도 군마 일천 P992 틈 0.0000024 로 걸려 47지점 버림). 균형 모드는 단수 0.00002 그대로.
+       2026-11-19 바꿈: 전에는 상한 모드도 '단수 0.00002 넘게 낮으면 버림' — 2단계 여유(약 0.00006단)보다 좁아서, 끝없는 걸음 고정점 뒤 종수도 군마 일천(foth_a_ew_f) 승자 구간 40지점에서
+       0.00007~0.00008단 낮은 2단계 해를 버려 적개심 시간 정리가 빠졌음. 0.0001단으로 넓히려다 사용자 "안전검사를 너무 과도하게 넓힌거 아냐?" → 2단계 조건과 같은 값·같은 척도로 */
+    /* 결정(2026-11-16): '이웃 지점과의 변경 최소'는 기준에 넣지 않음 — 사용자 "변경최소는 아예 필요없는거같아. 그건 진동때문이었거든."
+       이웃 지점의 답을 보며 변경이 가장 적은 줄을 고르는 단계(전 지점을 다 푼 뒤 후보 목록에서 한 번에)를 검토했으나, 목적이던 진동이 지금 순서만으로 없어짐:
+       적개심 시간은 정복자와 무관한 고정값이라 '같은 딜·같은 몸인 후보 중 가장 싼 것'은 후보 목록만으로 정해짐 → 답이 오가려면 딜·몸의 최적 자체가 바뀌어야 하고 그건 필요한 교체.
+       측정: 종수도 4세팅 × 404지점에서 예전 구성으로 되돌아가는 변경 0번. 정의(wol_soj)는 후보가 2~11개인 268지점 모두에서 고른 것이 후보 중 최저가(모음으로 대조).
+       진동이 다시 보이면 변경 최소를 넣기 전에 '가장 싼 후보를 못 찾는 곳'(아래 되풀이, reassign.js 의 묶음)을 먼저 볼 것 */
+    const TIE = process.env.MILP_TIE;
+    if (TIE && best) { const r1 = next[best.br], Treq = best.br === 'b' ? null : branches.find(x => x[0] === best.br)[1], base = Treq ? {Treq, ...(SOPT.get(Treq) || {}), clrT: r1.clrT} : {balance: BAL};
+      const real = r => M.computeStats(r.sel, b, {...o, gems: r.gems, aug: r.aug, paraVit: r.v}, r.rr), st1 = real(best.br === 'b' ? r1 : {...r1, v: best.v}), G0 = best.br === 'b' ? r1.Gtrue : lnD0(st1, r1.clrT);
+      /* 묶는 딜 G0 은 '검산을 통과한 정복자 활력'(best.v — 기존 계산으로 몸 150단을 지키는 최소)에서의 값. 2026-11-16 고침: 전에는 풀이기가 낸 활력(r1.v)에서 계산했는데,
+         풀이기의 몸이 접선 오차만큼 후해서 실제로는 활력이 한 포인트 더 필요한 경우 G0 이 '이룰 수 없는 딜'이 되어 2단계가 해 없음(종수도 화합·돌덩이 P1375 — 떠 둔 문제를 설정 6가지와 PC용 풀이기로 다시 풀어도 전부 해 없음 = 문제 글이 틀린 것) */
+      /* 알려진 경고(2026-11-20 조사, 사용자 "일단 c" — 그대로 둠): 풀이기의 몸 조건이 풀이기 허용 오차(ln 약 7e-7)만큼 넘쳐, 풀이기 활력에서는 실제 몸이 문턱에 아주 조금 못 미침
+         → 검산이 활력을 1 올리고(best.v) 딜이 ln 약 2e-4(약 0.001단) 내려가 이 경고. 접선 보강으로는 안 없어짐(그 자리 접선이 이미 있음). 결과 구성은 실제로 150단을 넘음.
+         예: rai2_salv P2840 활력 232 → 233. 11-19 이전 굽기에도 있던 것(rai2 P1041·P3522, rai4 P3438, ue_odyssey P7389) */
+      if (best.br !== 'b' && Math.abs(G0 - r1.Gtrue) > 1e-5) flag(best.br, '값: 풀이기 ' + r1.Gtrue.toFixed(7) + ' 기존 계산 ' + G0.toFixed(7));   // 검산 ①
+      const r2 = await solve(highs, b, P, {...base, stage2: {G0, want: 'tough', cost: TIE}, pts: process.env.NOPTS2 ? undefined : r1.allPts, tag: tg('s2')}); log('s2', r2);
+      if (r2.status !== 'Optimal') { note += '동점 처리 2단계:' + r2.status + ' '; flag('s2', r2.status); }
+      else { rounds += r2.rounds; const lt1 = Math.log(st1.tough), lt2 = Math.log(real(r2).tough); Object.assign(trace[trace.length - 1], {lnT1: lt1, lnT2: lt2}); if (lt2 < lt1 - 1e-6) flag('s2', '몸이 1단계보다 낮음 ' + (lt2 - lt1).toExponential(2));   // 검산 ②
+        /* 3단계(settle.js): 능력치가 완전히 같은 해들(장비·보석·정복자를 합친 최종값이 같은 조합) 가운데 정복자 활력 최대 → 적개심 시간 최소. 홈 없는 부위의 보석 칸은 첫째로.
+           2026-11-16 바꿈: 전에는 '활력 동치 정리(한 부위 안) → 옵션 총합이 같은 배치 중 최소 비용 → 정리'를 되풀이했는데, 부위를 넘나드는 활력 ↔ 주능력치·보석으로 일어나는 동치를 못 잡아
+           새 직업들에서 구성이 오갔음(4인 일천수도 23번, 불새 34번, 투검 16번 → 새 3단계로 0·2·0번. 남은 2번은 딜이 실제로 0.0002~0.0007단 다른 교체). 근거·사례는 settle.js 머리말
+           바꾼 해는 기존 계산의 딜·몸이 1e-9 이내로 같을 때만 받음. 뒤에 활력 동치 정리를 한 번 더(바꿀 것이 없어야 정상 — 있으면 trace 의 norm 에 남음) */
+        /* 받는 조건(2026-11-19 바꿈): 실제 계산의 값이 1단계 이상(계산 오차 1e-7단)일 때만 — 딜 > 몸 > 적개심 시간 순서를 실제 값으로 지킴.
+           2단계의 묶는 여유(로그 0.00001 + 접선 틈)는 풀이기가 해를 찾게 하는 용도일 뿐, '같은 값'으로 보지 않음.
+           고친 이유: 여유 안의 해를 받았더니 종수도 군마 일천(foth_a_ew_f) P992~1538 에서 '왼반지 광역 + 무기 피해'(A)와 '왼반지 극피 + 무기 광역'(B)이 20번 오감 —
+             A 가 구간 내내 0.00008단 높은데 B 를 받은 지점이 섞임(사용자 "현재 성전사 등 결과물이 이상한 면이 있어. 엄청나게 변화가 많던데"). 앞서 같은 날 '0.0001단 허용'·'2단계 여유와 같은 폭'도 같은 문제.
+           2단계 해를 버리면 1단계 해에 3단계(능력치가 완전히 같은 해들 중 활력 최대 → 적개심 시간 최소)만 돌림 */
+        const finish = async (a0, tag3) => { const v0 = best.br === 'b' ? M.fromPath(b, {sel: a0.sel, rr: a0.rr, gems: a0.gems, aug2: a0.aug}, o).paraVit : (atMinVit(a0, P, Treq) || {v: a0.v}).v, a = {...a0, v: v0};
+          const r3 = await settle(highs, b, a, P, TIE, tg(tag3)); let res = a;
+          if (r3.status === 'Optimal' && (r3.moved || r3.v !== a.v)) { const cnd = {...a, sel: r3.sel, rr: r3.rr, gems: r3.gems, v: r3.v}, s0 = real(a), s1 = real(cnd); if (Math.abs(s1.dmg / s0.dmg - 1) < 1e-9 && Math.abs(s1.tough / s0.tough - 1) < 1e-9) res = cnd; else flag(tag3, '정리한 해의 능력치가 달라짐'); }
+          const nN = vitNorm(b, res, P, res.v), rf = nN.changed ? {...res, sel: nN.sel, rr: nN.rr, v: nN.v} : res; trace.push({st: tag3, status: r3.status, moved: r3.moved, cost: r3.cost, norm: nN.changed}); if (r3.status !== 'Optimal') note += '동점 처리 ' + tag3 + ':' + r3.status + ' ';
+          let nb = null; if (best.br === 'b') { const x = M.fromPath(b, {sel: rf.sel, rr: rf.rr, gems: rf.gems, aug2: rf.aug}, o); if (x.mode === 'balance' && Math.min(x.d, x.t) >= Math.min(best.d, best.t) - 1e-7) nb = pack(rf, 'balance', 'b', x.d, x.t, x.paraVit); }
+          else { const x = atMinVit(rf, P, Treq), T = x && M.tiers150(x.st, ref, C, GR); if (T && T.d >= best.d - 1e-7 && T.t >= C.target - 1e-9 && (T.d > best.d + 1e-7 || T.t >= best.t - 1e-7)) nb = pack(rf, 'cap', best.br, T.d, T.t, x.v); }
+          return nb ? {...nb, cost: hat ? keys.reduce((s, k) => s + hat(k, {r: nb.rr[k] || null, c: nb.sel[k]}), 0) : r3.status === 'Optimal' ? r3.cost : null, moved: r3.moved} : null; };
+        let nb = await finish(r2, 's3'); if (!nb) { note += '2단계 대신 1단계 해(실제 딜이 더 높음) '; nb = await finish(best.br === 'b' ? r1 : {...r1, v: best.v}, 's3b'); }
+        if (nb) best = nb; else note += '동점 처리 버림 '; } }
+    /* 균형 모드: 직전 지점의 구성을 이 정복자에 넣은 값(화면과 같은 계산 fromPath)이 새 구성의 값 이상이면 직전 구성을 그대로 — 이유는 keepbal.js 머리말(풀이기와 화면의 활력 규칙이 정복자 한 포인트만큼 어긋남) */
+    if (best && best.mode === 'balance' && prev.keep && prev.keep.mode === 'balance') { const x = M.fromPath(b, {sel: prev.keep.sel, rr: prev.keep.rr, gems: prev.keep.gems, aug2: prev.keep.aug}, o); if (x.mode === 'balance' && Math.min(x.d, x.t) >= Math.min(best.d, best.t)) best = {...best, sel: prev.keep.sel, rr: prev.keep.rr, gems: prev.keep.gems, aug: prev.keep.aug, d: x.d, t: x.t, v: x.paraVit, cost: prev.keep.cost, kept: true}; }
+    next.keep = best ? {mode: best.mode, sel: best.sel, rr: best.rr, gems: best.gems, aug: best.aug, cost: best.cost} : null;
+    next.mode = best ? best.mode : null;
+    return {P, ms: Date.now() - t0, rounds, note: note.trim(), ...(best || {mode: null}), trace, ...(flags.length ? {flags} : {}), next}; };
+  /* 묶음 굽기(gbake.js)가 쓰는 것: 가지(이름·몸 문턱·풀이 옵션)와 균형 모드 상수 — 여기와 같은 조건으로 상한을 내야 해서 한 곳에서 내보냄 */
+  solvePoint.info = {branches: branches.map(([bn, Treq]) => ({bn, Treq, opt: SOPT.get(Treq) || {}})), BAL, ref, sq, tierOf, EW};
+  return solvePoint; }
+module.exports = {pointSolver};
+
+},
+"canon": function(module, exports, require, process, __dirname){
+/* ============================================================================================
+   tools/milp/canon.js — 대칭인 두 칸의 배치를 한 가지로 고정(굽기 뒤 후처리, to_path.js 가 부름). 딜·몸·적개심 시간은 건드리지 않음
+   왜    옵션 풀과 확률이 완전히 같은 두 칸(집중·자제, 일천 셴룽 쌍수)은 구성을 맞바꿔도 딜·몸·적개심 시간이 전부 같음 → 동점 처리(딜 > 몸 > 적개심 시간, settle.js)에
+         더 고를 기준이 없어 풀이기가 지점마다 아무 쪽이나 냄 → 정복자에 따라 두 칸의 옵션이 왔다 갔다 함(사용자 2026-11-16 "완전히 옵션풀과 나올 확률이 동등한 장비들이 진동을 하네").
+         2026-11-16 굽기에서 잰 것: 투검 크림슨 집중↔자제 358지점 중 7번, 일천 크림슨 셴룽 주 손↔보조 손 232지점 중 1번.
+   기준  사용자 2026-11-17 "대칭일땐 장비와 아이템 id? 번역을 생각해서 동일한 기준을 두고싶은데." → 화면 글자(번역에 따라 바뀜)가 아니라 내부 id 로:
+         두 칸을 아이템 id 순(같으면 칸 이름 순)으로 놓고, 구성 열쇠('고른 옵션 id 를 정렬해 이은 것/돌린 고정 옵션 id')가 작은 쪽을 앞 칸에.
+   대칭 판정(이름으로 짝을 미리 정하지 않음 — 계산으로 확인): 같은 종류 칸이고, 맞바꾼 구성이 서로의 후보에 있고, 맞바꾼 뒤 딜·몸이 같고(상대 오차 1e-12 — 더하는 순서만 달라짐),
+         두 칸의 적개심 시간 합이 같을 때만. 하나라도 다르면 그대로 둠(광인의 주먹날·쿄시로처럼 고정 옵션이 다른 쌍은 여기서 걸러짐).
+   여기가 틀리면: 값이 다른 배치로 바뀜 → 위 판정이 막음. 판정을 느슨하게 고치지 말 것
+   ============================================================================================ */
+const {hatredCoster, D, M} = require('./engine.js');
+const HAT = new Map(), CAND = new Map();
+const cfgKey = (c, r) => c.slice().sort().join(',') + '/' + (r || '');
+const near = (a, b) => a === b || Math.abs(a - b) <= 1e-12 * Math.max(Math.abs(a), Math.abs(b));
+function canon(b, r){
+  let hat = HAT.get(b.id); if (!hat) { hat = hatredCoster(b); HAT.set(b.id, hat); }
+  const keys = Object.keys(b.slots), item = k => D.itemsById[b.slots[k].item], opts = {paragon: r.P, gemMode: 'solo', gems: r.gems, aug: r.aug, paraVit: r.v};
+  const cset = k => { const id = b.id + '|' + k; let s = CAND.get(id); if (!s) { s = new Set(M.slotCandidates(b.slots[k], b).map(cd => cfgKey(cd.c, cd.r))); CAND.set(id, s); } return s; };
+  let sel = {...r.sel}, rr = {...r.rr}, swaps = 0; const norm = (s, q) => [Object.fromEntries(keys.map(k => [k, s[k].slice().sort()])), Object.fromEntries(keys.map(k => [k, q[k] || null]))];
+  for (let i = 0; i < keys.length; i++) for (let j = i + 1; j < keys.length; j++) { const x0 = keys[i], y0 = keys[j]; if (item(x0).slot !== item(y0).slot) continue;
+    const [x, y] = [x0, y0].sort((a, c) => item(a).id < item(c).id ? -1 : item(a).id > item(c).id ? 1 : a < c ? -1 : 1), kx = cfgKey(sel[x], rr[x]), ky = cfgKey(sel[y], rr[y]);
+    if (kx <= ky) continue;                                   // 이미 기준 순서(또는 같은 구성)
+    if (!cset(x).has(ky) || !cset(y).has(kx)) continue;        // 맞바꾼 구성이 그 칸에서 가능한 것이어야
+    const s2 = {...sel, [x]: sel[y], [y]: sel[x]}, r2 = {...rr, [x]: rr[y], [y]: rr[x]};
+    const a = M.computeStats(...norm(sel, rr).slice(0, 1), b, opts, norm(sel, rr)[1]), c = M.computeStats(norm(s2, r2)[0], b, opts, norm(s2, r2)[1]);
+    if (!near(a.dmg, c.dmg) || !near(a.tough, c.tough) || !near(a.toughNoHeal, c.toughNoHeal)) continue;
+    const h1 = hat(x, {c: sel[x], r: rr[x] || null}) + hat(y, {c: sel[y], r: rr[y] || null}), h2 = hat(x, {c: s2[x], r: r2[x] || null}) + hat(y, {c: s2[y], r: r2[y] || null});
+    if (!near(h1, h2)) continue;
+    sel = s2; rr = r2; swaps++; }
+  return {sel, rr, swaps}; }
+module.exports = {canon};
+
+},
+"hero_solve": function(module, exports, require, process, __dirname){
+/* ============================================================================================
+   tools/milp/hero_solve.js — 계정 조회의 비교 기준을 풀이기로: 영웅 구성(34_herocalc heroLiveBuild — 틀은 판별된 세팅, 칸마다 영웅이 낀 아이템·카나이·전설 보석) 한 지점을 풀어
+   화면이 저장·적용하는 꼴(50_path liveResult 와 같은 {sel, rr, gems, paraVit, aug, d, t, mode} — k 는 화면이 붙임)로 돌려줌.
+   굽기와 같은 조건: 동점 처리 MILP_TIE = hatred(gbake.js 와 같음), 활력 동치 정리(vitnorm)·대칭 배치 고정(canon)·정렬은 to_path.js 와 같은 순서
+     → 영웅이 낀 아이템이 추천 세팅과 같으면 랭크표 추천과 같은 구성이 나오게(TODO O2 "목적지는 하나").
+   쓰는 곳: 화면(build.py 가 tools/milp 의 풀이 모듈을 <script id="milp-src"> 로 묶어 작업자에서 실행 — 38_herolive heroLiveRun), node 확인(hero_try.js).
+   사용자 2026-11-26 00:47 "추천세팅에서는 발전된 알고리즘을 쓰면서 왜 계정조회에서는 그런 저급한걸 쓰는거지?"
+   잰 값(2026-11-27, hero_try.js, 수집 기록 5명): 탐색(optimizeMulti) 7~19초 → 풀이기 2.3~2.9초, 답은 같거나 좋음(종수도 +0.372단, 용기 +0.061단, 불새 +0.024단).
+   ============================================================================================ */
+process.env.MILP_TIE = process.env.MILP_TIE || 'hatred';
+const {D, M} = require('./engine.js'), {pointSolver} = require('./point.js'), {vitNorm} = require('./vitnorm.js'), {canon} = require('./canon.js');
+async function heroSolve(highs, b, P){ let r = await pointSolver(highs, b)(P, null);
+  if (!r || !r.mode) throw new Error('풀이기가 이 구성의 답을 내지 못했습니다' + (r && r.note ? '(' + r.note + ')' : ''));
+  const keys = Object.keys(b.slots), vn = vitNorm(b, r, P, r.v); r = {...r, sel: vn.sel, rr: vn.rr, v: vn.v};
+  { const cn = canon(b, r); if (cn.swaps) r = {...r, sel: cn.sel, rr: cn.rr}; }
+  const sel = Object.fromEntries(keys.map(k => [k, r.sel[k].slice().sort()])), rr = Object.fromEntries(keys.map(k => [k, r.rr[k] || null]));
+  const st = M.computeStats(sel, b, {paragon: P, gemMode: 'solo', gems: r.gems, aug: r.aug, paraVit: r.v}, rr);
+  return {sel, rr, gems: r.gems, paraVit: st.para.paraVit, aug: r.aug, d: r.d, t: r.t, mode: r.mode, note: r.note || ''}; }
+module.exports = {heroSolve};
+
+}};
+  const pathStub = {resolve: (...a) => a[a.length - 1], join: (...a) => a.join('/'), dirname: p => p};
+  const fsStub = new Proxy({}, {get: (_, k) => /^(mkdirSync|writeFileSync|renameSync)$/.test(String(k)) ? () => {} : k === 'existsSync' ? () => false : () => { throw new Error('브라우저에서는 파일을 읽지 않음: fs.' + String(k)); }});
+  const model = {get D(){ return (0, eval)('D'); }, M: new Proxy({}, {get: (_, k) => (0, eval)(String(k))})};
+  const require = n => { if (n === 'path') return pathStub; if (n === 'fs') return fsStub; if (n === 'highs') return highsFactory; if (/model\.js$/.test(n)) return model;
+    const m = /^\.\/(\w+)\.js$/.exec(n); if (!m || !defs[m[1]]) throw new Error('풀이기 묶음에 없는 모듈: ' + n);
+    if (!cache[m[1]]) { const mod = cache[m[1]] = {exports: {}}; defs[m[1]](mod, mod.exports, require, process, ''); } return cache[m[1]].exports; };
+  return require('./hero_solve.js'); }
+</script>
 <script type="text/babel" data-presets="react">
 /* ============================================================================================
    화면(React + Babel). 파일 번호 순으로 이어 붙여 한 스크립트가 된다(build.py). 계산 함수·전역 D 는 src/model 쪽(<script id="model-src">).
@@ -4857,7 +5724,12 @@ function heroLiveBuild(r, S, itemOf){ const tpl = S.tpl, slots = {}, LG = D.conf
 /* 2026-11-23: fromPre 는 이제 서포터를 구운 경로로만 낸다(priorityBaked — 랭크표용). 여기는 영웅의 아이템 구성으로 그 자리에서 푸는 것이라 priorityResult 를 직접 부른다
    (사용자 05:15 계정 조회는 "그건 조회시에 굽는거잖아. 끊지마."). 결과는 그전과 같음(tools/regress/hero.js). */
 function heroPrioRec(liveB, P){ try { const o = {paragon: P, gemMode: "solo"}; return applyModel(liveB, priorityResult(liveB, o)); } catch (e) { return null; } }
-const heroLiveKey = (b, P) => JSON.stringify([b.id, P, Object.entries(b.slots).map(([k, c]) => k + ":" + c.item), b.cube, b.legGems]);
+/* 비교 기준 탐색 결과의 열쇠 = 틀·정복자·칸별 아이템·카나이·전설 보석 + 배포 버전(build.py PAGE_V — 페이지를 만든 시각·커밋).
+   2026-11-27 버전을 넣음: 전에는 버전이 없어 모델·데이터가 바뀌어 배포돼도 브라우저에 저장된 옛 결과(hero.live)를 그대로 썼음.
+   사용자 2026-11-26 22:17 "조회 후에 이미 저장된거랑 똑같으면 매번 비교계산 다시할 필요 없잖아." "물론 계산 버전이 다르면 다시 해줘야겠지만" → 22:36 "그래 배포 버전이 바뀔때마다로 하자."
+   → 배포가 바뀌면 열쇠가 달라져 화면(39_heroview)도 조회(38_herolive heroPrecompute)도 다시 계산하고, 같은 배포 안에서는 저장된 결과를 다시 씀. */
+const HERO_LIVE_VER = typeof PAGE_V !== "undefined" && PAGE_V ? String(PAGE_V.built || "") + "|" + String(PAGE_V.rev || "") : "";
+const heroLiveKey = (b, P) => JSON.stringify([b.id, P, Object.entries(b.slots).map(([k, c]) => k + ":" + c.item), b.cube, b.legGems, HERO_LIVE_VER]);
 
 /* ---------- 다음 세팅 전환점(계정 조회) ----------
    사용자 2026-11-19: "지금 내 세팅이랑 비슷한 옵션에서 다음 세팅으로 넘어가려면 몇레벨이 적절한지", "장비 손실을 유지하며 넘어가는거 좋다.",
@@ -5140,7 +6012,9 @@ function acctAddHist(doc){ const hist = {...ACCT.hist}; let added = 0, updated =
   for (const h of doc.heroes || []) { if (!h.r) continue; const hk = doc.key + "_" + h.id, L = (hist[hk] || []).slice(), bsig = acctBuildSig(h), sig = acctHeroSig(h);
     const i = L.findIndex(x => (x.bsig || acctBuildSig(x.hero)) === bsig);
     if (i >= 0) { const x = L.splice(i, 1)[0];
-      L.unshift(x.sig === sig ? {...x, at: doc.fetchedAt, bsig, hero: x.hero.live || !h.live ? x.hero : {...x.hero, live: h.live}} : {...x, at: doc.fetchedAt, bsig, sig, hero: h});
+      /* 장비까지 같을 때의 탐색 결과: 이번 조회가 가져온 것(h.live — 다시 쓴 것이든 새로 계산한 것이든 지금 배포 버전의 것, 38_herolive heroPrecompute)이 있으면 그것으로.
+         2026-11-27 전에는 저장된 결과가 있으면 무조건 그것을 남겨, 배포가 바뀐 뒤 새로 계산한 결과가 버려졌음 */
+      L.unshift(x.sig === sig ? {...x, at: doc.fetchedAt, bsig, hero: h.live ? {...x.hero, live: h.live} : x.hero} : {...x, at: doc.fetchedAt, bsig, sig, hero: h});
       if (x.sig !== sig) updated++; }
     else { L.unshift({rid: hk + "_" + Date.now().toString(36), at: doc.fetchedAt, alias: "", bsig, sig, hero: h}); added++; }
     hist[hk] = L; }
@@ -5153,6 +6027,11 @@ function acctEditHist(hk, rid, patch){ const L = (ACCT.hist[hk] || []).map(x => 
   ACCT.hist = {...ACCT.hist, [hk]: L}; if (!L.length) delete ACCT.hist[hk];
   if (!patch && ACCT.over[rid]) { const o = {...ACCT.over}; delete o[rid]; ACCT.over = o; acctLsSet(ACCT_LS.over, ACCT.over); }
   acctLsSet(ACCT_LS.hist, ACCT.hist); acctEmit(); }
+/* 저장된 탐색 결과 찾기(38_herolive heroPrecompute — 조회할 때 같은 것은 다시 계산하지 않으려고). 열쇠 k(34_herocalc heroLiveKey)가 같은 것만.
+   GitHub 판 = 그 캐릭터의 조회 기록들(조합이 달라 기록이 나뉘어 있어도 열쇠가 같으면 같은 계산), 아티팩트 판 = 계정 문서의 영웅. 사용자 2026-11-26 22:17(위 heroLiveKey 주석) */
+function acctFindLive(docKey, heroId, k){ try {
+    if (ACCT.local) { for (const x of ACCT.hist[docKey + "_" + heroId] || []) if (x.hero && x.hero.live && x.hero.live.k === k) return x.hero.live; return null; }
+    const d = ACCT.docs.find(d => d.key === docKey), h = d && (d.heroes || []).find(h => h.id === heroId); return h && h.live && h.live.k === k ? h.live : null; } catch (e) { return null; } }
 /* 탐색 결과 저장(39_heroview — 저장된 결과가 없을 때 화면에서 탐색한 것). GitHub 판 = 그 기록의 hero.live, 아티팩트 판 = 계정 문서의 영웅 */
 function acctSaveLive(acc, rid, heroId, live){
   if (ACCT.local) { for (const [hk, L] of Object.entries(ACCT.hist)) { const i = L.findIndex(x => x.rid === rid); if (i < 0) continue;
@@ -5182,8 +6061,10 @@ function useAcctLookup(onDone){
     let o; try { o = await acctFetch(tag, reg, cred); } catch (e) { o = {error: (e && e.message) || "error"}; }   // 해석하지 못한 옵션 문장(tools/item_text.js unread)도 여기로 — 조회를 멈추고 그 문장을 보여 줌
     if (o.error) { setBusy(null); return setMsg({bad: true, t: "조회 실패: " + (ACCT_ERR[o.error] || o.error)}); }
     const t1 = Date.now(); setMsg({t: "불러옴(" + ((t1 - t0) / 1000).toFixed(1) + "초) — 비교 기준 계산 중…"});
-    await heroPrecompute(o, (i, n) => setMsg({t: "불러옴(" + ((t1 - t0) / 1000).toFixed(1) + "초) — 비교 기준 계산 " + i + "/" + n}));   // 38_herolive: 조회할 때 미리 탐색해 저장
+    const errs = await heroPrecompute(o, (i, n, same) => setMsg({t: "불러옴(" + ((t1 - t0) / 1000).toFixed(1) + "초) — 비교 기준 계산 " + i + "/" + n + (same ? " (저장된 것과 전부 같은 캐릭터 " + same + "명은 건너뜀)" : "")}));   // 38_herolive: 조회할 때 미리 탐색해 저장
     setBusy(null); const res = acctPutLocal(o);
+    /* 비교 기준 계산이 실패한 캐릭터가 있으면 붉은 글로(조회한 장비는 저장됨 — 영웅 화면을 열면 다시 계산해 보고, 또 실패하면 거기서도 오류를 보임). 까닭이 같으면 한 번만 적음 */
+    if (res.saved && errs.length) { if (onDone) onDone(o); return setMsg({bad: true, t: "조회한 장비는 저장했지만 비교 기준을 계산하지 못한 캐릭터 " + errs.length + "명(" + errs.map(x => x.name).join(", ") + ") — " + [...new Set(errs.map(x => x.msg))].join(" / ")}); }
     setMsg(res.saved ? {t: "조회 끝 — 캐릭터 " + o.heroes.length + "개, 새 기록 " + res.added + "개" + (res.updated ? ", 바뀐 기록 " + res.updated + "개" : "") + " (" + ((Date.now() - t0) / 1000).toFixed(1) + "초)"} : {bad: true, t: ACCT_ERR.store_full});
     if (onDone) onDone(o); };
   return {busy, msg, run}; }
@@ -5421,22 +6302,62 @@ function heroMissing(it, slotId, recCfg, recItem){ if (!recCfg || !slotId) retur
    39_heroview·35_account 가 씀
    ============================================================================================ */
 const HERO_LIVE = new Map();   // 비교 기준 탐색 결과(세팅 객체 + 모델) — 열쇠 = 틀·정복자·칸별 아이템·카나이·전설 보석(heroLiveKey)
-/* 비교 기준(recBuild) = 이 영웅의 아이템 구성에서의 최고(34_herocalc heroLiveBuild 주석). 작업자(Web Worker)에서 탐색(한 영웅 약 10초).
+/* 비교 기준(recBuild) = 이 영웅의 아이템 구성에서의 최고(34_herocalc heroLiveBuild 주석). 작업자(Web Worker)에서 풀이기로 풂(한 영웅 4~15초 — 아래 "풀이기로 바꿈". 2026-11-27 전에는 어림 탐색, 약 10초).
    조회할 때 미리 계산해 계정 문서의 영웅에 저장(hero.live = {k: 열쇠, e: 탐색 결과}) → 화면은 저장된 결과를 모델에 다시 적용만 함(빠름).
    사용자 2026-11-19 "지금 아이템 등락 실시간으로 계산해서 보여주는거, 그거 조회시 계산하고 저장하는걸로 옮기자."
    저장된 결과가 없거나 열쇠가 다르면(모델·데이터가 바뀜, 예약 작업이 조회한 문서) 그 자리에서 탐색하고 저장(35_account acctSaveLive).
    탐색은 API 장비만 씀(축성 설정과 무관) → 축성 설정을 바꿔도 다시 탐색하지 않음. 장비별 등락(heroSlotGaps)은 가벼워서 화면에서 바로 계산. */
 const HERO_LIVE_OPTS = P => ({paragon: P, gemMode: "solo", toughFloorAbs: null});
-function heroLiveRun(liveB, P){ return new Promise(res => { const o = HERO_LIVE_OPTS(P), n = D.config.model.search.restarts;
-  const fb = () => setTimeout(() => { try { res(liveResult(optimizeMulti(liveB, o, n))); } catch (e) { res(null); } }, 50);
-  let w = null; try { w = makeModelWorker(); w.onmessage = ev => { w.terminate(); res(ev.data); }; w.onerror = () => { w.terminate(); fb(); }; w.postMessage({data: workerData(), build: liveB, opts: o, n}); } catch (e) { fb(); } }); }
+/* ---------- 2026-11-27 풀이기로 바꿈(TODO O1) ----------
+   전에는 한 칸씩 바꿔 보는 어림 탐색(30_optimize optimizeMulti, 출발점 17개)이라 투구 보석과 보조손 재감처럼 맞물린 조합에서 못 빠져나왔음(화합 종수도: 보조손에 재감을 한 줄 더 요구).
+   사용자 2026-11-26 00:47 "추천세팅에서는 발전된 알고리즘을 쓰면서 왜 계정조회에서는 그런 저급한걸 쓰는거지?"
+   지금: 굽기와 같은 풀이기(HiGHS + tools/milp — build.py 가 <script id="milp-src"> 로 묶어 실음)를 작업자에서 돌림. 부르는 함수는 tools/milp/hero_solve.js heroSolve(굽기와 같은 동점 처리·정리).
+   잰 값(2026-11-27, node, 수집 기록 5명): 답은 탐색과 같거나 좋음(종수도 +0.372단, 용기 +0.061단, 불새 +0.024단, 투검·부정 같음), 한 명 4~15초(탐색 7~19초).
+   풀이기 파일(lib/highs/highs.js 168KB + highs.wasm 3.5MB, 압축 1.2MB — npm highs 1.15.4, MIT):
+   · 페이지를 열 때 뒤에서 미리 받음(화면이 뜨는 것은 막지 않음). 사용자 01:21 "그렇게 무거운건가 그게?" → "그러자. 근데 버전 바뀌면 다시 받아와야해"
+     → 주소에 배포 버전(34_herocalc HERO_LIVE_VER)을 ?v= 로 붙여, 배포가 바뀌면 브라우저 캐시를 건너뛰고 다시 받음.
+   · 못 받으면 옛 탐색으로 넘어가지 않고 오류를 보임. 사용자 01:25 "풀이기를 못받으면 에러를 띄워" → heroLiveRun 이 거부(reject) — 조회 글(35_account)·영웅 화면(39_heroview)이 그 글을 붉게 보임. */
+const HIGHS_Q = "?v=" + encodeURIComponent(HERO_LIVE_VER || "0");
+let HIGHS_P = null, SOLVE_URL = null;
+function highsLoad(){ if (!HIGHS_P) { const get = (f, kind) => fetch("lib/highs/" + f + HIGHS_Q).then(r => { if (!r.ok) throw new Error(f + " " + r.status); return r[kind](); });
+    HIGHS_P = Promise.all([get("highs.js", "text"), get("highs.wasm", "arrayBuffer")]).then(([js, wasm]) => ({js, wasm}))
+      .catch(e => { HIGHS_P = null; throw new Error("풀이기를 받지 못했습니다(" + ((e && e.message) || e) + "). 인터넷 연결을 확인하고 새로 고친 뒤 다시 해 보세요."); }); }   // 실패하면 다음 부름 때 다시 받아 봄
+  return HIGHS_P; }
+if (typeof window !== "undefined") setTimeout(() => { highsLoad().catch(() => {}); }, 1500);   // 미리 받기(실패는 여기서 삼킴 — 실제로 쓸 때 heroLiveRun 이 오류를 냄)
+/* 작업자 코드 = 모델(model-src) + HiGHS(받아 온 글 — module.exports 로 공장 함수를 내놓게 감쌈. 전역 process 를 만들면 HiGHS 가 node 로 착각하니 만들지 않음) + 풀이 모듈 묶음(milp-src) + 메시지 처리.
+   wasm 은 메시지로 넘겨 instantiateWasm 으로 직접 올림(작업자마다 복사 — 주소로 다시 받지 않게. 이 HiGHS 빌드는 wasmBinary 인자를 안 읽고 주소에서 받으려 해, 주소 없는 작업자에서 "Invalid URL" 로 죽음 — 2026-11-27 확인). 작업자 하나가 영웅 하나를 풀고 끝남(전과 같음). */
+async function makeSolveWorker(){ const H = await highsLoad();
+  if (!SOLVE_URL) SOLVE_URL = URL.createObjectURL(new Blob([document.getElementById("model-src").textContent,
+    "\nconst __highsFactory = (() => { const module = {exports: {}}, exports = module.exports;\n", H.js, "\n  return module.exports; })();\n", document.getElementById("milp-src").textContent,
+    "\nself.onmessage = async ev => { const m = ev.data; try { D = m.data; D.itemsById = itemIndex(D); D.slotDefs = D.slots.slots; D.layout = D.slots.layout;\n" +
+    "    const highs = await __highsFactory({instantiateWasm: (info, done) => { WebAssembly.instantiate(m.wasm, info).then(r => done(r.instance, r.module)); return {}; }}), lib = milpLib(__highsFactory);\n" +
+    "    self.postMessage({e: await lib.heroSolve(highs, m.build, m.P)}); } catch (err) { self.postMessage({error: String((err && err.message) || err)}); } };\n"], {type: "text/javascript"}));
+  return {w: new Worker(SOLVE_URL), wasm: H.wasm}; }
+/* k(화면의 등급·증감 계산에 쓰는 딜↔강인함 교환비): 풀이기에는 k 가 없어 구운 경로의 값을 빌림(tools/milp/to_path.js 가 굽기 결과에 붙이는 것과 같은 생각). 장비·딜·몸에는 영향 없음.
+   틀 세팅의 경로에서 같은 정복자 구간의 k → 틀이 한 번도 이기지 못해 경로가 없으면 그 틀이 든 묶음에서 그 정복자의 승자(segments) 경로의 k → 그것도 없으면 1 */
+const heroLiveK = (liveB, P) => { const S = D.path && D.path.modes && D.path.modes.solo; if (!S) return 1;
+  const at = id => { const L = S.variants[id] || []; let x = L[0]; for (const e of L) if (e.P <= P) x = e; return x && x.k != null ? x.k : null; };
+  let k = at(liveB.id); if (k != null) return k;
+  for (const s of D.builds.seasons) for (const c of s.classes) for (const g of c.groups || []) if (g.variants.some(v => v.build === liveB.id)) { const seg = (S.segments[g.id] || []).find(x => P >= x.from && P <= x.to); k = seg ? at(seg.variant) : null; if (k != null) return k; }
+  return 1; };
+/* → 탐색 결과 e(50_path liveResult 와 같은 꼴). 실패하면 거부(Error — 풀이기를 못 받음 / 작업자 오류 / 답 없음) */
+function heroLiveRun(liveB, P){ return makeSolveWorker().then(({w, wasm}) => new Promise((res, rej) => {
+  w.onmessage = ev => { w.terminate(); const m = ev.data || {}; if (m.error || !m.e) rej(new Error("비교 기준 계산 오류: " + (m.error || "결과 없음"))); else res({...m.e, k: heroLiveK(liveB, P)}); };
+  w.onerror = ev => { w.terminate(); rej(new Error("비교 기준 계산 오류(작업자): " + ((ev && ev.message) || "알 수 없음"))); };
+  w.postMessage({data: workerData(), build: liveB, P, wasm}); })); }
+const HERO_LIVE_ERR = new Map();   // 영웅 화면에서 계산이 실패한 까닭(열쇠 = heroLiveKey) — 39_heroview 가 보임
 const heroLiveApply = (liveB, P, e) => { try { return e ? applyModel(liveB, fromPre(liveB, e, HERO_LIVE_OPTS(P))) : null; } catch (err) { return null; } };
 function heroLiveOf(h){ try { const S = heroSetupOf(h.r); if (S.why || S.prio) return null;   // 서포터는 미리 계산할 것 없음(heroPrioRec 이 화면에서 바로)
  const b = heroLiveBuild(h.r, S, n => heroItemOf(n, h.r.cls)); return b ? {b, P: h.r.P || 0, k: heroLiveKey(b, h.r.P || 0)} : null; } catch (e) { return null; } }
 /* 조회 직후 계정의 모든 영웅을 미리 탐색(작업자 4개씩). onProg(끝난 수, 전체) */
-async function heroPrecompute(doc, onProg){ const L = (doc.heroes || []).filter(h => h.r).map(h => [h, heroLiveOf(h)]).filter(x => x[1]); let i = 0, done = 0;
-  const one = async () => { while (i < L.length) { const [h, x] = L[i++]; try { const e = await heroLiveRun(x.b, x.P); if (e) h.live = {k: x.k, e: JSON.parse(JSON.stringify(e))}; } catch (err) {} if (onProg) onProg(++done, L.length); } };
-  await Promise.all(Array.from({length: Math.min(4, L.length)}, one)); return doc; }
+/* 2026-11-27 같은 것은 건너뜀: 저장된 기록에 열쇠(heroLiveKey — 정복자·장비·카나이·전설 보석·배포 버전)가 같은 결과가 있으면 그 결과를 그대로 붙이고 계산하지 않음(35_account acctFindLive).
+   전에는 같은지 안 보고 모든 캐릭터를 다시 계산(캐릭터당 약 10초)하고, 장비가 같으면 그 결과를 버렸음. 사용자 2026-11-26 22:17 "조회 후에 이미 저장된거랑 똑같으면 매번 비교계산 다시할 필요 없잖아."
+   onProg(끝난 수, 계산할 수, 건너뛴 수). 돌려주는 값 = 계산에 실패한 영웅 [{name, msg}] (2026-11-27 — 전에는 실패를 말없이 넘김. 사용자 01:25 "풀이기를 못받으면 에러를 띄워") */
+async function heroPrecompute(doc, onProg){ const L0 = (doc.heroes || []).filter(h => h.r).map(h => [h, heroLiveOf(h)]).filter(x => x[1]), L = []; let i = 0, done = 0, skip = 0;
+  for (const hx of L0) { const old = acctFindLive(doc.key, hx[0].id, hx[1].k); if (old) { hx[0].live = old; skip++; } else L.push(hx); }
+  if (onProg) onProg(0, L.length, skip);
+  const errs = [], one = async () => { while (i < L.length) { const [h, x] = L[i++]; try { const e = await heroLiveRun(x.b, x.P); h.live = {k: x.k, e: JSON.parse(JSON.stringify(e))}; } catch (err) { errs.push({name: h.name, msg: (err && err.message) || String(err)}); } if (onProg) onProg(++done, L.length, skip); } };
+  await Promise.all(Array.from({length: Math.min(4, L.length)}, one)); return errs; }
 /* 서포터 인형 아래 두 줄(랭크표 PriorityLine·서포터 ParagonLine 과 같은 꼴, 값은 이 영웅의 실제 장비):
    '재사용 감소 : x% (고통 감내 상시 63.5% 이상) / 공격 속도 : +n% (/ 주 기술 발사 : 초당 n발)', '대균열 : n단 / 정복자 활력 … · 주능력치 …'(강인함 최대 분배, 150 상한) */
 
@@ -5491,9 +6412,11 @@ function HeroView({acc, hero, rid}){
   const liveB = useMemo(() => { if (!ok) return null; try { return heroLiveBuild(r0, S, itemOf); } catch (e) { return null; } }, [hero.id, acc.fetchedAt]), liveK = liveB && !S.prio ? heroLiveKey(liveB, P) : null;
   const prioRec = useMemo(() => ok && S.prio && liveB ? heroPrioRec(liveB, P) : null, [liveB, P]);   // 서포터 비교 기준(34_herocalc heroPrioRec)
   if (liveK && !HERO_LIVE.has(liveK) && hero.live && hero.live.k === liveK) HERO_LIVE.set(liveK, heroLiveApply(liveB, P, hero.live.e));   // 저장된 결과
-  const [liveTick, setLiveTick] = useState(0), recBuild = S.prio ? prioRec : liveK && HERO_LIVE.get(liveK) || null, liveBusy = !!liveK && !HERO_LIVE.has(liveK);
+  const [liveTick, setLiveTick] = useState(0), recBuild = S.prio ? prioRec : liveK && HERO_LIVE.get(liveK) || null, liveErr = liveK && !HERO_LIVE.has(liveK) ? HERO_LIVE_ERR.get(liveK) || null : null, liveBusy = !!liveK && !HERO_LIVE.has(liveK) && !liveErr;
   useEffect(() => { if (!liveK || HERO_LIVE.has(liveK)) return; let stop = false;
-    heroLiveRun(liveB, P).then(e => { if (stop) return; HERO_LIVE.set(liveK, heroLiveApply(liveB, P, e)); setLiveTick(x => x + 1); if (e) acctSaveLive(acc, okey, hero.id, {k: liveK, e: JSON.parse(JSON.stringify(e))}); });
+    HERO_LIVE_ERR.delete(liveK);   // 다시 열면 다시 해 봄
+    heroLiveRun(liveB, P).then(e => { if (stop) return; HERO_LIVE.set(liveK, heroLiveApply(liveB, P, e)); setLiveTick(x => x + 1); if (e) acctSaveLive(acc, okey, hero.id, {k: liveK, e: JSON.parse(JSON.stringify(e))}); })
+      .catch(err => { if (stop) return; HERO_LIVE_ERR.set(liveK, (err && err.message) || String(err)); setLiveTick(x => x + 1); });   // 풀이기를 못 받았거나 답이 없음 — 옛 탐색으로 넘어가지 않고 오류를 보임(38_herolive, 사용자 2026-11-27 01:25)
     return () => { stop = true; }; }, [liveK]);
   const classId = D.dollImage[r0.cls] ? r0.cls : "dh", tplLike = recBuild || (ok ? S.tpl : {classId});
   const r = useMemo(() => { let x = r0; try { x = heroWithSpecs(r0, ov, tplLike, itemOf); } catch (e) {} try { return heroFillGems(x, recBuild, itemOf); } catch (e) { return x; } }, [hero.id, acc.fetchedAt, ovSig, recBuild]);   // 빈 홈 = 추천 보석 가정(34_herocalc heroFillGems)
@@ -5557,7 +6480,8 @@ function HeroView({acc, hero, rid}){
           : ok && rec && !rec.err ? <HeroRecLines rec={rec} S={S} r={r} P={P} style={{width: Math.round(BW * k), marginLeft: Math.round((Math.max(W, BW * k) - BW * k) / 2)}}/>
           : <div className="paraline" style={{width: Math.round(BW * k), marginLeft: Math.round((Math.max(W, BW * k) - BW * k) / 2)}}><span className="pitem augline">{!ok ? S.why : rec && rec.err ? "계산 실패: " + rec.err : ""}</span></div>}
         {next && <HeroNextLines next={next} S={S} r={r} itemOf={itemOf} style={{width: Math.round(BW * k), marginLeft: Math.round((Math.max(W, BW * k) - BW * k) / 2)}}/>}
-        {liveBusy && <div className="pending" style={{maxWidth: Math.round(BW * k)}}>이 장비 구성의 최고 정옵을 계산하는 중(약 10초)… 끝나면 장비별 증감이 뜹니다.</div>}
+        {liveBusy && <div className="pending" style={{maxWidth: Math.round(BW * k)}}>이 장비 구성의 최고 정옵을 계산하는 중(몇 초~십몇 초)… 끝나면 장비별 증감이 뜹니다.</div>}
+        {liveErr && <div className="pending bad" role="alert" style={{maxWidth: Math.round(BW * k)}}>{liveErr}</div>}
         {sb && <div style={{width: Math.round(BW * k), height: Math.round(SKILLBAR_H * k), marginLeft: Math.round((Math.max(W, BW * k) - BW * k) / 2), overflow: "visible"}}>
           <div style={{width: BW, transform: `scale(${k})`, transformOrigin: "0 0"}}><SkillBar build={{...fake, id: "hero_" + hero.id, skillbar: sb, cube: cubeNames}}/></div></div>}
       </div>
@@ -5690,7 +6614,7 @@ function makeWorker(kind, body){
     "  self.postMessage(" + body + "); };\n"], {type: "text/javascript"}));
   return new Worker(WORKER_SRC[kind]);
 }
-const makeModelWorker = () => makeWorker("model", "liveResult(optimizeMulti(m.build, m.opts, m.n))");
+/* (탐색 작업자 makeModelWorker 는 2026-11-27 없앰 — 계정 조회의 비교 기준을 풀이기로 바꿈. 풀이기 작업자는 38_herolive makeSolveWorker. makeWorker 는 남겨 둠) */
 /* (획득 비교 작업자 makeCompareWorker 는 2026-11-23 없앰 — 구운 값만 보임. 남은 작업자는 계정 조회의 비교 기준 탐색(38_herolive)뿐) */
 const workerData = () => ({config: D.config, affixes: D.affixes, slots: D.slots, items: D.items, builds: D.builds, upgrade: D.upgrade, db: D.db});   // db = 옵션 범위 등 표 자료(affixRange 가 읽음 — 2026-11-22 부터 필요한데 빠져 있었음. 2026-11-23 넣음)
 const PRELOAD = [];   // 미리 받은 그림(참조를 들고 있어야 캐시가 유지됨)
